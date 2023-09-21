@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-09-17T00:35:31.557169+00:00",
+  "timestamp": "2023-09-21T00:33:09.177877+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -2048,7 +2048,7 @@
       "id": "I_kwDOIvmHss5uQMTL",
       "title": "The use of \"SHOULD\" throughout the spec",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/91",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "hannestschofenig",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -2059,8 +2059,8 @@
       ],
       "body": "The specification uses the RFC 2119 \"SHOULD\" all over the place. A SHOULD needs to come with a description of when the developer should follow it and when it is not appropriate. Too many SHOULDs do not help with interoperability.\r\n\r\nAlso, check the use of normative language: Is it possible to create a test case that will help to improve interoperability?\r\n\r\nFor example, in the following sentence the use of the SHOULD is not useful:\r\n\r\n\"\r\nIssuers SHOULD use consistent decentralized identifiers for all their Statements about Artifacts, to simplify authorization by Verifiers and auditing.\r\n\"\r\n\r\nThe reader might ask themselves:\r\n\r\n* When should I use \"inconsistent decentralized identifiers\"?\r\n* What is a consistent decentralized identifier?\r\n\r\nHere is another sentence:\r\n\r\n\"\r\nIssuers MAY choose the DID method they prefer, but with no guarantee that all Transparency Services will be able to register their Signed Statements. To facilitate interoperability, all Transparency Service implementations SHOULD support the did:web method [[DID-WEB](https://w3c-ccg.github.io/did-method-web/)].\r\n\"\r\n\r\nWhy is there a SHOULD in this sentence instead of a MUST? If you want to accomplish interoperability you have to put a MUST there.\r\n",
       "createdAt": "2023-08-14T13:04:02Z",
-      "updatedAt": "2023-09-06T00:02:59Z",
-      "closedAt": null,
+      "updatedAt": "2023-09-19T14:51:46Z",
+      "closedAt": "2023-09-19T14:51:45Z",
       "comments": [
         {
           "author": "ad-l",
@@ -2138,6 +2138,134 @@
           "updatedAt": "2023-09-12T15:27:38Z"
         }
       ]
+    },
+    {
+      "number": 97,
+      "id": "I_kwDOIvmHss5xb9FT",
+      "title": "Using only qualified \"Issuers\" for clarity",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/97",
+      "state": "OPEN",
+      "author": "henkbirkholz",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "terminology"
+      ],
+      "body": "We should consider to use \"Statement Issuer\" and \"Receipt Issuer\" consistently instead of allowing for using stand-alone \"issuer\" - for better clarity.\r\nBase on Orie's comment: https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/95/files#r1308908322",
+      "createdAt": "2023-09-19T14:43:02Z",
+      "updatedAt": "2023-09-19T18:09:39Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "cross linking other issues with context:\r\n\r\n- https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/65\r\n- https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/8\r\n- https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/23\r\n- https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/97",
+          "createdAt": "2023-09-19T15:42:29Z",
+          "updatedAt": "2023-09-19T15:42:29Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I suggest the following changes to the architecture:\r\n\r\n1. Revise \"issuer\" in terminology, and align it to \"iss\".\r\n2. Add \"Statement Issuer\" and \"Receipt Issuer\" to terminology, and clarify that they both rely on `iss`, and reflect the identifier of the entity making statements about artifacts and the entity making those statements transparent (aka the transparency service).\r\n3. Clarify that `iss` MUST be a DID.\r\n4. Clarify that `kid` MUST be a relative DID URL which `iss` as the base.",
+          "createdAt": "2023-09-19T15:52:20Z",
+          "updatedAt": "2023-09-19T15:52:20Z"
+        },
+        {
+          "author": "fournet",
+          "authorAssociation": "COLLABORATOR",
+          "body": "1. Why is it important to align to \"iss\"? \r\n2. For now we use \"Transparency Service\" instead of \"Receipt Issuer\". Are you suggesting we merge the two? Otherwise where do we need to explicitly write \"Receipt Issuer\" in SCITT? Also, should \"Statement Issuer\" not be \"Signed Statement Issuer\" if it is fully qualified? In general the statement (e.g. the SBOM) is produced  by some of the party before being endorsed by the Issuer. \r\n3. Ok\r\n4. Does it apply both to statement signatures and receipts? ",
+          "createdAt": "2023-09-19T17:54:35Z",
+          "updatedAt": "2023-09-19T18:09:39Z"
+        }
+      ]
+    },
+    {
+      "number": 98,
+      "id": "I_kwDOIvmHss5xb9H1",
+      "title": "Better address implementation requirements of DID methods",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/98",
+      "state": "OPEN",
+      "author": "ad-l",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "ad-l"
+      ],
+      "labels": [],
+      "body": "Current text is ambiguous about what TS must support vs what implementations of SCITT must implement. ",
+      "createdAt": "2023-09-19T14:43:08Z",
+      "updatedAt": "2023-09-19T14:58:25Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 99,
+      "id": "I_kwDOIvmHss5xb-m2",
+      "title": "Adjust language in PR",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/99",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "OR13"
+      ],
+      "labels": [
+        "terminology"
+      ],
+      "body": "I don't love the language we added in:\r\n\r\n> If an issuer uses multiple DIDs (for instance, because their clients support different resolution methods), they MUST ensure that statements signed under each DID are consistent.\r\n\r\nhttps://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/95#discussion_r1308967013\r\n\r\nI said:\r\n\r\n> The verifier is interested in the authenticity of the issuer of the transparent statement and signed statement... The verifier trusts the TS to vet the issuer of the signed statement... the verifier benefits from the transparency service, if they can't trust the TS, there is no reason to do SCITT.\r\n\r\n",
+      "createdAt": "2023-09-19T14:46:20Z",
+      "updatedAt": "2023-09-19T14:59:14Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I suggest we remove the MUST here, and just say that verifiers are required to trust all issuer keys associated with issuer identifiers, in order to perform their role.",
+          "createdAt": "2023-09-19T14:59:13Z",
+          "updatedAt": "2023-09-19T14:59:13Z"
+        }
+      ]
+    },
+    {
+      "number": 100,
+      "id": "I_kwDOIvmHss5xcA7c",
+      "title": "Review all COSE parameters and normalize text and integers",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/100",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "OR13"
+      ],
+      "labels": [],
+      "body": "All our text references should look like:\r\n\r\n![Screen Shot 2023-09-19 at 9 51 01 AM](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/assets/8295856/fc7507bc-dd37-4e8c-b68e-a5d5c65270ba)\r\n",
+      "createdAt": "2023-09-19T14:51:19Z",
+      "updatedAt": "2023-09-19T14:56:53Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Will align the text, before we cut the draft for 118",
+          "createdAt": "2023-09-19T14:56:49Z",
+          "updatedAt": "2023-09-19T14:56:49Z"
+        }
+      ]
+    },
+    {
+      "number": 102,
+      "id": "I_kwDOIvmHss5xgoJV",
+      "title": "Add client in terminology",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/102",
+      "state": "OPEN",
+      "author": "nikosft",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "In section 5.2.3.3 `client` appears out of the blue. It is not clear what a `client` is. ",
+      "createdAt": "2023-09-20T07:46:53Z",
+      "updatedAt": "2023-09-20T07:46:53Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -8845,7 +8973,7 @@
       "labels": [],
       "body": "Attempt to clean up Section 6",
       "createdAt": "2023-08-14T16:16:43Z",
-      "updatedAt": "2023-09-04T15:01:37Z",
+      "updatedAt": "2023-09-20T10:42:55Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "4e490bbe2c001874f4d1da7265fde8d92f7fffde",
@@ -8856,7 +8984,22 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "hannestschofenig",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Orie, you realize that you are commenting on text that I didn't suggest. This text has already been there in the submitted draft",
+          "createdAt": "2023-09-19T16:14:41Z",
+          "updatedAt": "2023-09-19T16:14:41Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@hannestschofenig yes, I do realize that... The comment is still relevant to progressing the document, and its not a blocking change request (I approved the PR).",
+          "createdAt": "2023-09-19T17:16:36Z",
+          "updatedAt": "2023-09-19T17:16:49Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOIvmHss5eAmVe",
@@ -8977,6 +9120,139 @@
               "updatedAt": "2023-08-16T08:38:03Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXBjp",
+          "commit": {
+            "abbreviatedOid": "35d970f"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-09-19T14:20:49Z",
+          "updatedAt": "2023-09-19T14:20:49Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXCRZ",
+          "commit": {
+            "abbreviatedOid": "35d970f"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:22:01Z",
+          "updatedAt": "2023-09-19T14:22:01Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "we should NOT do this... we should use https://datatracker.ietf.org/doc/draft-ietf-cose-cwt-claims-in-headers/\r\n\r\nFor now, I would recommend simply saying `kid` is mandatory and MUST be an absolute DID URL.",
+              "createdAt": "2023-09-19T14:22:01Z",
+              "updatedAt": "2023-09-19T14:22:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXCu5",
+          "commit": {
+            "abbreviatedOid": "35d970f"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:22:50Z",
+          "updatedAt": "2023-09-19T14:22:50Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "```suggestion\r\n- Content type (label: `3`): Media type of payload, as a string. For example, `application/spdx+json` is the media type of SDPX in JSON encoding.\r\n```",
+              "createdAt": "2023-09-19T14:22:50Z",
+              "updatedAt": "2023-09-19T14:48:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXEOn",
+          "commit": {
+            "abbreviatedOid": "35d970f"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:24:25Z",
+          "updatedAt": "2023-09-19T14:24:26Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "Do we want to allow COAP? see also https://datatracker.ietf.org/doc/draft-ietf-cose-typ-header-parameter/\r\n\r\n`typ` is for the envelope, not the payload type, but the same CBOR media type stuff applies",
+              "createdAt": "2023-09-19T14:24:25Z",
+              "updatedAt": "2023-09-19T14:24:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXU3C",
+          "commit": {
+            "abbreviatedOid": "35d970f"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:51:45Z",
+          "updatedAt": "2023-09-19T14:51:45Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "Tracking in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/100",
+              "createdAt": "2023-09-19T14:51:45Z",
+              "updatedAt": "2023-09-19T14:51:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5heQtW",
+          "commit": {
+            "abbreviatedOid": "35d970f"
+          },
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-20T10:41:00Z",
+          "updatedAt": "2023-09-20T10:41:00Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n##  Signed Statement Envelope\r\n```",
+              "createdAt": "2023-09-20T10:41:00Z",
+              "updatedAt": "2023-09-20T10:41:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5heRdY",
+          "commit": {
+            "abbreviatedOid": "35d970f"
+          },
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-20T10:42:54Z",
+          "updatedAt": "2023-09-20T10:42:55Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "@hannestschofenig : As the Main heading for the section is `Signed Statement Issuance, Registration, and Verification`\r\n\r\nI think, it makes sense to introduce this section as `Signed Statement Envelope` The reason been (a) We are not discussing Issuance per say here\r\n\r\n(b) We do not have a fixed signed statement format, but we just have an Envelope which contains a `Payload`",
+              "createdAt": "2023-09-20T10:42:54Z",
+              "updatedAt": "2023-09-20T10:42:55Z"
+            }
+          ]
         }
       ]
     },
@@ -8985,24 +9261,26 @@
       "id": "PR_kwDOIvmHss5ZCfAo",
       "title": "Follow BCP 14 rules for SHOULD/SHOULD NOT",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/95",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "ad-l",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Fixes #91 ",
       "createdAt": "2023-08-29T13:53:14Z",
-      "updatedAt": "2023-09-05T14:09:26Z",
+      "updatedAt": "2023-09-19T14:51:44Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "0f468f4e36876a94489bf1748b838e52040655d3",
       "headRepository": "ad-l/draft-ietf-scitt-architecture",
       "headRefName": "main",
-      "headRefOid": "c1ce4ad1cb978338c160189763a317dfbb471d2a",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "184fbad4201b6aa3545e6d672bea4c2f539bd0d2",
+      "closedAt": "2023-09-19T14:51:44Z",
+      "mergedAt": "2023-09-19T14:51:44Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "a7ba78e98d6089ffe5c5c95c51d582baef634233"
+      },
       "comments": [
         {
           "author": "OR13",
@@ -9010,6 +9288,13 @@
           "body": "please accept or dismiss my change suggestions, and ping me for a re-review.",
           "createdAt": "2023-09-05T14:06:59Z",
           "updatedAt": "2023-09-05T14:06:59Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "please accept or dismiss my change suggestions, and ping me for a re-review.",
+          "createdAt": "2023-09-19T14:19:55Z",
+          "updatedAt": "2023-09-19T14:19:55Z"
         }
       ],
       "reviews": [
@@ -9525,6 +9810,292 @@
               "updatedAt": "2023-09-05T14:09:26Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXIXr",
+          "commit": {
+            "abbreviatedOid": "c1ce4ad"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:29:52Z",
+          "updatedAt": "2023-09-19T14:29:52Z",
+          "comments": [
+            {
+              "originalPosition": 72,
+              "body": "+1",
+              "createdAt": "2023-09-19T14:29:52Z",
+              "updatedAt": "2023-09-19T14:29:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXJqE",
+          "commit": {
+            "abbreviatedOid": "effcc6f"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:32:02Z",
+          "updatedAt": "2023-09-19T14:32:03Z",
+          "comments": [
+            {
+              "originalPosition": 111,
+              "body": "+1",
+              "createdAt": "2023-09-19T14:32:02Z",
+              "updatedAt": "2023-09-19T14:32:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXJvS",
+          "commit": {
+            "abbreviatedOid": "effcc6f"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:32:12Z",
+          "updatedAt": "2023-09-19T14:32:12Z",
+          "comments": [
+            {
+              "originalPosition": 110,
+              "body": "+1",
+              "createdAt": "2023-09-19T14:32:12Z",
+              "updatedAt": "2023-09-19T14:32:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXJ1I",
+          "commit": {
+            "abbreviatedOid": "effcc6f"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:32:21Z",
+          "updatedAt": "2023-09-19T14:32:21Z",
+          "comments": [
+            {
+              "originalPosition": 141,
+              "body": "+1",
+              "createdAt": "2023-09-19T14:32:21Z",
+              "updatedAt": "2023-09-19T14:32:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXO7H",
+          "commit": {
+            "abbreviatedOid": "80dd7e4"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:41:12Z",
+          "updatedAt": "2023-09-19T14:41:13Z",
+          "comments": [
+            {
+              "originalPosition": 111,
+              "body": "Resolved with: https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/94#discussion_r1330217675",
+              "createdAt": "2023-09-19T14:41:12Z",
+              "updatedAt": "2023-09-19T14:41:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXPvU",
+          "commit": {
+            "abbreviatedOid": "80dd7e4"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:42:40Z",
+          "updatedAt": "2023-09-19T14:42:41Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "@ad-l  to file a separate issue",
+              "createdAt": "2023-09-19T14:42:40Z",
+              "updatedAt": "2023-09-19T14:42:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXQFy",
+          "commit": {
+            "abbreviatedOid": "184fbad"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:43:18Z",
+          "updatedAt": "2023-09-19T14:43:18Z",
+          "comments": [
+            {
+              "originalPosition": 120,
+              "body": "Now captured in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/97",
+              "createdAt": "2023-09-19T14:43:18Z",
+              "updatedAt": "2023-09-19T14:43:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXQNO",
+          "commit": {
+            "abbreviatedOid": "80dd7e4"
+          },
+          "author": "ad-l",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:43:31Z",
+          "updatedAt": "2023-09-19T14:43:31Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/98",
+              "createdAt": "2023-09-19T14:43:31Z",
+              "updatedAt": "2023-09-19T14:43:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXQUz",
+          "commit": {
+            "abbreviatedOid": "80dd7e4"
+          },
+          "author": "ad-l",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:43:43Z",
+          "updatedAt": "2023-09-19T14:43:44Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/98",
+              "createdAt": "2023-09-19T14:43:43Z",
+              "updatedAt": "2023-09-19T14:43:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXQ0s",
+          "commit": {
+            "abbreviatedOid": "80dd7e4"
+          },
+          "author": "ad-l",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:44:35Z",
+          "updatedAt": "2023-09-19T14:44:35Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/98",
+              "createdAt": "2023-09-19T14:44:35Z",
+              "updatedAt": "2023-09-19T14:44:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXR2W",
+          "commit": {
+            "abbreviatedOid": "80dd7e4"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-19T14:46:27Z",
+          "updatedAt": "2023-09-19T14:46:27Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "Tracked in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/99",
+              "createdAt": "2023-09-19T14:46:27Z",
+              "updatedAt": "2023-09-19T14:46:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hXSRZ",
+          "commit": {
+            "abbreviatedOid": "184fbad"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-09-19T14:47:12Z",
+          "updatedAt": "2023-09-19T14:47:12Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 101,
+      "id": "PR_kwDOIvmHss5auKk2",
+      "title": "Update company for steve lasker",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/101",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-09-19T22:13:51Z",
+      "updatedAt": "2023-09-20T08:45:45Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "a7ba78e98d6089ffe5c5c95c51d582baef634233",
+      "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
+      "headRefName": "update-org",
+      "headRefOid": "d1713fdfa0ddb13305e6ceca49e68fd7a1205292",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5hdQNS",
+          "commit": {
+            "abbreviatedOid": "d1713fd"
+          },
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM!",
+          "createdAt": "2023-09-20T08:44:22Z",
+          "updatedAt": "2023-09-20T08:44:22Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5hdQ6G",
+          "commit": {
+            "abbreviatedOid": "d1713fd"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "yes",
+          "createdAt": "2023-09-20T08:45:45Z",
+          "updatedAt": "2023-09-20T08:45:45Z",
+          "comments": []
         }
       ]
     }
