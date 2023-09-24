@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-09-21T00:33:09.177877+00:00",
+  "timestamp": "2023-09-24T00:35:30.892982+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -10051,24 +10051,26 @@
       "id": "PR_kwDOIvmHss5auKk2",
       "title": "Update company for steve lasker",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/101",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-09-19T22:13:51Z",
-      "updatedAt": "2023-09-20T08:45:45Z",
+      "updatedAt": "2023-09-21T03:59:10Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "a7ba78e98d6089ffe5c5c95c51d582baef634233",
       "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
       "headRefName": "update-org",
       "headRefOid": "d1713fdfa0ddb13305e6ceca49e68fd7a1205292",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2023-09-21T03:59:10Z",
+      "mergedAt": "2023-09-21T03:59:10Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "f283c4167f8350f529ae2adb893118133fa0c553"
+      },
       "comments": [],
       "reviews": [
         {
