@@ -5,13 +5,13 @@
 SCITT                                                        H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                      A. Delignat-Lavaud
-Expires: 6 March 2024                                         C. Fournet
+Expires: 29 March 2024                                        C. Fournet
                                                       Microsoft Research
                                                             Y. Deshpande
                                                                      ARM
                                                                S. Lasker
                                                        Lasker Consulting
-                                                        3 September 2023
+                                                       26 September 2023
 
 
  An Architecture for Trustworthy and Transparent Digital Supply Chains
@@ -66,7 +66,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 March 2024.
+   This Internet-Draft will expire on 29 March 2024.
 
 Copyright Notice
 
@@ -964,7 +964,7 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    *  Feed (label: TBD, temporary: 392): The Issuer's name for the
       Artifact, as a string.
 
-   *  Payload type (label: 3): Media type of payload, as a string.  For
+   *  Content type (label: 3): Media type of payload, as a string.  For
       example, application/spdx+json is the media type of SDPX in JSON
       encoding.
 
@@ -1734,9 +1734,9 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
               Birkholz, H., Deshpande, Y., Brooks, D., Martin, B., and
               B. Knight, "Detailed Software Supply Chain Uses Cases for
               SCITT", Work in Progress, Internet-Draft, draft-ietf-
-              scitt-software-use-cases-00, 14 March 2023,
+              scitt-software-use-cases-01, 15 September 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-scitt-
-              software-use-cases-00>.
+              software-use-cases-01>.
 
    [MERKLE]   Merkle, R., "A Digital Signature Based on a Conventional
               Encryption Function", Springer Berlin Heidelberg, Advances
