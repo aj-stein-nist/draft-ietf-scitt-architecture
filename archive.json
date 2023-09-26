@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-09-24T00:35:30.892982+00:00",
+  "timestamp": "2023-09-26T00:34:00.142851+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -409,7 +409,7 @@
       ],
       "body": "Copied over from: https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/issues/36\r\n\r\nA feed is a great base for how we can create a series of statements for different artifacts, getting freshness for a receipt/or VEX report.\r\nThe current definition likely needs to expand a bit to account for:\r\n- What are the versions of a specific artifact\r\n- What are all the statements for a version of an artifact\r\n- What is the latest statement for a specific `contentType` of a specific versioned `artifact`: (eg: what's the latest `SBOM` for the `net-monitor:v1` software?\r\n- If the `contentType` is a referenced [statement by reference](#35), which stores SBOMs, Scan Reports, how do we drill into each if they all use the same payload `contentType` of satementByReference?\r\n",
       "createdAt": "2023-02-21T15:46:59Z",
-      "updatedAt": "2023-09-05T23:41:39Z",
+      "updatedAt": "2023-09-25T18:01:49Z",
       "closedAt": null,
       "comments": [
         {
@@ -432,6 +432,13 @@
           "body": "@ad-l, I've got the notes on feeds and I've been working on a proposal. Would you like to collaborate on it?\r\n\r\nDeferring to 117 for prioritization, but a great discussion as many things will be built upon feeds.",
           "createdAt": "2023-03-10T01:39:44Z",
           "updatedAt": "2023-03-10T01:39:44Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "A note from the [SCITT call on 9/24/2023](https://datatracker.ietf.org/meeting/interim-2023-scitt-34/session/scitt)\r\nWe'll be iterating on this a bit more, to create some use cases and examples for how feeds help producers and consumers benefit from SCITT.",
+          "createdAt": "2023-09-25T18:01:49Z",
+          "updatedAt": "2023-09-25T18:01:49Z"
         }
       ]
     },
