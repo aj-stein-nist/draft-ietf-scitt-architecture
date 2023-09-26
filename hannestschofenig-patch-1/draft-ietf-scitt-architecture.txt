@@ -100,7 +100,7 @@ Table of Contents
        5.2.3.  Registry Security Requirements
      5.3.  Verifying Transparent Statements
    6.  Signed Statement Issuance, Registration, and Verification
-     6.1.  Issuing Signed Statements
+     6.1.  Signed Statement Envelope
      6.2.  Registering Signed Statements
      6.3.  Transparent Statements and Receipts
      6.4.  Validation of Transparent Statements
@@ -940,7 +940,7 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    implementers of Signed Statements issuance and validation libraries,
    and of Transparency Services.
 
-6.1.  Issuing Signed Statements
+6.1.  Signed Statement Envelope
 
    Signed Statements are CBOR encoded [RFC8949] and protected by CBOR
    Object Signing and Encryption (COSE [RFC9052]).  Additionally, it

@@ -1210,7 +1210,7 @@ Producers can register their Signed Statements on any Transparency Service, with
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-signed-statement-issuance-r" class="internal xref">Signed Statement Issuance, Registration, and Verification</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
-                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-issuing-signed-statements" class="internal xref">Issuing Signed Statements</a></p>
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-signed-statement-envelope" class="internal xref">Signed Statement Envelope</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-registering-signed-statemen" class="internal xref">Registering Signed Statements</a></p>
@@ -2017,10 +2017,10 @@ Although this weakens their guarantees against key revocation, or against a corr
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-signed-statement-issuance-r" class="section-name selfRef">Signed Statement Issuance, Registration, and Verification</a>
       </h2>
 <p id="section-6-1">This section details the interoperability requirements for implementers of Signed Statements issuance and validation libraries, and of Transparency Services.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<div id="sec-issuing-signed-statements">
+<div id="sec-signed-statement-envelope">
 <section id="section-6.1">
-        <h3 id="name-issuing-signed-statements">
-<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-issuing-signed-statements" class="section-name selfRef">Issuing Signed Statements</a>
+        <h3 id="name-signed-statement-envelope">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-signed-statement-envelope" class="section-name selfRef">Signed Statement Envelope</a>
         </h3>
 <p id="section-6.1-1">Signed Statements are CBOR encoded <span>[<a href="#RFC8949" class="cite xref">RFC8949</a>]</span> and protected by CBOR Object Signing and Encryption (COSE <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>). Additionally, it contains at least one or more headers and a set of statements as its payload.
 Although Issuers and other parties <span class="bcp14">MAY</span> attach unprotected headers to Signed Statements, Transparency Services and Verifiers <span class="bcp14">MUST NOT</span> rely on the presence or value of additional unprotected headers in Signed Statements during Registration and validation.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
