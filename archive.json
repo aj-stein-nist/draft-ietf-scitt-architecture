@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-09-26T00:34:00.142851+00:00",
+  "timestamp": "2023-09-28T00:33:37.811737+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -409,7 +409,7 @@
       ],
       "body": "Copied over from: https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/issues/36\r\n\r\nA feed is a great base for how we can create a series of statements for different artifacts, getting freshness for a receipt/or VEX report.\r\nThe current definition likely needs to expand a bit to account for:\r\n- What are the versions of a specific artifact\r\n- What are all the statements for a version of an artifact\r\n- What is the latest statement for a specific `contentType` of a specific versioned `artifact`: (eg: what's the latest `SBOM` for the `net-monitor:v1` software?\r\n- If the `contentType` is a referenced [statement by reference](#35), which stores SBOMs, Scan Reports, how do we drill into each if they all use the same payload `contentType` of satementByReference?\r\n",
       "createdAt": "2023-02-21T15:46:59Z",
-      "updatedAt": "2023-09-25T18:01:49Z",
+      "updatedAt": "2023-09-26T14:44:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -439,6 +439,13 @@
           "body": "A note from the [SCITT call on 9/24/2023](https://datatracker.ietf.org/meeting/interim-2023-scitt-34/session/scitt)\r\nWe'll be iterating on this a bit more, to create some use cases and examples for how feeds help producers and consumers benefit from SCITT.",
           "createdAt": "2023-09-25T18:01:49Z",
           "updatedAt": "2023-09-25T18:01:49Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "See: https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/0383ec2b5a23f11d1a42800aebbe38368e12376d/draft-ietf-scitt-architecture.md?plain=1#L188\r\n\r\n```\r\nFeed: \r\n\r\n: an identifier chosen by the Issuer for the Artifact.\r\nFor every Issuer and Feed, the Registry on a Transparency Service contains a sequence of Signed Statements about the same Artifact.\r\nIn COSE, Feed is a dedicated header attribute in the protected header of the Envelope.\r\n```\r\n\r\nThere are several problems with this definition.\r\n\r\n1. It conflates using aggregations over an header parameter, with the header parameter.\r\n2. It confuses how the TS uses the attribute with how the `iss` uses the attribute (same problem as above).\r\n\r\nSuggested changes:\r\n\r\n\r\n```\r\nFeed Identifier:\r\n\r\n: A feed identifier is chosen be the issuer who secured the signed statement.\r\nFeed identifier MUST NOT be present in unprotected headers.\r\nFeed identifier is registered in CWT Claims Registry as Tag TBD (Requested assignment 42).\r\n\r\nFeed Resource:\r\n\r\n: A feed resource is made available by a transparency service, \r\nand exposed via the SCITT API <ref scrapi>.\r\nTransparency services MAY leverage the feed identifier \r\nused by the issuer to construct the identifier for feed resources on the transparency service.\r\n\r\n```\r\n\r\nRegistration policies only apply to the feed identifier, they do not apply to the feed resource.\r\n\r\nSee https://github.com/ietf-scitt/draft-birkholz-scitt-scrapi/pull/2 regarding the Transparency Service exposing the Feed Resource.",
+          "createdAt": "2023-09-26T14:39:10Z",
+          "updatedAt": "2023-09-26T14:44:28Z"
         }
       ]
     },
@@ -2271,6 +2278,22 @@
       "body": "In section 5.2.3.3 `client` appears out of the blue. It is not clear what a `client` is. ",
       "createdAt": "2023-09-20T07:46:53Z",
       "updatedAt": "2023-09-20T07:46:53Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 103,
+      "id": "I_kwDOIvmHss5yEQGq",
+      "title": "Refine Definition of RegInfo",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/103",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "```\r\nReg_Info = {\r\n  ? \"register_by\": uint .within (~time),\r\n  ? \"sequence_no\": uint,\r\n  ? \"issuance_ts\": uint .within (~time),\r\n  ? \"no_replay\": null,\r\n  * tstr => any\r\n}\r\n```\r\n\r\nhttps://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/0383ec2b5a23f11d1a42800aebbe38368e12376d/draft-ietf-scitt-architecture.md?plain=1#L670\r\n\r\nIMO these are parameters on the issuer's view of the feed identifier.\r\n\r\nsequence number is meaningless unless you know what topic you are trying to order.",
+      "createdAt": "2023-09-26T15:00:22Z",
+      "updatedAt": "2023-09-26T15:00:22Z",
       "closedAt": null,
       "comments": []
     }
@@ -8973,24 +8996,26 @@
       "id": "PR_kwDOIvmHss5X5me_",
       "title": "Proposal for Section 6 - Signed Statement Issuance, Registration, and\u2026",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/94",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hannestschofenig",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Attempt to clean up Section 6",
       "createdAt": "2023-08-14T16:16:43Z",
-      "updatedAt": "2023-09-20T10:42:55Z",
+      "updatedAt": "2023-09-26T14:28:09Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
-      "baseRefOid": "4e490bbe2c001874f4d1da7265fde8d92f7fffde",
+      "baseRefOid": "f283c4167f8350f529ae2adb893118133fa0c553",
       "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "headRefName": "hannestschofenig-patch-1",
-      "headRefOid": "35d970fd0bac09708d46beea7d5b86fc77c304a9",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "59eb9735d8b3438e071c9b56c1c6cf301a8dbb24",
+      "closedAt": "2023-09-26T14:27:59Z",
+      "mergedAt": "2023-09-26T14:27:59Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "0383ec2b5a23f11d1a42800aebbe38368e12376d"
+      },
       "comments": [
         {
           "author": "hannestschofenig",
@@ -9260,6 +9285,65 @@
               "updatedAt": "2023-09-20T10:42:55Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5iA0eJ",
+          "commit": {
+            "abbreviatedOid": "35d970f"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-09-26T14:10:15Z",
+          "updatedAt": "2023-09-26T14:10:16Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "As discussed in the Editors meeting, address in another PR.",
+              "createdAt": "2023-09-26T14:10:15Z",
+              "updatedAt": "2023-09-26T14:10:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5iBAvS",
+          "commit": {
+            "abbreviatedOid": "59eb973"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-09-26T14:27:05Z",
+          "updatedAt": "2023-09-26T14:27:05Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5iBAyI",
+          "commit": {
+            "abbreviatedOid": "59eb973"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM with resolution",
+          "createdAt": "2023-09-26T14:27:09Z",
+          "updatedAt": "2023-09-26T14:27:09Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5iBBIW",
+          "commit": {
+            "abbreviatedOid": "59eb973"
+          },
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM! After all the hard work !",
+          "createdAt": "2023-09-26T14:27:46Z",
+          "updatedAt": "2023-09-26T14:27:46Z",
+          "comments": []
         }
       ]
     },
