@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-01T00:38:56.508908+00:00",
+  "timestamp": "2023-10-05T00:33:51.375695+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -10191,6 +10191,113 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 104,
+      "id": "PR_kwDOIvmHss5bzXew",
+      "title": "Remove feed",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/104",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR highlights how easy it would be to remove feed from the architecture, and notes that feed is redundant to `Reg_Info` which provides more flexibility and is already unbounded in terms of implementation complexity.",
+      "createdAt": "2023-10-03T15:08:17Z",
+      "updatedAt": "2023-10-05T00:02:24Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "0383ec2b5a23f11d1a42800aebbe38368e12376d",
+      "headRepository": "transmute-industries/draft-ietf-scitt-architecture",
+      "headRefName": "fix/remove-feed",
+      "headRefOid": "2a0653720e2d05e7d120f711f3f02f3e7d931487",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@OR13, are you suggesting the existing [feed property](https://ietf-wg-scitt.github.io/draft-ietf-scitt-architecture/draft-ietf-scitt-architecture.html#section-3-2.10.1) (tstr) moves to a named property under `reg_info`?  \r\n> Protected_Header = {\r\n>   1 => int               ; algorithm identifier\r\n>   3 => tstr              ; payload type\r\n>  4 => bstr              ; Key ID\r\n>  ; TBD, Labels are temporary\r\n>  391 => tstr            ; DID of Issuer\r\n>  ~~392 => tstr            ; Feed~~\r\n>  393 => Reg_Info        ; Registration Policy info\r\n>}\r\n\r\n```\r\nReg_Info = {\r\n  ? \"feed_id\": tstr,\r\n  ? \"register_by\": uint .within (~time),\r\n  ? \"sequence_no\": uint,\r\n  ? \"issuance_ts\": uint .within (~time),\r\n  ? \"no_replay\": null,\r\n  * tstr => any\r\n}\r\n```\r\n\r\nOr, are you saying SCITT doesn't have a well known feed property, and consumers need to decide their own name/value pairs within the `Reg_Info`?",
+          "createdAt": "2023-10-03T23:04:53Z",
+          "updatedAt": "2023-10-03T23:04:53Z"
+        },
+        {
+          "author": "robinbryce",
+          "authorAssociation": "NONE",
+          "body": "I very much prefered a world in which makers of statements MUST idenfify a feed. Knowing that there is some specific field that consumers and producers are using to co-ordinate the context of their statements lets me, as a TS implementor, organise data much more conveniently. \r\n\r\nI get this benefit without having to care a lot about exactly what form the feed id has. From my PoV it is just a tuple [DID, feed id]. I don't care that many issuers may make statements about the same feed id.\r\n\r\nIf I understand this change correctly, moving to reg info seems to make its presence optional ? And so I would have to start understanding where all the different issuers *chose* to make their equivlent of feed id known. \r\n\r\nIt's presense as a MUST does not require a strong opinion re what *form* it takes. I believe the standard would be much more practical and useful if the field was mandatory but its content were left to applications with some guidance from profiles.\r\n\r\n",
+          "createdAt": "2023-10-04T09:30:12Z",
+          "updatedAt": "2023-10-04T13:25:48Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Feed was previously defined as a string separate from reg info.\n\nAfter this PR is merged you could add feed as a new property of reg info, along with guidance on its use, or leave it unspecified which would essentially be equivalent to what the spec says now.\n\nSince the structure of feed is not defined, this PR doesn't impact interoperability.\n\nIssuers might prefer to use different expressions of feed in reg info, for example cpe and gtin... what happens if they want to include both? \n\nWhat about all 3 { feed, cpe, purl } ?\n\nRemoving feed doesn't prevent properties from being added to reg info and as has been discussed at great length, feed isn't the only member of the protected header that transparency services can index on.\n\n\n\n",
+          "createdAt": "2023-10-04T23:57:35Z",
+          "updatedAt": "2023-10-04T23:57:35Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Removing feed from the protected header also makes room for using feed to describe the index exposed by the transparency service without confusing that with the topic identifier the issuer included in reg info.\n\n",
+          "createdAt": "2023-10-05T00:02:23Z",
+          "updatedAt": "2023-10-05T00:02:23Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 105,
+      "id": "PR_kwDOIvmHss5b0EEr",
+      "title": "Cleanup of remaining references to Claims. ",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/105",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #15, #16 and #8",
+      "createdAt": "2023-10-03T17:01:11Z",
+      "updatedAt": "2023-10-03T17:01:12Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "0383ec2b5a23f11d1a42800aebbe38368e12376d",
+      "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
+      "headRefName": "claim-cleanup",
+      "headRefOid": "ce0b9f4d64668f3a96059d9d665fa3ea97f31af5",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 106,
+      "id": "PR_kwDOIvmHss5b1SWs",
+      "title": "Markdown Formatting Fixes",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/106",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "A number of markdown formatting errors caused [i-d-template](https://github.com/martinthomson/i-d-template/) to fail processing and rendering.\r\n\r\nAs an example, see [section-5.1.1.1-5](https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.html#section-5.1.1.1-5)",
+      "createdAt": "2023-10-03T20:50:21Z",
+      "updatedAt": "2023-10-03T20:50:22Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "0383ec2b5a23f11d1a42800aebbe38368e12376d",
+      "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
+      "headRefName": "markdown-cleanup",
+      "headRefOid": "b3bd2f0f94c8db537b67667d87672b790961c08b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
