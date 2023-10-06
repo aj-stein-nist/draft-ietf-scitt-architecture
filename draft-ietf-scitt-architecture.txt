@@ -5,13 +5,13 @@
 SCITT                                                        H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                      A. Delignat-Lavaud
-Expires: 29 March 2024                                        C. Fournet
+Expires: 8 April 2024                                         C. Fournet
                                                       Microsoft Research
                                                             Y. Deshpande
                                                                      ARM
                                                                S. Lasker
                                                                    RKVST
-                                                       26 September 2023
+                                                          6 October 2023
 
 
  An Architecture for Trustworthy and Transparent Digital Supply Chains
@@ -66,7 +66,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 March 2024.
+   This Internet-Draft will expire on 8 April 2024.
 
 Copyright Notice
 
@@ -1105,7 +1105,7 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    *  ts_identifier: The DID of the Transparency Service that issued the
       Receipt.  Verifiers MAY use this DID as a key discovery mechanism
       to verify the Receipt; in this case the verification is the same
-      as for Signed Claims and the signer MAY include the kid header
+      as for Signed Statment and the signer MAY include the kid header
       parameter.  Verifiers MUST support the did:web method, all other
       methods are optional.
 
@@ -1115,13 +1115,13 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    *  The SCITT version header MUST be included and its value match the
       version field of the Receipt stucture.
 
-   *  The DID of issuer header (like in Signed Claims) MUST be included
-      and its value match the ts_identifier field of the Receipt
-      structure.
+   *  The DID of issuer header (like in Signed Statements) MUST be
+      included and its value match the ts_identifier field of the
+      Receipt structure.
 
    *  TS MAY include the Registration policy info header to indicate to
       verifiers what policies have been applied at the registration of
-      this claim.
+      this Statement.
 
    *  Since [I-D.draft-steele-cose-merkle-tree-proofs] uses optional
       headers, the crit header (id: 2) MUST be included and all SCITT-

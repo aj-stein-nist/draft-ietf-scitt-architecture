@@ -17,24 +17,24 @@ The rise in popularity of verifiable data structures as a mechanism to make acto
 It provides flexibility, enabling interoperability across different implementations of Transparency Services with various auditing and compliance requirements.
 Producers can register their Signed Statements on any Transparency Service, with the guarantee that all Consumers will be able to verify them. 
     " name="description">
-<meta content="xml2rfc 3.18.0" name="generator">
+<meta content="xml2rfc 3.18.1" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-scitt-architecture-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.0
+  xml2rfc 3.18.1
     Python 3.11.5
     ConfigArgParse 1.5.3
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 3.10.0
+    platformdirs 3.11.0
     pycountry 22.3.5
     PyYAML 6.0
     requests 2.31.0
     setuptools 67.7.2
     six 1.16.0
-    wcwidth 0.2.6
+    wcwidth 0.2.8
 -->
 <link href="draft-ietf-scitt-architecture.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1033,11 +1033,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SCITT Architecture</td>
-<td class="right">September 2023</td>
+<td class="right">October 2023</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 29 March 2024</td>
+<td class="center">Expires 8 April 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-scitt-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-09-26" class="published">26 September 2023</time>
+<time datetime="2023-10-06" class="published">6 October 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-03-29">29 March 2024</time></dd>
+<dd class="expires"><time datetime="2024-04-08">8 April 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1124,7 +1124,7 @@ Producers can register their Signed Statements on any Transparency Service, with
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 29 March 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 April 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1316,11 +1316,14 @@ Producers can register their Signed Statements on any Transparency Service, with
 <p id="section-1-1">This document describes a scalable and flexible, decentralized architecture to enhance auditability and accountability across various existing and emerging supply chains.
 It achieves this goal by enforcing the following complementary security guarantees:<a href="#section-1-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-1-2">
-<li id="section-1-2.1">Statements made by Issuers about supply chain Artifacts must be identifiable, authentic, and non-repudiable;<a href="#section-1-2.1" class="pilcrow">¶</a>
+<li id="section-1-2.1">
+          <p id="section-1-2.1.1">Statements made by Issuers about supply chain Artifacts must be identifiable, authentic, and non-repudiable;<a href="#section-1-2.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li id="section-1-2.2">such Statements must be registered on a secure append-only Log, so that their provenance and history can be independently and consistently audited;<a href="#section-1-2.2" class="pilcrow">¶</a>
+        <li id="section-1-2.2">
+          <p id="section-1-2.2.1">such Statements must be registered on a secure append-only Log, so that their provenance and history can be independently and consistently audited;<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li id="section-1-2.3">Issuers can efficiently prove to any other party the Registration of their Signed Statements; verifying this proof ensures that the Issuer is consistent and non-equivocal when producing Signed Statements.<a href="#section-1-2.3" class="pilcrow">¶</a>
+        <li id="section-1-2.3">
+          <p id="section-1-2.3.1">Issuers can efficiently prove to any other party the Registration of their Signed Statements; verifying this proof ensures that the Issuer is consistent and non-equivocal when producing Signed Statements.<a href="#section-1-2.3.1" class="pilcrow">¶</a></p>
 </li>
       </ol>
 <p id="section-1-3">The first guarantee is achieved by requiring Issuers to sign their Statements and associated metadata using a distributed public key infrastructure.
@@ -1346,10 +1349,12 @@ A Transparency Service may restrict access to Signed Statements through access c
 Unlike CT, where independent Auditors are responsible for enforcing the consistency of multiple independent instances of the same global Registry, each Transparency Service is required to guarantee the consistency of its own Registry (for instance, through the use of a consensus algorithm between replicas of the Registry), but assume no consistency between different Transparency Services.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <p id="section-1-7">Breadth of access is critical so the Transparency Service specified in this architecture cater to two types of audiences:<a href="#section-1-7" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-1-8">
-<li id="section-1-8.1">Producers: organizations, stakeholders, and users involved in creating or attesting to supply chain artifacts, releasing authentic Statements to a definable set of peers; and<a href="#section-1-8.1" class="pilcrow">¶</a>
+<li id="section-1-8.1">
+          <p id="section-1-8.1.1">Producers: organizations, stakeholders, and users involved in creating or attesting to supply chain artifacts, releasing authentic Statements to a definable set of peers; and<a href="#section-1-8.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li id="section-1-8.2">Consumers: organizations, stakeholders, and users involved in validating supply chain artifacts, but can only do so if the Statements are known to be authentic.
-Consumers <span class="bcp14">MAY</span> be producers, providing additional Signed Statements, attesting to conformance of various compliance requirements.<a href="#section-1-8.2" class="pilcrow">¶</a>
+        <li id="section-1-8.2">
+          <p id="section-1-8.2.1">Consumers: organizations, stakeholders, and users involved in validating supply chain artifacts, but can only do so if the Statements are known to be authentic.
+Consumers <span class="bcp14">MAY</span> be producers, providing additional Signed Statements, attesting to conformance of various compliance requirements.<a href="#section-1-8.2.1" class="pilcrow">¶</a></p>
 </li>
       </ol>
 <p id="section-1-9">Signed Statement Issuers rely on being discoverable and represented as the responsible parties for their registered Signed Statements via Transparency Services in a believable manner.
@@ -1957,13 +1962,17 @@ Transparency Service implementations <span class="bcp14">MAY</span> provide a me
 <p id="section-5.2.3.3-1">Everyone with access to the Registry can check the correctness of its contents.
 In particular,<a href="#section-5.2.3.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.2.3.3-2.1">the Transparency Service defines and enforces deterministic Registration Policies that can be re-evaluated based solely on the contents of the Registry at the time of Registration, and must then yield the same result.<a href="#section-5.2.3.3-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.2.3.3-2.1">
+                <p id="section-5.2.3.3-2.1.1">the Transparency Service defines and enforces deterministic Registration Policies that can be re-evaluated based solely on the contents of the Registry at the time of Registration, and must then yield the same result.<a href="#section-5.2.3.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-5.2.3.3-2.2">the ordering of entries, their cryptographic contents, and the Registry governance may be non-deterministic, but they must be verifiable.<a href="#section-5.2.3.3-2.2" class="pilcrow">¶</a>
+              <li class="normal" id="section-5.2.3.3-2.2">
+                <p id="section-5.2.3.3-2.2.1">the ordering of entries, their cryptographic contents, and the Registry governance may be non-deterministic, but they must be verifiable.<a href="#section-5.2.3.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-5.2.3.3-2.3">a Transparency Service <span class="bcp14">MAY</span> store evidence about the resolution of DIDs into DID Documents.<a href="#section-5.2.3.3-2.3" class="pilcrow">¶</a>
+              <li class="normal" id="section-5.2.3.3-2.3">
+                <p id="section-5.2.3.3-2.3.1">a Transparency Service <span class="bcp14">MAY</span> store evidence about the resolution of DIDs into DID Documents.<a href="#section-5.2.3.3-2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-5.2.3.3-2.4">a Transparency Service <span class="bcp14">MAY</span> additionally support verifiability of client authentication and access control.<a href="#section-5.2.3.3-2.4" class="pilcrow">¶</a>
+              <li class="normal" id="section-5.2.3.3-2.4">
+                <p id="section-5.2.3.3-2.4.1">a Transparency Service <span class="bcp14">MAY</span> additionally support verifiability of client authentication and access control.<a href="#section-5.2.3.3-2.4.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </section>
@@ -1976,12 +1985,15 @@ In particular,<a href="#section-5.2.3.3-1" class="pilcrow">¶</a></p>
 <p id="section-5.2.3.4-1">Transparency Services <span class="bcp14">MAY</span> document their governance rules and procedures for operating the Registry and updating its code (e.g., relying on Transparent Statements about code updates, secured on the Registry itself, or on some auxiliary Transparency Service).
 Governance procedures, their auditing, and their transparency are implementation specific.<a href="#section-5.2.3.4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.2.3.4-2.1">Governance may be based on a consortium of members that are jointly responsible for the Transparency Services, or automated based on the contents of an auxiliary governance Transparency Service.<a href="#section-5.2.3.4-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.2.3.4-2.1">
+                <p id="section-5.2.3.4-2.1.1">Governance may be based on a consortium of members that are jointly responsible for the Transparency Services, or automated based on the contents of an auxiliary governance Transparency Service.<a href="#section-5.2.3.4-2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-5.2.3.4-2.2">Governance typically involves additional records in the Registry to enable its auditing.
-Hence, the Registry may contain both Transparent Statements and governance entries.<a href="#section-5.2.3.4-2.2" class="pilcrow">¶</a>
+              <li class="normal" id="section-5.2.3.4-2.2">
+                <p id="section-5.2.3.4-2.2.1">Governance typically involves additional records in the Registry to enable its auditing.
+Hence, the Registry may contain both Transparent Statements and governance entries.<a href="#section-5.2.3.4-2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-5.2.3.4-2.3">Issuers, Verifiers, and third-party Auditors may review the Transparency Service governance before trusting the service, or on a regular basis.<a href="#section-5.2.3.4-2.3" class="pilcrow">¶</a>
+              <li class="normal" id="section-5.2.3.4-2.3">
+                <p id="section-5.2.3.4-2.3.1">Issuers, Verifiers, and third-party Auditors may review the Transparency Service governance before trusting the service, or on a regular basis.<a href="#section-5.2.3.4-2.3.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </section>
@@ -1997,11 +2009,14 @@ Hence, the Registry may contain both Transparent Statements and governance entri
         </h3>
 <p id="section-5.3-1">For a given Artifact, Verifiers take as trusted inputs:<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-5.3-2">
-<li id="section-5.3-2.1">the distributed identifier of the Issuer (or its resolved key manifest),<a href="#section-5.3-2.1" class="pilcrow">¶</a>
+<li id="section-5.3-2.1">
+            <p id="section-5.3-2.1.1">the distributed identifier of the Issuer (or its resolved key manifest),<a href="#section-5.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-5.3-2.2">the expected name of the Artifact (i.e., the Feed),<a href="#section-5.3-2.2" class="pilcrow">¶</a>
+          <li id="section-5.3-2.2">
+            <p id="section-5.3-2.2.1">the expected name of the Artifact (i.e., the Feed),<a href="#section-5.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-5.3-2.3">the list of service identities of trusted Transparency Services.<a href="#section-5.3-2.3" class="pilcrow">¶</a>
+          <li id="section-5.3-2.3">
+            <p id="section-5.3-2.3.1">the list of service identities of trusted Transparency Services.<a href="#section-5.3-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
 <p id="section-5.3-3">When presented with a Transparent Statement for an Artifact, Consumers verify its Issuer identity, signature, and Receipt.
@@ -2030,17 +2045,23 @@ Although this weakens their guarantees against key revocation, or against a corr
 Although Issuers and other parties <span class="bcp14">MAY</span> attach unprotected headers to Signed Statements, Transparency Services and Verifiers <span class="bcp14">MUST NOT</span> rely on the presence or value of additional unprotected headers in Signed Statements during Registration and validation.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <p id="section-6.1-2">All Signed Statements <span class="bcp14">MUST</span> include the following protected headers:<a href="#section-6.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.1-3.1">algorithm (label: <code>1</code>): Asymmetric signature algorithm used by the Issuer of a Signed Statement, as an integer. For example, <code>-35</code> is the registered algorithm identifier for ECDSA with SHA-384, see <span><a href="#IANA.cose" class="internal xref">COSE Algorithms Registry</a> [<a href="#IANA.cose" class="cite xref">IANA.cose</a>]</span>.<a href="#section-6.1-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-6.1-3.1">
+            <p id="section-6.1-3.1.1">algorithm (label: <code>1</code>): Asymmetric signature algorithm used by the Issuer of a Signed Statement, as an integer. For example, <code>-35</code> is the registered algorithm identifier for ECDSA with SHA-384, see <span><a href="#IANA.cose" class="internal xref">COSE Algorithms Registry</a> [<a href="#IANA.cose" class="cite xref">IANA.cose</a>]</span>.<a href="#section-6.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-3.2">Issuer (label: <code>TBD</code>, temporary: <code>391</code>): DID (Decentralized Identifier <span>[<a href="#DID-CORE" class="cite xref">DID-CORE</a>]</span>) of the signer, as a string. <code>did:web:example.com</code> is an example of a DID.<a href="#section-6.1-3.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-3.2">
+            <p id="section-6.1-3.2.1">Issuer (label: <code>TBD</code>, temporary: <code>391</code>): DID (Decentralized Identifier <span>[<a href="#DID-CORE" class="cite xref">DID-CORE</a>]</span>) of the signer, as a string. <code>did:web:example.com</code> is an example of a DID.<a href="#section-6.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-3.3">Feed (label: <code>TBD</code>, temporary: <code>392</code>): The Issuer's name for the Artifact, as a string.<a href="#section-6.1-3.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-3.3">
+            <p id="section-6.1-3.3.1">Feed (label: <code>TBD</code>, temporary: <code>392</code>): The Issuer's name for the Artifact, as a string.<a href="#section-6.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-3.4">Content type (label: <code>3</code>): Media type of payload, as a string. For example, <code>application/spdx+json</code> is the media type of SDPX in JSON encoding.<a href="#section-6.1-3.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-3.4">
+            <p id="section-6.1-3.4.1">Content type (label: <code>3</code>): Media type of payload, as a string. For example, <code>application/spdx+json</code> is the media type of SDPX in JSON encoding.<a href="#section-6.1-3.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-3.5">Registration Policy info (label: <code>TBD</code>, temporary: <code>393</code>): A map of additional attributes to help enforce Registration Policies.<a href="#section-6.1-3.5" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-3.5">
+            <p id="section-6.1-3.5.1">Registration Policy info (label: <code>TBD</code>, temporary: <code>393</code>): A map of additional attributes to help enforce Registration Policies.<a href="#section-6.1-3.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-3.6">Key ID (label: <code>4</code>): Key ID, as a bytestring.<a href="#section-6.1-3.6" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-3.6">
+            <p id="section-6.1-3.6.1">Key ID (label: <code>4</code>): Key ID, as a bytestring.<a href="#section-6.1-3.6.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-6.1-4">In CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> notation, a Signed_Statement is defined as follows:<a href="#section-6.1-4" class="pilcrow">¶</a></p>
@@ -2084,19 +2105,26 @@ Unprotected_Header = {
 <p id="section-6.1-6">There are many types of Statements (such as SBOMs, malware scans, audit reports, policy definitions) that Issuers may want to turn into Signed Statements.
 An Issuer must first decide what Statements to include. For a software supply chain, payloads describing the software artifacts may, for example, include<a href="#section-6.1-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.1-7.1">JSON-SPDX<a href="#section-6.1-7.1" class="pilcrow">¶</a>
+<li class="normal" id="section-6.1-7.1">
+            <p id="section-6.1-7.1.1">JSON-SPDX<a href="#section-6.1-7.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-7.2">CBOR-SPDX<a href="#section-6.1-7.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-7.2">
+            <p id="section-6.1-7.2.1">CBOR-SPDX<a href="#section-6.1-7.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-7.3">SWID<a href="#section-6.1-7.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-7.3">
+            <p id="section-6.1-7.3.1">SWID<a href="#section-6.1-7.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-7.4">CoSWID<a href="#section-6.1-7.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-7.4">
+            <p id="section-6.1-7.4.1">CoSWID<a href="#section-6.1-7.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-7.5">CycloneDX<a href="#section-6.1-7.5" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-7.5">
+            <p id="section-6.1-7.5.1">CycloneDX<a href="#section-6.1-7.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-7.6">in-toto<a href="#section-6.1-7.6" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-7.6">
+            <p id="section-6.1-7.6.1">in-toto<a href="#section-6.1-7.6.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-7.7">SLSA<a href="#section-6.1-7.7" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.1-7.7">
+            <p id="section-6.1-7.7.1">SLSA<a href="#section-6.1-7.7.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-6.1-8">Once the Statement is serialized with the correct media-type/content-format, an Issuer should fill in the attributes for the Registration Policy information header.
@@ -2112,23 +2140,29 @@ For instance, if a Signed Statement is frequently updated, and it is important f
 <p id="section-6.2-1">The same Signed Statement may be independently registered by multiple Transparency Services.
 To register a Signed Statement, the Transparency Service performs the following steps:<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-6.2-2">
-<li id="section-6.2-2.1">Issuer Key Discovery
-The Transparency Service <span class="bcp14">MUST</span> perform DID resolution of the Issuer's key and store evidence of the lookup. This step may require that the service retrieves the Issuer DID in real-time, or relies on retrieving cached resolution.<a href="#section-6.2-2.1" class="pilcrow">¶</a>
+<li id="section-6.2-2.1">
+            <p id="section-6.2-2.1.1">Issuer Key Discovery
+The Transparency Service <span class="bcp14">MUST</span> perform DID resolution of the Issuer's key and store evidence of the lookup. This step may require that the service retrieves the Issuer DID in real-time, or relies on retrieving cached resolution.<a href="#section-6.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.2-2.2">Signature verification
-The Transparency Service <span class="bcp14">MUST</span> verify the signature of the Signed Statement, as described in RFC 9360, using the signature algorithm and verification key of the Issuer DID document.<a href="#section-6.2-2.2" class="pilcrow">¶</a>
+          <li id="section-6.2-2.2">
+            <p id="section-6.2-2.2.1">Signature verification
+The Transparency Service <span class="bcp14">MUST</span> verify the signature of the Signed Statement, as described in RFC 9360, using the signature algorithm and verification key of the Issuer DID document.<a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.2-2.3">Signed Statement validation
+          <li id="section-6.2-2.3">
+            <p id="section-6.2-2.3.1">Signed Statement validation
 The Transparency Service <span class="bcp14">MUST</span> check that the Signed Statement includes a Statement payload and the protected headers listed above.
-The Transparency Service <span class="bcp14">MAY</span> additionally verify the Statement payload format and content.<a href="#section-6.2-2.3" class="pilcrow">¶</a>
+The Transparency Service <span class="bcp14">MAY</span> additionally verify the Statement payload format and content.<a href="#section-6.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.2-2.4">Apply Registration Policy
-For named policies, the Transparency Service <span class="bcp14">MUST</span> check that the required Registration info attributes are present in the headers and apply the check described in Table 1. A Transparency Service <span class="bcp14">MUST</span> reject Signed Statements that contain an attribute used for a named policy that is not enforced by the service. Custom Signed Statements are evaluated given the current Registry state and the entire Envelope, and may use information contained in the attributes of named policies.<a href="#section-6.2-2.4" class="pilcrow">¶</a>
+          <li id="section-6.2-2.4">
+            <p id="section-6.2-2.4.1">Apply Registration Policy
+For named policies, the Transparency Service <span class="bcp14">MUST</span> check that the required Registration info attributes are present in the headers and apply the check described in Table 1. A Transparency Service <span class="bcp14">MUST</span> reject Signed Statements that contain an attribute used for a named policy that is not enforced by the service. Custom Signed Statements are evaluated given the current Registry state and the entire Envelope, and may use information contained in the attributes of named policies.<a href="#section-6.2-2.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.2-2.5">Register the Signed Statement to the append-only log.<a href="#section-6.2-2.5" class="pilcrow">¶</a>
+          <li id="section-6.2-2.5">
+            <p id="section-6.2-2.5.1">Register the Signed Statement to the append-only log.<a href="#section-6.2-2.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.2-2.6">Return the Transparent Statement, which includes the Receipt.
-Details about generating Receipts are described in <a href="#Receipt" class="auto internal xref">Section 6.3</a>.<a href="#section-6.2-2.6" class="pilcrow">¶</a>
+          <li id="section-6.2-2.6">
+            <p id="section-6.2-2.6.1">Return the Transparent Statement, which includes the Receipt.
+Details about generating Receipts are described in <a href="#Receipt" class="auto internal xref">Section 6.3</a>.<a href="#section-6.2-2.6.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
 <p id="section-6.2-3">The last two steps may be shared between a batch of Signed Statements recorded in the Registry.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
@@ -2143,20 +2177,26 @@ Details about generating Receipts are described in <a href="#Receipt" class="aut
 <p id="section-6.3-1">When a Signed Statement is registered by a TS a Transparent Statement is created. This Transparent Statement consists of the Signed Statement and a Receipt.
 Receipts are based on COSE Signed Merkle Tree Proofs (<span>[<a href="#I-D.draft-steele-cose-merkle-tree-proofs" class="cite xref">I-D.draft-steele-cose-merkle-tree-proofs</a>]</span>) with an additional wrapper structure that adds the following information:<a href="#section-6.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.3-2.1">version: Receipt version number; <span class="bcp14">MUST</span> be set to <code>0</code> for implementation of this document.<a href="#section-6.3-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-6.3-2.1">
+            <p id="section-6.3-2.1.1">version: Receipt version number; <span class="bcp14">MUST</span> be set to <code>0</code> for implementation of this document.<a href="#section-6.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.3-2.2">ts_identifier: The DID of the Transparency Service that issued the Receipt. Verifiers <span class="bcp14">MAY</span> use this DID as a key discovery mechanism to verify the Receipt; in this case the verification is the same as for Signed Claims and the signer <span class="bcp14">MAY</span> include the <code>kid</code> header parameter. Verifiers <span class="bcp14">MUST</span> support the <code>did:web</code> method, all other methods are optional.<a href="#section-6.3-2.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.3-2.2">
+            <p id="section-6.3-2.2.1">ts_identifier: The DID of the Transparency Service that issued the Receipt. Verifiers <span class="bcp14">MAY</span> use this DID as a key discovery mechanism to verify the Receipt; in this case the verification is the same as for Signed Statment and the signer <span class="bcp14">MAY</span> include the <code>kid</code> header parameter. Verifiers <span class="bcp14">MUST</span> support the <code>did:web</code> method, all other methods are optional.<a href="#section-6.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-6.3-3">We also introduce the following requirements for the COSE signature of the Merkle Root:<a href="#section-6.3-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.3-4.1">The SCITT version header <span class="bcp14">MUST</span> be included and its value match the <code>version</code> field of the Receipt stucture.<a href="#section-6.3-4.1" class="pilcrow">¶</a>
+<li class="normal" id="section-6.3-4.1">
+            <p id="section-6.3-4.1.1">The SCITT version header <span class="bcp14">MUST</span> be included and its value match the <code>version</code> field of the Receipt stucture.<a href="#section-6.3-4.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.3-4.2">The DID of issuer header (like in Signed Claims) <span class="bcp14">MUST</span> be included and its value match the <code>ts_identifier</code> field of the Receipt structure.<a href="#section-6.3-4.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.3-4.2">
+            <p id="section-6.3-4.2.1">The DID of issuer header (like in Signed Statements) <span class="bcp14">MUST</span> be included and its value match the <code>ts_identifier</code> field of the Receipt structure.<a href="#section-6.3-4.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.3-4.3">TS <span class="bcp14">MAY</span> include the Registration policy info header to indicate to verifiers what policies have been applied at the registration of this claim.<a href="#section-6.3-4.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.3-4.3">
+            <p id="section-6.3-4.3.1">TS <span class="bcp14">MAY</span> include the Registration policy info header to indicate to verifiers what policies have been applied at the registration of this Statement.<a href="#section-6.3-4.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.3-4.4">Since <span>[<a href="#I-D.draft-steele-cose-merkle-tree-proofs" class="cite xref">I-D.draft-steele-cose-merkle-tree-proofs</a>]</span> uses optional headers, the <code>crit</code> header (id: 2) <span class="bcp14">MUST</span> be included and all SCITT-specific headers (version, DID of TS and Registration Policy) <span class="bcp14">MUST</span> be marked critical.<a href="#section-6.3-4.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.3-4.4">
+            <p id="section-6.3-4.4.1">Since <span>[<a href="#I-D.draft-steele-cose-merkle-tree-proofs" class="cite xref">I-D.draft-steele-cose-merkle-tree-proofs</a>]</span> uses optional headers, the <code>crit</code> header (id: 2) <span class="bcp14">MUST</span> be included and all SCITT-specific headers (version, DID of TS and Registration Policy) <span class="bcp14">MUST</span> be marked critical.<a href="#section-6.3-4.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-6.3-5">The TS may include the registration time to help verifiers decide about the trustworthiness of the Transparent Statement.
@@ -2201,19 +2241,26 @@ RegistrationInfo = {
 <p id="section-6.4-1">There are many types of Statements (such as SBOMs, malware scans, audit reports, policy definitions) that Issuers may want to turn into Signed Statements.
 An Issuer must first decide on a suitable format to serialize the Statement payload. For a software supply chain, payloads describing the software artifacts may, for example, include<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.4-2.1">JSON-SPDX<a href="#section-6.4-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-6.4-2.1">
+            <p id="section-6.4-2.1.1">JSON-SPDX<a href="#section-6.4-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.4-2.2">CBOR-SPDX<a href="#section-6.4-2.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.4-2.2">
+            <p id="section-6.4-2.2.1">CBOR-SPDX<a href="#section-6.4-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.4-2.3">SWID<a href="#section-6.4-2.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.4-2.3">
+            <p id="section-6.4-2.3.1">SWID<a href="#section-6.4-2.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.4-2.4">CoSWID<a href="#section-6.4-2.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.4-2.4">
+            <p id="section-6.4-2.4.1">CoSWID<a href="#section-6.4-2.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.4-2.5">CycloneDX<a href="#section-6.4-2.5" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.4-2.5">
+            <p id="section-6.4-2.5.1">CycloneDX<a href="#section-6.4-2.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.4-2.6">in-toto<a href="#section-6.4-2.6" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.4-2.6">
+            <p id="section-6.4-2.6.1">in-toto<a href="#section-6.4-2.6.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.4-2.7">SLSA<a href="#section-6.4-2.7" class="pilcrow">¶</a>
+          <li class="normal" id="section-6.4-2.7">
+            <p id="section-6.4-2.7.1">SLSA<a href="#section-6.4-2.7.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-6.4-3">Once the Statement is serialized with the correct media-type/content-format, an Issuer <span class="bcp14">MUST</span> fill in the attributes for the Registration Policy information header.
@@ -2230,27 +2277,34 @@ For instance, if a Signed Statement is frequently updated, and it is important f
 <p id="section-6.5-1">The same Signed Statement may be independently registered in multiple Transparency Services.
 To register a Signed Statement, the service performs the following steps:<a href="#section-6.5-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-6.5-2">
-<li id="section-6.5-2.1">Client authentication.
+<li id="section-6.5-2.1">
+            <p id="section-6.5-2.1.1">Client authentication.
 This is implementation-specific and <span class="bcp14">MAY</span> be unrelated to the Issuer identity.
-Signed Statements may be registered by a different party than their Issuer.<a href="#section-6.5-2.1" class="pilcrow">¶</a>
+Signed Statements may be registered by a different party than their Issuer.<a href="#section-6.5-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.5-2.2">Issuer identification.
+          <li id="section-6.5-2.2">
+            <p id="section-6.5-2.2.1">Issuer identification.
 The Transparency Service <span class="bcp14">MUST</span> store evidence of the DID resolution for the Issuer protected header of the Envelope and the resolved key manifest at the time of Registration for auditing.
-This <span class="bcp14">MAY</span> require that the service resolves the Issuer DID and record the resulting document, or rely on a cache of recent resolutions.<a href="#section-6.5-2.2" class="pilcrow">¶</a>
+This <span class="bcp14">MAY</span> require that the service resolves the Issuer DID and record the resulting document, or rely on a cache of recent resolutions.<a href="#section-6.5-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.5-2.3">Envelope signature verification, as described in COSE signature, using the signature algorithm and verification key of the Issuer DID document.<a href="#section-6.5-2.3" class="pilcrow">¶</a>
+          <li id="section-6.5-2.3">
+            <p id="section-6.5-2.3.1">Envelope signature verification, as described in COSE signature, using the signature algorithm and verification key of the Issuer DID document.<a href="#section-6.5-2.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.5-2.4">Envelope validation.
+          <li id="section-6.5-2.4">
+            <p id="section-6.5-2.4.1">Envelope validation.
 The service <span class="bcp14">MUST</span> check that the Envelope includes a Statement payload and the protected headers listed above.
-The service <span class="bcp14">MAY</span> additionally verify the Statement payload format and content.<a href="#section-6.5-2.4" class="pilcrow">¶</a>
+The service <span class="bcp14">MAY</span> additionally verify the Statement payload format and content.<a href="#section-6.5-2.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.5-2.5">Apply Registration Policy: for named policies, the Transparency Service must check that the required Registration info attributes are present in the Envelope and apply the check described in Table 1.
+          <li id="section-6.5-2.5">
+            <p id="section-6.5-2.5.1">Apply Registration Policy: for named policies, the Transparency Service must check that the required Registration info attributes are present in the Envelope and apply the check described in Table 1.
 A Transparency Service <span class="bcp14">MUST</span> reject Signed Statements that contain an attribute used for a named policy that is not enforced by the service.
-Custom Signed Statements are evaluated given the current Registry state and the entire Envelope, and <span class="bcp14">MAY</span> use information contained in the attributes of named policies.<a href="#section-6.5-2.5" class="pilcrow">¶</a>
+Custom Signed Statements are evaluated given the current Registry state and the entire Envelope, and <span class="bcp14">MAY</span> use information contained in the attributes of named policies.<a href="#section-6.5-2.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.5-2.6">Commit (register) the new Signed Statement to the Registry<a href="#section-6.5-2.6" class="pilcrow">¶</a>
+          <li id="section-6.5-2.6">
+            <p id="section-6.5-2.6.1">Commit (register) the new Signed Statement to the Registry<a href="#section-6.5-2.6.1" class="pilcrow">¶</a></p>
 </li>
-          <li id="section-6.5-2.7">Sign and return the Receipt.<a href="#section-6.5-2.7" class="pilcrow">¶</a>
+          <li id="section-6.5-2.7">
+            <p id="section-6.5-2.7.1">Sign and return the Receipt.<a href="#section-6.5-2.7.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
 <p id="section-6.5-3">The last two steps <span class="bcp14">MAY</span> be shared between a batch of Signed Statements recorded in the Registry.<a href="#section-6.5-3" class="pilcrow">¶</a></p>
@@ -2304,10 +2358,12 @@ to ensure complete auditing for a specific use case, and possibly require additi
 <p id="section-8.1-1">All messages are sent as HTTP GET or POST requests.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <p id="section-8.1-2">If the Transparency Service cannot process a client's request, it <span class="bcp14">MUST</span> return an HTTP 4xx or 5xx status code, and the body <span class="bcp14">MAY</span> contain a JSON problem details object (<span>[<a href="#RFC7807" class="cite xref">RFC7807</a>]</span>) with the following fields:<a href="#section-8.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1-3.1">type: A URI reference identifying the problem.
-To facilitate automated response to errors, this document defines a set of standard tokens for use in the type field within the URN namespace of: "urn:ietf:params:scitt:error:".<a href="#section-8.1-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1-3.1">
+            <p id="section-8.1-3.1.1">type: A URI reference identifying the problem.
+To facilitate automated response to errors, this document defines a set of standard tokens for use in the type field within the URN namespace of: "urn:ietf:params:scitt:error:".<a href="#section-8.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-8.1-3.2">detail: A human-readable string describing the error that prevented the Transparency Service from processing the request, ideally with sufficient detail to enable the error to be rectified.<a href="#section-8.1-3.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-8.1-3.2">
+            <p id="section-8.1-3.2.1">detail: A human-readable string describing the error that prevented the Transparency Service from processing the request, ideally with sufficient detail to enable the error to be rectified.<a href="#section-8.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-8.1-4">Error responses <span class="bcp14">MUST</span> be sent with the <code>Content-Type: application/problem+json</code> HTTP header.<a href="#section-8.1-4" class="pilcrow">¶</a></p>
@@ -2323,7 +2379,8 @@ To facilitate automated response to errors, this document defines a set of stand
 <p id="section-8.1-7">Most error types are specific to the type of request and are defined in the respective subsections below.
 The one exception is the "malformed" error type, which indicates that the Transparency Service could not parse the client's request because it did not comply with this document:<a href="#section-8.1-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1-8.1">Error code: <code>malformed</code> (The request could not be parsed).<a href="#section-8.1-8.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1-8.1">
+            <p id="section-8.1-8.1.1">Error code: <code>malformed</code> (The request could not be parsed).<a href="#section-8.1-8.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-8.1-9">Clients <span class="bcp14">MUST</span> treat 500 and 503 HTTP status code responses as transient failures and <span class="bcp14">MAY</span> retry the same request without modification at a later date.
@@ -2347,7 +2404,7 @@ POST &lt;Base URL&gt;/entries
 <p id="section-8.1.1.1-2">Headers:<a href="#section-8.1.1.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-8.1.1.1-3.1">
-                <code>Content-Type: application/cose</code><a href="#section-8.1.1.1-3.1" class="pilcrow">¶</a>
+                <p id="section-8.1.1.1-3.1.1"><code>Content-Type: application/cose</code><a href="#section-8.1.1.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 <p id="section-8.1.1.1-4">Body: SCITT COSE_Sign1 message<a href="#section-8.1.1.1-4" class="pilcrow">¶</a></p>
@@ -2363,33 +2420,42 @@ POST &lt;Base URL&gt;/entries
 <li class="normal" id="section-8.1.1.2-2.1">
                 <p id="section-8.1.1.2-2.1.1">Status 201 - Registration is successful.<a href="#section-8.1.1.2-2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.1.2-2.1.2.1">Header <code>Location: &lt;Base URL&gt;/entries/&lt;Entry ID&gt;</code><a href="#section-8.1.1.2-2.1.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.1.2-2.1.2.1">
+                    <p id="section-8.1.1.2-2.1.2.1.1">Header <code>Location: &lt;Base URL&gt;/entries/&lt;Entry ID&gt;</code><a href="#section-8.1.1.2-2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.1.2-2.1.2.2">Header <code>Content-Type: application/json</code><a href="#section-8.1.1.2-2.1.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.1.2-2.1.2.2">
+                    <p id="section-8.1.1.2-2.1.2.2.1">Header <code>Content-Type: application/json</code><a href="#section-8.1.1.2-2.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.1.2-2.1.2.3">Body <code>{ "entryId": "&lt;Entry ID"&gt; }</code><a href="#section-8.1.1.2-2.1.2.3" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.1.2-2.1.2.3">
+                    <p id="section-8.1.1.2-2.1.2.3.1">Body <code>{ "entryId": "&lt;Entry ID"&gt; }</code><a href="#section-8.1.1.2-2.1.2.3.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
               <li class="normal" id="section-8.1.1.2-2.2">
                 <p id="section-8.1.1.2-2.2.1">Status 202 - Registration is running.<a href="#section-8.1.1.2-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.1.2-2.2.2.1">Header <code>Location: &lt;Base URL&gt;/operations/&lt;Operation ID&gt;</code><a href="#section-8.1.1.2-2.2.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.1.2-2.2.2.1">
+                    <p id="section-8.1.1.2-2.2.2.1.1">Header <code>Location: &lt;Base URL&gt;/operations/&lt;Operation ID&gt;</code><a href="#section-8.1.1.2-2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.1.2-2.2.2.2">Header <code>Content-Type: application/json</code><a href="#section-8.1.1.2-2.2.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.1.2-2.2.2.2">
+                    <p id="section-8.1.1.2-2.2.2.2.1">Header <code>Content-Type: application/json</code><a href="#section-8.1.1.2-2.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.1.2-2.2.2.3">(Optional) Header: <code>Retry-After: &lt;seconds&gt;</code><a href="#section-8.1.1.2-2.2.2.3" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.1.2-2.2.2.3">
+                    <p id="section-8.1.1.2-2.2.2.3.1">(Optional) Header: <code>Retry-After: &lt;seconds&gt;</code><a href="#section-8.1.1.2-2.2.2.3.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.1.2-2.2.2.4">Body <code>{ "operationId": "&lt;Operation ID&gt;", "status": "running" }</code><a href="#section-8.1.1.2-2.2.2.4" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.1.2-2.2.2.4">
+                    <p id="section-8.1.1.2-2.2.2.4.1">Body <code>{ "operationId": "&lt;Operation ID&gt;", "status": "running" }</code><a href="#section-8.1.1.2-2.2.2.4.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
               <li class="normal" id="section-8.1.1.2-2.3">
                 <p id="section-8.1.1.2-2.3.1">Status 400 - Registration was unsuccessful due to invalid input.<a href="#section-8.1.1.2-2.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.1.2-2.3.2.1">Error code <code>badSignatureAlgorithm</code><a href="#section-8.1.1.2-2.3.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.1.2-2.3.2.1">
+                    <p id="section-8.1.1.2-2.3.2.1.1">Error code <code>badSignatureAlgorithm</code><a href="#section-8.1.1.2-2.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.1.2-2.3.2.2">TBD: more error codes to be defined, see <a href="https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/17">#17</a><a href="#section-8.1.1.2-2.3.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.1.2-2.3.2.2">
+                    <p id="section-8.1.1.2-2.3.2.2.1">TBD: more error codes to be defined, see <a href="https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/17">#17</a><a href="#section-8.1.1.2-2.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
@@ -2427,43 +2493,56 @@ GET &lt;Base URL&gt;/operations/&lt;Operation ID&gt;
 <li class="normal" id="section-8.1.2.2-2.1">
                 <p id="section-8.1.2.2-2.1.1">Status 200 - Registration is running<a href="#section-8.1.2.2-2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.2.2-2.1.2.1">Header: <code>Content-Type: application/json</code><a href="#section-8.1.2.2-2.1.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.2.2-2.1.2.1">
+                    <p id="section-8.1.2.2-2.1.2.1.1">Header: <code>Content-Type: application/json</code><a href="#section-8.1.2.2-2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.2.2-2.1.2.2">(Optional) Header: <code>Retry-After: &lt;seconds&gt;</code><a href="#section-8.1.2.2-2.1.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.2.2-2.1.2.2">
+                    <p id="section-8.1.2.2-2.1.2.2.1">(Optional) Header: <code>Retry-After: &lt;seconds&gt;</code><a href="#section-8.1.2.2-2.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.2.2-2.1.2.3">Body: <code>{ "operationId": "&lt;Operation ID&gt;", "status": "running" }</code><a href="#section-8.1.2.2-2.1.2.3" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.2.2-2.1.2.3">
+                    <p id="section-8.1.2.2-2.1.2.3.1">Body: <code>{ "operationId": "&lt;Operation ID&gt;", "status": "running" }</code><a href="#section-8.1.2.2-2.1.2.3.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
               <li class="normal" id="section-8.1.2.2-2.2">
                 <p id="section-8.1.2.2-2.2.1">Status 200 - Registration was successful<a href="#section-8.1.2.2-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.2.2-2.2.2.1">Header: <code>Location: &lt;Base URL&gt;/entries/&lt;Entry ID&gt;</code><a href="#section-8.1.2.2-2.2.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.2.2-2.2.2.1">
+                    <p id="section-8.1.2.2-2.2.2.1.1">Header: <code>Location: &lt;Base URL&gt;/entries/&lt;Entry ID&gt;</code><a href="#section-8.1.2.2-2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.2.2-2.2.2.2">Header: <code>Content-Type: application/json</code><a href="#section-8.1.2.2-2.2.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.2.2-2.2.2.2">
+                    <p id="section-8.1.2.2-2.2.2.2.1">Header: <code>Content-Type: application/json</code><a href="#section-8.1.2.2-2.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.2.2-2.2.2.3">Body: <code>{ "operationId": "&lt;Operation ID&gt;", "status": "succeeded", "entryId": "&lt;Entry ID&gt;" }</code><a href="#section-8.1.2.2-2.2.2.3" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.2.2-2.2.2.3">
+                    <p id="section-8.1.2.2-2.2.2.3.1">Body: <code>{ "operationId": "&lt;Operation ID&gt;", "status": "succeeded", "entryId": "&lt;Entry ID&gt;" }</code><a href="#section-8.1.2.2-2.2.2.3.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
               <li class="normal" id="section-8.1.2.2-2.3">
                 <p id="section-8.1.2.2-2.3.1">Status 200 - Registration failed<a href="#section-8.1.2.2-2.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.2.2-2.3.2.1">Header <code>Content-Type: application/json</code><a href="#section-8.1.2.2-2.3.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.2.2-2.3.2.1">
+                    <p id="section-8.1.2.2-2.3.2.1.1">Header <code>Content-Type: application/json</code><a href="#section-8.1.2.2-2.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.2.2-2.3.2.2">Body: <code>{ "operationId": "&lt;Operation ID&gt;", "status": "failed", "error": { "type": "&lt;type&gt;", "detail": "&lt;detail&gt;" } }</code><a href="#section-8.1.2.2-2.3.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.2.2-2.3.2.2">
+                    <p id="section-8.1.2.2-2.3.2.2.1">Body: <code>{ "operationId": "&lt;Operation ID&gt;", "status": "failed", "error": { "type": "&lt;type&gt;", "detail": "&lt;detail&gt;" } }</code><a href="#section-8.1.2.2-2.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.2.2-2.3.2.3">Error code: <code>badSignatureAlgorithm</code><a href="#section-8.1.2.2-2.3.2.3" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.2.2-2.3.2.3">
+                    <p id="section-8.1.2.2-2.3.2.3.1">Error code: <code>badSignatureAlgorithm</code><a href="#section-8.1.2.2-2.3.2.3.1" class="pilcrow">¶</a></p>
 </li>
                   <li class="normal" id="section-8.1.2.2-2.3.2.4">
+                    <p id="section-8.1.2.2-2.3.2.4.1"></p><a href="#section-8.1.2.2-2.3.2.4" class="pilcrow">¶</a>
+</li>
                 </ul>
 </li>
               <li class="normal" id="section-8.1.2.2-2.4">
                 <p id="section-8.1.2.2-2.4.1">Status 404 - Unknown Operation ID<a href="#section-8.1.2.2-2.4.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.2.2-2.4.2.1">Error code: <code>operationNotFound</code><a href="#section-8.1.2.2-2.4.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.2.2-2.4.2.1">
+                    <p id="section-8.1.2.2-2.4.2.1.1">Error code: <code>operationNotFound</code><a href="#section-8.1.2.2-2.4.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.2.2-2.4.2.2">This can happen if the operation ID has expired and been deleted.<a href="#section-8.1.2.2-2.4.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.2.2-2.4.2.2">
+                    <p id="section-8.1.2.2-2.4.2.2.1">This can happen if the operation ID has expired and been deleted.<a href="#section-8.1.2.2-2.4.2.2.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
@@ -2492,7 +2571,8 @@ GET &lt;Base URL&gt;/entries/&lt;Entry ID&gt;
 </div>
 <p id="section-8.1.3.1-2">Query parameters:<a href="#section-8.1.3.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.3.1-3.1">(Optional) <code>embedReceipt=true</code><a href="#section-8.1.3.1-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.3.1-3.1">
+                <p id="section-8.1.3.1-3.1.1">(Optional) <code>embedReceipt=true</code><a href="#section-8.1.3.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 <p id="section-8.1.3.1-4">If the query parameter <code>embedReceipt=true</code> is provided, then the Signed Statement is returned with the corresponding Registration Receipt embedded in the COSE unprotected header.<a href="#section-8.1.3.1-4" class="pilcrow">¶</a></p>
@@ -2508,16 +2588,19 @@ GET &lt;Base URL&gt;/entries/&lt;Entry ID&gt;
 <li class="normal" id="section-8.1.3.2-2.1">
                 <p id="section-8.1.3.2-2.1.1">Status 200.<a href="#section-8.1.3.2-2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.3.2-2.1.2.1">Header: <code>Content-Type: application/cose</code><a href="#section-8.1.3.2-2.1.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.3.2-2.1.2.1">
+                    <p id="section-8.1.3.2-2.1.2.1.1">Header: <code>Content-Type: application/cose</code><a href="#section-8.1.3.2-2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.3.2-2.1.2.2">Body: COSE_Sign1<a href="#section-8.1.3.2-2.1.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.3.2-2.1.2.2">
+                    <p id="section-8.1.3.2-2.1.2.2.1">Body: COSE_Sign1<a href="#section-8.1.3.2-2.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
               <li class="normal" id="section-8.1.3.2-2.2">
                 <p id="section-8.1.3.2-2.2.1">Status 404 - Entry not found.<a href="#section-8.1.3.2-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.3.2-2.2.2.1">Error code: <code>entryNotFound</code><a href="#section-8.1.3.2-2.2.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.3.2-2.2.2.1">
+                    <p id="section-8.1.3.2-2.2.2.1.1">Error code: <code>entryNotFound</code><a href="#section-8.1.3.2-2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
@@ -2553,16 +2636,19 @@ GET &lt;Base URL&gt;/entries/&lt;Entry ID&gt;/receipt
 <li class="normal" id="section-8.1.4.2-2.1">
                 <p id="section-8.1.4.2-2.1.1">Status 200.<a href="#section-8.1.4.2-2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.4.2-2.1.2.1">Header: <code>Content-Type: application/cbor</code><a href="#section-8.1.4.2-2.1.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.4.2-2.1.2.1">
+                    <p id="section-8.1.4.2-2.1.2.1.1">Header: <code>Content-Type: application/cbor</code><a href="#section-8.1.4.2-2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="normal" id="section-8.1.4.2-2.1.2.2">Body: SCITT_Receipt<a href="#section-8.1.4.2-2.1.2.2" class="pilcrow">¶</a>
+                  <li class="normal" id="section-8.1.4.2-2.1.2.2">
+                    <p id="section-8.1.4.2-2.1.2.2.1">Body: SCITT_Receipt<a href="#section-8.1.4.2-2.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
               <li class="normal" id="section-8.1.4.2-2.2">
                 <p id="section-8.1.4.2-2.2.1">Status 404 - Entry not found.<a href="#section-8.1.4.2-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1.4.2-2.2.2.1">Error code: <code>entryNotFound</code><a href="#section-8.1.4.2-2.2.2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.1.4.2-2.2.2.1">
+                    <p id="section-8.1.4.2-2.2.2.1.1">Error code: <code>entryNotFound</code><a href="#section-8.1.4.2-2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
