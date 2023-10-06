@@ -116,8 +116,8 @@ Table of Contents
    9.  Privacy Considerations
    10. Security Considerations
      10.1.  Threat Model
-       10.1.1.  Signed Statement Authentication and Transparency.
-       10.1.2.  Confidentiality and privacy.
+       10.1.1.  Signed Statement Authentication and Transparency
+       10.1.2.  Confidentiality and Privacy
        10.1.3.  Cryptographic Assumptions
        10.1.4.  Transparency Service Clients
        10.1.5.  Identity
@@ -565,8 +565,8 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    The value of id might be found the iss or sub claims if they are
    present in the protected header or payload.
 
-   resolve = (id: string, accept: content_type = 'application/did+json')
-   => idDocument (of content type application/did+json).
+   resolve = (id: string, accept: content_type = 'application/did+json') =>
+   idDocument (of content type application/did+json).
 
    For example:
 
@@ -574,13 +574,21 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
 
    Might resolve to:
 
-   { "id": "did:example:123", "verificationMethod": [{ "id": "#key-42",
-   "type": "JsonWebkey", "controller": "did:example:123",
-   "publicKeyJwk": { "kty": "EC", "crv": "P-384", "alg": "ES384", "x":
-   "LCeAt2sW36j94wuFP0gNEIHDzqR6Nh_Udu2ObLer3cKFBCaAHY1svmbPV69bP3RH",
-   "y":
-   "zz2SkcOGYM6PbYlw19tcbpzo6bEMYHIwGBnN5rd8QWykAprstPdxx4U0uScvDcYd" }
-   }] }
+   {
+     "id": "did:example:123",
+     "verificationMethod": [{
+       "id": "#key-42",
+       "type": "JsonWebkey",
+       "controller": "did:example:123",
+       "publicKeyJwk": {
+         "kty": "EC",
+         "crv": "P-384",
+         "alg": "ES384",
+         "x": "LCeAt2sW36j94wuFP0gNEIHDzqR6Nh_Udu2ObLer3cKFBCaAHY1svmbPV69bP3RH",
+         "y": "zz2SkcOGYM6PbYlw19tcbpzo6bEMYHIwGBnN5rd8QWykAprstPdxx4U0uScvDcYd"
+       }
+     }]
+   }
 
    Editor note, we might wish to eliminate this intermediate identity
    document content type, by treating it as an alterative encoding of
@@ -612,56 +620,34 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    This URL will resolve to a JSON document of content type application/
    jwk-set+json, which will contain specific keys... for example:
 
-   ```json { "keys": [ { "alg": "RS256", "kty": "RSA", "use": "sig",
-   "n": "wW9TkSbcn5FV3iUJ-812sqTvwTGCFrDm6vD2U-g23gn6rrBdFZQbf2bgEnSkolp
-   h6CanOYTQ1lKVhKjHLd6Q4MDVGidbVBhESxib2YIzJVUS-
-   0oQgizkBEJxyHI4Zl3xX_sdA_yegLUi-Ykt_gaMPSw_vpxe-pBxu-jd14i-jDfwoPJUdF
-   8ZJGS9orCPRiHCYLDgOscC9XibH9rUbTvG8q4bAPx9Ox6malx4OLvU3pXVjew6LG3iBi2
-   YhpCWe6voMvZJYXqC1n5Mk_KOdGcCFtDgu3I56SGSfsF7-
-   tI7qG1ZO8RMuzqH0LkJVirujYzXrnMZ7WgbMPXmHU8i4z04zw", "e": "AQAB",
-   "kid": "NTBGNTJEMDc3RUE3RUVEOTM4NDcyOEFDNzEyOTY5NDNGOUQ4OEU5OA",
-   "x5t": "NTBGNTJEMDc3RUE3RUVEOTM4NDcyOEFDNzEyOTY5NDNGOUQ4OEU5OA",
-   "x5c": [ "MIIDCzCCAfOgAwIBAgIJANPng0XRWwsdMA0GCSqGSIb3DQEBBQUAMBwxGjA
-   YBgNVBAMMEWNvbnRvc28uYXV0aDAuY29tMB4XDTE0MDcxMTE2NTQyN1oXDTI4MDMxOTE2
-   NTQyN1owHDEaMBgGA1UEAwwRY29udG9zby5hdXRoMC5jb20wggEiMA0GCSqGSIb3DQEBA
-   QUAA4IBDwAwggEKAoIBAQDBb1ORJtyfkVXeJQn7zXaypO/BMYIWsObq8PZT6DbeCfqusF
-   0VlBt/ZuASdKSiWmHoJqc5hNDWUpWEqMct3pDgwNUaJ1tUGERLGJvZgjMlVRL7ShCCLOQ
-   EQnHIcjhmXfFf+x0D/J6AtSL5iS3+Bow9LD++nF76kHG76N3XiL6MN/Cg8lR0XxkkZL2i
-   sI9GIcJgsOA6xwL1eJsf2tRtO8byrhsA/H07HqZqXHg4u9TeldWN7DosbeIGLZiGkJZ7q
-   +gy9klheoLWfkyT8o50ZwIW0OC7cjnpIZJ+wXv60juobVk7xEy7OofQuQlWKu6NjNeucx
-   ntaBsw9eYdTyLjPTjPAgMBAAGjUDBOMB0GA1UdDgQWBBTLarHdkNa5CzPyiKJU51t8JWn
-   9WTAfBgNVHSMEGDAWgBTLarHdkNa5CzPyiKJU51t8JWn9WTAMBgNVHRMEBTADAQH/MA0G
-   CSqGSIb3DQEBBQUAA4IBAQA2FOjm+Bpbqk59rQBC0X6ops1wBcXH8clnXfG1G9qeRwLEw
-   Sef5HPz4TTh1f2lcf4Pcq2vF0HbVNJFnLVV+PjR9ACkto+v1n84i/U4BBezZyYuX2ZpEb
-   v7hV/PWxg8tcVrtyPaj60UaA/pUA86CfYy+LckY4NRKmD7ZrcCzjxW2hFGNanfm2FEryx
-   XA3RMNf6IiW7tbJ9ZGTEfA/DhVnZgh/e82KVX7EZnkB4MjCQrwj9QsWSMBtBiYp0/vRi9
-   cxDFHlUwnYAUeZdHWTW+Rp2JX7Qwf0YycxgyjkGAUEZc4WpdNiQlwYf5G5epfOtHGiwiJ
-   S+u/nSYvqCFt57+g3R+" ] }, { "alg": "RS256", "kty": "RSA", "use":
-   "sig", "n": "ylgVZbNR4nlsU_AbU8Zd7ZhVfmYuwq-RB1_YQWHY362pAed-qgSXV1Qm
-   KwCukQ2WDsPHWgpPuEf3O_acmJcCiSxhctpBr5WKkji5o50YX2FqC3xymGkYW5NilvFzn
-   KaKU45ulBVByrcb3Vt8BqqBAhaD4YywZZKo7mMudcq_M__f0_tB4fHsHHe7ehWobWtzAW
-   7_NRP0_FjB4Kw4PiqJnChPvfbuxTCEUcIYrshRwD6GF4D_oLdeR44dwx4wtEgvPOtkQ5X
-   IGrhQC_sgWcb2jh7YXauVUjuPezP-
-   VkK7Wm9mZRe758q43SWxwT3afo5BLa3_YLWazqcpWRXn9QEDWw", "e": "AQAB",
-   "kid": "aMIKy_brQk3nLd0PKd9ln", "x5t": "-xcTyx47q3ddycG7LtE6QCcETbs",
-   "x5c": [ "MIIC/TCCAeWgAwIBAgIJH62yWyX7VxxQMA0GCSqGSIb3DQEBCwUAMBwxGjA
-   YBgNVBAMTEWNvbnRvc28uYXV0aDAuY29tMB4XDTIwMDMxMTE5Mjk0N1oXDTMzMTExODE5
-   Mjk0N1owHDEaMBgGA1UEAxMRY29udG9zby5hdXRoMC5jb20wggEiMA0GCSqGSIb3DQEBA
-   QUAA4IBDwAwggEKAoIBAQDKWBVls1HieWxT8BtTxl3tmFV+Zi7Cr5EHX9hBYdjfrakB53
-   6qBJdXVCYrAK6RDZYOw8daCk+4R/c79pyYlwKJLGFy2kGvlYqSOLmjnRhfYWoLfHKYaRh
-   bk2KW8XOcpopTjm6UFUHKtxvdW3wGqoECFoPhjLBlkqjuYy51yr8z/9/T+0Hh8ewcd7t6
-   Fahta3MBbv81E/T8WMHgrDg+KomcKE+99u7FMIRRwhiuyFHAPoYXgP+gt15Hjh3DHjC0S
-   C8862RDlcgauFAL+yBZxvaOHthdq5VSO497M/5WQrtab2ZlF7vnyrjdJbHBPdp+jkEtrf
-   9gtZrOpylZFef1AQNbAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFPV
-   dE4SPvuhlODV0GOcPE4QZ7xNuMA4GA1UdDwEB/wQEAwIChDANBgkqhkiG9w0BAQsFAAOC
-   AQEAu2nhfiJk/Sp49LEsR1bliuVMP9nycbSz0zdp2ToAy0DZffTd0FKk/wyFtmbb0UFTD
-   2aOg/WZJLDc+3dYjWQ15SSLDRh6LV45OHU8Dkrc2qLjiRdoh2RI+iQFakDn2OgPNgquL+
-   3EEIpbBDA/uVoOYCbkqJNaNM/egN/s2vZ6Iq7O+BprWX/eM25xw8PMi+MU4K2sJpkcDRw
-   oK9Wy8eeSSRIGYnpKO42g/3QI9+BRa5uD+9shG6n7xgzAPGeldUXajCThomwO8vInp6Vq
-   Y8k3IeLEYoboJj5KMfJgOWUkmaoh6ZBJHnCogvSXI35jbxCxmHAbK+KdTka/
-   Yg2MadFZdA==" ] } ] }
-
-   ```
+   {
+     "keys": [
+       {
+         "alg": "RS256",
+         "kty": "RSA",
+         "use": "sig",
+         "n": "wW9TkSbcn5FV3iUJ-812sqTvwTGCFrDm6vD2U-g23gn6rrBdFZQbf2bgEnSkolph6CanOYTQ1lKVhKjHLd6Q4MDVGidbVBhESxib2YIzJVUS-0oQgizkBEJxyHI4Zl3xX_sdA_yegLUi-Ykt_gaMPSw_vpxe-pBxu-jd14i-jDfwoPJUdF8ZJGS9orCPRiHCYLDgOscC9XibH9rUbTvG8q4bAPx9Ox6malx4OLvU3pXVjew6LG3iBi2YhpCWe6voMvZJYXqC1n5Mk_KOdGcCFtDgu3I56SGSfsF7-tI7qG1ZO8RMuzqH0LkJVirujYzXrnMZ7WgbMPXmHU8i4z04zw",
+         "e": "AQAB",
+         "kid": "NTBGNTJEMDc3RUE3RUVEOTM4NDcyOEFDNzEyOTY5NDNGOUQ4OEU5OA",
+         "x5t": "NTBGNTJEMDc3RUE3RUVEOTM4NDcyOEFDNzEyOTY5NDNGOUQ4OEU5OA",
+         "x5c": [
+           "MIIDCzCCAfOgAwIBAgIJANPng0XRWwsdMA0GCSqGSIb3DQEBBQUAMBwxGjAYBgNVBAMMEWNvbnRvc28uYXV0aDAuY29tMB4XDTE0MDcxMTE2NTQyN1oXDTI4MDMxOTE2NTQyN1owHDEaMBgGA1UEAwwRY29udG9zby5hdXRoMC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDBb1ORJtyfkVXeJQn7zXaypO/BMYIWsObq8PZT6DbeCfqusF0VlBt/ZuASdKSiWmHoJqc5hNDWUpWEqMct3pDgwNUaJ1tUGERLGJvZgjMlVRL7ShCCLOQEQnHIcjhmXfFf+x0D/J6AtSL5iS3+Bow9LD++nF76kHG76N3XiL6MN/Cg8lR0XxkkZL2isI9GIcJgsOA6xwL1eJsf2tRtO8byrhsA/H07HqZqXHg4u9TeldWN7DosbeIGLZiGkJZ7q+gy9klheoLWfkyT8o50ZwIW0OC7cjnpIZJ+wXv60juobVk7xEy7OofQuQlWKu6NjNeucxntaBsw9eYdTyLjPTjPAgMBAAGjUDBOMB0GA1UdDgQWBBTLarHdkNa5CzPyiKJU51t8JWn9WTAfBgNVHSMEGDAWgBTLarHdkNa5CzPyiKJU51t8JWn9WTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4IBAQA2FOjm+Bpbqk59rQBC0X6ops1wBcXH8clnXfG1G9qeRwLEwSef5HPz4TTh1f2lcf4Pcq2vF0HbVNJFnLVV+PjR9ACkto+v1n84i/U4BBezZyYuX2ZpEbv7hV/PWxg8tcVrtyPaj60UaA/pUA86CfYy+LckY4NRKmD7ZrcCzjxW2hFGNanfm2FEryxXA3RMNf6IiW7tbJ9ZGTEfA/DhVnZgh/e82KVX7EZnkB4MjCQrwj9QsWSMBtBiYp0/vRi9cxDFHlUwnYAUeZdHWTW+Rp2JX7Qwf0YycxgyjkGAUEZc4WpdNiQlwYf5G5epfOtHGiwiJS+u/nSYvqCFt57+g3R+"
+         ]
+       },
+       {
+         "alg": "RS256",
+         "kty": "RSA",
+         "use": "sig",
+         "n": "ylgVZbNR4nlsU_AbU8Zd7ZhVfmYuwq-RB1_YQWHY362pAed-qgSXV1QmKwCukQ2WDsPHWgpPuEf3O_acmJcCiSxhctpBr5WKkji5o50YX2FqC3xymGkYW5NilvFznKaKU45ulBVByrcb3Vt8BqqBAhaD4YywZZKo7mMudcq_M__f0_tB4fHsHHe7ehWobWtzAW7_NRP0_FjB4Kw4PiqJnChPvfbuxTCEUcIYrshRwD6GF4D_oLdeR44dwx4wtEgvPOtkQ5XIGrhQC_sgWcb2jh7YXauVUjuPezP-VkK7Wm9mZRe758q43SWxwT3afo5BLa3_YLWazqcpWRXn9QEDWw",
+         "e": "AQAB",
+         "kid": "aMIKy_brQk3nLd0PKd9ln",
+         "x5t": "-xcTyx47q3ddycG7LtE6QCcETbs",
+         "x5c": [
+           "MIIC/TCCAeWgAwIBAgIJH62yWyX7VxxQMA0GCSqGSIb3DQEBCwUAMBwxGjAYBgNVBAMTEWNvbnRvc28uYXV0aDAuY29tMB4XDTIwMDMxMTE5Mjk0N1oXDTMzMTExODE5Mjk0N1owHDEaMBgGA1UEAxMRY29udG9zby5hdXRoMC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDKWBVls1HieWxT8BtTxl3tmFV+Zi7Cr5EHX9hBYdjfrakB536qBJdXVCYrAK6RDZYOw8daCk+4R/c79pyYlwKJLGFy2kGvlYqSOLmjnRhfYWoLfHKYaRhbk2KW8XOcpopTjm6UFUHKtxvdW3wGqoECFoPhjLBlkqjuYy51yr8z/9/T+0Hh8ewcd7t6Fahta3MBbv81E/T8WMHgrDg+KomcKE+99u7FMIRRwhiuyFHAPoYXgP+gt15Hjh3DHjC0SC8862RDlcgauFAL+yBZxvaOHthdq5VSO497M/5WQrtab2ZlF7vnyrjdJbHBPdp+jkEtrf9gtZrOpylZFef1AQNbAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFPVdE4SPvuhlODV0GOcPE4QZ7xNuMA4GA1UdDwEB/wQEAwIChDANBgkqhkiG9w0BAQsFAAOCAQEAu2nhfiJk/Sp49LEsR1bliuVMP9nycbSz0zdp2ToAy0DZffTd0FKk/wyFtmbb0UFTD2aOg/WZJLDc+3dYjWQ15SSLDRh6LV45OHU8Dkrc2qLjiRdoh2RI+iQFakDn2OgPNgquL+3EEIpbBDA/uVoOYCbkqJNaNM/egN/s2vZ6Iq7O+BprWX/eM25xw8PMi+MU4K2sJpkcDRwoK9Wy8eeSSRIGYnpKO42g/3QI9+BRa5uD+9shG6n7xgzAPGeldUXajCThomwO8vInp6VqY8k3IeLEYoboJj5KMfJgOWUkmaoh6ZBJHnCogvSXI35jbxCxmHAbK+KdTka/Yg2MadFZdA=="
+         ]
+       }
+     ]
+   }
 
    If SCITT wanted to be interoperable with OIDC, we would define key
    dereferencing in a way that was compatible with how OIDC handles it
@@ -680,8 +666,8 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    (https://datatracker.ietf.org/doc/draft-ietf-cose-cwt-claims-in-
    headers/).
 
-   dereference = (id: string, accept: content_type = 'application/
-   jwk+json') => publicKeyJwk (of content type application/jwk+json).
+   dereference = (id: string, accept: content_type = 'application/jwk+json') =>
+   publicKeyJwk (of content type application/jwk+json).
 
    For example, when DIDs are used:
 
@@ -689,10 +675,13 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
 
    Might dereference to:
 
-   { "kty": "EC", "crv": "P-384", "alg": "ES384", "x":
-   "LCeAt2sW36j94wuFP0gNEIHDzqR6Nh_Udu2ObLer3cKFBCaAHY1svmbPV69bP3RH",
-   "y":
-   "zz2SkcOGYM6PbYlw19tcbpzo6bEMYHIwGBnN5rd8QWykAprstPdxx4U0uScvDcYd" }
+   {
+     "kty": "EC",
+     "crv": "P-384",
+     "alg": "ES384",
+     "x": "LCeAt2sW36j94wuFP0gNEIHDzqR6Nh_Udu2ObLer3cKFBCaAHY1svmbPV69bP3RH",
+     "y": "zz2SkcOGYM6PbYlw19tcbpzo6bEMYHIwGBnN5rd8QWykAprstPdxx4U0uScvDcYd"
+   }
 
 5.1.2.  Naming Artifacts
 
@@ -1052,22 +1041,22 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    Transparency Services.  To register a Signed Statement, the
    Transparency Service performs the following steps:
 
-   1.  Issuer Key Discovery The Transparency Service MUST perform DID
+   1.  *Issuer Key Discovery:* The Transparency Service MUST perform DID
        resolution of the Issuer's key and store evidence of the lookup.
        This step may require that the service retrieves the Issuer DID
        in real-time, or relies on retrieving cached resolution.
 
-   2.  Signature verification The Transparency Service MUST verify the
-       signature of the Signed Statement, as described in RFC 9360,
+   2.  *Signature verification:* The Transparency Service MUST verify
+       the signature of the Signed Statement, as described in RFC 9360,
        using the signature algorithm and verification key of the Issuer
        DID document.
 
-   3.  Signed Statement validation The Transparency Service MUST check
-       that the Signed Statement includes a Statement payload and the
-       protected headers listed above.  The Transparency Service MAY
+   3.  *Signed Statement validation:* The Transparency Service MUST
+       check that the Signed Statement includes a Statement payload and
+       the protected headers listed above.  The Transparency Service MAY
        additionally verify the Statement payload format and content.
 
-   4.  Apply Registration Policy For named policies, the Transparency
+   4.  *Apply Registration Policy:* For named policies, the Transparency
        Service MUST check that the required Registration info attributes
        are present in the headers and apply the check described in
        Table 1.  A Transparency Service MUST reject Signed Statements
@@ -1076,9 +1065,9 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
        given the current Registry state and the entire Envelope, and may
        use information contained in the attributes of named policies.
 
-   5.  Register the Signed Statement to the append-only log.
+   5.  Register the Signed Statement to the append-only log
 
-   6.  Return the Transparent Statement, which includes the Receipt.
+   6.  Return the Transparent Statement, which includes the Receipt
        Details about generating Receipts are described in Section 6.3.
 
    The last two steps may be shared between a batch of Signed Statements
@@ -1105,7 +1094,7 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    *  ts_identifier: The DID of the Transparency Service that issued the
       Receipt.  Verifiers MAY use this DID as a key discovery mechanism
       to verify the Receipt; in this case the verification is the same
-      as for Signed Statment and the signer MAY include the kid header
+      as for Signed Statement and the signer MAY include the kid header
       parameter.  Verifiers MUST support the did:web method, all other
       methods are optional.
 
@@ -1113,7 +1102,7 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    of the Merkle Root:
 
    *  The SCITT version header MUST be included and its value match the
-      version field of the Receipt stucture.
+      version field of the Receipt structure.
 
    *  The DID of issuer header (like in Signed Statements) MUST be
       included and its value match the ts_identifier field of the
@@ -1204,27 +1193,27 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    Transparency Services.  To register a Signed Statement, the service
    performs the following steps:
 
-   1.  Client authentication.  This is implementation-specific and MAY
+   1.  *Client authentication:* This is implementation-specific and MAY
        be unrelated to the Issuer identity.  Signed Statements may be
        registered by a different party than their Issuer.
 
-   2.  Issuer identification.  The Transparency Service MUST store
+   2.  *Issuer identification:* The Transparency Service MUST store
        evidence of the DID resolution for the Issuer protected header of
        the Envelope and the resolved key manifest at the time of
        Registration for auditing.  This MAY require that the service
        resolves the Issuer DID and record the resulting document, or
        rely on a cache of recent resolutions.
 
-   3.  Envelope signature verification, as described in COSE signature,
-       using the signature algorithm and verification key of the Issuer
-       DID document.
+   3.  *Envelope signature verification:* As described in COSE
+       signature, using the signature algorithm and verification key of
+       the Issuer DID document
 
-   4.  Envelope validation.  The service MUST check that the Envelope
+   4.  *Envelope validation:* The service MUST check that the Envelope
        includes a Statement payload and the protected headers listed
-       above.  The service MAY additionally verify the Statement payload
+       above The service MAY additionally verify the Statement payload
        format and content.
 
-   5.  Apply Registration Policy: for named policies, the Transparency
+   5.  *Apply Registration Policy:* for named policies, the Transparency
        Service must check that the required Registration info attributes
        are present in the Envelope and apply the check described in
        Table 1.  A Transparency Service MUST reject Signed Statements
@@ -1235,7 +1224,7 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
 
    6.  Commit (register) the new Signed Statement to the Registry
 
-   7.  Sign and return the Receipt.
+   7.  Sign and return the Receipt
 
    The last two steps MAY be shared between a batch of Signed Statements
    recorded in the Registry.
@@ -1438,6 +1427,10 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
 
       -  Error code: badSignatureAlgorithm
 
+      -  TODO: more error codes to be defined, see #17
+         (https://github.com/ietf-wg-scitt/draft-ietf-scitt-
+         architecture/issues/17)
+
    *  Status 404 - Unknown Operation ID
 
       -  Error code: operationNotFound
@@ -1555,7 +1548,7 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    This model may need to be refined to account for specific supply
    chains and use cases.
 
-10.1.1.  Signed Statement Authentication and Transparency.
+10.1.1.  Signed Statement Authentication and Transparency
 
    SCITT primarily supports checking of Signed Statement authenticity,
    both from the Issuer (authentication) and from the Transparency
@@ -1613,13 +1606,19 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    Statement passed its Registration Policy and was recorded
    appropriately.
 
-   Conversely, a corrupt Transparency Service may 1. refuse or delay the
-   Registration of Signed Statements, 2. register Signed Statements that
-   do not pass its Registration Policy (e.g., Signed Statement with
-   Issuer identities and signatures that do not verify), 3. issue
-   verifiable Receipts for Signed Statements that do not match its
-   Registry, or 4. refuse access to its Registry (e.g., to Auditors,
-   possibly after storage loss).
+   Conversely, a corrupt Transparency Service may
+
+   1.  refuse or delay the Registration of Signed Statements,
+
+   2.  register Signed Statements that do not pass its Registration
+       Policy (e.g., Signed Statement with Issuer identities and
+       signatures that do not verify),
+
+   3.  issue verifiable Receipts for Signed Statements that do not match
+       its Registry, or
+
+   4.  refuse access to its Registry (e.g., to Auditors, possibly after
+       storage loss).
 
    An Auditor granted (partial) access to a Registry and to a collection
    of disputed Receipts will be able to replay it, detect any invalid
@@ -1651,7 +1650,7 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    Actors may want to independently keep their own record of the Signed
    Statements they issue, endorse, verify, or audit.
 
-10.1.2.  Confidentiality and privacy.
+10.1.2.  Confidentiality and Privacy
 
    According to Zero Trust Principles any location in a network is never
    trusted.  All contents exchanged between actors is protected using
