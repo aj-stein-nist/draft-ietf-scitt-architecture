@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-05T00:33:51.375695+00:00",
+  "timestamp": "2023-10-08T00:36:30.953089+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -10204,13 +10204,13 @@
       "labels": [],
       "body": "This PR highlights how easy it would be to remove feed from the architecture, and notes that feed is redundant to `Reg_Info` which provides more flexibility and is already unbounded in terms of implementation complexity.",
       "createdAt": "2023-10-03T15:08:17Z",
-      "updatedAt": "2023-10-05T00:02:24Z",
+      "updatedAt": "2023-10-07T14:03:26Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
-      "baseRefOid": "0383ec2b5a23f11d1a42800aebbe38368e12376d",
+      "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
       "headRepository": "transmute-industries/draft-ietf-scitt-architecture",
       "headRefName": "fix/remove-feed",
-      "headRefOid": "2a0653720e2d05e7d120f711f3f02f3e7d931487",
+      "headRefOid": "86f0e2f56fd6bdaea8c09fbfaab44b292a0300c0",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -10243,6 +10243,41 @@
           "body": "Removing feed from the protected header also makes room for using feed to describe the index exposed by the transparency service without confusing that with the topic identifier the issuer included in reg info.\n\n",
           "createdAt": "2023-10-05T00:02:23Z",
           "updatedAt": "2023-10-05T00:02:23Z"
+        },
+        {
+          "author": "robinbryce",
+          "authorAssociation": "NONE",
+          "body": "> Since the structure of feed is not defined, this PR doesn't impact interoperability.\r\n\r\nAh, this is where we differ. I see its presence and its definition as 'an opaque statement issuer identifier' as crucial from the perspective of practical applications and interoperability. Without it the context of statements seems entirely arbitrary.\r\n\r\n> Issuers might prefer to use different expressions of feed in reg info\r\n\r\nThey are welcome to do so, and I can see plenty of places that could be useful. I see that as supplimentary to the basic utility of a feed identifier as a co-ordination context.\r\n\r\n> Removing feed doesn't prevent properties from being added to reg info \r\n\r\nNeither does keeping it think ?\r\n\r\n> has been discussed at great length, \r\n\r\nI understood the issue with feed was the attempt to make it more structured than an 'opaque issuer defined value'. I see the attempt at adding mandatory structure, possibly even 'strongly recommended' structure as undermining the applicability of the standard.\r\n\r\n\r\n> feed isn't the only member of the protected header that transparency services can index on.\r\n\r\nOk, great, what do you think is more appropriate here, what am i missing ?",
+          "createdAt": "2023-10-05T10:16:17Z",
+          "updatedAt": "2023-10-05T10:17:01Z"
+        },
+        {
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@OR13 I beg to differ. Feed should not be part of RegInfo\r\n\r\nThe reason I see it this way is:\r\n\r\n1. Feed is an additional information about the Statements made for the Artifact, How issuer would like to identify all the Statements pertaining to the Artifact. It has All Statements Scope (about an artifact)\r\n2. Registration Information container is for about the registration specific aspect of the specific command, When it was registered. Till what time it has a validity etc. It has per Command Scope.\r\n3. We should not link the two as the scope is different!\r\n4. Any other comments are Welcome!",
+          "createdAt": "2023-10-05T10:38:16Z",
+          "updatedAt": "2023-10-05T10:38:16Z"
+        },
+        {
+          "author": "robinbryce",
+          "authorAssociation": "NONE",
+          "body": "FWI: \r\n\r\nWhen I saw 'feed' in the earlier work presented as just a string it struck me as a simple, powerful and practical way to have a base line context for statements.\r\n\r\nWhen I got a sense of the efforts to add structure to it I didn't think happy thoughts. I just couldn't see how there could be 'one way'.\r\n\r\nIf it moves the world forward to stop talking about it and leave it out, we can of course work with that. It could always come a long later if it is realy as useful as I think it is.\r\n\r\nIt does seem to mean that trusted service implementations will all be inventing different ways to contextualise statements. Possibly that is actually the right thing, and scitt users should be aware of the specifics of each TS. \r\n\r\nThe presence of feed as 'a string' seemed to offer a really good baseline - as long as it didn't try to be opinionated about structure.",
+          "createdAt": "2023-10-05T10:40:04Z",
+          "updatedAt": "2023-10-05T10:40:36Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "RegInfo is about feed... because it will be used to order the feed by the ts..the RDF style feed, would look like:\n\nfeed: {\nid : // graph node id\ntype: // graph node type\n... }\n\nThe whole idea of registering something is to be able to come back and see filtered views of what has been registered.\n\nSince feed has no structure, it is extraneous to reg info.\n\nPerhaps an alternative PR will propose an informative way that the transparency service processes feeds, maybe something like:\n\nselect * from feeds where feed.id = device.id\n\nBut the same thing can already be accomplished by indexing on any of the other custom properties the ts registration policy allows.\n\nAnother alternative would be to make the registration policy normative and require feed to be present.\n\nI'm open to other solutions, let's see some PRs :)\n\n",
+          "createdAt": "2023-10-05T12:42:44Z",
+          "updatedAt": "2023-10-05T12:44:31Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This PR could be merged first, then https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/108 could address the CDDL changes, and https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/107 could be updated to find replace \"Feed\" with \"Subject\" / \"sub\" and or tag 2.\r\n\r\n",
+          "createdAt": "2023-10-07T14:02:19Z",
+          "updatedAt": "2023-10-07T14:02:19Z"
         }
       ],
       "reviews": []
@@ -10252,51 +10287,192 @@
       "id": "PR_kwDOIvmHss5b0EEr",
       "title": "Cleanup of remaining references to Claims. ",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/105",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Fixes #15, #16 and #8",
       "createdAt": "2023-10-03T17:01:11Z",
-      "updatedAt": "2023-10-03T17:01:12Z",
+      "updatedAt": "2023-10-06T00:45:38Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "0383ec2b5a23f11d1a42800aebbe38368e12376d",
       "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
       "headRefName": "claim-cleanup",
       "headRefOid": "ce0b9f4d64668f3a96059d9d665fa3ea97f31af5",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2023-10-06T00:45:38Z",
+      "mergedAt": "2023-10-06T00:45:38Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "e6e4f1831ac8d8b21696d7be199b26775da1d447"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5i9bxs",
+          "commit": {
+            "abbreviatedOid": "ce0b9f4"
+          },
+          "author": "JAG-UK",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "LGTM, thanks for finishing this off",
+          "createdAt": "2023-10-05T16:23:14Z",
+          "updatedAt": "2023-10-05T16:23:14Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 106,
       "id": "PR_kwDOIvmHss5b1SWs",
       "title": "Markdown Formatting Fixes",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/106",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "A number of markdown formatting errors caused [i-d-template](https://github.com/martinthomson/i-d-template/) to fail processing and rendering.\r\n\r\nAs an example, see [section-5.1.1.1-5](https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.html#section-5.1.1.1-5)",
       "createdAt": "2023-10-03T20:50:21Z",
-      "updatedAt": "2023-10-03T20:50:22Z",
+      "updatedAt": "2023-10-06T00:49:58Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
-      "baseRefOid": "0383ec2b5a23f11d1a42800aebbe38368e12376d",
+      "baseRefOid": "e6e4f1831ac8d8b21696d7be199b26775da1d447",
       "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
       "headRefName": "markdown-cleanup",
-      "headRefOid": "b3bd2f0f94c8db537b67667d87672b790961c08b",
+      "headRefOid": "780466cec1c3d2dcf8faa5ea21bd28de2ac4ae75",
+      "closedAt": "2023-10-06T00:49:58Z",
+      "mergedAt": "2023-10-06T00:49:58Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "37dbbc686c529bdc89765f18e8fafd20b732f387"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5i9bjK",
+          "commit": {
+            "abbreviatedOid": "b3bd2f0"
+          },
+          "author": "JAG-UK",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "LGTM - nobody loves broken markdown :-)",
+          "createdAt": "2023-10-05T16:22:39Z",
+          "updatedAt": "2023-10-05T16:22:39Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 107,
+      "id": "PR_kwDOIvmHss5cItAF",
+      "title": "Attempt clarification of Feed purpose and differentiate from reg_info",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/107",
+      "state": "OPEN",
+      "author": "JAG-UK",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is an attempt to break the deadlock on Feeds vs searchability etc.\r\n\r\nWithout making any normative changes (I hope!) I seek to clarify a handful of issues:\r\n\r\n- Why do we need Feed at all? Because it is the very simple but essential way of ensuring the desired goal of non-equivocation. It makes it practical to discover or eliminate equivocation through a very simple but powerful way of linking related Transparent Statements together, and providing a very simple way of enable pre-commitment for statements of fact and accountability. In less fancy but as useful ways it also ensures that the relying party or someone with a copy of one Transparent Statement in their hands can ensure completeness of the set they're evaluating, and confirm that they are up-to-date with supply chain information that can move very fast.\r\n\r\n- Does Feed need a structure? No, assuming the above is the purpose of grouping statements together then it doesn't mater what it's called as long as it's the same for all items in the group. This again cements the need for it to be in the Envelope though, since otherwise coordinating all the points in various systems that would need to know what value to put in there would be impractical. By having it in the Envelope anyone with a single Transparent statement from the Feed would know what to use for either making new statements or looking in the TS for related statements.\r\n\r\n- Can Feed just be a part of reg_info? No, because reg_info is defined for a very different purpose. Registration Policies are also very complicated and need work, but I don't think they need work to close this particular issue.\r\n\r\nWhile there are still clarity issues in the spec which I would love for us to address soon, I think this minimal change makes it possible to move on and removes the pollution from the discussion about types of identity, self-describing serialised data structures, and the like. Crucially, in keeping with the findings from -117, I believe it shows that it is possible to carry the 'findability' information that was required by the applications building on top of SCOITT building blocks without going outside our charter and defining things at the semantic or application layer. ",
+      "createdAt": "2023-10-06T17:28:23Z",
+      "updatedAt": "2023-10-07T18:26:20Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
+      "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "headRefName": "dev/jag-uk/clarify-feed",
+      "headRefOid": "1b880581afa4d7cf983f80aa4b66e8521c1904ea",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I've fine taking the changes in this PR as is, but I think Feed should still be removed / replaced with COSE conventions, see https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/108",
+          "createdAt": "2023-10-07T14:04:29Z",
+          "updatedAt": "2023-10-07T14:04:48Z"
+        },
+        {
+          "author": "rjb4standards",
+          "authorAssociation": "NONE",
+          "body": "Could someone please describe what a \"registered claim name\" is? For example, using a \"Registry of Deeds\"  analogy, would Book and Page number,be considered the \"registered claim name\"?",
+          "createdAt": "2023-10-07T18:26:20Z",
+          "updatedAt": "2023-10-07T18:26:20Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5jGH9k",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "aj-stein-nist",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "I skimmed this and these edits were very good, and clarified for me in an educational way. I don't want to quibble on word choice, but want to better understand what promise means specifically in the context of feeds and non-equivocation.",
+          "createdAt": "2023-10-06T17:59:05Z",
+          "updatedAt": "2023-10-06T17:59:52Z",
+          "comments": [
+            {
+              "originalPosition": 75,
+              "body": "Minor: This edit and all the others are great, but can we be a little more explicit about the what and/or how of the *promise* non-equivocation is in this context? The use of that word throws me off.",
+              "createdAt": "2023-10-06T17:59:05Z",
+              "updatedAt": "2023-10-06T17:59:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5jHRl2",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "This seems fine, but I think the CDDL can be simplified and we can reuse registered claim names to accomplish the same thing",
+          "createdAt": "2023-10-06T22:09:34Z",
+          "updatedAt": "2023-10-06T22:09:34Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 108,
+      "id": "PR_kwDOIvmHss5cK9gO",
+      "title": "Use CWT Claims in Headers",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/108",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR shows that feed is redundant to CWT Claims in headers.\r\nIf this approach gains consensus we won't need to register special tags in the protected header, and can instead use the RFC that allows this to happen.\r\n\r\nFor context, see this discussion from the list:\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/cose/KNRge3vxXF3A2LY24DNo6ZQxrNc/",
+      "createdAt": "2023-10-07T13:56:10Z",
+      "updatedAt": "2023-10-07T14:00:53Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
+      "headRepository": "transmute-industries/draft-ietf-scitt-architecture",
+      "headRefName": "feat-cwt-claims",
+      "headRefOid": "1a9af1f49a8bf7341d49b3f53d1112b1382fbaa7",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This PR also aligns with the terminology used in W3C, where:\r\n\r\n`issuer's make claims about subjects`.\r\n\r\nW3C requires additional structure for the identifiers of issuers and subjects, they need to be https://www.w3.org/TR/json-ld11/#node-identifiers\r\n\r\nJOSE and COSE do not restrict `iss` and `sub` like this, they are both `string or URI`.... just like `feed`.\r\n\r\n- https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1\r\n- https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2\r\n\r\n- https://datatracker.ietf.org/doc/html/rfc8392#section-3.1.1\r\n- https://datatracker.ietf.org/doc/html/rfc8392#section-3.1.2\r\n\r\nI don't see why we would invent a new label for the \"identifier which the statements are in relation to\", when we already have `iss` and `sub`.",
+          "createdAt": "2023-10-07T14:00:32Z",
+          "updatedAt": "2023-10-07T14:00:53Z"
+        }
+      ],
       "reviews": []
     }
   ]
