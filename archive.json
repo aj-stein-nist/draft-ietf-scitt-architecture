@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-08T00:36:30.953089+00:00",
+  "timestamp": "2023-10-10T00:33:46.202195+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -2284,7 +2284,7 @@
     {
       "number": 103,
       "id": "I_kwDOIvmHss5yEQGq",
-      "title": "Refine Definition of RegInfo",
+      "title": "Refine Definition of Reg_Info",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/103",
       "state": "OPEN",
       "author": "OR13",
@@ -2293,9 +2293,31 @@
       "labels": [],
       "body": "```\r\nReg_Info = {\r\n  ? \"register_by\": uint .within (~time),\r\n  ? \"sequence_no\": uint,\r\n  ? \"issuance_ts\": uint .within (~time),\r\n  ? \"no_replay\": null,\r\n  * tstr => any\r\n}\r\n```\r\n\r\nhttps://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/0383ec2b5a23f11d1a42800aebbe38368e12376d/draft-ietf-scitt-architecture.md?plain=1#L670\r\n\r\nIMO these are parameters on the issuer's view of the feed identifier.\r\n\r\nsequence number is meaningless unless you know what topic you are trying to order.",
       "createdAt": "2023-09-26T15:00:22Z",
-      "updatedAt": "2023-09-26T15:00:22Z",
+      "updatedAt": "2023-10-09T18:45:43Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'd prefer to eliminate `Reg_Info` if possible, to keep the scitt envelopes as simple as possible, and to reuse related work, such as:\r\n\r\n- https://datatracker.ietf.org/doc/draft-ietf-cose-cwt-claims-in-headers/\r\n- https://datatracker.ietf.org/doc/draft-ietf-rats-eat/12/\r\n\r\nConsider the following alternative to:\r\n\r\n```\r\n\r\n1 => alg // ES384\r\n\r\n3 => content type \r\n// application/xml \r\n// application/json\r\n// application/cbor\r\n\r\n3 => kid \r\n// NzbLsXh8uDCcd-6MNwXF4W_7noWXFZAfHkxZsRGC9Xs  \r\n// urn:ietf:params:oauth:jwk-thumbprint:sha-256:NzbLsXh8uDCcd-6MNwXF4W_7noWXFZAfHkxZsRGC9Xs\r\n// 42\r\n      \r\n13 => CWT_Claims = {\r\n\r\n  1 => iss, \r\n  // example.com\r\n  // did:example:123\r\n  // urn:uuid:9a652678-4616-475d-af12-aca21cfbe06d\r\n  // fooBar\r\n\r\n  2 => sub, \r\n  // pkg:docker/customer/dockerimage@sha256:244fd47e07d1004f0aed9c?repository_url=gcr.io\r\n  // https://example.org/01/ { gtin } { ? exp }\r\n  // 5bdd1802-b0d9-4c27-b86c-8df099ef377e\r\n  // LibreOffice\r\n  // liber_office\r\n\r\n  3 => aud\r\n  // transparency.vendor1.example\r\n  // transparency.vendor2.example\r\n  // 8be80f34-4cc1-4e2b-a27e-79459c6bba11\r\n  // transparency.regulator3.example\r\n  \r\n  5 => nbf\r\n  // unix timestamp (not a secure timestamp)\r\n  \r\n  6 => iat\r\n  // unix timestamp (not a secure timestamp)\r\n  \r\n  257 => [sueids](https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-12#name-semi-permanent-ueids-sueids)\r\n  \r\n  \r\n  ...\r\n  \r\n  393 => Reg_Info // all the scitt fields we need that are not already defined better, by other WGs...\r\n  \r\n```",
+          "createdAt": "2023-10-09T17:41:59Z",
+          "updatedAt": "2023-10-09T17:43:43Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "\"subject\" is already used by many other standards:\r\n\r\n- https://w3c.github.io/vc-data-model/#credential-subject\r\n- https://pages.nist.gov/800-63-3/sp800-63-3.html\r\n\r\nAnd probably others.... \r\n\r\nThe dictionary definition of subject:\r\n\r\ne\r\n(1)\r\n: the term of a logical proposition that denotes the entity of which something is affirmed or denied\r\nalso : the entity denoted\r\n(2)\r\n: a word or word group denoting that of which something is predicated\r\n\r\n- https://www.merriam-webster.com/dictionary/subject\r\n\r\nIn plan english \"Statements are about Artifacts.... Artifacts are the subject of statements\".\r\n\r\n\"Software ABC, has Vulnerabilities XYZ\"\r\n\r\n\"Software ABC\" is the \"subject\"\r\n\r\n\"Vulnerabilities XYZ\" is the \"predicate\" (and its value is true).\r\n\r\n\"Software ABC, does not have Vulnerabilities XYZ\"\r\n\r\n\"Vulnerabilities XYZ\" is the \"predicate\" (and its value is false).\r\n\r\n\"Software ABC\" is still the subject...\r\n\r\n... etc...",
+          "createdAt": "2023-10-09T18:08:11Z",
+          "updatedAt": "2023-10-09T18:26:34Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "to furnish something essential to the development, sustenance, maintenance, or operation of...\r\n\r\nb\r\n: to supply (material to be operated on) to a machine\r\nc\r\n(1)\r\n: to insert and deposit (something) repeatedly or continuously\r\n(2)\r\n: to insert and deposit something into (something)\r\n\r\n- https://www.merriam-webster.com/dictionary/feed\r\n\r\nA feed is what you put into or get out of a transparency service... feeds are \"about subjects\", which are identified via \"sub\".\r\n\r\nThe input feed is the set of all signed statements accepted or rejected by a transparency service\r\n\r\nThe output feed is the set of all signed statements for which a receipt exists because a registration policy has been met.\r\n\r\nThis is what a feed looks like in factorio (input is iron ore and coal, output is steel plates):\r\n\r\n![862972621_preview_Belt Smelter 3](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/assets/8295856/92ce71f2-7b7b-4180-987c-7f02097825b1)\r\n\r\nThe subject of each input might be \"iron ore\", \"hematite\", \"https://www.ebi.ac.uk/chebi/searchId.do?chebiId=50818\", or \"chebi:50818\"...\r\n\r\nThe subject of each output might be \"steel plate 123\", \"ASTM709 Plate 456\", or \"urn:epc:tag:sgtin-96:1.7332402.026591.1234567890\" ... \r\n\r\nCWT Claims can also be present in the protected headers of receipts.\r\n\r\nThe \"logical grouping of all elements\", is not the same as \"the structured identifier chosen by an issuer to identify an element of a set\".",
+          "createdAt": "2023-10-09T18:43:47Z",
+          "updatedAt": "2023-10-09T18:45:43Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -10378,7 +10400,7 @@
       "labels": [],
       "body": "This is an attempt to break the deadlock on Feeds vs searchability etc.\r\n\r\nWithout making any normative changes (I hope!) I seek to clarify a handful of issues:\r\n\r\n- Why do we need Feed at all? Because it is the very simple but essential way of ensuring the desired goal of non-equivocation. It makes it practical to discover or eliminate equivocation through a very simple but powerful way of linking related Transparent Statements together, and providing a very simple way of enable pre-commitment for statements of fact and accountability. In less fancy but as useful ways it also ensures that the relying party or someone with a copy of one Transparent Statement in their hands can ensure completeness of the set they're evaluating, and confirm that they are up-to-date with supply chain information that can move very fast.\r\n\r\n- Does Feed need a structure? No, assuming the above is the purpose of grouping statements together then it doesn't mater what it's called as long as it's the same for all items in the group. This again cements the need for it to be in the Envelope though, since otherwise coordinating all the points in various systems that would need to know what value to put in there would be impractical. By having it in the Envelope anyone with a single Transparent statement from the Feed would know what to use for either making new statements or looking in the TS for related statements.\r\n\r\n- Can Feed just be a part of reg_info? No, because reg_info is defined for a very different purpose. Registration Policies are also very complicated and need work, but I don't think they need work to close this particular issue.\r\n\r\nWhile there are still clarity issues in the spec which I would love for us to address soon, I think this minimal change makes it possible to move on and removes the pollution from the discussion about types of identity, self-describing serialised data structures, and the like. Crucially, in keeping with the findings from -117, I believe it shows that it is possible to carry the 'findability' information that was required by the applications building on top of SCOITT building blocks without going outside our charter and defining things at the semantic or application layer. ",
       "createdAt": "2023-10-06T17:28:23Z",
-      "updatedAt": "2023-10-07T18:26:20Z",
+      "updatedAt": "2023-10-08T13:15:49Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
@@ -10403,6 +10425,13 @@
           "body": "Could someone please describe what a \"registered claim name\" is? For example, using a \"Registry of Deeds\"  analogy, would Book and Page number,be considered the \"registered claim name\"?",
           "createdAt": "2023-10-07T18:26:20Z",
           "updatedAt": "2023-10-07T18:26:20Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@rjb4standards in COSE and JOSE, there are names like \"iss\" and \"sub\" that are already registered in iana, and there are \"private names\" like \"vendor_branding_info\", that are not registered.\n\nRegistered names are established by updating the registries which requires publishing documents usually.\n\nPrivate names are ones that people decided to use, without registering them.\n",
+          "createdAt": "2023-10-08T13:15:49Z",
+          "updatedAt": "2023-10-08T13:15:49Z"
         }
       ],
       "reviews": [
@@ -10453,7 +10482,7 @@
       "labels": [],
       "body": "This PR shows that feed is redundant to CWT Claims in headers.\r\nIf this approach gains consensus we won't need to register special tags in the protected header, and can instead use the RFC that allows this to happen.\r\n\r\nFor context, see this discussion from the list:\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/cose/KNRge3vxXF3A2LY24DNo6ZQxrNc/",
       "createdAt": "2023-10-07T13:56:10Z",
-      "updatedAt": "2023-10-07T14:00:53Z",
+      "updatedAt": "2023-10-09T22:09:34Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
@@ -10471,6 +10500,41 @@
           "body": "This PR also aligns with the terminology used in W3C, where:\r\n\r\n`issuer's make claims about subjects`.\r\n\r\nW3C requires additional structure for the identifiers of issuers and subjects, they need to be https://www.w3.org/TR/json-ld11/#node-identifiers\r\n\r\nJOSE and COSE do not restrict `iss` and `sub` like this, they are both `string or URI`.... just like `feed`.\r\n\r\n- https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.1\r\n- https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2\r\n\r\n- https://datatracker.ietf.org/doc/html/rfc8392#section-3.1.1\r\n- https://datatracker.ietf.org/doc/html/rfc8392#section-3.1.2\r\n\r\nI don't see why we would invent a new label for the \"identifier which the statements are in relation to\", when we already have `iss` and `sub`.",
           "createdAt": "2023-10-07T14:00:32Z",
           "updatedAt": "2023-10-07T14:00:53Z"
+        },
+        {
+          "author": "robinbryce",
+          "authorAssociation": "NONE",
+          "body": "The reason to have a new label is to avoid conflating it with something it isn't. Or at least something that it only imperfectly reflects.\r\n\r\nAs a trusted service implementor interested in making strong and clear assertions about completeness and non-equivocation over a series of statements, what do I do if I also see 'exp' or 'iat' in the context of 'iss' and 'sub' ? When I read a standard, from the perspective of a TS implementor again, that mentions just iss, and sub do I get to assume that I will never deal with those ?\r\n\r\nIf those are not permitted how is this actually a CWT ?\r\n\r\nThese things possibly have answers but I don't think my confusion will be an isolated one. What I would really like to see for feed id is wording like this:\r\n\r\n```\r\nTrusted Services MUST treat the feed id as an opaque series of bytes.\r\n Issuers MAY define encoding appropriate for their domain for the benefit\r\n of relying parties. Completeness and non-equivocation guarantees MUST \r\nonly be defined in terms of the opaque array of bytes comprising the feed id\r\n```\r\n\r\nI believe that permits issuers and relying parties full flexibility of expression _in the context_ of a very clearly articulated series of statements.\r\n\r\nIn otherwords, if we use 'sub' but define it that way, I don't see how it really is anything to do with 8392.\r\n\r\nAnd this would imply the restoration of DID. So we continue to have both",
+          "createdAt": "2023-10-09T15:30:56Z",
+          "updatedAt": "2023-10-09T15:38:35Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> If those are not permitted how is this actually a CWT ?\r\n\r\nSigned statements are not CWTs, unless the payload content type is a CBOR map that uses registered claim names.\r\n\r\nYou can use CWT Claims in headers for payload that are xml files, this was discussed on the related draft, in the mailing list discussion I linked.\r\n\r\n`sub` as a arbitrary text or `feed` as arbitrary text are equivalent.\r\n\r\nThe only reason not to use `sub` would be that you have a well defined relationship between `sub` and `feed` and `iss` where you need all 3 to accomplish something... AFAIK, we don't have that.",
+          "createdAt": "2023-10-09T15:40:56Z",
+          "updatedAt": "2023-10-09T15:42:32Z"
+        },
+        {
+          "author": "robinbryce",
+          "authorAssociation": "NONE",
+          "body": "> Signed statements are not CWTs, unless the payload content type is a CBOR map that uses registered claim names.\r\n\r\nOk, in that case, what is the TS expected to do ? I mean, it seems to force the TS to take account of the content type when before it did not ?\r\n\r\n",
+          "createdAt": "2023-10-09T15:50:14Z",
+          "updatedAt": "2023-10-09T15:52:08Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Ok, in that case, what is the TS expected to do ? I mean, it seems to force the TS to take account of the content type when before it did not ?\r\n\r\nThe TS has a registration policy that answers this question.\r\n\r\ncontent type has always been a parameter the TS might use to deny a registration, for example, my TS might accept XML SBOMs and reject JSON ones, or vice versa.\r\n\r\nRegardless of how you structure the info in a protected header, the registration policy and the architecture document have to make this clear.\r\n\r\nIt seems easier to make it clear, by reusing other specs, that provide context for implementers.",
+          "createdAt": "2023-10-09T16:33:12Z",
+          "updatedAt": "2023-10-09T17:15:15Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Aligning with existing specs is \ud83d\udcaf part of the SCITT Charter.\r\nLooking a [CWT Subect](https://www.rfc-editor.org/rfc/rfc7519#section-4.1.2)\r\n>  The \"sub\" (subject) claim identifies the principal that is the\r\n   subject of the JWT.  The claims in a JWT are normally statements\r\n   about the subject.  The subject value MUST either be scoped to be\r\n   locally unique in the context of the issuer or be globally unique.\r\n   The processing of this claim is generally application specific.  The\r\n   \"sub\" value is a case-sensitive string containing a StringOrURI\r\n   value.  Use of this claim is OPTIONAL.\r\n   \r\n This covers a few things we've discussed, such as:\r\n- `case-sensitivity` - which I personally find frustrating as someone trying to differentiate the difference between `a123` and `A123` is just creating a future frustration point for users that get confused why a query for one fails to find the other. However, specifying this is fine, and best practice would be to lowercase all ids- but I digress \ud83d\ude44 \r\n- `StringOrURI value` covers the various ways an issuer may choose to represent their Artifact Feed identifier.\r\n\r\nThe thing I'd like to test with this discussion is whether two or more parties can make statements about the same artifact.\r\n\r\n1. Wabbit Networks (_the identity_) releases their `net-monitor v1` software (_the Artifact_)\r\n1. Wabbit Networks publishes a Signed Statement using a `\"sub\": \"wabbitnetworks-netmonv3linux` and `\"iss\":=\"wabbitnetworks\"` on their `scitt.wabbit-networks.io` service. \r\n1. Wabbit Networks has an auditor publish a signed statement: `\"sub\": \"wabbitnetworks-netmonv3linux` and `\"iss\":=\"coyote-security\"` on the same `scitt.wabbit-networks.io` service.\r\n1. Cosmic security, Mitre and other independent publishers make statements about the same Artifact\r\n    - `\"sub\": \"wabbitnetworks-netmonv3linux` and `\"iss\":=\"cosmicsecurity\"` on their `scitt.cosmic-security.io` service. \r\n    - `\"sub\": \"wabbitnetworks-netmonv3linux` and `\"iss\":=\"mitre\"` on their `scitt.mitre.org` service. \r\n\r\nAs a consumer, ACME Rockets can\r\n- query the `scitt.wabbit-networks.io` service, to get statements associated with the net-monitor v1 software package. \r\n- query `scitt.mitre.org` for any public statements, using `\"sub\": \"wabbitnetworks-netmonv3linux` as the means to find statements from Mitre for the Wabbit Networks, net-monitor v1 software.\r\n- optionally query `scitt.cosmic-security.io` as they specialize in aerospace software, providing deeper insights for the specific aerospace vertical.\r\n\r\nACME Rockets (_the consumer_) can choose to trust the statements because they trust the independent identities making statements. Which endpoints they query is up to them. They could equally choose to NOT trust Coyote Security, (because who trusts the Coyote), or because they're not tailored to the unique needs Cosmic Security addresses.\r\n\r\nCan `subject` be used to independently identify a collection of statements about an artifact, independently from the issuer, and consistent across SCITT Transparency Service Instances?",
+          "createdAt": "2023-10-09T22:09:34Z",
+          "updatedAt": "2023-10-09T22:09:34Z"
         }
       ],
       "reviews": []
