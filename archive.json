@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-10T00:33:46.202195+00:00",
+  "timestamp": "2023-10-12T00:31:52.937747+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -2316,6 +2316,58 @@
           "body": "to furnish something essential to the development, sustenance, maintenance, or operation of...\r\n\r\nb\r\n: to supply (material to be operated on) to a machine\r\nc\r\n(1)\r\n: to insert and deposit (something) repeatedly or continuously\r\n(2)\r\n: to insert and deposit something into (something)\r\n\r\n- https://www.merriam-webster.com/dictionary/feed\r\n\r\nA feed is what you put into or get out of a transparency service... feeds are \"about subjects\", which are identified via \"sub\".\r\n\r\nThe input feed is the set of all signed statements accepted or rejected by a transparency service\r\n\r\nThe output feed is the set of all signed statements for which a receipt exists because a registration policy has been met.\r\n\r\nThis is what a feed looks like in factorio (input is iron ore and coal, output is steel plates):\r\n\r\n![862972621_preview_Belt Smelter 3](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/assets/8295856/92ce71f2-7b7b-4180-987c-7f02097825b1)\r\n\r\nThe subject of each input might be \"iron ore\", \"hematite\", \"https://www.ebi.ac.uk/chebi/searchId.do?chebiId=50818\", or \"chebi:50818\"...\r\n\r\nThe subject of each output might be \"steel plate 123\", \"ASTM709 Plate 456\", or \"urn:epc:tag:sgtin-96:1.7332402.026591.1234567890\" ... \r\n\r\nCWT Claims can also be present in the protected headers of receipts.\r\n\r\nThe \"logical grouping of all elements\", is not the same as \"the structured identifier chosen by an issuer to identify an element of a set\".",
           "createdAt": "2023-10-09T18:43:47Z",
           "updatedAt": "2023-10-09T18:45:43Z"
+        }
+      ]
+    },
+    {
+      "number": 109,
+      "id": "I_kwDOIvmHss5zYAoV",
+      "title": "Adjust CDDL for Receipts",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/109",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "```\r\n~~~~ cddl\r\nclaim-label = int / text\r\n\r\n; https://www.iana.org/assignments/cwt\r\nclaims = {\r\n  &(iss: 1) => tstr \r\n  ; https://software.vendor or \r\n  ; did:web:software.vendor\r\n  &(sub: 2) => tstr \r\n  ; https://software.vendor or \r\n  ; did:web:software.vendor\r\n  ; https://software.vendor/products/456 or \r\n  ; did:web:software.vendor:products:456 or \r\n  ; did:web:software.vendor/products/456 or \r\n  ; urn:epc:tag:sgtin-96:1.7332402.026591.1234567890\r\n  * claim-label => any\r\n}\r\n\r\nstatement-protected-header-map = {\r\n  &(alg-id: 1) => int\r\n  &(content-type: 3) => tstr\r\n  &(issuer-key-id: 4) => bstr\r\n  &(issuer-claims: 13) => claims\r\n  * cose-label => cose-value\r\n}\r\n\r\nreceipt-protected-header-map = {\r\n  &(alg-id: 1) => int\r\n  &(issuer-key-id: 4) => bstr\r\n  &(issuer-claims: 13) => claims\r\n  * cose-label => cose-value\r\n}\r\n\r\n~~~~\r\n```",
+      "createdAt": "2023-10-10T15:43:17Z",
+      "updatedAt": "2023-10-10T16:55:40Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "body": ":sparkles:Beautiful:sparkles: Header definitions.\r\n\r\nIs `&(issuer-claims: 13) => claims` intended to be mandatory or optional? It could be empty, for example.\r\n\r\n",
+          "createdAt": "2023-10-10T15:57:28Z",
+          "updatedAt": "2023-10-10T15:57:28Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "https://datatracker.ietf.org/doc/draft-ietf-cose-cwt-claims-in-headers/\r\n\r\nAFAIK, it can be optional, and it can be empty.\r\n\r\nSCITT can make it required, and make it non empty.\r\n\r\nI would recommend doing that... reasoning:\r\n\r\n`iss` is mandatory, and so the minimum issuer claims includes the issuer's chosen identifier for itself.\r\n\r\nhence tag 13 would always be present and inside of it tag 1 would always be present:\r\n\r\nhttps://www.iana.org/assignments/cwt/cwt.xhtml",
+          "createdAt": "2023-10-10T16:04:42Z",
+          "updatedAt": "2023-10-10T16:04:42Z"
+        },
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "body": "If there is always a member present in `claims` we could even model that in the data definition, explicitly.",
+          "createdAt": "2023-10-10T16:09:25Z",
+          "updatedAt": "2023-10-10T16:09:25Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I updated the example to include mandatory `iss` and `sub`... and added examples in comments",
+          "createdAt": "2023-10-10T16:14:59Z",
+          "updatedAt": "2023-10-10T16:14:59Z"
+        },
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "body": "Ready for transplant into PR, I think",
+          "createdAt": "2023-10-10T16:55:40Z",
+          "updatedAt": "2023-10-10T16:55:40Z"
         }
       ]
     }
@@ -10226,7 +10278,7 @@
       "labels": [],
       "body": "This PR highlights how easy it would be to remove feed from the architecture, and notes that feed is redundant to `Reg_Info` which provides more flexibility and is already unbounded in terms of implementation complexity.",
       "createdAt": "2023-10-03T15:08:17Z",
-      "updatedAt": "2023-10-07T14:03:26Z",
+      "updatedAt": "2023-10-11T14:42:34Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
@@ -10300,9 +10352,72 @@
           "body": "This PR could be merged first, then https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/108 could address the CDDL changes, and https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/107 could be updated to find replace \"Feed\" with \"Subject\" / \"sub\" and or tag 2.\r\n\r\n",
           "createdAt": "2023-10-07T14:02:19Z",
           "updatedAt": "2023-10-07T14:02:19Z"
+        },
+        {
+          "author": "sylvanc",
+          "authorAssociation": "NONE",
+          "body": "The purpose of the `feed`\u200b header is to allow a single issuer `iss`\u200b to sign for different purposes.\r\n\r\nFor example:\r\n\r\n* A Microsoft product group may have a single `iss`\u200b identifier. That product group may produce a collection of software products, each packaged as a container. Each of those containers has a different purpose. The product group can indicate that purpose in the `feed`\u200b. When a new container image for `feed`\u200b \"my-https-front-end\" is produced, the signed statement for it can be distinguished from the signed statements for the \"my-database-connector\" container image (and all of its versions).\r\n* An operator of an online service single `iss`\u200b identifier. That operator may produce a series of signed statements regarding the software they run with `feed` \"our-software-product\" and, separately, a series of signed statements regarding which versions of their software customers should currently be using, with `feed` \"our-software-usage-policy\".\r\n* A foundation that produces an open source library may have a single `iss`\u200b identifier. That foundation might release a series of signed statements for their x86 binaries with `feed` \"oss-library-x86-64\" and a separate one for ARM binaries with `feed` \"oss-library-aarch64\".\r\n\r\nWithout a header that indicates the purpose of the signed statement, there is a confusion attack. For example:\r\n\r\n* An online service provider may intend to run a \"my-database-connector\" container from some issuer. Due to a malicious confusion attack, they are given signed statements for a \"my-database-connector-with-debug-backdoor\" container.\r\n\r\nIn other words: without a `feed`\u200b, an `iss`\u200b can only be used for a single purpose.\r\n\r\nThe name `feed` (as opposed to, say, `purpose`) is to indicate that the signed statements may be augmented or superceded with additional signed statements for the same purpose. For example, a software product may have a new version released for the same `feed`.\r\n",
+          "createdAt": "2023-10-11T00:38:47Z",
+          "updatedAt": "2023-10-11T00:38:47Z"
+        },
+        {
+          "author": "edoardogiordano",
+          "authorAssociation": "NONE",
+          "body": "As other already mention I feel the need to have an identifier that MUST be present to differentiate between different products within the same issuer.\r\n\r\n> This PR could be merged first, then #108 could address the CDDL changes, and #107 could be updated to find replace \"Feed\" with \"Subject\" / \"sub\" and or tag 2.\r\n\r\nIn my understanding your suggestion here is to separate the concept of an identifier, which would be the sub field of the CWT claim and the concept of the feed which would allow more complex references between various statements. If this is the intended behavior, than I agree this could be the way to proceed.",
+          "createdAt": "2023-10-11T07:58:10Z",
+          "updatedAt": "2023-10-11T08:24:51Z"
+        },
+        {
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@sylvanc So according to your definition a `Feed` is an information about a Product. it is not clear to me whether the Feed identify a specific revision of the product or it associates to any/all revisions of a product.\r\nThen if it pertains to a all revisions, then how a statement about a specific revision can be identified ?\r\n\r\nDo we need to recommend the same in the Architecture document ?\r\n\r\nAlso the existing Feed definition implied, multiple issuers can use the Feed to identify statements pertaining to an Artifact.\r\n\r\nWe need to clearly define, 1. Purpose 2. Scope 3. Usage examples of Feed before introducing into the specification.\r\n\r\nOtherwise, it triggers confusion/ambiguity in the Specification.\r\n\r\nI recommend we Remove Feed from the existing specification, come up with a clear proposal which defines 1.2. & 3. above and then re-introduce the same",
+          "createdAt": "2023-10-11T09:44:03Z",
+          "updatedAt": "2023-10-11T09:44:03Z"
+        },
+        {
+          "author": "sylvanc",
+          "authorAssociation": "NONE",
+          "body": "No, `feed` is not a product. A `feed` identifies an unbounded sequence of statements about the same topic. It is a _purpose_, with the explicit ability to continue to make new statements for that purpose.\r\n\r\nA signed statement is meaningless without both an issuer `iss` and a `feed`. Removing it creates a situation where a relying party must do a \"deep dive\" of the payload in order to guess at the statement's purpose.",
+          "createdAt": "2023-10-11T14:13:54Z",
+          "updatedAt": "2023-10-11T14:13:54Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Multiple Issuers, X, Y,Z are making statements about the same product P.\r\n\r\nThis resonates with me, as it accomplishes the scenarios entities do today. \r\n\r\n> An Issuer : X is issuing statements about Multiple products (P, Q, R):\r\n\r\nThis one is less clear. Can we articulate how the above could be used in practice? Trying to correlate across multiple Artifacts (products as noted above) feels like a conflation and complication. Rather than attempt to make a statement about multiple artifacts, why not make the statement on each artifact?\r\n\r\n> A `feed` identifies an unbounded sequence of statements about the same topic. It is a _purpose_, with the explicit ability to continue to make new statements for that purpose.\r\n\r\nThis seems consistent with: [Attempt clarification of Feed purpose and differentiate from reg_info #107](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/107)\r\n\r\nIf we can ground the designs in the problems we're trying to solve, ([the use cases](https://www.ietf.org/archive/id/draft-ietf-scitt-software-use-cases-01.html)) we might be able to better address a proposal. \r\nFrom: [Use CWT Claims in Headers: comment](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/108#issuecomment-1753959506)\r\n\r\nThe thing I'd like to test with this discussion is whether two or more identities can make statements about the same artifact.\r\n\r\n1. Wabbit Networks (_the identity `391: did`_) releases their `net-monitor v1` software (_the Artifact_)\r\n1. Wabbit Networks publishes a Signed Statement using a `\"392: feed\": \"wabbitnetworks-netmonv3linux` and `\"391: DID\":=\"wabbitnetworks\"` on their `scitt.wabbit-networks.io` service. \r\n1. Wabbit Networks has an auditor publish a signed statement: `\"392: feed\": \"wabbitnetworks-netmonv3linux` and `\"391: did\":=\"coyote-security\"` on the same `scitt.wabbit-networks.io` service.\r\n1. Cosmic security, Mitre, and other independent publishers make statements about the same Artifact\r\n    - `\"392: feed\": \"wabbitnetworks-netmonv3linux` and `\"391: did\":=\"cosmicsecurity\"` on their `scitt.cosmic-security.io` service. \r\n    - `\"392: feed\": \"wabbitnetworks-netmonv3linux` and `\"identity\":=\"mitre\"` on their `scitt.mitre.org` service. \r\n\r\nAs a consumer, ACME Rockets can\r\n- query the `scitt.wabbit-networks.io` service, to get statements associated with the net-monitor v1 software package.\r\n- query `scitt.mitre.org` for any public statements, using `\"392: feed\": \"wabbitnetworks-netmonv3linux` as the means to find statements from Mitre for the Wabbit Networks, net-monitor v1 software.\r\n- optionally query `scitt.cosmic-security.io` as they specialize in aerospace software, providing deeper insights for the specific aerospace vertical.\r\n\r\nACME Rockets (_the consumer_) can choose to trust the statements because they trust the independent identities making statements. Which endpoints they query is up to them. They could equally choose to NOT trust Coyote Security, (because who trusts the Coyote?), or because they're not tailored to the unique needs Cosmic Security addresses.\r\n\r\nIn the above case, `392: feed` is used to independently identify a collection of statements about an artifact, independently from the identity, and consistent across SCITT Transparency Service Instances\r\n\r\nIs the above usecase one we're trying to solve? \r\n- If not, what is the problem we're solving, and how would someone implement the above?\r\n- If so, does `392: feed` and `391: did` solve the problem? If not, what are the alternatives?\r\n",
+          "createdAt": "2023-10-11T14:27:35Z",
+          "updatedAt": "2023-10-11T14:27:35Z"
+        },
+        {
+          "author": "sylvanc",
+          "authorAssociation": "NONE",
+          "body": "That's a great use case. Yes, any `iss` can make a statement with a given `feed`. But `feed` isn't a \"controlled\" or \"owned\" value - no need for registering it. The tuple of (`iss`, `feed`) identifies the sequence of statements from an issuer - which works well with your Coyote example.",
+          "createdAt": "2023-10-11T14:42:33Z",
+          "updatedAt": "2023-10-11T14:42:33Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5jk-qj",
+          "commit": {
+            "abbreviatedOid": "86f0e2f"
+          },
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-11T09:48:39Z",
+          "updatedAt": "2023-10-11T09:48:39Z",
+          "comments": [
+            {
+              "originalPosition": 38,
+              "body": "The existing specification statements here are extremely confusing to me!\r\n\r\nI think, we should clearly distinguish the two use cases and describe them individually.\r\n\r\nUse Case 1:\r\nAn Issuer : X is issuing statements about  Multiple products (P, Q, R):\r\n\r\nUse Case 2:\r\nMultiple Issuers, X, Y,Z are making statements about the same product P.\r\n\r\nWe need to have these two cases clearly covered in the specificiation.",
+              "createdAt": "2023-10-11T09:48:39Z",
+              "updatedAt": "2023-10-11T09:48:39Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 105,
@@ -10482,7 +10597,7 @@
       "labels": [],
       "body": "This PR shows that feed is redundant to CWT Claims in headers.\r\nIf this approach gains consensus we won't need to register special tags in the protected header, and can instead use the RFC that allows this to happen.\r\n\r\nFor context, see this discussion from the list:\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/cose/KNRge3vxXF3A2LY24DNo6ZQxrNc/",
       "createdAt": "2023-10-07T13:56:10Z",
-      "updatedAt": "2023-10-09T22:09:34Z",
+      "updatedAt": "2023-10-11T14:35:18Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
@@ -10535,6 +10650,20 @@
           "body": "Aligning with existing specs is \ud83d\udcaf part of the SCITT Charter.\r\nLooking a [CWT Subect](https://www.rfc-editor.org/rfc/rfc7519#section-4.1.2)\r\n>  The \"sub\" (subject) claim identifies the principal that is the\r\n   subject of the JWT.  The claims in a JWT are normally statements\r\n   about the subject.  The subject value MUST either be scoped to be\r\n   locally unique in the context of the issuer or be globally unique.\r\n   The processing of this claim is generally application specific.  The\r\n   \"sub\" value is a case-sensitive string containing a StringOrURI\r\n   value.  Use of this claim is OPTIONAL.\r\n   \r\n This covers a few things we've discussed, such as:\r\n- `case-sensitivity` - which I personally find frustrating as someone trying to differentiate the difference between `a123` and `A123` is just creating a future frustration point for users that get confused why a query for one fails to find the other. However, specifying this is fine, and best practice would be to lowercase all ids- but I digress \ud83d\ude44 \r\n- `StringOrURI value` covers the various ways an issuer may choose to represent their Artifact Feed identifier.\r\n\r\nThe thing I'd like to test with this discussion is whether two or more parties can make statements about the same artifact.\r\n\r\n1. Wabbit Networks (_the identity_) releases their `net-monitor v1` software (_the Artifact_)\r\n1. Wabbit Networks publishes a Signed Statement using a `\"sub\": \"wabbitnetworks-netmonv3linux` and `\"iss\":=\"wabbitnetworks\"` on their `scitt.wabbit-networks.io` service. \r\n1. Wabbit Networks has an auditor publish a signed statement: `\"sub\": \"wabbitnetworks-netmonv3linux` and `\"iss\":=\"coyote-security\"` on the same `scitt.wabbit-networks.io` service.\r\n1. Cosmic security, Mitre and other independent publishers make statements about the same Artifact\r\n    - `\"sub\": \"wabbitnetworks-netmonv3linux` and `\"iss\":=\"cosmicsecurity\"` on their `scitt.cosmic-security.io` service. \r\n    - `\"sub\": \"wabbitnetworks-netmonv3linux` and `\"iss\":=\"mitre\"` on their `scitt.mitre.org` service. \r\n\r\nAs a consumer, ACME Rockets can\r\n- query the `scitt.wabbit-networks.io` service, to get statements associated with the net-monitor v1 software package. \r\n- query `scitt.mitre.org` for any public statements, using `\"sub\": \"wabbitnetworks-netmonv3linux` as the means to find statements from Mitre for the Wabbit Networks, net-monitor v1 software.\r\n- optionally query `scitt.cosmic-security.io` as they specialize in aerospace software, providing deeper insights for the specific aerospace vertical.\r\n\r\nACME Rockets (_the consumer_) can choose to trust the statements because they trust the independent identities making statements. Which endpoints they query is up to them. They could equally choose to NOT trust Coyote Security, (because who trusts the Coyote), or because they're not tailored to the unique needs Cosmic Security addresses.\r\n\r\nCan `subject` be used to independently identify a collection of statements about an artifact, independently from the issuer, and consistent across SCITT Transparency Service Instances?",
           "createdAt": "2023-10-09T22:09:34Z",
           "updatedAt": "2023-10-09T22:09:34Z"
+        },
+        {
+          "author": "robinbryce",
+          "authorAssociation": "NONE",
+          "body": "Ok, so I think I understand where this PR is trying to go. With respect I just don't agree with what I understand of its intent :-)\r\n\r\nIs there  something you can\u2019t achieve where the CWT is just binary encoded in the feed id ? Provided everyone agrees the envelope feed id is an opaque string nobody needs to refer to the combination of other standards and specific reg policies to get base line confidence over the context for a series of statements.\r\n\r\nI beleive having any structure in the feed id will gaurantee divergent and incompatible combinations of TS, issuer, series-of-statements. In particular, regarding the re-use of 'sub', I base this assertion on significant practical exposure to iss/sub in the context of identity providers & JWT's.\r\n\r\nIf we go the structured road we will lose the opportunity to define a single universal means to identify a complete series of statements in the envelope of the statement.\r\n\r\nWith a single property, defined as an opaque byte string, I believe we will get a simplicity that is enabling rather than limiting: On top of that base, richer interpretations can be built for TS's and issuers that wish to be mutualy content aware. And all TS implementations can guarantee a base level of utility before considering added value.\r\n\r\nYet consumers of those same feeds, regardless of origin, will still enjoy the base line ability to correlate the series of statements and demonstrate completeness and so on.\r\n\r\n> It seems easier to make it clear, by reusing other specs, that provide context for implementers.\r\n\r\nSpeaking as a prospective implementor I  feel the opposite.\r\n\r\n> Can subject be used to independently identify a collection of statements about an artifact, independently from the issuer, and consistent across SCITT Transparency Service Instances?\r\n\r\nProvided that its value is opaque to the TS for the purposes of defining the complete series, yes I believe so. And very much think this is a good thing to aim for.\r\n\r\nThat is my stall set out as clearly as I can make it :-)\r\n",
+          "createdAt": "2023-10-10T08:58:08Z",
+          "updatedAt": "2023-10-10T09:02:03Z"
+        },
+        {
+          "author": "sylvanc",
+          "authorAssociation": "NONE",
+          "body": "I left some comments in #104 related to this. tl;dr: I agree with @robinbryce that a `feed` defines an unbounded sequence of statements made for the same purpose.\r\n\r\nObviously, any tag can be reused to mean anything you like. We can declare that `sub` means `feed`. That may require significant documentation to dissuade people from putting the a subject into `sub` instead.\r\n\r\nDo I understand that the intention is to not put `iss` at the top level, but to embed it in `CWT_claims` ? Is the goal there for existing CWT relying parties to accept these?",
+          "createdAt": "2023-10-11T14:35:18Z",
+          "updatedAt": "2023-10-11T14:35:18Z"
         }
       ],
       "reviews": []
