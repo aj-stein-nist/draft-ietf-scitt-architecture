@@ -1037,7 +1037,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 8 April 2024</td>
+<td class="center">Expires 18 April 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-scitt-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-10-06" class="published">6 October 2023</time>
+<time datetime="2023-10-16" class="published">16 October 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-04-08">8 April 2024</time></dd>
+<dd class="expires"><time datetime="2024-04-18">18 April 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1124,7 +1124,7 @@ Producers can register their Signed Statements on any Transparency Service, with
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 April 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 18 April 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1317,13 +1317,13 @@ Producers can register their Signed Statements on any Transparency Service, with
 It achieves this goal by enforcing the following complementary security guarantees:<a href="#section-1-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-1-2">
 <li id="section-1-2.1">
-          <p id="section-1-2.1.1">Statements made by Issuers about supply chain Artifacts must be identifiable, authentic, and non-repudiable;<a href="#section-1-2.1.1" class="pilcrow">¶</a></p>
+          <p id="section-1-2.1.1">Statements made by Issuers about supply chain Artifacts must be identifiable, authentic, and non-repudiable<a href="#section-1-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-1-2.2">
-          <p id="section-1-2.2.1">such Statements must be registered on a secure append-only Log, so that their provenance and history can be independently and consistently audited;<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-1-2.2.1">Such Statements must be registered on a secure append-only Log, so that their provenance and history can be independently and consistently audited<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-1-2.3">
-          <p id="section-1-2.3.1">Issuers can efficiently prove to any other party the Registration of their Signed Statements; verifying this proof ensures that the Issuer is consistent and non-equivocal when producing Signed Statements.<a href="#section-1-2.3.1" class="pilcrow">¶</a></p>
+          <p id="section-1-2.3.1">Issuers can efficiently prove to any other party the Registration of their Signed Statements; verifying this proof ensures that the Issuer is consistent and non-equivocal when producing Signed Statements<a href="#section-1-2.3.1" class="pilcrow">¶</a></p>
 </li>
       </ol>
 <p id="section-1-3">The first guarantee is achieved by requiring Issuers to sign their Statements and associated metadata using a distributed public key infrastructure.
@@ -1344,7 +1344,8 @@ Producing a Transparent Statement may be considered a form of notarization.
 A Statements payload content <span class="bcp14">MAY</span> be encrypted and opaque to the Transparency Services, if so desired: however the metadata <span class="bcp14">MUST</span> be transparent in order to warrant trust for later processing.
 Transparent Statements provide a common basis for holding Issuers accountable for the Statement payload about Artifacts they release and (more generally) principals accountable for auxiliary Signed Statements from other Issuers about the original Signed Statement about an Artifact.
 Issuers may Register new Signed Statements about Artifacts, but they cannot delete or alter Signed Statements previously added to the append-only Log.
-A Transparency Service may restrict access to Signed Statements through access control policies. However, third parties (such as Auditors) would be granted access as needed to attest to the validity of the Artifact, Feed or the entirety of the Transparency Service.<a href="#section-1-5" class="pilcrow">¶</a></p>
+A Transparency Service may restrict access to Signed Statements through access control policies.
+However, third parties (such as Auditors) would be granted access as needed to attest to the validity of the Artifact, Feed or the entirety of the Transparency Service.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <p id="section-1-6">Trust in the Transparency Service itself is supported both by protecting their implementation (using, for instance, replication, trusted hardware, and remote attestation of a system's operational state) and by enabling independent audits of the correctness and consistency of its Registry, thereby holding the organization that operates it accountable.
 Unlike CT, where independent Auditors are responsible for enforcing the consistency of multiple independent instances of the same global Registry, each Transparency Service is required to guarantee the consistency of its own Registry (for instance, through the use of a consensus algorithm between replicas of the Registry), but assume no consistency between different Transparency Services.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <p id="section-1-7">Breadth of access is critical so the Transparency Service specified in this architecture cater to two types of audiences:<a href="#section-1-7" class="pilcrow">¶</a></p>
@@ -1360,8 +1361,7 @@ Consumers <span class="bcp14">MAY</span> be producers, providing additional Sign
 <p id="section-1-9">Signed Statement Issuers rely on being discoverable and represented as the responsible parties for their registered Signed Statements via Transparency Services in a believable manner.
 The issuer of a Signed Statement must be authenticated and authorized according to the registration policy of the Transparency Service.
 Analogously, Transparent Statement Consumers rely on verifiable trustworthiness assertions associated with Transparent Statements and their processing provenance in a believable manner.
-If trust can be put into the operations that record Signed Statements in a secure, append-only log via online operations, the same trust can be put into the resulting transparent statement,
-issued by the Transparency Services and that can be validated in offline operations.<a href="#section-1-9" class="pilcrow">¶</a></p>
+If trust can be put into the operations that record Signed Statements in a secure, append-only log via online operations, the same trust can be put into the resulting transparent statement, issued by the Transparency Services and that can be validated in offline operations.<a href="#section-1-9" class="pilcrow">¶</a></p>
 <p id="section-1-10">The Transparency Services specified in this architecture can be implemented by various different types of services in various types of languages provided via various variants of API layouts.<a href="#section-1-10" class="pilcrow">¶</a></p>
 <p id="section-1-11">The interoperability guaranteed by the Transparency Services is enabled via core components (architectural constituents) that come with prescriptive requirements (that are typically hidden away from the user audience via APIs but can be relied upon as non functional requirements).
 Many of the data elements processed by the core components are based on the Concise Signing and Encryption standard specified in <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>, which is used to produce Signed Statements about Artifacts and to build and maintain a Merkle tree that functions as an append-only Log for corresponding Signed Statements.<a href="#section-1-11" class="pilcrow">¶</a></p>
@@ -1450,9 +1450,7 @@ SCITT supports multiple Log and Receipt formats to accommodate different Transpa
         <dd class="break"></dd>
 <dt id="section-3-2.19">Registration Policy:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.20">
-          <p id="section-3-2.20.1">the pre-condition enforced by the Transparency Service before registering a Signed Statement, rendering it a Signed Statement,
-based on metadata contained in its COSE Envelope (notably the identity of its Issuer)
-and on prior Signed Statements already added to a Registry.<a href="#section-3-2.20.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.20.1">the pre-condition enforced by the Transparency Service before registering a Signed Statement, rendering it a Signed Statement, based on metadata contained in its COSE Envelope (notably the identity of its Issuer) and on prior Signed Statements already added to a Registry.<a href="#section-3-2.20.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-3-2.21">Registry:</dt>
@@ -1527,156 +1525,156 @@ Failure to produce this proof can indicate that the Transparency Services operat
       </h2>
 <div id="section-5-1">
         <div class="alignLeft art-svg artwork" id="section-5-1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="656" width="592" viewBox="0 0 592 656" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
-            <path d="M 208,64 L 208,88" fill="none" stroke="black"></path>
-            <path d="M 208,128 L 208,144" fill="none" stroke="black"></path>
-            <path d="M 208,416 L 208,432" fill="none" stroke="black"></path>
-            <path d="M 216,224 L 216,240" fill="none" stroke="black"></path>
-            <path d="M 232,304 L 232,336" fill="none" stroke="black"></path>
-            <path d="M 264,176 L 264,200" fill="none" stroke="black"></path>
-            <path d="M 264,256 L 264,272" fill="none" stroke="black"></path>
-            <path d="M 264,368 L 264,392" fill="none" stroke="black"></path>
-            <path d="M 264,448 L 264,600" fill="none" stroke="black"></path>
-            <path d="M 312,224 L 312,240" fill="none" stroke="black"></path>
-            <path d="M 320,128 L 320,144" fill="none" stroke="black"></path>
-            <path d="M 320,416 L 320,432" fill="none" stroke="black"></path>
-            <path d="M 344,496 L 344,520" fill="none" stroke="black"></path>
-            <path d="M 376,496 L 376,520" fill="none" stroke="black"></path>
-            <path d="M 392,272 L 392,336" fill="none" stroke="black"></path>
-            <path d="M 416,144 L 416,192" fill="none" stroke="black"></path>
-            <path d="M 480,192 L 480,240" fill="none" stroke="black"></path>
-            <path d="M 496,336 L 496,472" fill="none" stroke="black"></path>
-            <path d="M 496,488 L 496,600" fill="none" stroke="black"></path>
-            <path d="M 512,272 L 512,336" fill="none" stroke="black"></path>
-            <path d="M 536,128 L 536,144" fill="none" stroke="black"></path>
-            <path d="M 536,192 L 536,464" fill="none" stroke="black"></path>
-            <path d="M 568,144 L 568,192" fill="none" stroke="black"></path>
-            <path d="M 176,32 L 248,32" fill="none" stroke="black"></path>
-            <path d="M 176,64 L 248,64" fill="none" stroke="black"></path>
-            <path d="M 176,96 L 240,96" fill="none" stroke="black"></path>
-            <path d="M 280,96 L 352,96" fill="none" stroke="black"></path>
-            <path d="M 112,112 L 128,112" fill="none" stroke="black"></path>
-            <path d="M 376,112 L 520,112" fill="none" stroke="black"></path>
-            <path d="M 176,128 L 240,128" fill="none" stroke="black"></path>
-            <path d="M 280,128 L 352,128" fill="none" stroke="black"></path>
-            <path d="M 416,144 L 568,144" fill="none" stroke="black"></path>
-            <path d="M 224,160 L 248,160" fill="none" stroke="black"></path>
-            <path d="M 280,160 L 304,160" fill="none" stroke="black"></path>
-            <path d="M 416,192 L 568,192" fill="none" stroke="black"></path>
-            <path d="M 232,208 L 296,208" fill="none" stroke="black"></path>
-            <path d="M 320,240 L 480,240" fill="none" stroke="black"></path>
-            <path d="M 232,256 L 296,256" fill="none" stroke="black"></path>
-            <path d="M 392,272 L 512,272" fill="none" stroke="black"></path>
-            <path d="M 280,288 L 384,288" fill="none" stroke="black"></path>
-            <path d="M 272,304 L 320,304" fill="none" stroke="black"></path>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="656" width="552" viewBox="0 0 552 656" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+            <path d="M 184,64 L 184,88" fill="none" stroke="black"></path>
+            <path d="M 184,128 L 184,144" fill="none" stroke="black"></path>
+            <path d="M 184,416 L 184,432" fill="none" stroke="black"></path>
+            <path d="M 192,224 L 192,240" fill="none" stroke="black"></path>
+            <path d="M 208,304 L 208,336" fill="none" stroke="black"></path>
+            <path d="M 240,176 L 240,200" fill="none" stroke="black"></path>
+            <path d="M 240,256 L 240,272" fill="none" stroke="black"></path>
+            <path d="M 240,368 L 240,392" fill="none" stroke="black"></path>
+            <path d="M 240,448 L 240,600" fill="none" stroke="black"></path>
+            <path d="M 288,224 L 288,240" fill="none" stroke="black"></path>
+            <path d="M 296,128 L 296,144" fill="none" stroke="black"></path>
+            <path d="M 296,416 L 296,432" fill="none" stroke="black"></path>
+            <path d="M 320,496 L 320,520" fill="none" stroke="black"></path>
+            <path d="M 352,496 L 352,520" fill="none" stroke="black"></path>
+            <path d="M 368,272 L 368,336" fill="none" stroke="black"></path>
+            <path d="M 392,144 L 392,192" fill="none" stroke="black"></path>
+            <path d="M 456,192 L 456,240" fill="none" stroke="black"></path>
+            <path d="M 472,336 L 472,472" fill="none" stroke="black"></path>
+            <path d="M 472,488 L 472,600" fill="none" stroke="black"></path>
+            <path d="M 488,272 L 488,336" fill="none" stroke="black"></path>
+            <path d="M 512,128 L 512,144" fill="none" stroke="black"></path>
+            <path d="M 512,192 L 512,464" fill="none" stroke="black"></path>
+            <path d="M 544,144 L 544,192" fill="none" stroke="black"></path>
+            <path d="M 152,32 L 224,32" fill="none" stroke="black"></path>
+            <path d="M 152,64 L 224,64" fill="none" stroke="black"></path>
+            <path d="M 152,96 L 216,96" fill="none" stroke="black"></path>
+            <path d="M 256,96 L 328,96" fill="none" stroke="black"></path>
+            <path d="M 104,112 L 120,112" fill="none" stroke="black"></path>
+            <path d="M 352,112 L 496,112" fill="none" stroke="black"></path>
+            <path d="M 152,128 L 216,128" fill="none" stroke="black"></path>
+            <path d="M 256,128 L 328,128" fill="none" stroke="black"></path>
+            <path d="M 392,144 L 544,144" fill="none" stroke="black"></path>
+            <path d="M 200,160 L 224,160" fill="none" stroke="black"></path>
+            <path d="M 256,160 L 280,160" fill="none" stroke="black"></path>
+            <path d="M 392,192 L 544,192" fill="none" stroke="black"></path>
+            <path d="M 208,208 L 272,208" fill="none" stroke="black"></path>
+            <path d="M 296,240 L 456,240" fill="none" stroke="black"></path>
+            <path d="M 208,256 L 272,256" fill="none" stroke="black"></path>
+            <path d="M 368,272 L 488,272" fill="none" stroke="black"></path>
+            <path d="M 256,288 L 360,288" fill="none" stroke="black"></path>
+            <path d="M 248,304 L 296,304" fill="none" stroke="black"></path>
             <path d="M 112,320 L 128,320" fill="none" stroke="black"></path>
-            <path d="M 344,320 L 392,320" fill="none" stroke="black"></path>
-            <path d="M 272,336 L 320,336" fill="none" stroke="black"></path>
-            <path d="M 392,336 L 512,336" fill="none" stroke="black"></path>
-            <path d="M 224,400 L 304,400" fill="none" stroke="black"></path>
-            <path d="M 224,448 L 304,448" fill="none" stroke="black"></path>
-            <path d="M 280,480 L 328,480" fill="none" stroke="black"></path>
-            <path d="M 392,480 L 520,480" fill="none" stroke="black"></path>
-            <path d="M 304,528 L 472,528" fill="none" stroke="black"></path>
-            <path d="M 120,544 L 136,544" fill="none" stroke="black"></path>
-            <path d="M 280,576 L 448,576" fill="none" stroke="black"></path>
-            <path d="M 192,608 L 344,608" fill="none" stroke="black"></path>
-            <path d="M 400,608 L 544,608" fill="none" stroke="black"></path>
-            <path d="M 120,624 L 136,624" fill="none" stroke="black"></path>
-            <path d="M 176,640 L 328,640" fill="none" stroke="black"></path>
-            <path d="M 384,640 L 528,640" fill="none" stroke="black"></path>
-            <path d="M 176,640 L 192,608" fill="none" stroke="black"></path>
-            <path d="M 280,576 L 304,528" fill="none" stroke="black"></path>
-            <path d="M 328,640 L 344,608" fill="none" stroke="black"></path>
-            <path d="M 384,640 L 400,608" fill="none" stroke="black"></path>
-            <path d="M 448,576 L 472,528" fill="none" stroke="black"></path>
-            <path d="M 528,640 L 544,608" fill="none" stroke="black"></path>
-            <path d="M 176,32 C 167.16936,32 160,39.16936 160,48" fill="none" stroke="black"></path>
-            <path d="M 248,32 C 256.83064,32 264,39.16936 264,48" fill="none" stroke="black"></path>
-            <path d="M 176,64 C 167.16936,64 160,56.83064 160,48" fill="none" stroke="black"></path>
-            <path d="M 248,64 C 256.83064,64 264,56.83064 264,48" fill="none" stroke="black"></path>
-            <path d="M 176,96 C 167.16936,96 160,103.16936 160,112" fill="none" stroke="black"></path>
-            <path d="M 240,96 C 248.83064,96 256,103.16936 256,112" fill="none" stroke="black"></path>
-            <path d="M 280,96 C 271.16936,96 264,103.16936 264,112" fill="none" stroke="black"></path>
-            <path d="M 352,96 C 360.83064,96 368,103.16936 368,112" fill="none" stroke="black"></path>
-            <path d="M 520,112 C 528.83064,112 536,119.16936 536,128" fill="none" stroke="black"></path>
-            <path d="M 176,128 C 167.16936,128 160,120.83064 160,112" fill="none" stroke="black"></path>
-            <path d="M 240,128 C 248.83064,128 256,120.83064 256,112" fill="none" stroke="black"></path>
-            <path d="M 280,128 C 271.16936,128 264,120.83064 264,112" fill="none" stroke="black"></path>
-            <path d="M 352,128 C 360.83064,128 368,120.83064 368,112" fill="none" stroke="black"></path>
-            <path d="M 224,160 C 215.16936,160 208,152.83064 208,144" fill="none" stroke="black"></path>
-            <path d="M 248,160 C 256.83064,160 264,167.16936 264,176" fill="none" stroke="black"></path>
-            <path d="M 280,160 C 271.16936,160 264,167.16936 264,176" fill="none" stroke="black"></path>
-            <path d="M 304,160 C 312.83064,160 320,152.83064 320,144" fill="none" stroke="black"></path>
-            <path d="M 232,208 C 223.16936,208 216,215.16936 216,224" fill="none" stroke="black"></path>
-            <path d="M 296,208 C 304.83064,208 312,215.16936 312,224" fill="none" stroke="black"></path>
-            <path d="M 232,256 C 223.16936,256 216,248.83064 216,240" fill="none" stroke="black"></path>
-            <path d="M 296,256 C 304.83064,256 312,248.83064 312,240" fill="none" stroke="black"></path>
-            <path d="M 248,288 C 239.16936,288 232,295.16936 232,304" fill="none" stroke="black"></path>
-            <path d="M 248,288 C 256.83064,288 264,280.83064 264,272" fill="none" stroke="black"></path>
-            <path d="M 280,288 C 271.16936,288 264,280.83064 264,272" fill="none" stroke="black"></path>
-            <path d="M 272,304 C 263.16936,304 256,311.16936 256,320" fill="none" stroke="black"></path>
-            <path d="M 320,304 C 328.83064,304 336,311.16936 336,320" fill="none" stroke="black"></path>
-            <path d="M 272,336 C 263.16936,336 256,328.83064 256,320" fill="none" stroke="black"></path>
-            <path d="M 320,336 C 328.83064,336 336,328.83064 336,320" fill="none" stroke="black"></path>
-            <path d="M 248,352 C 239.16936,352 232,344.83064 232,336" fill="none" stroke="black"></path>
-            <path d="M 248,352 C 256.83064,352 264,359.16936 264,368" fill="none" stroke="black"></path>
-            <path d="M 280,352 C 271.16936,352 264,359.16936 264,368" fill="none" stroke="black"></path>
-            <path d="M 280,352 C 288.83064,352 296,344.83064 296,336" fill="none" stroke="black"></path>
-            <path d="M 224,400 C 215.16936,400 208,407.16936 208,416" fill="none" stroke="black"></path>
-            <path d="M 304,400 C 312.83064,400 320,407.16936 320,416" fill="none" stroke="black"></path>
-            <path d="M 224,448 C 215.16936,448 208,440.83064 208,432" fill="none" stroke="black"></path>
-            <path d="M 304,448 C 312.83064,448 320,440.83064 320,432" fill="none" stroke="black"></path>
-            <path d="M 280,480 C 271.16936,480 264,472.83064 264,464" fill="none" stroke="black"></path>
-            <path d="M 328,480 C 336.83064,480 344,487.16936 344,496" fill="none" stroke="black"></path>
-            <path d="M 392,480 C 383.16936,480 376,487.16936 376,496" fill="none" stroke="black"></path>
-            <path d="M 520,480 C 528.83064,480 536,472.83064 536,464" fill="none" stroke="black"></path>
-            <polygon class="arrowhead" points="504,600 492,594.4 492,605.6" fill="black" transform="rotate(90,496,600)"></polygon>
-            <path class="jump" d="M 496,488 C 502,488 502,472 496,472" fill="none" stroke="black"></path>
-            <polygon class="arrowhead" points="392,288 380,282.4 380,293.6" fill="black" transform="rotate(0,384,288)"></polygon>
-            <polygon class="arrowhead" points="384,520 372,514.4 372,525.6" fill="black" transform="rotate(90,376,520)"></polygon>
-            <polygon class="arrowhead" points="384,112 372,106.4 372,117.6" fill="black" transform="rotate(180,376,112)"></polygon>
-            <polygon class="arrowhead" points="352,520 340,514.4 340,525.6" fill="black" transform="rotate(90,344,520)"></polygon>
-            <polygon class="arrowhead" points="352,320 340,314.4 340,325.6" fill="black" transform="rotate(180,344,320)"></polygon>
-            <polygon class="arrowhead" points="328,240 316,234.4 316,245.6" fill="black" transform="rotate(180,320,240)"></polygon>
-            <polygon class="arrowhead" points="272,600 260,594.4 260,605.6" fill="black" transform="rotate(90,264,600)"></polygon>
-            <polygon class="arrowhead" points="272,392 260,386.4 260,397.6" fill="black" transform="rotate(90,264,392)"></polygon>
-            <polygon class="arrowhead" points="272,200 260,194.4 260,205.6" fill="black" transform="rotate(90,264,200)"></polygon>
-            <polygon class="arrowhead" points="216,88 204,82.4 204,93.6" fill="black" transform="rotate(90,208,88)"></polygon>
-            <polygon class="arrowhead" points="144,624 132,618.4 132,629.6" fill="black" transform="rotate(0,136,624)"></polygon>
-            <polygon class="arrowhead" points="144,544 132,538.4 132,549.6" fill="black" transform="rotate(0,136,544)"></polygon>
+            <path d="M 320,320 L 368,320" fill="none" stroke="black"></path>
+            <path d="M 248,336 L 296,336" fill="none" stroke="black"></path>
+            <path d="M 368,336 L 488,336" fill="none" stroke="black"></path>
+            <path d="M 200,400 L 280,400" fill="none" stroke="black"></path>
+            <path d="M 200,448 L 280,448" fill="none" stroke="black"></path>
+            <path d="M 256,480 L 304,480" fill="none" stroke="black"></path>
+            <path d="M 368,480 L 496,480" fill="none" stroke="black"></path>
+            <path d="M 280,528 L 448,528" fill="none" stroke="black"></path>
+            <path d="M 112,544 L 128,544" fill="none" stroke="black"></path>
+            <path d="M 256,576 L 424,576" fill="none" stroke="black"></path>
+            <path d="M 168,608 L 320,608" fill="none" stroke="black"></path>
+            <path d="M 376,608 L 520,608" fill="none" stroke="black"></path>
+            <path d="M 112,624 L 128,624" fill="none" stroke="black"></path>
+            <path d="M 152,640 L 304,640" fill="none" stroke="black"></path>
+            <path d="M 360,640 L 504,640" fill="none" stroke="black"></path>
+            <path d="M 152,640 L 168,608" fill="none" stroke="black"></path>
+            <path d="M 256,576 L 280,528" fill="none" stroke="black"></path>
+            <path d="M 304,640 L 320,608" fill="none" stroke="black"></path>
+            <path d="M 360,640 L 376,608" fill="none" stroke="black"></path>
+            <path d="M 424,576 L 448,528" fill="none" stroke="black"></path>
+            <path d="M 504,640 L 520,608" fill="none" stroke="black"></path>
+            <path d="M 152,32 C 143.16936,32 136,39.16936 136,48" fill="none" stroke="black"></path>
+            <path d="M 224,32 C 232.83064,32 240,39.16936 240,48" fill="none" stroke="black"></path>
+            <path d="M 152,64 C 143.16936,64 136,56.83064 136,48" fill="none" stroke="black"></path>
+            <path d="M 224,64 C 232.83064,64 240,56.83064 240,48" fill="none" stroke="black"></path>
+            <path d="M 152,96 C 143.16936,96 136,103.16936 136,112" fill="none" stroke="black"></path>
+            <path d="M 216,96 C 224.83064,96 232,103.16936 232,112" fill="none" stroke="black"></path>
+            <path d="M 256,96 C 247.16936,96 240,103.16936 240,112" fill="none" stroke="black"></path>
+            <path d="M 328,96 C 336.83064,96 344,103.16936 344,112" fill="none" stroke="black"></path>
+            <path d="M 496,112 C 504.83064,112 512,119.16936 512,128" fill="none" stroke="black"></path>
+            <path d="M 152,128 C 143.16936,128 136,120.83064 136,112" fill="none" stroke="black"></path>
+            <path d="M 216,128 C 224.83064,128 232,120.83064 232,112" fill="none" stroke="black"></path>
+            <path d="M 256,128 C 247.16936,128 240,120.83064 240,112" fill="none" stroke="black"></path>
+            <path d="M 328,128 C 336.83064,128 344,120.83064 344,112" fill="none" stroke="black"></path>
+            <path d="M 200,160 C 191.16936,160 184,152.83064 184,144" fill="none" stroke="black"></path>
+            <path d="M 224,160 C 232.83064,160 240,167.16936 240,176" fill="none" stroke="black"></path>
+            <path d="M 256,160 C 247.16936,160 240,167.16936 240,176" fill="none" stroke="black"></path>
+            <path d="M 280,160 C 288.83064,160 296,152.83064 296,144" fill="none" stroke="black"></path>
+            <path d="M 208,208 C 199.16936,208 192,215.16936 192,224" fill="none" stroke="black"></path>
+            <path d="M 272,208 C 280.83064,208 288,215.16936 288,224" fill="none" stroke="black"></path>
+            <path d="M 208,256 C 199.16936,256 192,248.83064 192,240" fill="none" stroke="black"></path>
+            <path d="M 272,256 C 280.83064,256 288,248.83064 288,240" fill="none" stroke="black"></path>
+            <path d="M 224,288 C 215.16936,288 208,295.16936 208,304" fill="none" stroke="black"></path>
+            <path d="M 224,288 C 232.83064,288 240,280.83064 240,272" fill="none" stroke="black"></path>
+            <path d="M 256,288 C 247.16936,288 240,280.83064 240,272" fill="none" stroke="black"></path>
+            <path d="M 248,304 C 239.16936,304 232,311.16936 232,320" fill="none" stroke="black"></path>
+            <path d="M 296,304 C 304.83064,304 312,311.16936 312,320" fill="none" stroke="black"></path>
+            <path d="M 248,336 C 239.16936,336 232,328.83064 232,320" fill="none" stroke="black"></path>
+            <path d="M 296,336 C 304.83064,336 312,328.83064 312,320" fill="none" stroke="black"></path>
+            <path d="M 224,352 C 215.16936,352 208,344.83064 208,336" fill="none" stroke="black"></path>
+            <path d="M 224,352 C 232.83064,352 240,359.16936 240,368" fill="none" stroke="black"></path>
+            <path d="M 256,352 C 247.16936,352 240,359.16936 240,368" fill="none" stroke="black"></path>
+            <path d="M 256,352 C 264.83064,352 272,344.83064 272,336" fill="none" stroke="black"></path>
+            <path d="M 200,400 C 191.16936,400 184,407.16936 184,416" fill="none" stroke="black"></path>
+            <path d="M 280,400 C 288.83064,400 296,407.16936 296,416" fill="none" stroke="black"></path>
+            <path d="M 200,448 C 191.16936,448 184,440.83064 184,432" fill="none" stroke="black"></path>
+            <path d="M 280,448 C 288.83064,448 296,440.83064 296,432" fill="none" stroke="black"></path>
+            <path d="M 256,480 C 247.16936,480 240,472.83064 240,464" fill="none" stroke="black"></path>
+            <path d="M 304,480 C 312.83064,480 320,487.16936 320,496" fill="none" stroke="black"></path>
+            <path d="M 368,480 C 359.16936,480 352,487.16936 352,496" fill="none" stroke="black"></path>
+            <path d="M 496,480 C 504.83064,480 512,472.83064 512,464" fill="none" stroke="black"></path>
+            <polygon class="arrowhead" points="480,600 468,594.4 468,605.6" fill="black" transform="rotate(90,472,600)"></polygon>
+            <path class="jump" d="M 472,488 C 478,488 478,472 472,472" fill="none" stroke="black"></path>
+            <polygon class="arrowhead" points="368,288 356,282.4 356,293.6" fill="black" transform="rotate(0,360,288)"></polygon>
+            <polygon class="arrowhead" points="360,520 348,514.4 348,525.6" fill="black" transform="rotate(90,352,520)"></polygon>
+            <polygon class="arrowhead" points="360,112 348,106.4 348,117.6" fill="black" transform="rotate(180,352,112)"></polygon>
+            <polygon class="arrowhead" points="328,520 316,514.4 316,525.6" fill="black" transform="rotate(90,320,520)"></polygon>
+            <polygon class="arrowhead" points="328,320 316,314.4 316,325.6" fill="black" transform="rotate(180,320,320)"></polygon>
+            <polygon class="arrowhead" points="304,240 292,234.4 292,245.6" fill="black" transform="rotate(180,296,240)"></polygon>
+            <polygon class="arrowhead" points="248,600 236,594.4 236,605.6" fill="black" transform="rotate(90,240,600)"></polygon>
+            <polygon class="arrowhead" points="248,392 236,386.4 236,397.6" fill="black" transform="rotate(90,240,392)"></polygon>
+            <polygon class="arrowhead" points="248,200 236,194.4 236,205.6" fill="black" transform="rotate(90,240,200)"></polygon>
+            <polygon class="arrowhead" points="192,88 180,82.4 180,93.6" fill="black" transform="rotate(90,184,88)"></polygon>
+            <polygon class="arrowhead" points="136,624 124,618.4 124,629.6" fill="black" transform="rotate(0,128,624)"></polygon>
+            <polygon class="arrowhead" points="136,544 124,538.4 124,549.6" fill="black" transform="rotate(0,128,544)"></polygon>
             <polygon class="arrowhead" points="136,320 124,314.4 124,325.6" fill="black" transform="rotate(0,128,320)"></polygon>
-            <polygon class="arrowhead" points="136,112 124,106.4 124,117.6" fill="black" transform="rotate(0,128,112)"></polygon>
+            <polygon class="arrowhead" points="128,112 116,106.4 116,117.6" fill="black" transform="rotate(0,120,112)"></polygon>
             <g class="text">
-              <text x="212" y="52">Artifact</text>
-              <text x="448" y="100">Decentralized</text>
-              <text x="548" y="100">Identifier</text>
+              <text x="188" y="52">Artifact</text>
+              <text x="408" y="100">Decentralized</text>
+              <text x="508" y="100">Identifier</text>
               <text x="28" y="116">Issuer</text>
-              <text x="208" y="116">Statement</text>
-              <text x="316" y="116">Envelope</text>
-              <text x="440" y="164">DID</text>
-              <text x="472" y="164">Key</text>
-              <text x="524" y="164">Manifest</text>
-              <text x="260" y="228">Signed</text>
-              <text x="364" y="228">COSE</text>
-              <text x="416" y="228">Signing</text>
-              <text x="264" y="244">Statement</text>
-              <text x="452" y="292">Transparency</text>
+              <text x="184" y="116">Statement</text>
+              <text x="292" y="116">Envelope</text>
+              <text x="416" y="164">DID</text>
+              <text x="448" y="164">Key</text>
+              <text x="500" y="164">Manifest</text>
+              <text x="236" y="228">Signed</text>
+              <text x="340" y="228">COSE</text>
+              <text x="392" y="228">Signing</text>
+              <text x="240" y="244">Statement</text>
+              <text x="428" y="292">Transparency</text>
               <text x="52" y="324">Transparency</text>
-              <text x="296" y="324">Receipt</text>
-              <text x="448" y="324">Service</text>
+              <text x="272" y="324">Receipt</text>
+              <text x="424" y="324">Service</text>
               <text x="72" y="340">Service</text>
-              <text x="264" y="420">Transparent</text>
-              <text x="264" y="436">Statement</text>
+              <text x="240" y="420">Transparent</text>
+              <text x="240" y="436">Statement</text>
               <text x="36" y="548">Verifier</text>
-              <text x="332" y="548">Verify</text>
-              <text x="408" y="548">Transparent</text>
-              <text x="376" y="564">Statement</text>
+              <text x="308" y="548">Verify</text>
+              <text x="384" y="548">Transparent</text>
+              <text x="352" y="564">Statement</text>
               <text x="32" y="628">Auditor</text>
-              <text x="224" y="628">Collect</text>
-              <text x="292" y="628">Receipts</text>
-              <text x="444" y="628">Replay</text>
-              <text x="488" y="628">Log</text>
+              <text x="200" y="628">Collect</text>
+              <text x="268" y="628">Receipts</text>
+              <text x="420" y="628">Replay</text>
+              <text x="464" y="628">Log</text>
             </g>
           </svg><a href="#section-5-1.1" class="pilcrow">¶</a>
 </div>
@@ -1704,21 +1702,14 @@ For instance, if the Issuer publishes its manifest at <code>https://sample.issue
 If an issuer uses multiple DIDs (for instance, because their clients support different resolution methods), they <span class="bcp14">MUST</span> ensure that statements signed under each DID are consistent.<a href="#section-5.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-5.1.1-4">Issuers <span class="bcp14">MAY</span> update their DID Document at any time, for instance to refresh their signing keys or algorithms, but they <span class="bcp14">SHOULD NOT</span> remove or change any of their previous keys unless they intend to revoke all Signed Statements that are registered as Transparent Statements issued with those keys.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p>
 <p id="section-5.1.1-5">The Issuer's DID appears in the protected header of Signed Statements' Envelopes, while the version of the key from the DID Document used to sign the Signed Statement is written in the <code>kid</code> header.<a href="#section-5.1.1-5" class="pilcrow">¶</a></p>
-<p id="section-5.1.1-6"><code>kid</code> <span class="bcp14">MUST</span> either be an absolute URL,
-or a relative URL. Relative URL <span class="bcp14">MUST</span> be
-relative to an <code>iss</code> value. When relative URL is used,
-<code>iss</code> <span class="bcp14">MUST</span> also be present in the protected header.<a href="#section-5.1.1-6" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-6"><code>kid</code> <span class="bcp14">MUST</span> either be an absolute URL, or a relative URL. Relative URL <span class="bcp14">MUST</span> be relative to an <code>iss</code> value. When relative URL is used, <code>iss</code> <span class="bcp14">MUST</span> also be present in the protected header.<a href="#section-5.1.1-6" class="pilcrow">¶</a></p>
 <p id="section-5.1.1-7">Resolving <code>kid</code> <span class="bcp14">MUST</span> return an identity document of a registered content type (a set of public keys).
-In the case of <code>kid</code> being an absolute DID URL, the identity document is called a DID Document,
-and is expected ot have content type <code>application/did+json</code>.<a href="#section-5.1.1-7" class="pilcrow">¶</a></p>
+In the case of <code>kid</code> being an absolute DID URL, the identity document is called a DID Document, and is expected ot have content type <code>application/did+json</code>.<a href="#section-5.1.1-7" class="pilcrow">¶</a></p>
 <p id="section-5.1.1-8">To dereference a DID URL, it first <span class="bcp14">MUST</span> be resolved. After that the fragment is processed according to the media type.<a href="#section-5.1.1-8" class="pilcrow">¶</a></p>
-<p id="section-5.1.1-9">For example, when resolving <code>did:example:123#key-42</code>,
-first, the identity document for <code>did:example:123</code> is resolved as content type <code>application/did+json</code>,
-next, the fragment <code>#key-42</code> is dereferenced to a verification method that contains a <code>publicKeyJwk</code> property.<a href="#section-5.1.1-9" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-9">For example, when resolving <code>did:example:123#key-42</code>, first, the identity document for <code>did:example:123</code> is resolved as content type <code>application/did+json</code>, next, the fragment <code>#key-42</code> is dereferenced to a verification method that contains a <code>publicKeyJwk</code> property.<a href="#section-5.1.1-9" class="pilcrow">¶</a></p>
 <p id="section-5.1.1-10">The content type of <code>publicKeyJwk</code> is expected to be <code>application/jwk+json</code>.<a href="#section-5.1.1-10" class="pilcrow">¶</a></p>
 <p id="section-5.1.1-11">The details of both <code>DID resolution</code> and <code>DID dereferencing</code> are out of scope for this document.<a href="#section-5.1.1-11" class="pilcrow">¶</a></p>
-<p id="section-5.1.1-12">The <code>iss</code> or <code>kid</code>, might not be DID URLs, however the following interfaces <span class="bcp14">MUST</span> be satisfied in order to ensure
-issuer identity documents, and associated keys are discoverable in a consistent manner.<a href="#section-5.1.1-12" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-12">The <code>iss</code> or <code>kid</code>, might not be DID URLs, however the following interfaces <span class="bcp14">MUST</span> be satisfied in order to ensure issuer identity documents, and associated keys are discoverable in a consistent manner.<a href="#section-5.1.1-12" class="pilcrow">¶</a></p>
 <div id="sec-resolving-identity-documents">
 <section id="section-5.1.1.1">
             <h5 id="name-resolving-identity-document">
@@ -1727,8 +1718,9 @@ issuer identity documents, and associated keys are discoverable in a consistent 
 <p id="section-5.1.1.1-1">The value of <code>id</code> might be found the <code>iss</code> or <code>sub</code> claims if they are present in the protected header or payload.<a href="#section-5.1.1.1-1" class="pilcrow">¶</a></p>
 <div class="lang-sh sourcecode" id="section-5.1.1.1-2">
 <pre>
-resolve = (id: string, accept: content_type = 'application/did+json') =&gt;
-idDocument (of content type application/did+json).
+resolve = (id: string, accept: \
+  content_type = 'application/did+json') =&gt;
+  idDocument (of content type application/did+json)
 </pre><a href="#section-5.1.1.1-2" class="pilcrow">¶</a>
 </div>
 <p id="section-5.1.1.1-3">For example:<a href="#section-5.1.1.1-3" class="pilcrow">¶</a></p>
@@ -1750,17 +1742,15 @@ did:example:123
       "kty": "EC",
       "crv": "P-384",
       "alg": "ES384",
-      "x": "LCeAt2sW36j94wuFP0gNEIHDzqR6Nh_Udu2ObLer3cKFBCaAHY1svmbPV69bP3RH",
-      "y": "zz2SkcOGYM6PbYlw19tcbpzo6bEMYHIwGBnN5rd8QWykAprstPdxx4U0uScvDcYd"
+      "x": "LCeAt2sW36j94wuFP0gN...Ler3cKFBCaAHY1svmbPV69bP3RH",
+      "y": "zz2SkcOGYM6PbYlw19tc...rd8QWykAprstPdxx4U0uScvDcYd"
     }
   }]
 }
 </pre><a href="#section-5.1.1.1-6" class="pilcrow">¶</a>
 </div>
-<p id="section-5.1.1.1-7">Editor note, we might wish to eliminate this intermediate identity document content type,
-by treating it as an alterative encoding of <code>application/jwk-set+json</code> or <code>application/cose-key-set</code>.<a href="#section-5.1.1.1-7" class="pilcrow">¶</a></p>
-<p id="section-5.1.1.1-8">However, there is no media type fragment processing directive
-that would enable dereferencing the known key set content types, listed above.<a href="#section-5.1.1.1-8" class="pilcrow">¶</a></p>
+<p id="section-5.1.1.1-7">Editor note, we might wish to eliminate this intermediate identity document content type, by treating it as an alterative encoding of <code>application/jwk-set+json</code> or <code>application/cose-key-set</code>.<a href="#section-5.1.1.1-7" class="pilcrow">¶</a></p>
+<p id="section-5.1.1.1-8">However, there is no media type fragment processing directive that would enable dereferencing the known key set content types, listed above.<a href="#section-5.1.1.1-8" class="pilcrow">¶</a></p>
 <div id="sec-comment-on-oidc">
 <section id="section-5.1.1.1.1">
               <h6 id="name-comment-on-oidc">
@@ -1773,8 +1763,7 @@ that would enable dereferencing the known key set content types, listed above.<a
 <p id="section-5.1.1.1.1-5"><code>https://contoso.example/.well-known/openid-configuration</code>.<a href="#section-5.1.1.1.1-5" class="pilcrow">¶</a></p>
 <p id="section-5.1.1.1.1-6">This URL will resolve to a JSON document which contains the property:<a href="#section-5.1.1.1.1-6" class="pilcrow">¶</a></p>
 <p id="section-5.1.1.1.1-7"><code>jwks_uri</code>, for example <code>https://contoso.example/.well-known/jwks.json</code><a href="#section-5.1.1.1.1-7" class="pilcrow">¶</a></p>
-<p id="section-5.1.1.1.1-8">This URL will resolve to a JSON document of content type <code>application/jwk-set+json</code>,
-which will contain specific keys... for example:<a href="#section-5.1.1.1.1-8" class="pilcrow">¶</a></p>
+<p id="section-5.1.1.1.1-8">This URL will resolve to a JSON document of content type <code>application/jwk-set+json</code>, which will contain specific keys... for example:<a href="#section-5.1.1.1.1-8" class="pilcrow">¶</a></p>
 <div class="lang-json sourcecode" id="section-5.1.1.1.1-9">
 <pre>
 {
@@ -1783,24 +1772,24 @@ which will contain specific keys... for example:<a href="#section-5.1.1.1.1-8" c
       "alg": "RS256",
       "kty": "RSA",
       "use": "sig",
-      "n": "wW9TkSbcn5FV3iUJ-812sqTvwTGCFrDm6vD2U-g23gn6rrBdFZQbf2bgEnSkolph6CanOYTQ1lKVhKjHLd6Q4MDVGidbVBhESxib2YIzJVUS-0oQgizkBEJxyHI4Zl3xX_sdA_yegLUi-Ykt_gaMPSw_vpxe-pBxu-jd14i-jDfwoPJUdF8ZJGS9orCPRiHCYLDgOscC9XibH9rUbTvG8q4bAPx9Ox6malx4OLvU3pXVjew6LG3iBi2YhpCWe6voMvZJYXqC1n5Mk_KOdGcCFtDgu3I56SGSfsF7-tI7qG1ZO8RMuzqH0LkJVirujYzXrnMZ7WgbMPXmHU8i4z04zw",
+      "n": "wW9TkSbcn5FV3iUJ-812sqTvwT...YzXrnMZ7WgbMPXmHU8i4z04zw",
       "e": "AQAB",
-      "kid": "NTBGNTJEMDc3RUE3RUVEOTM4NDcyOEFDNzEyOTY5NDNGOUQ4OEU5OA",
-      "x5t": "NTBGNTJEMDc3RUE3RUVEOTM4NDcyOEFDNzEyOTY5NDNGOUQ4OEU5OA",
+      "kid": "NTBGNTJEMDc3RUE3RUVEOTM4NDcEFDNzEyOTY5NDNGOUQ4OEU5OA",
+      "x5t": "NTBGNTJEMDc3RUE3RUVEOTM4NDcEFDNzEyOTY5NDNGOUQ4OEU5OA",
       "x5c": [
-        "MIIDCzCCAfOgAwIBAgIJANPng0XRWwsdMA0GCSqGSIb3DQEBBQUAMBwxGjAYBgNVBAMMEWNvbnRvc28uYXV0aDAuY29tMB4XDTE0MDcxMTE2NTQyN1oXDTI4MDMxOTE2NTQyN1owHDEaMBgGA1UEAwwRY29udG9zby5hdXRoMC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDBb1ORJtyfkVXeJQn7zXaypO/BMYIWsObq8PZT6DbeCfqusF0VlBt/ZuASdKSiWmHoJqc5hNDWUpWEqMct3pDgwNUaJ1tUGERLGJvZgjMlVRL7ShCCLOQEQnHIcjhmXfFf+x0D/J6AtSL5iS3+Bow9LD++nF76kHG76N3XiL6MN/Cg8lR0XxkkZL2isI9GIcJgsOA6xwL1eJsf2tRtO8byrhsA/H07HqZqXHg4u9TeldWN7DosbeIGLZiGkJZ7q+gy9klheoLWfkyT8o50ZwIW0OC7cjnpIZJ+wXv60juobVk7xEy7OofQuQlWKu6NjNeucxntaBsw9eYdTyLjPTjPAgMBAAGjUDBOMB0GA1UdDgQWBBTLarHdkNa5CzPyiKJU51t8JWn9WTAfBgNVHSMEGDAWgBTLarHdkNa5CzPyiKJU51t8JWn9WTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4IBAQA2FOjm+Bpbqk59rQBC0X6ops1wBcXH8clnXfG1G9qeRwLEwSef5HPz4TTh1f2lcf4Pcq2vF0HbVNJFnLVV+PjR9ACkto+v1n84i/U4BBezZyYuX2ZpEbv7hV/PWxg8tcVrtyPaj60UaA/pUA86CfYy+LckY4NRKmD7ZrcCzjxW2hFGNanfm2FEryxXA3RMNf6IiW7tbJ9ZGTEfA/DhVnZgh/e82KVX7EZnkB4MjCQrwj9QsWSMBtBiYp0/vRi9cxDFHlUwnYAUeZdHWTW+Rp2JX7Qwf0YycxgyjkGAUEZc4WpdNiQlwYf5G5epfOtHGiwiJS+u/nSYvqCFt57+g3R+"
+        "MIIDCzCCAfOgAwIBAgIPng0XRWwsd...f5GOGwJS+u/nSYvqCFt57+g3R+"
       ]
     },
     {
       "alg": "RS256",
       "kty": "RSA",
       "use": "sig",
-      "n": "ylgVZbNR4nlsU_AbU8Zd7ZhVfmYuwq-RB1_YQWHY362pAed-qgSXV1QmKwCukQ2WDsPHWgpPuEf3O_acmJcCiSxhctpBr5WKkji5o50YX2FqC3xymGkYW5NilvFznKaKU45ulBVByrcb3Vt8BqqBAhaD4YywZZKo7mMudcq_M__f0_tB4fHsHHe7ehWobWtzAW7_NRP0_FjB4Kw4PiqJnChPvfbuxTCEUcIYrshRwD6GF4D_oLdeR44dwx4wtEgvPOtkQ5XIGrhQC_sgWcb2jh7YXauVUjuPezP-VkK7Wm9mZRe758q43SWxwT3afo5BLa3_YLWazqcpWRXn9QEDWw",
+      "n": "ylgVZbNR4nlsU_AbU8Zd7ZhVfm...fo5BLa3_YLWazqcpWRXn9QEDWw",
       "e": "AQAB",
       "kid": "aMIKy_brQk3nLd0PKd9ln",
       "x5t": "-xcTyx47q3ddycG7LtE6QCcETbs",
       "x5c": [
-        "MIIC/TCCAeWgAwIBAgIJH62yWyX7VxxQMA0GCSqGSIb3DQEBCwUAMBwxGjAYBgNVBAMTEWNvbnRvc28uYXV0aDAuY29tMB4XDTIwMDMxMTE5Mjk0N1oXDTMzMTExODE5Mjk0N1owHDEaMBgGA1UEAxMRY29udG9zby5hdXRoMC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDKWBVls1HieWxT8BtTxl3tmFV+Zi7Cr5EHX9hBYdjfrakB536qBJdXVCYrAK6RDZYOw8daCk+4R/c79pyYlwKJLGFy2kGvlYqSOLmjnRhfYWoLfHKYaRhbk2KW8XOcpopTjm6UFUHKtxvdW3wGqoECFoPhjLBlkqjuYy51yr8z/9/T+0Hh8ewcd7t6Fahta3MBbv81E/T8WMHgrDg+KomcKE+99u7FMIRRwhiuyFHAPoYXgP+gt15Hjh3DHjC0SC8862RDlcgauFAL+yBZxvaOHthdq5VSO497M/5WQrtab2ZlF7vnyrjdJbHBPdp+jkEtrf9gtZrOpylZFef1AQNbAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFPVdE4SPvuhlODV0GOcPE4QZ7xNuMA4GA1UdDwEB/wQEAwIChDANBgkqhkiG9w0BAQsFAAOCAQEAu2nhfiJk/Sp49LEsR1bliuVMP9nycbSz0zdp2ToAy0DZffTd0FKk/wyFtmbb0UFTD2aOg/WZJLDc+3dYjWQ15SSLDRh6LV45OHU8Dkrc2qLjiRdoh2RI+iQFakDn2OgPNgquL+3EEIpbBDA/uVoOYCbkqJNaNM/egN/s2vZ6Iq7O+BprWX/eM25xw8PMi+MU4K2sJpkcDRwoK9Wy8eeSSRIGYnpKO42g/3QI9+BRa5uD+9shG6n7xgzAPGeldUXajCThomwO8vInp6VqY8k3IeLEYoboJj5KMfJgOWUkmaoh6ZBJHnCogvSXI35jbxCxmHAbK+KdTka/Yg2MadFZdA=="
+        "MIIC/TCCAeWgAwIBAgIJH62ygzAPG...xCxmHAbK+KdTka/Yg2MadFZdA=="
       ]
     }
   ]
@@ -1818,14 +1807,14 @@ which will contain specific keys... for example:<a href="#section-5.1.1.1.1-8" c
 <a href="#section-5.1.1.2" class="section-number selfRef">5.1.1.2. </a><a href="#name-dereferencing-public-keys" class="section-name selfRef">Dereferencing Public Keys</a>
             </h5>
 <p id="section-5.1.1.2-1"><code>kid</code> is always present in the protected header.<a href="#section-5.1.1.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.1.1.2-2">If <code>iss</code> is also present, <code>kid</code> <span class="bcp14">MUST</span> be a relative URL to <code>iss</code>,
-otherwise <code>kid</code> <span class="bcp14">MUST</span> be an absolute URL that starts with <code>iss</code>.<a href="#section-5.1.1.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.1.1.2-2">If <code>iss</code> is also present, <code>kid</code> <span class="bcp14">MUST</span> be a relative URL to <code>iss</code>, otherwise <code>kid</code> <span class="bcp14">MUST</span> be an absolute URL that starts with <code>iss</code>.<a href="#section-5.1.1.2-2" class="pilcrow">¶</a></p>
 <p id="section-5.1.1.2-3"><code>id</code> = <code>kid</code> if <code>iss</code> is undefined, or <code>iss</code> + <code>#</code> + <code>kid</code> when <code>iss</code> is defined.<a href="#section-5.1.1.2-3" class="pilcrow">¶</a></p>
 <p id="section-5.1.1.2-4">See also <a href="https://datatracker.ietf.org/doc/draft-ietf-cose-cwt-claims-in-headers/">draft-ietf-cose-cwt-claims-in-headers</a>.<a href="#section-5.1.1.2-4" class="pilcrow">¶</a></p>
 <div class="lang-sh sourcecode" id="section-5.1.1.2-5">
 <pre>
-dereference = (id: string, accept: content_type = 'application/jwk+json') =&gt;
-publicKeyJwk (of content type application/jwk+json).
+dereference = (id: string, accept: \
+  content_type = 'application/jwk+json') =&gt;
+  publicKeyJwk (of content type application/jwk+json)
 </pre><a href="#section-5.1.1.2-5" class="pilcrow">¶</a>
 </div>
 <p id="section-5.1.1.2-6">For example, when DIDs are used:<a href="#section-5.1.1.2-6" class="pilcrow">¶</a></p>
@@ -1841,8 +1830,8 @@ did:example:123#key-42
   "kty": "EC",
   "crv": "P-384",
   "alg": "ES384",
-  "x": "LCeAt2sW36j94wuFP0gNEIHDzqR6Nh_Udu2ObLer3cKFBCaAHY1svmbPV69bP3RH",
-  "y": "zz2SkcOGYM6PbYlw19tcbpzo6bEMYHIwGBnN5rd8QWykAprstPdxx4U0uScvDcYd"
+  "x": "LCeAt2sW36j94wuFP0gNEIHDzqR6Nh...er3cKFBCaAHY1svmbPV69bP3RH",
+  "y": "zz2SkcOGYM6PbYlw19tcbpzo6bEMYH...d8QWykAprstPdxx4U0uScvDcYd"
 }
 </pre><a href="#section-5.1.1.2-9" class="pilcrow">¶</a>
 </div>
@@ -1915,31 +1904,17 @@ This attestation evidence can be supplemented with Receipts for the software and
           <h4 id="name-registration-policies">
 <a href="#section-5.2.2" class="section-number selfRef">5.2.2. </a><a href="#name-registration-policies" class="section-name selfRef">Registration Policies</a>
           </h4>
-<p id="section-5.2.2-1">A Transparency Service that accepts to register any valid Signed
-Statement offered by anonymous Issuers would only provide
-limited value, or no value, to verifiers. As a consequence, some form of
-authorization is needed prior to registration of Signed Statements to
-ensure completeness of audit. More advanced use case will rely on the
-Transparency Service performing additional domain-specific checks before
-a Signed Statement is accepted. For example, some Transparency Services
-may validate the content of Signed Statements.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2.2-2">We use the term "registration policies" to refer to the checks that are
-performed before a Signed Statement is registered given a set of input
-values. This baseline specification leaves the implementation of the
-registration policy to the provider of the Transparency Services and its
-users.<a href="#section-5.2.2-2" class="pilcrow">¶</a></p>
-<p id="section-5.2.2-3">As a minimum we expect that a deployment authenticates the Issuer of the
-Signed Statement, which requires some form of trust anchor. As defined
-in <span>[<a href="#RFC6024" class="cite xref">RFC6024</a>]</span>, "A trust anchor represents an authoritative
-entity via a public key and associated data. The public key is used to
-verify digital signatures, and the associated data is used to constrain
-the types of information for which the trust anchor is authoritative."
-The Trust Anchor may be a certificate, a raw public key or other
-structure, as appropriate. It can be a non-root certificate when it is a
-certificate.<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.2.2-4">A provider of a Transparency Service is, however, expected to indicate
-what registration policy is used in a given deployment and inform its
-users about changes to the registration policy.<a href="#section-5.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-1">A Transparency Service that accepts to register any valid Signed Statement offered by anonymous Issuers would only provide limited value, or no value, to verifiers.
+As a consequence, some form of authorization is needed prior to registration of Signed Statements to ensure completeness of audit.
+More advanced use case will rely on the Transparency Service performing additional domain-specific checks before a Signed Statement is accepted.
+For example, some Transparency Services may validate the content of Signed Statements.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-2">We use the term "registration policies" to refer to the checks that are performed before a Signed Statement is registered given a set of input values.
+This baseline specification leaves the implementation of the registration policy to the provider of the Transparency Services and its users.<a href="#section-5.2.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-3">As a minimum we expect that a deployment authenticates the Issuer of the Signed Statement, which requires some form of trust anchor.
+As defined in <span>[<a href="#RFC6024" class="cite xref">RFC6024</a>]</span>, "A trust anchor represents an authoritative entity via a public key and associated data.
+The public key is used to verify digital signatures, and the associated data is used to constrain the types of information for which the trust anchor is authoritative."
+The Trust Anchor may be a certificate, a raw public key or other structure, as appropriate. It can be a non-root certificate when it is a certificate.<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-4">A provider of a Transparency Service is, however, expected to indicate what registration policy is used in a given deployment and inform its users about changes to the registration policy.<a href="#section-5.2.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-registry-security-requirements">
@@ -1949,7 +1924,9 @@ users about changes to the registration policy.<a href="#section-5.2.2-4" class=
           </h4>
 <p id="section-5.2.3-1">There are many different candidate verifiable data structures that may be used to implement the Registry, such as chronological Merkle Trees, sparse/indexed Merkle Trees, full blockchains, and many other variants.
 The Registry is only required to support concise Receipts (i.e., whose size grows at most logarithmically in the number of entries in the Registry) that can be encoded as a COSE Signed Merkle Tree Proof.<a href="#section-5.2.3-1" class="pilcrow">¶</a></p>
-<p id="section-5.2.3-2">It is possible to offer multiple signature algorithms for the COSE signature of receipts' Signed Merkle Tree, or to change the signing algorithm at later points. However, the Merkle Tree algorithm (including its internal hash function) cannot easily be changed without breaking the consistency of the Registry. It is possible to maintain separate Registries for each algorithm in parallel but the Transparency Service is then responsible for proving their mutual consistency.<a href="#section-5.2.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.2.3-2">It is possible to offer multiple signature algorithms for the COSE signature of receipts' Signed Merkle Tree, or to change the signing algorithm at later points.
+However, the Merkle Tree algorithm (including its internal hash function) cannot easily be changed without breaking the consistency of the Registry.
+It is possible to maintain separate Registries for each algorithm in parallel but the Transparency Service is then responsible for proving their mutual consistency.<a href="#section-5.2.3-2" class="pilcrow">¶</a></p>
 <div id="sec-finality">
 <section id="section-5.2.3.1">
             <h5 id="name-finality">
@@ -2219,11 +2196,12 @@ Receipt = [
     proof: SignedMerkleTreeProof
 ]
 
-; Additional protected headers in the COSE signed_tree_root of the SignedMerkleTreeProof
+; Additional protected headers
+; in the COSE signed_tree_root of the SignedMerkleTreeProof
 Protected_Header = {
-  390 =&gt; int                 ; SCITT Receipt Version
-  394 =&gt; tstr                ; DID of Transparency Service (required)
-  ? 395 =&gt; RegistrationInfo  ; Registration policy information (optional)
+  390 =&gt; int         ; SCITT Receipt Version
+  394 =&gt; tstr        ; DID of Transparency Service (required)
+  ? 395 =&gt; Reg_info  ; Registration policy information (optional)
 
   ; Other COSE Signed Merkle Tree headers
   ; (e.g. tree algorithm, tree size)
@@ -2379,7 +2357,7 @@ To facilitate automated response to errors, this document defines a set of stand
 <pre>
 {
   "type": "urn:ietf:params:scitt:error:badSignatureAlgorithm",
-  "detail": "The Statement was signed with an algorithm the server does not support"
+  "detail": "The Statement was signed with an unsupported algorithm"
 }
 </pre><a href="#section-8.1-6" class="pilcrow">¶</a>
 </div>
