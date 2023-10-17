@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-15T00:36:36.939765+00:00",
+  "timestamp": "2023-10-17T00:34:18.680703+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -10673,26 +10673,118 @@
       "id": "PR_kwDOIvmHss5cx1rU",
       "title": "Kramdown format fixes, including width of code blocks - IETF Datatracker Update",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/110",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR is intended to update https://datatracker.ietf.org/doc/draft-ietf-scitt-architecture/ as the current version has broken codeblock formatting and no longer reflects the current state of the draft\r\n\r\n- https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.html#section-5.1.1.1-5\r\n- https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.html#section-5.1.1.1.1-8\r\n- https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.html#section-5.1.1.1.1-9\r\n- https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.html#section-5.1.1.2-8\r\n- https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.html#section-5.1.1.2-9\r\n ",
       "createdAt": "2023-10-13T22:42:54Z",
-      "updatedAt": "2023-10-14T01:19:10Z",
+      "updatedAt": "2023-10-16T15:54:25Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
       "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
       "headRefName": "format-width-fixes",
-      "headRefOid": "8f77ee8f7098cecac738db547a1e378c702ae688",
+      "headRefOid": "44ccf1476290e2de51c21d1c963463b869a8d181",
+      "closedAt": "2023-10-16T15:40:24Z",
+      "mergedAt": "2023-10-16T15:40:24Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "512b43a01341759fdc1a0d25b63e06d2add1e1b9"
+      },
+      "comments": [
+        {
+          "author": "hannestschofenig",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I looked through the changes and they are fine.\r\nThanks for fixing the over-long lines in the examples.",
+          "createdAt": "2023-10-16T14:41:23Z",
+          "updatedAt": "2023-10-16T14:41:23Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5kJ_ny",
+          "commit": {
+            "abbreviatedOid": "8f77ee8"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": ":ship: it",
+          "createdAt": "2023-10-16T15:38:35Z",
+          "updatedAt": "2023-10-16T15:38:35Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kJ_8Q",
+          "commit": {
+            "abbreviatedOid": "8f77ee8"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-16T15:39:14Z",
+          "updatedAt": "2023-10-16T15:39:14Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n2. Such Statements must be registered on a secure append-only Log, so that their provenance and history can be independently and consistently audited\r\n3. Issuers can efficiently prove to any other party the Registration of their Signed Statements; verifying this proof ensures that the Issuer is consistent and non-equivocal when producing Signed Statements\r\n```",
+              "createdAt": "2023-10-16T15:39:14Z",
+              "updatedAt": "2023-10-16T15:39:15Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 111,
+      "id": "PR_kwDOIvmHss5c1SpL",
+      "title": "Change Feed label 392 to bstr, representing an opaque series of bytes",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/111",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This attempts to resolve the balance between a generic string and a structured string for how issuers and verifiers can identify \"a sequence of Signed Statements about the same Artifact.\", as [currently defined](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/main/draft-ietf-scitt-architecture.md?plain=1#L189)\r\n\r\nChanging to `bstr` enables an issuer to set the `Feed` to be a `sub`, and it also allows an issuer to use other identifier formats. \r\n\r\nThere's a great suggestion to use `sub`, as part of the CTW (PR #108). And at first it looks fairly simple.\r\n```cddl\r\nCWT_Claims = {\r\n  1 => tstr; iss, the issuer that is making statements\r\n  2 -> tstr; sub, the subject about which the statements are made, throughout this spec, this is also called feed.\r\n * tstr => any\r\n}\r\n```\r\n\r\nThe challenge is a CWT_Claim is far more expressive [as defined](https://www.iana.org/assignments/cwt/cwt.xhtml)\r\n\r\nFor an issuer and a verifier to clearly identify the specific artifact they are referencing with CWT_Claims, it would be both powerful and confusing for an issuer to specify which CWT_Claims properties they were using to identify the feed.\r\n\r\nAn issuer could add: \r\n\r\n```cddl\r\nCWT_Claims = {\r\n  1 => tstr; iss, the issuer that is making statements\r\n  2 -> tstr; sub, the subject about which the statements are made, throughout this spec, this is also called feed.\r\n  256 -> bstr; ueid, The Universal Entity ID \r\n  260 -> array; hwversion, the Hardware Version Identifier\r\n  2395 -> uint; psa-security-lifecycle, PSA Security Lifecycle\t\r\n   * tstr => any\r\n}\r\n```\r\n\r\nUsing the text in PR #103, changing the Feed to `bstr`, makes it clear the Feed is:\r\n\r\n> Feed:\r\n> : a logical collection of Statements about the same Artifact.\r\n> For any step or set of steps in a supply chain there will be multiple statements made about the same Artifact. Issuers use the Feed to create a coherent sequence of Signed Statements about the same Artifact and Verifiers use the Feed to ensure completeness and non-equivocation in supply chain evidence by identifying all Transparent Statements linked to the one(s) they are evaluating.",
+      "createdAt": "2023-10-15T15:41:11Z",
+      "updatedAt": "2023-10-16T15:12:02Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
+      "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
+      "headRefName": "feed_as_bstr",
+      "headRefOid": "b1e72c7b34df021160d4891bbe80546b9e50c6c7",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "comments": [
+        {
+          "author": "robinbryce",
+          "authorAssociation": "NONE",
+          "body": "LGTM",
+          "createdAt": "2023-10-16T15:12:02Z",
+          "updatedAt": "2023-10-16T15:12:02Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5kEXpp",
+          "commit": {
+            "abbreviatedOid": "b1e72c7"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-15T20:29:02Z",
+          "updatedAt": "2023-10-15T20:29:02Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
