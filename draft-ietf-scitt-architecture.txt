@@ -5,13 +5,13 @@
 SCITT                                                        H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                      A. Delignat-Lavaud
-Expires: 18 April 2024                                        C. Fournet
+Expires: 20 April 2024                                        C. Fournet
                                                       Microsoft Research
                                                             Y. Deshpande
                                                                      ARM
                                                                S. Lasker
                                                                    RKVST
-                                                         16 October 2023
+                                                         18 October 2023
 
 
  An Architecture for Trustworthy and Transparent Digital Supply Chains
@@ -66,7 +66,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 April 2024.
+   This Internet-Draft will expire on 20 April 2024.
 
 Copyright Notice
 
@@ -329,8 +329,7 @@ Table of Contents
 
    Registration:  the process of submitting a Signed Statement to a
       Transparency Service, applying the Transparency Service's
-      Registration Policy, storing it in the Registry, producing a
-      Receipt, and returning it to the submitting Issuer.
+      Registration Policy, and producing a Receipt.
 
    Registration Policy:  the pre-condition enforced by the Transparency
       Service before registering a Signed Statement, rendering it a
@@ -966,8 +965,14 @@ Table of Contents
       example, application/spdx+json is the media type of SDPX in JSON
       encoding.
 
-   *  Registration Policy info (label: TBD, temporary: 393): A map of
-      additional attributes to help enforce Registration Policies.
+   *  Registration Policy info (label: TBD, temporary: 393): A map
+      containing key/value pairs set by the Issuer which are sealed on
+      Registration and non-opaque to the Transparency Service.  The key/
+      value pair semantics are specified by each Issuer or are specific
+      to the Issuer and Feed tuple.  Examples include: the sequence
+      number of signed statements on a feed, Issuer metadata, or a
+      reference to other transparent statements (e.g., augments,
+      replaces, new-version, CPE-for).
 
    *  Key ID (label: 4): Key ID, as a bytestring.
 
@@ -1833,9 +1838,9 @@ Table of Contents
               Birkholz, H., Deshpande, Y., Brooks, D., Martin, B., and
               B. Knight, "Detailed Software Supply Chain Uses Cases for
               SCITT", Work in Progress, Internet-Draft, draft-ietf-
-              scitt-software-use-cases-01, 15 September 2023,
+              scitt-software-use-cases-02, 16 October 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-scitt-
-              software-use-cases-01>.
+              software-use-cases-02>.
 
    [MERKLE]   Merkle, R., "A Digital Signature Based on a Conventional
               Encryption Function", Springer Berlin Heidelberg, Advances
