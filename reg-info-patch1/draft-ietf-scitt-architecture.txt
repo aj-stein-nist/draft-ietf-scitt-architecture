@@ -970,7 +970,7 @@ Table of Contents
       containing key/value pairs set by the Issuer which are sealed on
       Registration and non-opaque to the Transparency Service.  The key/
       value pair semantics are specified by each Issuer or are specific
-      to the Issuer and Feed tupel.  Examples include: the sequence
+      to the Issuer and Feed tuple.  Examples include: the sequence
       number of signed statements on a feed, Issuer metadata, or a
       reference to other transparent statements (e.g., augments,
       replaces, new-version, CPE-for).
