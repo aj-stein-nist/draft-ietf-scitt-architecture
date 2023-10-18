@@ -5,13 +5,13 @@
 SCITT                                                        H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                      A. Delignat-Lavaud
-Expires: 8 April 2024                                         C. Fournet
+Expires: 20 April 2024                                        C. Fournet
                                                       Microsoft Research
                                                             Y. Deshpande
                                                                      ARM
                                                                S. Lasker
                                                                    RKVST
-                                                          6 October 2023
+                                                         18 October 2023
 
 
  An Architecture for Trustworthy and Transparent Digital Supply Chains
@@ -66,7 +66,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 April 2024.
+   This Internet-Draft will expire on 20 April 2024.
 
 Copyright Notice
 
@@ -92,7 +92,7 @@ Table of Contents
    5.  Architecture Overview
      5.1.  Signed Statement Issuance and Registration
        5.1.1.  Issuer Identity
-       5.1.2.  Support for multiple Artifacts
+       5.1.2.  Support for Multiple Artifacts
        5.1.3.  Registration Policy Metadata
      5.2.  Transparency Service
        5.2.1.  Service Identity, Remote Attestation, and Keying
@@ -697,7 +697,7 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
    "y":
    "zz2SkcOGYM6PbYlw19tcbpzo6bEMYHIwGBnN5rd8QWykAprstPdxx4U0uScvDcYd" }
 
-5.1.2.  Support for multiple Artifacts
+5.1.2.  Support for Multiple Artifacts
 
    Many Issuers produce Signed Statements about various Artifacts under
    the same Identity.  Issuers and Verifiers must be able to recognize
@@ -1839,9 +1839,9 @@ Auditor       -->     / Collect Receipts /      /   Replay Log    /
               Birkholz, H., Deshpande, Y., Brooks, D., Martin, B., and
               B. Knight, "Detailed Software Supply Chain Uses Cases for
               SCITT", Work in Progress, Internet-Draft, draft-ietf-
-              scitt-software-use-cases-01, 15 September 2023,
+              scitt-software-use-cases-02, 16 October 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-scitt-
-              software-use-cases-01>.
+              software-use-cases-02>.
 
    [MERKLE]   Merkle, R., "A Digital Signature Based on a Conventional
               Encryption Function", Springer Berlin Heidelberg, Advances
