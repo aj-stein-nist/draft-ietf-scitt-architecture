@@ -5,13 +5,13 @@
 SCITT                                                        H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                      A. Delignat-Lavaud
-Expires: 19 April 2024                                        C. Fournet
+Expires: 20 April 2024                                        C. Fournet
                                                       Microsoft Research
                                                             Y. Deshpande
                                                                      ARM
                                                                S. Lasker
                                                                    RKVST
-                                                         17 October 2023
+                                                         18 October 2023
 
 
  An Architecture for Trustworthy and Transparent Digital Supply Chains
@@ -66,7 +66,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 April 2024.
+   This Internet-Draft will expire on 20 April 2024.
 
 Copyright Notice
 
@@ -979,8 +979,8 @@ Table of Contents
 
    Registration:  the process of submitting a Signed Statement to a
       Transparency Service, applying the Transparency Service's
-      Registration Policy, storing it in the Registry, producing a
-      Receipt, and returning it to the submitting Issuer.
+      Registration Policy, storing the Signed Statement in the Registry,
+      producing a Receipt, and returning it to the submitting Issuer.
 
    In CDDL [RFC8610] notation, a Signed_Statement is defined as follows:
 
