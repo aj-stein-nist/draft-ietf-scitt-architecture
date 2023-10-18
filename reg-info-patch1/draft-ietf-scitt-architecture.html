@@ -17,12 +17,12 @@ The rise in popularity of verifiable data structures as a mechanism to make acto
 It provides flexibility, enabling interoperability across different implementations of Transparency Services with various auditing and compliance requirements.
 Producers can register their Signed Statements on any Transparency Service, with the guarantee that all Consumers will be able to verify them. 
     " name="description">
-<meta content="xml2rfc 3.18.1" name="generator">
+<meta content="xml2rfc 3.18.2" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-scitt-architecture-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.1
-    Python 3.11.5
+  xml2rfc 3.18.2
+    Python 3.11.6
     ConfigArgParse 1.5.3
     google-i18n-address 3.1.0
     intervaltree 3.1.0
@@ -2049,7 +2049,7 @@ Although Issuers and other parties <span class="bcp14">MAY</span> attach unprote
             <p id="section-6.1-3.4.1">Content type (label: <code>3</code>): Media type of payload, as a string. For example, <code>application/spdx+json</code> is the media type of SDPX in JSON encoding.<a href="#section-6.1-3.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-3.5">
-            <p id="section-6.1-3.5.1">Registration Policy info (label: <code>TBD</code>, temporary: <code>393</code>): A map containing key/value pairs provided and controlled by the Issuer that are sealed on Registration and non-opaque to the Transparency Service. The key/value pair semantics are specified by each individual Issuer or are specific to the Issuer and Feed tupel. Examples include: sequence number of signed statement on feed, Issuer metadata, or reference to other transparent statements (e.g., augments, replaces, new-version, CPE-for).<a href="#section-6.1-3.5.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-3.5.1">Registration Policy info (label: <code>TBD</code>, temporary: <code>393</code>): A map containing key/value pairs set by the Issuer which are sealed on Registration and non-opaque to the Transparency Service. The key/value pair semantics are specified by each Issuer or are specific to the Issuer and Feed tupel. Examples include: the sequence number of signed statements on a feed, Issuer metadata, or a reference to other transparent statements (e.g., augments, replaces, new-version, CPE-for).<a href="#section-6.1-3.5.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-3.6">
             <p id="section-6.1-3.6.1">Key ID (label: <code>4</code>): Key ID, as a bytestring.<a href="#section-6.1-3.6.1" class="pilcrow">¶</a></p>
