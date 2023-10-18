@@ -1445,7 +1445,7 @@ SCITT supports multiple Log and Receipt formats to accommodate different Transpa
         <dd class="break"></dd>
 <dt id="section-3-2.17">Registration:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.18">
-          <p id="section-3-2.18.1">the process of submitting a Signed Statement to a Transparency Service, applying the Transparency Service's Registration Policy, storing it in the Registry, producing a Receipt, and returning it to the submitting Issuer.<a href="#section-3-2.18.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.18.1">the process of submitting a Signed Statement to a Transparency Service, applying the Transparency Service's Registration Policy, storing the Signed Statement in the Registry, and producing a Receipt.<a href="#section-3-2.18.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-3-2.19">Registration Policy:</dt>
@@ -2055,15 +2055,8 @@ Although Issuers and other parties <span class="bcp14">MAY</span> attach unprote
             <p id="section-6.1-3.6.1">Key ID (label: <code>4</code>): Key ID, as a bytestring.<a href="#section-6.1-3.6.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<span class="break"></span><dl class="dlParallel" id="section-6.1-4">
-          <dt id="section-6.1-4.1">Registration:</dt>
-          <dd style="margin-left: 1.5em" id="section-6.1-4.2">
-            <p id="section-6.1-4.2.1">the process of submitting a Signed Statement to a Transparency Service, applying the Transparency Service's Registration Policy, storing the Signed Statement in the Registry, and producing a Receipt.<a href="#section-6.1-4.2.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-</dl>
-<p id="section-6.1-5">In CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> notation, a Signed_Statement is defined as follows:<a href="#section-6.1-5" class="pilcrow">¶</a></p>
-<div class="lang-cddl sourcecode" id="section-6.1-6">
+<p id="section-6.1-4">In CDDL <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> notation, a Signed_Statement is defined as follows:<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+<div class="lang-cddl sourcecode" id="section-6.1-5">
 <pre>
 Signed_Statement = COSE_Sign1_Tagged
 
@@ -2098,36 +2091,36 @@ Unprotected_Header = {
   ; TBD, Labels are temporary
   ? 394 =&gt; [+ Receipt]
 }
-</pre><a href="#section-6.1-6" class="pilcrow">¶</a>
+</pre><a href="#section-6.1-5" class="pilcrow">¶</a>
 </div>
-<p id="section-6.1-7">There are many types of Statements (such as SBOMs, malware scans, audit reports, policy definitions) that Issuers may want to turn into Signed Statements.
-An Issuer must first decide what Statements to include. For a software supply chain, payloads describing the software artifacts may, for example, include<a href="#section-6.1-7" class="pilcrow">¶</a></p>
+<p id="section-6.1-6">There are many types of Statements (such as SBOMs, malware scans, audit reports, policy definitions) that Issuers may want to turn into Signed Statements.
+An Issuer must first decide what Statements to include. For a software supply chain, payloads describing the software artifacts may, for example, include<a href="#section-6.1-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6.1-8.1">
-            <p id="section-6.1-8.1.1">JSON-SPDX<a href="#section-6.1-8.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-6.1-7.1">
+            <p id="section-6.1-7.1.1">JSON-SPDX<a href="#section-6.1-7.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-8.2">
-            <p id="section-6.1-8.2.1">CBOR-SPDX<a href="#section-6.1-8.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-6.1-7.2">
+            <p id="section-6.1-7.2.1">CBOR-SPDX<a href="#section-6.1-7.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-8.3">
-            <p id="section-6.1-8.3.1">SWID<a href="#section-6.1-8.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-6.1-7.3">
+            <p id="section-6.1-7.3.1">SWID<a href="#section-6.1-7.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-8.4">
-            <p id="section-6.1-8.4.1">CoSWID<a href="#section-6.1-8.4.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-6.1-7.4">
+            <p id="section-6.1-7.4.1">CoSWID<a href="#section-6.1-7.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-8.5">
-            <p id="section-6.1-8.5.1">CycloneDX<a href="#section-6.1-8.5.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-6.1-7.5">
+            <p id="section-6.1-7.5.1">CycloneDX<a href="#section-6.1-7.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-8.6">
-            <p id="section-6.1-8.6.1">in-toto<a href="#section-6.1-8.6.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-6.1-7.6">
+            <p id="section-6.1-7.6.1">in-toto<a href="#section-6.1-7.6.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-6.1-8.7">
-            <p id="section-6.1-8.7.1">SLSA<a href="#section-6.1-8.7.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-6.1-7.7">
+            <p id="section-6.1-7.7.1">SLSA<a href="#section-6.1-7.7.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-6.1-9">Once the Statement is serialized with the correct media-type/content-format, an Issuer should fill in the attributes for the Registration Policy information header.
+<p id="section-6.1-8">Once the Statement is serialized with the correct media-type/content-format, an Issuer should fill in the attributes for the Registration Policy information header.
 From the Issuer's perspective, using attributes from named policies ensures that the Signed Statement may only be registered on Transparency Services that implement the associated policy.
-For instance, if a Signed Statement is frequently updated, and it is important for Verifiers to always consider the latest version, Issuers <span class="bcp14">SHOULD</span> use the <code>sequence_no</code> or <code>issuer_ts</code> attributes.<a href="#section-6.1-9" class="pilcrow">¶</a></p>
+For instance, if a Signed Statement is frequently updated, and it is important for Verifiers to always consider the latest version, Issuers <span class="bcp14">SHOULD</span> use the <code>sequence_no</code> or <code>issuer_ts</code> attributes.<a href="#section-6.1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-registering-signed-statements">

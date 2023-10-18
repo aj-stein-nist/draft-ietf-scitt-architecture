@@ -329,8 +329,8 @@ Table of Contents
 
    Registration:  the process of submitting a Signed Statement to a
       Transparency Service, applying the Transparency Service's
-      Registration Policy, storing it in the Registry, producing a
-      Receipt, and returning it to the submitting Issuer.
+      Registration Policy, storing the Signed Statement in the Registry,
+      and producing a Receipt.
 
    Registration Policy:  the pre-condition enforced by the Transparency
       Service before registering a Signed Statement, rendering it a
@@ -976,11 +976,6 @@ Table of Contents
       replaces, new-version, CPE-for).
 
    *  Key ID (label: 4): Key ID, as a bytestring.
-
-   Registration:  the process of submitting a Signed Statement to a
-      Transparency Service, applying the Transparency Service's
-      Registration Policy, storing the Signed Statement in the Registry,
-      and producing a Receipt.
 
    In CDDL [RFC8610] notation, a Signed_Statement is defined as follows:
 
