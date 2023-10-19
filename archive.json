@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-17T00:34:18.680703+00:00",
+  "timestamp": "2023-10-19T00:33:57.006612+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -1172,7 +1172,7 @@
       "labels": [],
       "body": "              how does the TS ensure determinism?\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123538125_\r\n            ",
       "createdAt": "2023-03-07T17:32:38Z",
-      "updatedAt": "2023-09-05T23:52:11Z",
+      "updatedAt": "2023-10-18T03:21:59Z",
       "closedAt": null,
       "comments": [
         {
@@ -1181,6 +1181,13 @@
           "body": "Deferring to 117 as I suspect this will take a lot of discussions that won't land by 116.",
           "createdAt": "2023-03-09T23:28:45Z",
           "updatedAt": "2023-03-09T23:28:45Z"
+        },
+        {
+          "author": "pdxjohnny",
+          "authorAssociation": "NONE",
+          "body": "Potentially related, hashing claims for use as entry IDs: https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/79#issuecomment-1767445443",
+          "createdAt": "2023-10-18T03:21:33Z",
+          "updatedAt": "2023-10-18T03:21:59Z"
         }
       ]
     },
@@ -1839,9 +1846,31 @@
       ],
       "body": "This issue tracks initial work to be completed regarding profiling of COSE to support federation for SCITT.\r\n\r\n\r\nSome initial topics that still need to be addressed:\r\n\r\n- How do transparency services discovery each other?\r\n- How do they know if their policies are compatible?\r\n- How do they know if they support the same issuers? \r\n- How do they know if they support the same artifact types?\r\n- How is issuer privacy impacted by federation? ",
       "createdAt": "2023-07-08T12:39:47Z",
-      "updatedAt": "2023-09-06T00:07:26Z",
+      "updatedAt": "2023-10-18T03:31:25Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "pdxjohnny",
+          "authorAssociation": "NONE",
+          "body": "What are folks thoughts on making entry IDs hashes of claims? This would make it easy to manage state because claims and receipts are content addressable. The side effect is one can no longer register the same claim twice under a different entry ID. I wasn't able to find if the SCITT arch doc explicitly defined expected behavior there.\r\n\r\nExample of what this might look like within the SCITT API Emulator: https://github.com/scitt-community/scitt-api-emulator/commit/9c54f9c542f042954e4d02b291ea4856327223be\r\n\r\n```\r\n127.0.0.1 - - [17/Oct/2023 18:08:08] \"POST /entries HTTP/1.1\" 201 -\r\n127.0.0.1 - - [17/Oct/2023 18:08:08] \"GET /entries/sha384:76303a87c3ff728578d1e941ec4422193367e31fd37ab178257536cba79724d6411c457cd3c47654975dc924ff023666/receipt HTTP/1.1\" 200 -\r\n```",
+          "createdAt": "2023-10-18T01:16:27Z",
+          "updatedAt": "2023-10-18T01:17:12Z"
+        },
+        {
+          "author": "aj-stein-nist",
+          "authorAssociation": "NONE",
+          "body": "In your original comment, you mentioned a default hash algorithm and implementation.\r\n\r\n>The side effect is one can no longer register the same claim twice under a different entry ID.\r\n\r\nDoes this goes for entries under different hash algorithms and implementations, are those count as \"the same\" one entry ID?",
+          "createdAt": "2023-10-18T01:47:01Z",
+          "updatedAt": "2023-10-18T01:47:01Z"
+        },
+        {
+          "author": "pdxjohnny",
+          "authorAssociation": "NONE",
+          "body": "At least as I was playing with it in that emulator pull request it the hash algorithm used you be part of the entry ID (similar to container image format reference by sha256 format). It the entry hash algorithm could also be part of the service parameters. If log A and log B had different entry id hash algorithms federation would involve an index or mapping so that federation mechanics don't end up re-inserting a claim which already exists Example: Log A federates Claim A1 to Log B. Log B inserts claim A1 as B1, federates event to Log A which inserts claims as A2. If entries were content addressable it would be fast to determine and A2 is in fact A1 and does not need to be re-inserted. If they aren't the same then a mapping transmitted with the federation event would include the known entry IDs within each log or something.",
+          "createdAt": "2023-10-18T03:31:24Z",
+          "updatedAt": "2023-10-18T03:31:24Z"
+        }
+      ]
     },
     {
       "number": 81,
@@ -2141,7 +2170,7 @@
       "labels": [],
       "body": "Knowledge of SCITT's tree algorithm and parameters for that tree algorithm are required for a client to verify receipts. It seems like we need to have an endpoint to enable discovery of those parameters.",
       "createdAt": "2023-09-12T14:18:47Z",
-      "updatedAt": "2023-09-12T15:27:38Z",
+      "updatedAt": "2023-10-18T03:31:39Z",
       "closedAt": "2023-09-12T15:27:38Z",
       "comments": [
         {
@@ -2150,6 +2179,13 @@
           "body": "Nevermind the client code just need to get the tree alg from the receipt.",
           "createdAt": "2023-09-12T15:27:38Z",
           "updatedAt": "2023-09-12T15:27:38Z"
+        },
+        {
+          "author": "pdxjohnny",
+          "authorAssociation": "NONE",
+          "body": "Related: https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/79#issuecomment-1767570492",
+          "createdAt": "2023-10-18T03:31:38Z",
+          "updatedAt": "2023-10-18T03:31:38Z"
         }
       ]
     },
@@ -2370,6 +2406,22 @@
           "updatedAt": "2023-10-10T16:55:40Z"
         }
       ]
+    },
+    {
+      "number": 112,
+      "id": "I_kwDOIvmHss50EEbV",
+      "title": "Registration Info might need some rewording",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/112",
+      "state": "CLOSED",
+      "author": "henkbirkholz",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "For the next submission deadline, Reg_Info needs more detail to convey it's purpose. Maybe... it may even need a new name, as Reg_Info might not be limited to key/value pairs about registration policy?",
+      "createdAt": "2023-10-17T11:45:27Z",
+      "updatedAt": "2023-10-18T15:20:05Z",
+      "closedAt": "2023-10-18T15:20:05Z",
+      "comments": []
     }
   ],
   "pulls": [
@@ -10278,7 +10330,7 @@
       "labels": [],
       "body": "This PR highlights how easy it would be to remove feed from the architecture, and notes that feed is redundant to `Reg_Info` which provides more flexibility and is already unbounded in terms of implementation complexity.",
       "createdAt": "2023-10-03T15:08:17Z",
-      "updatedAt": "2023-10-11T14:42:34Z",
+      "updatedAt": "2023-10-18T16:30:26Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
@@ -10394,6 +10446,13 @@
           "body": "That's a great use case. Yes, any `iss` can make a statement with a given `feed`. But `feed` isn't a \"controlled\" or \"owned\" value - no need for registering it. The tuple of (`iss`, `feed`) identifies the sequence of statements from an issuer - which works well with your Coyote example.",
           "createdAt": "2023-10-11T14:42:33Z",
           "updatedAt": "2023-10-11T14:42:33Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixes #11 ",
+          "createdAt": "2023-10-18T16:30:26Z",
+          "updatedAt": "2023-10-18T16:30:26Z"
         }
       ],
       "reviews": [
@@ -10515,13 +10574,13 @@
       "labels": [],
       "body": "This is an attempt to break the deadlock on Feeds vs searchability etc.\r\n\r\nWithout making any normative changes (I hope!) I seek to clarify a handful of issues:\r\n\r\n- Why do we need Feed at all? Because it is the very simple but essential way of ensuring the desired goal of non-equivocation. It makes it practical to discover or eliminate equivocation through a very simple but powerful way of linking related Transparent Statements together, and providing a very simple way of enable pre-commitment for statements of fact and accountability. In less fancy but as useful ways it also ensures that the relying party or someone with a copy of one Transparent Statement in their hands can ensure completeness of the set they're evaluating, and confirm that they are up-to-date with supply chain information that can move very fast.\r\n\r\n- Does Feed need a structure? No, assuming the above is the purpose of grouping statements together then it doesn't mater what it's called as long as it's the same for all items in the group. This again cements the need for it to be in the Envelope though, since otherwise coordinating all the points in various systems that would need to know what value to put in there would be impractical. By having it in the Envelope anyone with a single Transparent statement from the Feed would know what to use for either making new statements or looking in the TS for related statements.\r\n\r\n- Can Feed just be a part of reg_info? No, because reg_info is defined for a very different purpose. Registration Policies are also very complicated and need work, but I don't think they need work to close this particular issue.\r\n\r\nWhile there are still clarity issues in the spec which I would love for us to address soon, I think this minimal change makes it possible to move on and removes the pollution from the discussion about types of identity, self-describing serialised data structures, and the like. Crucially, in keeping with the findings from -117, I believe it shows that it is possible to carry the 'findability' information that was required by the applications building on top of SCOITT building blocks without going outside our charter and defining things at the semantic or application layer. ",
       "createdAt": "2023-10-06T17:28:23Z",
-      "updatedAt": "2023-10-08T13:15:49Z",
+      "updatedAt": "2023-10-18T19:34:09Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
-      "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
+      "baseRefOid": "c02c19372d242fcf000310522c2926f7aff3edd6",
       "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "headRefName": "dev/jag-uk/clarify-feed",
-      "headRefOid": "1b880581afa4d7cf983f80aa4b66e8521c1904ea",
+      "headRefOid": "7e11273de65dc825618f5bf7fcbd30aabffb4a02",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -10547,6 +10606,20 @@
           "body": "@rjb4standards in COSE and JOSE, there are names like \"iss\" and \"sub\" that are already registered in iana, and there are \"private names\" like \"vendor_branding_info\", that are not registered.\n\nRegistered names are established by updating the registries which requires publishing documents usually.\n\nPrivate names are ones that people decided to use, without registering them.\n",
           "createdAt": "2023-10-08T13:15:49Z",
           "updatedAt": "2023-10-08T13:15:49Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixes #11 ",
+          "createdAt": "2023-10-18T16:29:57Z",
+          "updatedAt": "2023-10-18T16:29:57Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This PR adds clarity and works well with the recent PRs (#113)\r\nAre there any objections to merging? If so, please identify what should be changed prior, and what couldn't be resolved with additional PRs of clarity.",
+          "createdAt": "2023-10-18T19:10:28Z",
+          "updatedAt": "2023-10-18T19:10:28Z"
         }
       ],
       "reviews": [
@@ -10582,6 +10655,166 @@
           "createdAt": "2023-10-06T22:09:34Z",
           "updatedAt": "2023-10-06T22:09:34Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kRAha",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-17T12:23:31Z",
+          "updatedAt": "2023-10-17T12:23:32Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "Why should this statement be part of the specification text? Maybe we should try to fix the meaning of Reg_Info?\r\n\r\nPlease find a first attempt to bash at #113 ",
+              "createdAt": "2023-10-17T12:23:32Z",
+              "updatedAt": "2023-10-17T12:23:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kRGZy",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-17T12:35:13Z",
+          "updatedAt": "2023-10-17T12:35:13Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "I checked the definition of Verifier as it starts to move into more focus now. Pulling the definition in here for convenience:\r\n```\r\nan entity that consumes Transparent Statements (a specialization of Signed Statement Consumer),\r\nverifying their proofs and inspecting their Statement payload, either before using corresponding\r\nArtifacts, or later to audit an Artifact's provenance on the supply chain.\r\n```\r\n\r\nWith respect to the quoted definition:\r\n1.) `specialization of Signed Statement Consumer` seems to be outdated?\r\n2.) what kind of proofs in `verifying their proofs`?\r\n3.) payload opaque to the TS is inspected in `inspecting their Statement payload`?\r\n4.) what does `before using corresponding Artifacts` mean?\r\n\r\nWith respect to the proposed changes in line 189:\r\n1.) how do Verifiers `ensure completeness`? Is that via `verifying their proofs`?\r\n2.) `Statements linked to the one(s) they are evaluating` is done via the Feed value, right?",
+              "createdAt": "2023-10-17T12:35:13Z",
+              "updatedAt": "2023-10-17T12:35:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kdZK2",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T15:34:05Z",
+          "updatedAt": "2023-10-18T15:34:05Z",
+          "comments": [
+            {
+              "originalPosition": 29,
+              "body": "Nit: title case:\r\n```suggestion\r\n### Support for Multiple Artifacts\r\n```",
+              "createdAt": "2023-10-18T15:34:05Z",
+              "updatedAt": "2023-10-18T15:34:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kfFmW",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T18:53:09Z",
+          "updatedAt": "2023-10-18T18:53:09Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "> Quoted definition on verifier:\r\n\r\n@henkbirkholz, should this be a separate PR to add any [clarification for Verifier within the terminology](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/main/draft-ietf-scitt-architecture.md?plain=1#L244)? \r\n\r\n> 1.) how do Verifiers `ensure completeness`? Is that via `verifying their proofs`?\r\n> 2.) `Statements linked to the one(s) they are evaluating` is done via the Feed value, right?\r\n\r\nMy interpretation of the following: \r\n> Verifiers use the Feed to ensure completeness and non-equivocation in supply chain evidence by identifying all Transparent Statements linked to the one(s) they are evaluating.\r\n\r\nA consumer|verifier can query the statements about the ~feed~ subject. They may choose to query all statements, filter the statements by specific issuers, filter by specific contentTypes, or a mix of the each. But, all are related to a specific artifact, as defined by a ~feed~ subject.  Because they've identified \"the artifact\" by a subject\r\n",
+              "createdAt": "2023-10-18T18:53:09Z",
+              "updatedAt": "2023-10-18T18:53:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kfGyV",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "rjb4standards",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T18:56:20Z",
+          "updatedAt": "2023-10-18T18:56:20Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "@henkbirkholz when we say related to the same artifact, does this imply a historical record/tracking type of report for the \"same artifact\"? Thanks.",
+              "createdAt": "2023-10-18T18:56:20Z",
+              "updatedAt": "2023-10-18T18:56:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kfKPr",
+          "commit": {
+            "abbreviatedOid": "4d6db74"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T19:04:58Z",
+          "updatedAt": "2023-10-18T19:04:58Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "#113 was merged, and helps. This appears to add clarity and doesn't seem to conflict.\r\n\r\nI'm also thinking Registration Policy Metadata is the right heading, unless we rename Reg_Info ",
+              "createdAt": "2023-10-18T19:04:58Z",
+              "updatedAt": "2023-10-18T19:04:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kfSKG",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T19:13:39Z",
+          "updatedAt": "2023-10-18T19:13:40Z",
+          "comments": [
+            {
+              "originalPosition": 75,
+              "body": "The definition of non-equivocation is a good topic that we could possibly provide a link. For example: https://www.dpss.inesc-id.pt/~rodrigo/nonequiv_podc12.pdf\r\n\r\nI think trying to describe non-equivocation in the spec is beyond the scope.",
+              "createdAt": "2023-10-18T19:13:39Z",
+              "updatedAt": "2023-10-18T19:13:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kffi8",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T19:34:08Z",
+          "updatedAt": "2023-10-18T19:34:09Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "@rjb4standards,\r\nAs an example:\r\nWabbit-networks ships the `net-monitor v1` software package.\r\nThey wish to provide:\r\n- SPDX SBOM\r\n- ClycloneDX SBOM\r\n- A VEX report\r\n- Updated VEX reports as they learn more\r\n- A statement when the product will no longer be maintained for support\r\n- A statement that says it's being replaced by v1.2\r\n\r\nAll those are statements that Wabbit-networks may make on that specific artifact.\r\n\r\nOther entities, such as Cosmic Security or MITRE can also make statements about the same artifact.\r\n\r\nAs a consumer, you would use the ~Feed~ | Subject to correlate all the statements about the same Artifact The `net-monitor v1` package.",
+              "createdAt": "2023-10-18T19:34:08Z",
+              "updatedAt": "2023-10-18T19:34:09Z"
+            }
+          ]
         }
       ]
     },
@@ -10597,7 +10830,7 @@
       "labels": [],
       "body": "This PR shows that feed is redundant to CWT Claims in headers.\r\nIf this approach gains consensus we won't need to register special tags in the protected header, and can instead use the RFC that allows this to happen.\r\n\r\nFor context, see this discussion from the list:\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/cose/KNRge3vxXF3A2LY24DNo6ZQxrNc/",
       "createdAt": "2023-10-07T13:56:10Z",
-      "updatedAt": "2023-10-11T14:35:18Z",
+      "updatedAt": "2023-10-18T16:29:40Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
@@ -10664,9 +10897,49 @@
           "body": "I left some comments in #104 related to this. tl;dr: I agree with @robinbryce that a `feed` defines an unbounded sequence of statements made for the same purpose.\r\n\r\nObviously, any tag can be reused to mean anything you like. We can declare that `sub` means `feed`. That may require significant documentation to dissuade people from putting the a subject into `sub` instead.\r\n\r\nDo I understand that the intention is to not put `iss` at the top level, but to embed it in `CWT_claims` ? Is the goal there for existing CWT relying parties to accept these?",
           "createdAt": "2023-10-11T14:35:18Z",
           "updatedAt": "2023-10-11T14:35:18Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixes #11 ",
+          "createdAt": "2023-10-18T16:29:40Z",
+          "updatedAt": "2023-10-18T16:29:40Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5kc8WZ",
+          "commit": {
+            "abbreviatedOid": "1a9af1f"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Feedback to prep this for a vote for using CWT as defined here, or replacing Feed with Subject (without CTW)",
+          "createdAt": "2023-10-18T14:51:22Z",
+          "updatedAt": "2023-10-18T14:57:48Z",
+          "comments": [
+            {
+              "originalPosition": 22,
+              "body": "```suggestion\r\n```\r\n",
+              "createdAt": "2023-10-18T14:51:22Z",
+              "updatedAt": "2023-10-18T14:57:48Z"
+            },
+            {
+              "originalPosition": 23,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2023-10-18T14:51:31Z",
+              "updatedAt": "2023-10-18T14:57:48Z"
+            },
+            {
+              "originalPosition": 8,
+              "body": "I was going to suggest removing:\r\n> , throughout this spec, this is also called feed.\r\n\r\nand use a separate PR to replace Feed with Subject. \r\nTo keep this PR isolated to these changes, I'd leave this sentence and cleanup in another PR: Update Feed to be Subject",
+              "createdAt": "2023-10-18T14:54:49Z",
+              "updatedAt": "2023-10-18T14:57:48Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 110,
@@ -10748,9 +11021,9 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "This attempts to resolve the balance between a generic string and a structured string for how issuers and verifiers can identify \"a sequence of Signed Statements about the same Artifact.\", as [currently defined](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/main/draft-ietf-scitt-architecture.md?plain=1#L189)\r\n\r\nChanging to `bstr` enables an issuer to set the `Feed` to be a `sub`, and it also allows an issuer to use other identifier formats. \r\n\r\nThere's a great suggestion to use `sub`, as part of the CTW (PR #108). And at first it looks fairly simple.\r\n```cddl\r\nCWT_Claims = {\r\n  1 => tstr; iss, the issuer that is making statements\r\n  2 -> tstr; sub, the subject about which the statements are made, throughout this spec, this is also called feed.\r\n * tstr => any\r\n}\r\n```\r\n\r\nThe challenge is a CWT_Claim is far more expressive [as defined](https://www.iana.org/assignments/cwt/cwt.xhtml)\r\n\r\nFor an issuer and a verifier to clearly identify the specific artifact they are referencing with CWT_Claims, it would be both powerful and confusing for an issuer to specify which CWT_Claims properties they were using to identify the feed.\r\n\r\nAn issuer could add: \r\n\r\n```cddl\r\nCWT_Claims = {\r\n  1 => tstr; iss, the issuer that is making statements\r\n  2 -> tstr; sub, the subject about which the statements are made, throughout this spec, this is also called feed.\r\n  256 -> bstr; ueid, The Universal Entity ID \r\n  260 -> array; hwversion, the Hardware Version Identifier\r\n  2395 -> uint; psa-security-lifecycle, PSA Security Lifecycle\t\r\n   * tstr => any\r\n}\r\n```\r\n\r\nUsing the text in PR #103, changing the Feed to `bstr`, makes it clear the Feed is:\r\n\r\n> Feed:\r\n> : a logical collection of Statements about the same Artifact.\r\n> For any step or set of steps in a supply chain there will be multiple statements made about the same Artifact. Issuers use the Feed to create a coherent sequence of Signed Statements about the same Artifact and Verifiers use the Feed to ensure completeness and non-equivocation in supply chain evidence by identifying all Transparent Statements linked to the one(s) they are evaluating.",
+      "body": "This attempts to resolve the balance between a generic string and a structured string for how issuers and verifiers can identify \"a sequence of Signed Statements about the same Artifact.\", as [currently defined](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/main/draft-ietf-scitt-architecture.md?plain=1#L189)\r\n\r\nChanging to `bstr` enables an issuer to set the `Feed` to be a `sub`, and it also allows an issuer to use other identifier formats. \r\n\r\nThere's a great suggestion to use `sub`, as part of the CTW (PR #108). And at first it looks fairly simple.\r\n```cddl\r\nCWT_Claims = {\r\n  1 => tstr; iss, the issuer that is making statements\r\n  2 -> tstr; sub, the subject about which the statements are made, throughout this spec, this is also called feed.\r\n * tstr => any\r\n}\r\n```\r\n\r\nThe challenge is a CWT_Claim is far more expressive [as defined](https://www.iana.org/assignments/cwt/cwt.xhtml)\r\n\r\nFor an issuer and a verifier to clearly identify the specific artifact they are referencing with CWT_Claims, it would be both powerful and confusing for an issuer to specify which CWT_Claims properties they were using to identify the feed.\r\n\r\nAn issuer could add: \r\n\r\n```cddl\r\nCWT_Claims = {\r\n  1 => tstr; iss, the issuer that is making statements\r\n  2 -> tstr; sub, the subject about which the statements are made, throughout this spec, this is also called feed.\r\n  256 -> bstr; ueid, The Universal Entity ID \r\n  260 -> array; hwversion, the Hardware Version Identifier\r\n  2395 -> uint; psa-security-lifecycle, PSA Security Lifecycle\t\r\n   * tstr => any\r\n}\r\n```\r\n\r\nUsing the text in PR #103, changing the Feed to `bstr`, makes it clear the Feed is:\r\n\r\n> Feed:\r\n> : a logical collection of Statements about the same Artifact.\r\n> For any step or set of steps in a supply chain there will be multiple statements made about the same Artifact. Issuers use the Feed to create a coherent sequence of Signed Statements about the same Artifact and Verifiers use the Feed to ensure completeness and non-equivocation in supply chain evidence by identifying all Transparent Statements linked to the one(s) they are evaluating.\r\nFixe #11 ",
       "createdAt": "2023-10-15T15:41:11Z",
-      "updatedAt": "2023-10-16T15:12:02Z",
+      "updatedAt": "2023-10-18T16:28:54Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
@@ -10782,6 +11055,474 @@
           "body": "",
           "createdAt": "2023-10-15T20:29:02Z",
           "updatedAt": "2023-10-15T20:29:02Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kdGZx",
+          "commit": {
+            "abbreviatedOid": "b1e72c7"
+          },
+          "author": "fournet",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-18T15:06:33Z",
+          "updatedAt": "2023-10-18T15:06:33Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 113,
+      "id": "PR_kwDOIvmHss5dAcIl",
+      "title": "Proposal to rephrase the Reg_Info definition",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/113",
+      "state": "MERGED",
+      "author": "henkbirkholz",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #112 ",
+      "createdAt": "2023-10-17T11:46:31Z",
+      "updatedAt": "2023-10-18T15:20:04Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "512b43a01341759fdc1a0d25b63e06d2add1e1b9",
+      "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "headRefName": "reg-info-patch1",
+      "headRefOid": "3694890a62b8c77afa42f5655da0e116ede2ac9a",
+      "closedAt": "2023-10-18T15:20:04Z",
+      "mergedAt": "2023-10-18T15:20:04Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "c02c19372d242fcf000310522c2926f7aff3edd6"
+      },
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Good clarification, with a few nits to reduce and clarify the text",
+          "createdAt": "2023-10-18T00:07:47Z",
+          "updatedAt": "2023-10-18T00:07:47Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "All edits have been addressed. I believe this is ready for merging.",
+          "createdAt": "2023-10-18T14:50:08Z",
+          "updatedAt": "2023-10-18T14:50:08Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I would prefer \"The key/value pair semantics are application-specific, or even possibly specified by each Issuer for each of their Feed.\" but I am fine with both formulations. Thanks.\r\n\r\nThanks, @fournet \r\nSounds like we can address this suggestion separately and we can merge this as-is ",
+          "createdAt": "2023-10-18T15:19:52Z",
+          "updatedAt": "2023-10-18T15:19:52Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5kWrR2",
+          "commit": {
+            "abbreviatedOid": "ec0464e"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T00:02:40Z",
+          "updatedAt": "2023-10-18T00:02:41Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n- Registration Policy info (label: `TBD`, temporary: `393`): A map containing key/value pairs set by the Issuer which are sealed on Registration and non-opaque to the Transparency Service. The key/value pair semantics are specified by each Issuer or are specific to the Issuer and Feed tupel. Examples include: the sequence number of signed statements on a feed, Issuer metadata, or a reference to other transparent statements (e.g., augments, replaces, new-version, CPE-for).\r\n```",
+              "createdAt": "2023-10-18T00:02:41Z",
+              "updatedAt": "2023-10-18T00:02:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kWrs4",
+          "commit": {
+            "abbreviatedOid": "ec0464e"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T00:04:32Z",
+          "updatedAt": "2023-10-18T00:04:32Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "```suggestion\r\n: the process of submitting a Signed Statement to a Transparency Service, applying the Transparency Service's Registration Policy, storing the Signed Statement in the Registry, producing a Receipt, and returning it to the submitting Issuer.\r\n```\r\nClarified \"it\" to be the signed statement, and not which policy was applied. \r\nAlthough, we should clarify if each statement references the policy(s) applied, or does the SCITT service make entries when a policy changes?",
+              "createdAt": "2023-10-18T00:04:32Z",
+              "updatedAt": "2023-10-18T00:04:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kWryS",
+          "commit": {
+            "abbreviatedOid": "ec0464e"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T00:05:05Z",
+          "updatedAt": "2023-10-18T00:05:05Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2023-10-18T00:05:05Z",
+              "updatedAt": "2023-10-18T00:05:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kWrz5",
+          "commit": {
+            "abbreviatedOid": "ec0464e"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T00:05:16Z",
+          "updatedAt": "2023-10-18T00:05:16Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2023-10-18T00:05:16Z",
+              "updatedAt": "2023-10-18T00:05:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kWr1x",
+          "commit": {
+            "abbreviatedOid": "ec0464e"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T00:05:28Z",
+          "updatedAt": "2023-10-18T00:05:29Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "Removing 2 extra blank lines",
+              "createdAt": "2023-10-18T00:05:29Z",
+              "updatedAt": "2023-10-18T00:05:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kXD5O",
+          "commit": {
+            "abbreviatedOid": "ec0464e"
+          },
+          "author": "aj-stein-nist",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T01:57:52Z",
+          "updatedAt": "2023-10-18T01:57:52Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Very minor nit: tuple, not tupel in \"to the Issuer and Feed tupel.\" Otherwise, it makes content a little clearer for me.",
+              "createdAt": "2023-10-18T01:57:52Z",
+              "updatedAt": "2023-10-18T11:55:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kaNFc",
+          "commit": {
+            "abbreviatedOid": "f7fa9f3"
+          },
+          "author": "JAG-UK",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "Great improvement, a couple of small suggestions",
+          "createdAt": "2023-10-18T09:38:48Z",
+          "updatedAt": "2023-10-18T09:43:25Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n- Registration Policy info (label: `TBD`, temporary: `393`): A map containing key/value pairs provided and controlled by the Issuer that are sealed on Registration and non-opaque to the Transparency Service. The key/value pair semantics are specified by each individual Issuer or are specific to the Issuer and Feed tuple. Examples include: sequence number of signed statement on feed, Issuer metadata, or reference to other transparent statements (e.g., augments, replaces, new-version, CPE-for).\r\n```",
+              "createdAt": "2023-10-18T09:38:48Z",
+              "updatedAt": "2023-10-18T09:43:25Z"
+            },
+            {
+              "originalPosition": 11,
+              "body": "We have the principle of 'long running operations' in SCITT and in order to be practical we can't define an API or components that block for the time it takes to settle or achieve finality on certain kinds of ledger systems. IN order to avoid the implication that Registration is a single atomic operation that starts with a Signed Statement and ends with a final Receipt. This suggestion still compels the TS to produce the receipt, but it can then be returned, or later fetched, depending on implementation.\r\n\r\n```suggestion\r\n: the process of submitting a Signed Statement to a Transparency Service, applying the Transparency Service's Registration Policy, storing the Signed Statement in the Registry, and producing a Receipt.\r\n```",
+              "createdAt": "2023-10-18T09:43:08Z",
+              "updatedAt": "2023-10-18T09:43:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kcsej",
+          "commit": {
+            "abbreviatedOid": "b24df6a"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T14:25:53Z",
+          "updatedAt": "2023-10-18T14:25:54Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n- Registration Policy info (label: `TBD`, temporary: `393`): A map containing key/value pairs set by the Issuer which are sealed on Registration and non-opaque to the Transparency Service. The key/value pair semantics are specified by each Issuer or are specific to the Issuer and Feed tuple. Examples include: the sequence number of signed statements on a feed, Issuer metadata, or a reference to other transparent statements (e.g., augments, replaces, new-version, CPE-for).\r\n```",
+              "createdAt": "2023-10-18T14:25:53Z",
+              "updatedAt": "2023-10-18T14:25:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kc-bw",
+          "commit": {
+            "abbreviatedOid": "fce9528"
+          },
+          "author": "JAG-UK",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2023-10-18T14:54:51Z",
+          "updatedAt": "2023-10-18T14:54:52Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kdAnI",
+          "commit": {
+            "abbreviatedOid": "fce9528"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM as it addresses all feedback and clarifies the conversations",
+          "createdAt": "2023-10-18T14:58:35Z",
+          "updatedAt": "2023-10-18T14:58:35Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kdDx7",
+          "commit": {
+            "abbreviatedOid": "fce9528"
+          },
+          "author": "fournet",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I would prefer \"The key/value pair semantics are application-specific, or even possibly specified by each Issuer for each of their Feed.\" but I am fine with both formulations. Thanks. ",
+          "createdAt": "2023-10-18T15:03:59Z",
+          "updatedAt": "2023-10-18T15:03:59Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kdEqZ",
+          "commit": {
+            "abbreviatedOid": "fce9528"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T15:05:32Z",
+          "updatedAt": "2023-10-18T15:05:33Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n: the process of submitting a Signed Statement to a Transparency Service, applying the Transparency Service's Registration Policy, and producing a Receipt.\r\n```",
+              "createdAt": "2023-10-18T15:05:32Z",
+              "updatedAt": "2023-10-18T15:05:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kdG7m",
+          "commit": {
+            "abbreviatedOid": "fce9528"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T15:06:50Z",
+          "updatedAt": "2023-10-18T15:06:50Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "The registry might not store the signed statement... it might only store a \"leaf\" or \"hash\" of it... it only needs to store what is needed to produce the receipt.",
+              "createdAt": "2023-10-18T15:06:50Z",
+              "updatedAt": "2023-10-18T15:06:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kdIUz",
+          "commit": {
+            "abbreviatedOid": "fce9528"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-18T15:07:37Z",
+          "updatedAt": "2023-10-18T15:07:37Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kdPuY",
+          "commit": {
+            "abbreviatedOid": "fce9528"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T15:16:45Z",
+          "updatedAt": "2023-10-18T15:16:46Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Good catch",
+              "createdAt": "2023-10-18T15:16:46Z",
+              "updatedAt": "2023-10-18T15:16:46Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 114,
+      "id": "PR_kwDOIvmHss5dKJ2Y",
+      "title": "Rename Feed to Subject",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/114",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "PR addressing the conversation around Feed is redundant with Subject, as defined in CWT\r\n- [3.1.2.  sub (Subject) Claim](https://www.rfc-editor.org/rfc/rfc8392.html#section-3.1.2)\r\n    >    The \"sub\" (subject) claim has the same meaning and processing rules\r\n    >    as the \"sub\" claim defined in Section 4.1.2 of [RFC7519], except that\r\n    >    the value is a StringOrURI, as defined in Section 2 of this\r\n    >    specification.  The Claim Key 2 is used to identify this claim.\r\n- [4.1.2.  \"sub\" (Subject) Claim](https://www.rfc-editor.org/rfc/rfc7519#section-4.1.2)\r\n    >    The \"sub\" (subject) claim identifies the principal that is the\r\n    >    subject of the JWT.  The claims in a JWT are normally statements\r\n    >    about the subject.  The subject value MUST either be scoped to be\r\n    >    locally unique in the context of the issuer or be globally unique.\r\n    >    The processing of this claim is generally application specific.  The\r\n    >    \"sub\" value is a case-sensitive string containing a StringOrURI\r\n    >    value.  Use of this claim is OPTIONAL.\r\n\r\nThis PR intentionally contrasts #108\r\n\r\nChoice for folks to vote upon:\r\n\r\n- [ ] Rename Feed to Subject\r\n- [ ] Should we also include CWT_Claims, which contains the subject #108 \r\n\r\nFixes #11 ",
+      "createdAt": "2023-10-18T15:47:17Z",
+      "updatedAt": "2023-10-18T16:30:02Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "c02c19372d242fcf000310522c2926f7aff3edd6",
+      "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
+      "headRefName": "feed-becomes-subject",
+      "headRefOid": "66f536e73fcd25791ad28e71f5204cd04629bf79",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5kdp83",
+          "commit": {
+            "abbreviatedOid": "52d8851"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-18T16:03:52Z",
+          "updatedAt": "2023-10-18T16:03:52Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kdrY7",
+          "commit": {
+            "abbreviatedOid": "52d8851"
+          },
+          "author": "JAG-UK",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "One small but important nit ",
+          "createdAt": "2023-10-18T16:06:46Z",
+          "updatedAt": "2023-10-18T16:08:19Z",
+          "comments": [
+            {
+              "originalPosition": 71,
+              "body": "...to which the statement _refers_, surely?",
+              "createdAt": "2023-10-18T16:06:46Z",
+              "updatedAt": "2023-10-18T16:08:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kd1Zz",
+          "commit": {
+            "abbreviatedOid": "66f536e"
+          },
+          "author": "JAG-UK",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2023-10-18T16:22:13Z",
+          "updatedAt": "2023-10-18T16:22:13Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kd4tD",
+          "commit": {
+            "abbreviatedOid": "66f536e"
+          },
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T16:26:01Z",
+          "updatedAt": "2023-10-18T16:26:01Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "Does the subject (old feed) is mandatory?\r\n\r\n",
+              "createdAt": "2023-10-18T16:26:01Z",
+              "updatedAt": "2023-10-18T16:26:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kd6fH",
+          "commit": {
+            "abbreviatedOid": "66f536e"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-18T16:27:55Z",
+          "updatedAt": "2023-10-18T16:27:56Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "I didn't make that explicit change, but yes an issuer of a signed statement must have a subject. ",
+              "createdAt": "2023-10-18T16:27:55Z",
+              "updatedAt": "2023-10-18T16:27:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kd8YR",
+          "commit": {
+            "abbreviatedOid": "66f536e"
+          },
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM!",
+          "createdAt": "2023-10-18T16:30:02Z",
+          "updatedAt": "2023-10-18T16:30:02Z",
           "comments": []
         }
       ]
