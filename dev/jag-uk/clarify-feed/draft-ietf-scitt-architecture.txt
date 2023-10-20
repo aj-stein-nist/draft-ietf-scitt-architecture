@@ -709,9 +709,8 @@ Table of Contents
    Transparency Service.
 
    For example, a Registry may only allow a Signed Statement to be
-   registered if it was signed recently very recently, or may reject a
-   Signed Statement if it arrives out of order in some sequenced
-   protocol.
+   registered if it was signed very recently, or may reject a Signed
+   Statement if it arrives out of order in some sequenced protocol.
 
    Any metadata meant to be interpreted by the Transparency Service
    during Registration Policy evaluation, SHOULD be added to the
