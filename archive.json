@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-19T00:33:57.006612+00:00",
+  "timestamp": "2023-10-22T00:36:37.042335+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -400,7 +400,7 @@
       "id": "I_kwDOIvmHss5e_g6q",
       "title": "Refine Definition of Feed",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/11",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -409,8 +409,8 @@
       ],
       "body": "Copied over from: https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/issues/36\r\n\r\nA feed is a great base for how we can create a series of statements for different artifacts, getting freshness for a receipt/or VEX report.\r\nThe current definition likely needs to expand a bit to account for:\r\n- What are the versions of a specific artifact\r\n- What are all the statements for a version of an artifact\r\n- What is the latest statement for a specific `contentType` of a specific versioned `artifact`: (eg: what's the latest ~~`SBOM`~~ `application/spdx+json` or  `application/vnd.cyclonedx+json` for the `net-monitor:v1` software?\r\n- If the `contentType` is a referenced [statement by reference](#35), which stores SBOMs, Scan Reports, how do we drill into each if they all use the same payload `contentType` of satementByReference?\r\n",
       "createdAt": "2023-02-21T15:46:59Z",
-      "updatedAt": "2023-09-28T20:24:57Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-20T18:06:54Z",
+      "closedAt": "2023-10-20T18:06:54Z",
       "comments": [
         {
           "author": "raylutz",
@@ -2329,7 +2329,7 @@
       "labels": [],
       "body": "```\r\nReg_Info = {\r\n  ? \"register_by\": uint .within (~time),\r\n  ? \"sequence_no\": uint,\r\n  ? \"issuance_ts\": uint .within (~time),\r\n  ? \"no_replay\": null,\r\n  * tstr => any\r\n}\r\n```\r\n\r\nhttps://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/0383ec2b5a23f11d1a42800aebbe38368e12376d/draft-ietf-scitt-architecture.md?plain=1#L670\r\n\r\nIMO these are parameters on the issuer's view of the feed identifier.\r\n\r\nsequence number is meaningless unless you know what topic you are trying to order.",
       "createdAt": "2023-09-26T15:00:22Z",
-      "updatedAt": "2023-10-09T18:45:43Z",
+      "updatedAt": "2023-10-20T19:34:57Z",
       "closedAt": null,
       "comments": [
         {
@@ -2421,6 +2421,38 @@
       "createdAt": "2023-10-17T11:45:27Z",
       "updatedAt": "2023-10-18T15:20:05Z",
       "closedAt": "2023-10-18T15:20:05Z",
+      "comments": []
+    },
+    {
+      "number": 116,
+      "id": "I_kwDOIvmHss50hYBT",
+      "title": "Add non-equivocation to terminology",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/116",
+      "state": "OPEN",
+      "author": "aj-stein-nist",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Define the term non-equivocation formally as it relates to this architecture document, per https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/107#discussion_r1367393803.\r\n            ",
+      "createdAt": "2023-10-20T19:26:50Z",
+      "updatedAt": "2023-10-20T19:26:50Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 117,
+      "id": "I_kwDOIvmHss50hpJA",
+      "title": "Remap did to cwt_claims iss",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/117",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "PR #108 converged issuer and feed into the CTW_Claims iss and sub. \r\nThe doc needs a scrub to remap these properties\r\n",
+      "createdAt": "2023-10-20T20:30:57Z",
+      "updatedAt": "2023-10-20T20:30:57Z",
+      "closedAt": null,
       "comments": []
     }
   ],
@@ -10323,21 +10355,21 @@
       "id": "PR_kwDOIvmHss5bzXew",
       "title": "Remove feed",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/104",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR highlights how easy it would be to remove feed from the architecture, and notes that feed is redundant to `Reg_Info` which provides more flexibility and is already unbounded in terms of implementation complexity.",
       "createdAt": "2023-10-03T15:08:17Z",
-      "updatedAt": "2023-10-18T16:30:26Z",
+      "updatedAt": "2023-10-20T16:02:12Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
       "headRepository": "transmute-industries/draft-ietf-scitt-architecture",
       "headRefName": "fix/remove-feed",
       "headRefOid": "86f0e2f56fd6bdaea8c09fbfaab44b292a0300c0",
-      "closedAt": null,
+      "closedAt": "2023-10-20T16:02:12Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -10453,6 +10485,13 @@
           "body": "Fixes #11 ",
           "createdAt": "2023-10-18T16:30:26Z",
           "updatedAt": "2023-10-18T16:30:26Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm withdrawing this PR, however I may object to the current text in future published revisions. \r\n\r\nI look forward to reviewing the next draft.",
+          "createdAt": "2023-10-20T16:02:12Z",
+          "updatedAt": "2023-10-20T16:02:12Z"
         }
       ],
       "reviews": [
@@ -10567,24 +10606,26 @@
       "id": "PR_kwDOIvmHss5cItAF",
       "title": "Attempt clarification of Feed purpose and differentiate from reg_info",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/107",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "JAG-UK",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This is an attempt to break the deadlock on Feeds vs searchability etc.\r\n\r\nWithout making any normative changes (I hope!) I seek to clarify a handful of issues:\r\n\r\n- Why do we need Feed at all? Because it is the very simple but essential way of ensuring the desired goal of non-equivocation. It makes it practical to discover or eliminate equivocation through a very simple but powerful way of linking related Transparent Statements together, and providing a very simple way of enable pre-commitment for statements of fact and accountability. In less fancy but as useful ways it also ensures that the relying party or someone with a copy of one Transparent Statement in their hands can ensure completeness of the set they're evaluating, and confirm that they are up-to-date with supply chain information that can move very fast.\r\n\r\n- Does Feed need a structure? No, assuming the above is the purpose of grouping statements together then it doesn't mater what it's called as long as it's the same for all items in the group. This again cements the need for it to be in the Envelope though, since otherwise coordinating all the points in various systems that would need to know what value to put in there would be impractical. By having it in the Envelope anyone with a single Transparent statement from the Feed would know what to use for either making new statements or looking in the TS for related statements.\r\n\r\n- Can Feed just be a part of reg_info? No, because reg_info is defined for a very different purpose. Registration Policies are also very complicated and need work, but I don't think they need work to close this particular issue.\r\n\r\nWhile there are still clarity issues in the spec which I would love for us to address soon, I think this minimal change makes it possible to move on and removes the pollution from the discussion about types of identity, self-describing serialised data structures, and the like. Crucially, in keeping with the findings from -117, I believe it shows that it is possible to carry the 'findability' information that was required by the applications building on top of SCOITT building blocks without going outside our charter and defining things at the semantic or application layer. ",
       "createdAt": "2023-10-06T17:28:23Z",
-      "updatedAt": "2023-10-18T19:34:09Z",
+      "updatedAt": "2023-10-20T19:24:48Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
-      "baseRefOid": "c02c19372d242fcf000310522c2926f7aff3edd6",
+      "baseRefOid": "40dc274de6b72b476be88938bc5a008d6afb4d1c",
       "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "headRefName": "dev/jag-uk/clarify-feed",
-      "headRefOid": "7e11273de65dc825618f5bf7fcbd30aabffb4a02",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "caae2e893be38a85985b582791cf7abcf70d4a05",
+      "closedAt": "2023-10-20T19:24:48Z",
+      "mergedAt": "2023-10-20T19:24:48Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "e9bd8209be9085a6dcb5a935e5cba5a676c75835"
+      },
       "comments": [
         {
           "author": "OR13",
@@ -10620,6 +10661,20 @@
           "body": "This PR adds clarity and works well with the recent PRs (#113)\r\nAre there any objections to merging? If so, please identify what should be changed prior, and what couldn't be resolved with additional PRs of clarity.",
           "createdAt": "2023-10-18T19:10:28Z",
           "updatedAt": "2023-10-18T19:10:28Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Please merge asap",
+          "createdAt": "2023-10-20T16:35:00Z",
+          "updatedAt": "2023-10-20T16:35:00Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merging to move the spec forward, with a cleanup PR coming. \r\nMerging current discussions will enable additional conversations at IETF 118.",
+          "createdAt": "2023-10-20T19:24:38Z",
+          "updatedAt": "2023-10-20T19:24:38Z"
         }
       ],
       "reviews": [
@@ -10815,6 +10870,339 @@
               "updatedAt": "2023-10-18T19:34:09Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kw3Y2",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Fixing `Feed` content in the doc to `CWT Subject Claim` occurrences where possible must be done before submission!",
+          "createdAt": "2023-10-20T16:48:31Z",
+          "updatedAt": "2023-10-20T16:48:31Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxg7Z",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "roywill",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:20:06Z",
+          "updatedAt": "2023-10-20T18:20:07Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "I am leery of changing this to information about the Artifact.  The job of the transparency service is to countersign the signature not make any determination or claims about the content.  In fact there are scenarios where we don't want that information to be anywhere near the service.  ",
+              "createdAt": "2023-10-20T18:20:06Z",
+              "updatedAt": "2023-10-20T18:20:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxim_",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "roywill",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:24:03Z",
+          "updatedAt": "2023-10-20T18:24:03Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "The stitching of coherent information from multiple sources is complex.  The view from within a corporation could be the public published information augmented with the internal Legal or security endorsements.  Thus the thought that all relevant content flows through one Transparency services does not work here.  In addition, the decision of whether one identity can make statements about another's product is not under the control of the Transparency service.   The feed is not going to be authoritative in this context.",
+              "createdAt": "2023-10-20T18:24:03Z",
+              "updatedAt": "2023-10-20T18:24:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxkK1",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "roywill",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:28:31Z",
+          "updatedAt": "2023-10-20T18:28:31Z",
+          "comments": [
+            {
+              "originalPosition": 32,
+              "body": "I don't agree that the discriminator for a product is within the signed statements.  In the case where product identity is mandated within the artifact, requiring it to be replicated into the detached signature is unclear.  \r\nIn the use case where there is a global or major Transparency service, I could make a case that the product information hints to auditors more than the frequency of which statements are process, and that may be unacceptable.  Right now the information disclosure in a signed detached signature is limited.  Can someone make a case why we must\\should scope this here?  I could see it being necessary for some vertical process.",
+              "createdAt": "2023-10-20T18:28:31Z",
+              "updatedAt": "2023-10-20T18:28:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxlTu",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "roywill",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:32:04Z",
+          "updatedAt": "2023-10-20T18:32:05Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "The registration\\configuration of trusted identity sources is a problem.  How this is addressed is the open issue.  I don't see a solution where there are hints in the receipts to know that configuration policy has changed to drive this.  Nor do I see every consumer binding to the feed.   The model of asking for every receipt for the policy also seems flawed to me.  The original refocus on \"feeds\" was to offer a solution here which is now been segmented off the discussion and left as a future problem.",
+              "createdAt": "2023-10-20T18:32:05Z",
+              "updatedAt": "2023-10-20T18:32:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxlgd",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "roywill",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:32:45Z",
+          "updatedAt": "2023-10-20T18:32:46Z",
+          "comments": [
+            {
+              "originalPosition": 52,
+              "body": "Why \"recently very recently\"?",
+              "createdAt": "2023-10-20T18:32:45Z",
+              "updatedAt": "2023-10-20T18:32:46Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxmDO",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "aj-stein-nist",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:34:01Z",
+          "updatedAt": "2023-10-20T18:34:01Z",
+          "comments": [
+            {
+              "originalPosition": 75,
+              "body": "Thanks for the paper, I reviewed it, it was informative (but I likely need more time to understand it). To bring it back to the PR, I was asking if we have to define this term in this spec. Other terms, such as client in #102.\r\n\r\nIf that is not needed, feel free to resolve this comment. I will take it to mean I might be behind the shared understanding of other WG contributors and participants and it is well understood (and I am asking us to define water for specs in a specification about water purification level of obtuseness, to be funny about it).\r\n\r\nIf you would like it be added, I can make an issue and PR an explanation summarized from this and/or other sources. Let me know.",
+              "createdAt": "2023-10-20T18:34:01Z",
+              "updatedAt": "2023-10-20T18:34:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxmcm",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "roywill",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:35:12Z",
+          "updatedAt": "2023-10-20T18:35:12Z",
+          "comments": [
+            {
+              "originalPosition": 69,
+              "body": "Don't see this working?  The verification of a transparent statement should never require binding to a feed.  I thought we were talking about feeds for auditors not end users.  If so, making it that end user needs to see the Transparency Service directly and \"subscribe\" has issues.",
+              "createdAt": "2023-10-20T18:35:12Z",
+              "updatedAt": "2023-10-20T18:35:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxn7I",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "roywill",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:39:32Z",
+          "updatedAt": "2023-10-20T18:39:32Z",
+          "comments": [
+            {
+              "originalPosition": 75,
+              "body": "Don't agree as VEX style statements or claims can be augmented by the same entity and only the latter matters.  In that case the retrieval of all statements of a feed is a huge tax.  This concept of retrieval should be an application based solution (think a public registry) where graph style queries go.  It is at this layer the uber ownership and who gets to write new information per product is made.  That is not a function of the Transparency service. ",
+              "createdAt": "2023-10-20T18:39:32Z",
+              "updatedAt": "2023-10-20T18:39:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxoGE",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "aj-stein-nist",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:40:08Z",
+          "updatedAt": "2023-10-20T18:40:09Z",
+          "comments": [
+            {
+              "originalPosition": 52,
+              "body": "Is this a shorthand way of alluding to the epoch works from the RATS WG? If so, should we word appropriately and reference that as one potential temporal approach, which can be substituted for others? (I am guessing here based on wording, but I could be very wrong).\r\n\r\nhttps://datatracker.ietf.org/doc/draft-birkholz-rats-epoch-markers/05/",
+              "createdAt": "2023-10-20T18:40:08Z",
+              "updatedAt": "2023-10-20T18:40:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxqQT",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "aj-stein-nist",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:47:32Z",
+          "updatedAt": "2023-10-20T18:47:33Z",
+          "comments": [
+            {
+              "originalPosition": 75,
+              "body": "We presume the statement below, \r\n\r\n> the retrieval of all statements of a feed is a huge tax\r\n\r\nwith this reservation below.\r\n\r\n> Don't agree as VEX style statements or claims can be augmented by the same entity and only the latter matters.\r\n\r\nGiven the higher-level architecture of SCITT, what about this sentence or current draft requires a consumer of a TS retrieve all statements of the feed at once or at all, but not look at one and query *if* there are statements that were published with metadata in one statement indicating others before or after this statement in a sequence? This goes outside the scope of SCITT, but inside VEX and other formats. In formats I have helped design or maintain, you can look at pointers to records, before, after, or show me the most current (from a data model perspective, not that different from how the IETF Datatracker works when you visit an old draft; you do not need to visit a page and read all drafts in a single page at once). So where is this called and why do we assume this here or elsewhere in the current spec draft?",
+              "createdAt": "2023-10-20T18:47:33Z",
+              "updatedAt": "2023-10-20T18:47:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxtRa",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:56:53Z",
+          "updatedAt": "2023-10-20T18:56:53Z",
+          "comments": [
+            {
+              "originalPosition": 75,
+              "body": "@aj-stein-nist \r\n> feel free to resolve this comment. I will take it to mean I might be behind the shared understanding of other WG contributors and participants and it is well understood (and I am asking us to define water for specs in a specification about water purification level of obtuseness, to be funny about it).\r\n> If you would like it be added, I can make an issue and PR an explanation summarized from this and/or other sources. Let me know.\r\n\r\nYou're not behind, rather it's a great topic to clarify. Please do create an issue, and/or add a PR, it would be much appreciated as I'm sure others have the same question.",
+              "createdAt": "2023-10-20T18:56:53Z",
+              "updatedAt": "2023-10-20T18:56:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxueY",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T19:00:48Z",
+          "updatedAt": "2023-10-20T19:00:49Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "This is a great topic as we dig deeper into receipts. Please open a new issue for receipts, or we can have that conversation in #103 ",
+              "createdAt": "2023-10-20T19:00:48Z",
+              "updatedAt": "2023-10-20T19:00:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxzsK",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T19:15:13Z",
+          "updatedAt": "2023-10-20T19:15:13Z",
+          "comments": [
+            {
+              "originalPosition": 75,
+              "body": "@roywill \r\n> Don't agree as VEX style statements or claims can be augmented by the same entity and only the latter matters. In that case the retrieval of all statements of a feed is a huge tax. \r\n\r\nI agree with fetching all statements for an Artifact, based don't the `CWT_Claim => sub` may not be practical, or needed. \r\nThe verifier may want all statements, of a particular contentType, such as VEX, or all statements of a specific issuer, of a specific contentType. \r\nThese are all great topics when we discuss indexing, querying, etc. Which may likely be application layer concepts. \r\nWe can iterate this text a bit more, in a subsequent issue/PR",
+              "createdAt": "2023-10-20T19:15:13Z",
+              "updatedAt": "2023-10-20T19:15:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kx0bS",
+          "commit": {
+            "abbreviatedOid": "1b88058"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T19:17:51Z",
+          "updatedAt": "2023-10-20T19:17:51Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "> Thus the thought that all relevant content flows through one Transparency services does not work here. \r\n\r\nAgreed. This is also why we need a property for multiple instances of SCITT to have a property to correlate upon :) \r\n\r\nResolving this, and open to additional Issues/PRs for additional clarity.",
+              "createdAt": "2023-10-20T19:17:51Z",
+              "updatedAt": "2023-10-20T19:17:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kx04J",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T19:19:30Z",
+          "updatedAt": "2023-10-20T19:19:30Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "I believe this update is saying the registration policy can read the non-opaque envelope header to make the decisions. ",
+              "createdAt": "2023-10-20T19:19:30Z",
+              "updatedAt": "2023-10-20T19:19:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kx15T",
+          "commit": {
+            "abbreviatedOid": "7e11273"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T19:22:50Z",
+          "updatedAt": "2023-10-20T19:22:50Z",
+          "comments": [
+            {
+              "originalPosition": 52,
+              "body": "```suggestion\r\nFor example, a Registry may only allow a Signed Statement to be registered if it was signed very recently, or may reject a Signed Statement if it arrives out of order in some sequenced protocol.\r\n```\r\nCorrecting, what may, or may not have been an intentional duplication of \"_recently_\"",
+              "createdAt": "2023-10-20T19:22:50Z",
+              "updatedAt": "2023-10-20T19:22:50Z"
+            }
+          ]
         }
       ]
     },
@@ -10823,24 +11211,26 @@
       "id": "PR_kwDOIvmHss5cK9gO",
       "title": "Use CWT Claims in Headers",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/108",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR shows that feed is redundant to CWT Claims in headers.\r\nIf this approach gains consensus we won't need to register special tags in the protected header, and can instead use the RFC that allows this to happen.\r\n\r\nFor context, see this discussion from the list:\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/cose/KNRge3vxXF3A2LY24DNo6ZQxrNc/",
       "createdAt": "2023-10-07T13:56:10Z",
-      "updatedAt": "2023-10-18T16:29:40Z",
+      "updatedAt": "2023-10-20T16:53:07Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
       "headRepository": "transmute-industries/draft-ietf-scitt-architecture",
       "headRefName": "feat-cwt-claims",
-      "headRefOid": "1a9af1f49a8bf7341d49b3f53d1112b1382fbaa7",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "4d414a4aeea8d08f5a7741c45ac62e84b63dade8",
+      "closedAt": "2023-10-20T16:53:07Z",
+      "mergedAt": "2023-10-20T16:53:07Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "0f5dc15c8c0f2d0372ab73e5f8d3f9b677b59210"
+      },
       "comments": [
         {
           "author": "OR13",
@@ -10938,6 +11328,92 @@
               "updatedAt": "2023-10-18T14:57:48Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kwVAV",
+          "commit": {
+            "abbreviatedOid": "0a6db22"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T16:01:19Z",
+          "updatedAt": "2023-10-20T16:01:20Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "I object to removing this, until a later date... there is still too much confusion, keep this for now.",
+              "createdAt": "2023-10-20T16:01:20Z",
+              "updatedAt": "2023-10-20T16:01:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kwl_X",
+          "commit": {
+            "abbreviatedOid": "0a6db22"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T16:26:55Z",
+          "updatedAt": "2023-10-20T16:26:55Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\r\n  2 => tstr; sub, the subject about which the statements are made, throughout this spec, this is also called feed.\r\n```",
+              "createdAt": "2023-10-20T16:26:55Z",
+              "updatedAt": "2023-10-20T16:26:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kwn9v",
+          "commit": {
+            "abbreviatedOid": "4d414a4"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T16:29:48Z",
+          "updatedAt": "2023-10-20T16:29:48Z",
+          "comments": [
+            {
+              "originalPosition": 22,
+              "body": "why is 393 still in, when there is 13 in?",
+              "createdAt": "2023-10-20T16:29:48Z",
+              "updatedAt": "2023-10-20T16:29:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kwpqU",
+          "commit": {
+            "abbreviatedOid": "4d414a4"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Reg_Info is still out of place here, but I can accept that is incremental progress",
+          "createdAt": "2023-10-20T16:32:11Z",
+          "updatedAt": "2023-10-20T16:32:11Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kw5e-",
+          "commit": {
+            "abbreviatedOid": "4d414a4"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM\r\nIncremental progress, with #107, #114 coming in as well.",
+          "createdAt": "2023-10-20T16:52:16Z",
+          "updatedAt": "2023-10-20T16:52:16Z",
+          "comments": []
         }
       ]
     },
@@ -11016,21 +11492,21 @@
       "id": "PR_kwDOIvmHss5c1SpL",
       "title": "Change Feed label 392 to bstr, representing an opaque series of bytes",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/111",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This attempts to resolve the balance between a generic string and a structured string for how issuers and verifiers can identify \"a sequence of Signed Statements about the same Artifact.\", as [currently defined](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/main/draft-ietf-scitt-architecture.md?plain=1#L189)\r\n\r\nChanging to `bstr` enables an issuer to set the `Feed` to be a `sub`, and it also allows an issuer to use other identifier formats. \r\n\r\nThere's a great suggestion to use `sub`, as part of the CTW (PR #108). And at first it looks fairly simple.\r\n```cddl\r\nCWT_Claims = {\r\n  1 => tstr; iss, the issuer that is making statements\r\n  2 -> tstr; sub, the subject about which the statements are made, throughout this spec, this is also called feed.\r\n * tstr => any\r\n}\r\n```\r\n\r\nThe challenge is a CWT_Claim is far more expressive [as defined](https://www.iana.org/assignments/cwt/cwt.xhtml)\r\n\r\nFor an issuer and a verifier to clearly identify the specific artifact they are referencing with CWT_Claims, it would be both powerful and confusing for an issuer to specify which CWT_Claims properties they were using to identify the feed.\r\n\r\nAn issuer could add: \r\n\r\n```cddl\r\nCWT_Claims = {\r\n  1 => tstr; iss, the issuer that is making statements\r\n  2 -> tstr; sub, the subject about which the statements are made, throughout this spec, this is also called feed.\r\n  256 -> bstr; ueid, The Universal Entity ID \r\n  260 -> array; hwversion, the Hardware Version Identifier\r\n  2395 -> uint; psa-security-lifecycle, PSA Security Lifecycle\t\r\n   * tstr => any\r\n}\r\n```\r\n\r\nUsing the text in PR #103, changing the Feed to `bstr`, makes it clear the Feed is:\r\n\r\n> Feed:\r\n> : a logical collection of Statements about the same Artifact.\r\n> For any step or set of steps in a supply chain there will be multiple statements made about the same Artifact. Issuers use the Feed to create a coherent sequence of Signed Statements about the same Artifact and Verifiers use the Feed to ensure completeness and non-equivocation in supply chain evidence by identifying all Transparent Statements linked to the one(s) they are evaluating.\r\nFixe #11 ",
       "createdAt": "2023-10-15T15:41:11Z",
-      "updatedAt": "2023-10-18T16:28:54Z",
+      "updatedAt": "2023-10-20T18:07:30Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "37dbbc686c529bdc89765f18e8fafd20b732f387",
       "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
       "headRefName": "feed_as_bstr",
       "headRefOid": "b1e72c7b34df021160d4891bbe80546b9e50c6c7",
-      "closedAt": null,
+      "closedAt": "2023-10-20T18:07:30Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -11041,6 +11517,13 @@
           "body": "LGTM",
           "createdAt": "2023-10-16T15:12:02Z",
           "updatedAt": "2023-10-16T15:12:02Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing, in lieu of #108 ",
+          "createdAt": "2023-10-20T18:07:30Z",
+          "updatedAt": "2023-10-20T18:07:30Z"
         }
       ],
       "reviews": [
@@ -11406,24 +11889,26 @@
       "id": "PR_kwDOIvmHss5dKJ2Y",
       "title": "Rename Feed to Subject",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/114",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "PR addressing the conversation around Feed is redundant with Subject, as defined in CWT\r\n- [3.1.2.  sub (Subject) Claim](https://www.rfc-editor.org/rfc/rfc8392.html#section-3.1.2)\r\n    >    The \"sub\" (subject) claim has the same meaning and processing rules\r\n    >    as the \"sub\" claim defined in Section 4.1.2 of [RFC7519], except that\r\n    >    the value is a StringOrURI, as defined in Section 2 of this\r\n    >    specification.  The Claim Key 2 is used to identify this claim.\r\n- [4.1.2.  \"sub\" (Subject) Claim](https://www.rfc-editor.org/rfc/rfc7519#section-4.1.2)\r\n    >    The \"sub\" (subject) claim identifies the principal that is the\r\n    >    subject of the JWT.  The claims in a JWT are normally statements\r\n    >    about the subject.  The subject value MUST either be scoped to be\r\n    >    locally unique in the context of the issuer or be globally unique.\r\n    >    The processing of this claim is generally application specific.  The\r\n    >    \"sub\" value is a case-sensitive string containing a StringOrURI\r\n    >    value.  Use of this claim is OPTIONAL.\r\n\r\nThis PR intentionally contrasts #108\r\n\r\nChoice for folks to vote upon:\r\n\r\n- [ ] Rename Feed to Subject\r\n- [ ] Should we also include CWT_Claims, which contains the subject #108 \r\n\r\nFixes #11 ",
       "createdAt": "2023-10-18T15:47:17Z",
-      "updatedAt": "2023-10-18T16:30:02Z",
+      "updatedAt": "2023-10-20T18:06:53Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
-      "baseRefOid": "c02c19372d242fcf000310522c2926f7aff3edd6",
+      "baseRefOid": "0f5dc15c8c0f2d0372ab73e5f8d3f9b677b59210",
       "headRepository": "SteveLasker/draft-ietf-scitt-architecture",
       "headRefName": "feed-becomes-subject",
-      "headRefOid": "66f536e73fcd25791ad28e71f5204cd04629bf79",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "a8fed6ba50b710bef8e3695e281b964d83bc4521",
+      "closedAt": "2023-10-20T18:06:53Z",
+      "mergedAt": "2023-10-20T18:06:53Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "40dc274de6b72b476be88938bc5a008d6afb4d1c"
+      },
       "comments": [],
       "reviews": [
         {
@@ -11523,6 +12008,254 @@
           "body": "LGTM!",
           "createdAt": "2023-10-18T16:30:02Z",
           "updatedAt": "2023-10-18T16:30:02Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kp1j-",
+          "commit": {
+            "abbreviatedOid": "66f536e"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-19T21:28:39Z",
+          "updatedAt": "2023-10-19T21:28:53Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "Isn't 2 'crit`? Shouldn't 'sub' be nested in a 13 (see https://www.ietf.org/archive/id/draft-ietf-cose-cwt-claims-in-headers-06.html#name-representation)?",
+              "createdAt": "2023-10-19T21:28:39Z",
+              "updatedAt": "2023-10-19T21:30:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kqQ8P",
+          "commit": {
+            "abbreviatedOid": "66f536e"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-19T22:36:07Z",
+          "updatedAt": "2023-10-19T22:36:07Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "Ahh, yes, I incorrectly pulled `2` from the CWT spec. \r\nIn this PR, we're not pulling in CWT. That is deferred to #108\r\nThis PR renames `Feed` to `Subject`, aligning with the definition of Subject, within CWT. \r\nCan we agree with this incremental step? If so, what tag should we use? I can repurpose 392, but I think we agree [cbor-tags](https://www.iana.org/assignments/cbor-tags/cbor-tags.xhtml) should have a common tag  for `subject`, which is outside the scope of this PR.\r\n\r\n- Do we agree with the rename?\r\n- What CBOR tag should we use?",
+              "createdAt": "2023-10-19T22:36:07Z",
+              "updatedAt": "2023-10-19T22:36:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kvbeS",
+          "commit": {
+            "abbreviatedOid": "66f536e"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T14:20:31Z",
+          "updatedAt": "2023-10-20T14:20:31Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "To unblock, I've set the label to 392 (previous temporary label), as a `bytestring`, similar to #111. This unblocks the rename, with the ability to relax to `string` if we decide, or possibly shift to a CWT (#108). ",
+              "createdAt": "2023-10-20T14:20:31Z",
+              "updatedAt": "2023-10-20T14:20:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kvc8k",
+          "commit": {
+            "abbreviatedOid": "66f536e"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T14:22:35Z",
+          "updatedAt": "2023-10-20T14:22:35Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "Above reference is outdated. Please see updated [line 658](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/114/files#diff-585fb424519b79cf000445f3425fa56d328cbaca5d2a622740ddc4e5ca91dbe1R658)\r\n> `392 => bstr            ; Subject`",
+              "createdAt": "2023-10-20T14:22:35Z",
+              "updatedAt": "2023-10-20T14:22:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kxZwU",
+          "commit": {
+            "abbreviatedOid": "66f536e"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T18:02:36Z",
+          "updatedAt": "2023-10-20T18:02:36Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "With #108 merged, removing this entry. ",
+              "createdAt": "2023-10-20T18:02:36Z",
+              "updatedAt": "2023-10-20T18:02:36Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 115,
+      "id": "PR_kwDOIvmHss5dZ77C",
+      "title": "Adding Orie as a Contributor",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/115",
+      "state": "OPEN",
+      "author": "henkbirkholz",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-20T17:06:20Z",
+      "updatedAt": "2023-10-20T19:25:36Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "0f5dc15c8c0f2d0372ab73e5f8d3f9b677b59210",
+      "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "headRefName": "dragging-orie-into-this",
+      "headRefOid": "5906d79945eb5b974133740b127f2a930ef0eb38",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5kxDtY",
+          "commit": {
+            "abbreviatedOid": "fed0abe"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-20T17:13:20Z",
+          "updatedAt": "2023-10-20T17:13:20Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kx2ty",
+          "commit": {
+            "abbreviatedOid": "fed0abe"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-20T19:25:12Z",
+          "updatedAt": "2023-10-20T19:25:12Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2023-10-20T19:25:12Z",
+              "updatedAt": "2023-10-20T19:25:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kx20-",
+          "commit": {
+            "abbreviatedOid": "5906d79"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2023-10-20T19:25:36Z",
+          "updatedAt": "2023-10-20T19:25:36Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 118,
+      "id": "PR_kwDOIvmHss5dbVz2",
+      "title": "Cleanup for 118",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/118",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "General edits, cleanup of terminology, consistency, clarity, and chopping extra words, sentences and paragraphs to make it more consumable. \r\n\r\n**Guided by the \"Less is more\"** theory\r\n\r\nIf you feel something should be un-deleted, please quantify why it's so important and/or unique. \r\n",
+      "createdAt": "2023-10-20T23:35:56Z",
+      "updatedAt": "2023-10-21T16:57:02Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "e9bd8209be9085a6dcb5a935e5cba5a676c75835",
+      "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "headRefName": "cleanup-for-118",
+      "headRefOid": "b996065e8408305d07d447a11605fabe7acaa5ce",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Ready for review, before submission to the datatracker by Sunday evening PST",
+          "createdAt": "2023-10-21T16:13:50Z",
+          "updatedAt": "2023-10-21T16:56:57Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Delta from 117: https://author-tools.ietf.org/api/iddiff?url_1=https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.txt&url_2=https://ietf-wg-scitt.github.io/draft-ietf-scitt-architecture/cleanup-for-118/draft-ietf-scitt-architecture.txt",
+          "createdAt": "2023-10-21T16:57:02Z",
+          "updatedAt": "2023-10-21T16:57:02Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5kyz1x",
+          "commit": {
+            "abbreviatedOid": "732bb69"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-21T01:22:54Z",
+          "updatedAt": "2023-10-21T01:22:54Z",
+          "comments": [
+            {
+              "originalPosition": 400,
+              "body": "This section was duped, and out of sync with [line 689](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/118/files#diff-585fb424519b79cf000445f3425fa56d328cbaca5d2a622740ddc4e5ca91dbe1R689)",
+              "createdAt": "2023-10-21T01:22:54Z",
+              "updatedAt": "2023-10-21T01:22:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5kzPhq",
+          "commit": {
+            "abbreviatedOid": "4bc31c9"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-21T04:02:08Z",
+          "updatedAt": "2023-10-21T04:02:08Z",
           "comments": []
         }
       ]
