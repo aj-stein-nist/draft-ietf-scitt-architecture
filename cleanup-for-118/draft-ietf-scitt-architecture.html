@@ -1038,7 +1038,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 23 April 2024</td>
+<td class="center">Expires 24 April 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1051,12 +1051,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-scitt-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-10-21" class="published">21 October 2023</time>
+<time datetime="2023-10-22" class="published">22 October 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-04-23">23 April 2024</time></dd>
+<dd class="expires"><time datetime="2024-04-24">24 April 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1126,7 +1126,7 @@ Issuers can register their Signed Statements on any Transparency Service, with t
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 23 April 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 April 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1199,7 +1199,7 @@ Issuers can register their Signed Statements on any Transparency Service, with t
                     <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="auto internal xref">5.2.2</a>.  <a href="#name-registration-policies" class="internal xref">Registration Policies</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.3">
-                    <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="auto internal xref">5.2.3</a>.  <a href="#name-registry-security-requireme" class="internal xref">Registry Security Requirements</a></p>
+                    <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="auto internal xref">5.2.3</a>.  <a href="#name-append-only-log-security-re" class="internal xref">Append-only Log Security Requirements</a></p>
 </li>
                 </ul>
 </li>
@@ -1319,52 +1319,56 @@ It achieves this goal by enforcing the following complementary security guarante
           <p id="section-1-2.1.1">Statements made by Issuers about supply chain Artifacts must be identifiable, authentic, and non-repudiable<a href="#section-1-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-1-2.2">
-          <p id="section-1-2.2.1">Such Statements must be registered on a secure append-only Log, so that their provenance and history can be independently and consistently audited<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-1-2.2.1">Such Statements must be registered on a secure Append-only Log, enabling provenance and history to be independently and consistently audited<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-1-2.3">
           <p id="section-1-2.3.1">Issuers can efficiently prove to any other party the Registration of their Signed Statements; verifying this proof ensures that the Issuer is consistent and non-equivocal when producing Signed Statements<a href="#section-1-2.3.1" class="pilcrow">¶</a></p>
 </li>
       </ol>
 <p id="section-1-3">The first guarantee is achieved by requiring Issuers to sign their Statements and associated metadata using a distributed public key infrastructure.
-The second guarantee is achieved by storing the Signed Statement on an immutable, append-only Log.
-The next guarantee is achieved by implementing the append-only Log using a verifiable data structure (such as a Merkle Tree <span>[<a href="#MERKLE" class="cite xref">MERKLE</a>]</span>).
+The second guarantee is achieved by storing the Signed Statement on an immutable, Append-only Log.
+The next guarantee is achieved by implementing the Append-only Log using a verifiable data structure (such as a Merkle Tree <span>[<a href="#MERKLE" class="cite xref">MERKLE</a>]</span>).
 Lastly, the Transparency Service verifies the identity of the Issuer, and conformance to a Registration Policy associated with the instance of the Transparency Service.
-As the Issuer of the Signed Statement and conformance to the Registration Policy are confirmed, an endorsement is made as the Signed Statement is added to the append-only Log.<a href="#section-1-3" class="pilcrow">¶</a></p>
+As the Issuer of the Signed Statement and conformance to the Registration Policy are confirmed, an endorsement is made as the Signed Statement is added to the Append-only Log.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">The guarantees and techniques used in this document generalize those of Certificate Transparency <span>[<a href="#RFC9162" class="cite xref">RFC9162</a>]</span>, which can be re-interpreted as an instance of this architecture for the supply chain of X.509 certificates.
 However, the range of use cases and applications in this document is much broader, which requires much more flexibility in how each Transparency Service is implemented and operates.
-Each service <span class="bcp14">MAY</span> enforce its own Registration Policies for authorizing entities to register their Signed Statements to the append-only Log.
-Some Transparency Services may also enforce authorization policies limiting who can write, read and audit the registry.
-It is critical to provide interoperability for all Transparency Services instances as the composition and configuration of involved supply chain entities and their system components is ever-changing and always in flux, so it is implausible to expect all participants to choose a single vendor or registry.<a href="#section-1-4" class="pilcrow">¶</a></p>
+Each service <span class="bcp14">MAY</span> enforce its own Registration Policies for authorizing entities to register their Signed Statements to the Append-only Log.
+Some Transparency Services may also enforce authorization policies limiting who can write, read and audit the Append-only Long.
+It is critical to provide interoperability for all Transparency Services instances as the composition of supply chain entities is ever-changing.
+It is implausible to expect all participants to choose a single vendor or Append-only Long.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">A Transparency Service provides visibility into Signed Statements associated with various supply chains and their sub-systems.
 These Signed Statements (and corresponding Statement payload) make claims about the Artifacts produced by a supply chain.
 A Transparency Service endorses specific and well-defined metadata about these Artifacts that is captured in the envelope of the Statements.
-Some metadata is selected (and signed) by the Issuer, indicating, e.g., "who issued the Statement" or "what type of Artifact is described" or "what is the Artifact's version"; whereas additional metadata is selected (and countersigned) by the Transparency Services, indicating, e.g., "when was the Signed Statement about the Artifact registered in the Registry".
+Some metadata is selected (and signed) by the Issuer, indicating, e.g., "who issued the Statement" or "what type of Artifact is described" or "what is the Artifact's version"; whereas additional metadata is selected (and countersigned) by the Transparency Services, indicating, e.g., "when was the Signed Statement about the Artifact registered in the Transparency Service".
 Producing a Transparent Statement is considered a form of notarization.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <p id="section-1-6">A Statements payload content is always opaque and <span class="bcp14">MAY</span> be encrypted when submitted to the Transparency Services.
 However the header metadata <span class="bcp14">MUST</span> be transparent in order to warrant trust for later processing.<a href="#section-1-6" class="pilcrow">¶</a></p>
-<p id="section-1-7">Transparent Statements provide a common basis for holding Issuers accountable for the Statement payload about Artifacts they release and (more generally) principals accountable for auxiliary Signed Statements from other Issuers about the original Signed Statement about an Artifact.
-Multiple Issuers may Register new Signed Statements about Artifacts, but they cannot delete or alter Signed Statements previously added to the append-only Log.
-A Transparency Service may restrict access to Signed Statements through access control policies.
-However, third parties (such as Auditors) would be granted access as needed to attest to the validity of the Artifact, Subject or the entirety of the Transparency Service.<a href="#section-1-7" class="pilcrow">¶</a></p>
-<p id="section-1-8">Trust in the Transparency Service itself is supported both by protecting their implementation (using, for instance, replication, trusted hardware, and remote attestation of a system's operational state) and by enabling independent audits of the correctness and consistency of its Registry, thereby holding the organization that operates it accountable.
-Unlike CT, where independent Auditors are responsible for enforcing the consistency of multiple independent instances of the same global Registry, each Transparency Service is required to guarantee the consistency of its own Registry (for instance, through the use of a consensus algorithm between replicas of the Registry), but assume no consistency between different Transparency Services.<a href="#section-1-8" class="pilcrow">¶</a></p>
+<p id="section-1-7">Transparent Statements provide a common basis for holding Issuers accountable for the Statement payload about Artifacts they release.
+Multiple Issuers may Register additional Signed Statements about the same Artifact, but they cannot delete or alter Signed Statements previously added to the Append-only Log.
+The ability for the original Issuer to make additional Statements about an Artifact provides for updated information to be shared, such as new positive or negative validations of quality.
+The ability of other Issuers to make Statements about an Artifact, produced from another Issuer, provides for third party validations.
+A Transparency Service may restrict access to Signed Statements through access control or Registration policies.
+However, third parties (such as Auditors) would be granted access as needed to attest to the validity of the Artifact, Subject or the entirety of the Transparency Service.
+Independent third parties may also make Statements about an Artifact on other Transparency Services.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<p id="section-1-8">Trust in the Transparency Service itself is supported both by protecting their implementation (using replication, trusted hardware, and remote attestation of a system's operational state) and by enabling independent audits of the correctness and consistency of its Append-only Log, thereby holding the organization that operates it accountable.
+Unlike CT, where independent Auditors are responsible for enforcing the consistency of multiple independent instances of the same global Transparency Service, each Transparency Service is required to guarantee the consistency of its own Append-only Log (through the use of a consensus algorithm between replicas of the Transparency Service), but assume no consistency between different Transparency Services.<a href="#section-1-8" class="pilcrow">¶</a></p>
 <p id="section-1-9">Breadth of verifier access is critical.
 As a result, the Transparency Service specified in this architecture caters to two types of audiences:<a href="#section-1-9" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-1-10">
 <li id="section-1-10.1">
-          <p id="section-1-10.1.1">Issuers: organizations, stakeholders, and users involved in creating or attesting to supply chain artifacts, releasing authentic Statements to a definable set of peers<a href="#section-1-10.1.1" class="pilcrow">¶</a></p>
+          <p id="section-1-10.1.1"><strong>Issuers</strong>: organizations, stakeholders, and users involved in creating or attesting to supply chain artifacts, releasing authentic Statements to a definable set of peers<a href="#section-1-10.1.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-1-10.2">
-          <p id="section-1-10.2.1">Verifiers: organizations, stakeholders, and users involved in validating supply chain artifacts, but can only do so if the Statements are known to be authentic.
+          <p id="section-1-10.2.1"><strong>Verifiers</strong>: organizations, stakeholders, and users involved in validating supply chain artifacts, but can only do so if the Statements are known to be authentic.
 Verifiers <span class="bcp14">MAY</span> be Issuers, providing additional Signed Statements, attesting to conformance of various compliance requirements.<a href="#section-1-10.2.1" class="pilcrow">¶</a></p>
 </li>
       </ol>
-<p id="section-1-11">The issuer of a Signed Statement must be authenticated and authorized according to the registration policy of the Transparency Service.
+<p id="section-1-11">The issuer of a Signed Statement must be authenticated and authorized according to the Registration Policy of the Transparency Service.
 Analogously, Transparent Statement Verifiers rely on verifiable trustworthiness assertions associated with Transparent Statements and their processing provenance in a believable manner.
-If trust can be put into the operations that record Signed Statements in a secure, append-only log via online operations, the same trust can be put into the resulting transparent statement, issued by the Transparency Services and that can be validated in offline operations.<a href="#section-1-11" class="pilcrow">¶</a></p>
+If trust can be put into the operations that record Signed Statements in a secure, Append-only Log via online operations, the same trust can be put into the resulting Transparent Statement, issued by the Transparency Services and that can be validated in offline operations.<a href="#section-1-11" class="pilcrow">¶</a></p>
 <p id="section-1-12">The Transparency Services specified in this architecture are language independent and can be implemented alongside or within existing services.<a href="#section-1-12" class="pilcrow">¶</a></p>
 <p id="section-1-13">The interoperability guaranteed by the Transparency Services is enabled via core components (architectural constituents).
-Many of the data elements processed by the core components are based on the Concise Signing and Encryption (COSE) standard specified in <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>, which is used to produce Signed Statements about Artifacts and to build and maintain a Merkle tree that functions as an append-only Log for corresponding Signed Statements.<a href="#section-1-13" class="pilcrow">¶</a></p>
+Many of the data elements processed by the core components are based on the Concise Signing and Encryption (COSE) standard specified in <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>, which is used to produce Signed Statements about Artifacts and to build and maintain a Merkle tree that functions as an Append-only Log for corresponding Signed Statements.<a href="#section-1-13" class="pilcrow">¶</a></p>
 <div id="sec-requirements-notation">
 <section id="section-1.1">
         <h3 id="name-requirements-notation">
@@ -1404,7 +1408,7 @@ SCITT supports multiple Log and Receipt formats to accommodate different Transpa
         <dd class="break"></dd>
 <dt id="section-3-2.3">Artifact:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.4">
-          <p id="section-3-2.4.1">a physical or non-physical item that is moving along the supply chain.<a href="#section-3-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.4.1">a physical or non-physical item that is moving along a supply chain.<a href="#section-3-2.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-3-2.5">Auditor:</dt>
@@ -1420,72 +1424,80 @@ A Signed Statement is a COSE Envelope wrapped around a Statement, binding the me
 In COSE, an Envelope consists of a protected header (included in the Issuer's signature) and an unprotected header (not included in the Issuer's signature).<a href="#section-3-2.8.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.9">Issuer:</dt>
+<dt id="section-3-2.9">Feed:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.10">
-          <p id="section-3-2.10.1">organizations, stakeholders, and users involved in creating or attesting to supply chain artifacts, releasing authentic Statements to a definable set of peers
-An Issuer may be the owner or author of Artifacts, or an independent third party such as an auditor, reviewer or an endorser.<a href="#section-3-2.10.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.10.1">see Subject<a href="#section-3-2.10.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.11">Receipt:</dt>
+<dt id="section-3-2.11">Issuer:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.12">
-          <p id="section-3-2.12.1">a Receipt is a cryptographic proof that a Signed Statement is recorded in the Registry. Receipts are based on COSE Signed Merkle Tree Proofs <span>[<a href="#I-D.draft-steele-cose-merkle-tree-proofs" class="cite xref">I-D.draft-steele-cose-merkle-tree-proofs</a>]</span>; they consist of a Registry-specific inclusion proof, a signature by the Transparency Service of the state of the Registry, and additional metadata (contained in the signature's protected headers) to assist in auditing.<a href="#section-3-2.12.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.12.1">organizations, stakeholders, and users involved in creating or attesting to supply chain artifacts, releasing authentic Statements to a definable set of peers.
+An Issuer may be the owner or author of Artifacts, or an independent third party such as an auditor, reviewer or an endorser.<a href="#section-3-2.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.13">Registration:</dt>
+<dt id="section-3-2.13">Receipt:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.14">
-          <p id="section-3-2.14.1">the process of submitting a Signed Statement to a Transparency Service, applying the Transparency Service's Registration Policy, and producing a Receipt.<a href="#section-3-2.14.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.14.1">a Receipt is a cryptographic proof that a Signed Statement is recorded in the Append-Only Log. Receipts are based on COSE Signed Merkle Tree Proofs <span>[<a href="#I-D.draft-steele-cose-merkle-tree-proofs" class="cite xref">I-D.draft-steele-cose-merkle-tree-proofs</a>]</span>.
+Receipts consist of Transparency Service-specific inclusion proofs, a signature by the Transparency Service of the state of the Append-only Log, and additional metadata (contained in the signature's protected headers) to assist in auditing.<a href="#section-3-2.14.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.15">Registration Policy:</dt>
+<dt id="section-3-2.15">Registration:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.16">
-          <p id="section-3-2.16.1">the pre-condition enforced by the Transparency Service before registering a Signed Statement, rendering it as a Signed Statement, based on metadata contained in its COSE Envelope (notably the identity of its Issuer) and on prior Signed Statements already added to a Registry.<a href="#section-3-2.16.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.16.1">the process of submitting a Signed Statement to a Transparency Service, applying the Transparency Service's Registration Policy, adding to the Append-only Log, and producing a Receipt.<a href="#section-3-2.16.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.17">Registry:</dt>
+<dt id="section-3-2.17">Registration Policy:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.18">
-          <p id="section-3-2.18.1">See Append-only Log<a href="#section-3-2.18.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.18.1">the pre-condition enforced by the Transparency Service before registering a Signed Statement, based on information in the non-opaque header and metadata contained in its COSE Envelope.
+A Transparency Service <span class="bcp14">MAY</span> implement any range of policies that meets their needs.
+However a Transparency Service can not alter the contents of the Signed Statements.<a href="#section-3-2.18.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.19">Signed Statement:</dt>
+<dt id="section-3-2.19">Registry:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.20">
-          <p id="section-3-2.20.1">an identifiable and non-repudiable Statement about an Artifact signed by an Issuer.
-In SCITT, Signed Statements are encoded as COSE signed objects; the payload of the COSE structure contains the issued Statement.<a href="#section-3-2.20.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.20.1">See Append-only Log<a href="#section-3-2.20.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.21">Statement:</dt>
+<dt id="section-3-2.21">Signed Statement:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.22">
-          <p id="section-3-2.22.1">any serializable information about an Artifact.
+          <p id="section-3-2.22.1">an identifiable and non-repudiable Statement about an Artifact signed by an Issuer.
+In SCITT, Signed Statements are encoded as COSE signed objects; the payload of the COSE structure contains the issued Statement.<a href="#section-3-2.22.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-3-2.23">Statement:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.24">
+          <p id="section-3-2.24.1">any serializable information about an Artifact.
 To help interpretation of Statements, they must be tagged with a media type (as specified in <span>[<a href="#RFC6838" class="cite xref">RFC6838</a>]</span>).
 A Statement may represent a Software Bill Of Materials (SBOM) that lists the ingredients of a software Artifact, some endorsement or attestation about an Artifact, or any content an issuer wishes to publish.
-The statement is opaque to Transparency Service, and <span class="bcp14">MAY</span> be encrypted.<a href="#section-3-2.22.1" class="pilcrow">¶</a></p>
+The statement is opaque to Transparency Service, and <span class="bcp14">MAY</span> be encrypted.<a href="#section-3-2.24.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.23">Subject:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.24">
-          <p id="section-3-2.24.1">a logical collection of Statements about the same Artifact.
-For any step or set of steps in a supply chain there may be multiple statements made about the same Artifact. Issuers use the <code>CWT_Claims</code> <code>sub</code> property to create a coherent sequence of Signed Statements about the same Artifact and Verifiers use the Subject to ensure completeness and non-equivocation in supply chain evidence by identifying all Transparent Statements linked to the one(s) they are evaluating.
-In COSE, Subject is a property of the dedicated, protected header attribute <code>13: CWT_Claims</code> within the Envelope.<a href="#section-3-2.24.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-3-2.25">Transparency Service:</dt>
+<dt id="section-3-2.25">Subject:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.26">
-          <p id="section-3-2.26.1">an entity that maintains and extends the Append-only Log, and endorses its state.
+          <p id="section-3-2.26.1">(Previously named Feed) a logical collection of Statements about the same Artifact.
+For any step or set of steps in a supply chain there may be multiple statements made about the same Artifact. Issuers use the CWT <code>sub</code> claim to create a coherent sequence of Signed Statements about the same Artifact and Verifiers use the Subject to ensure completeness and non-equivocation in supply chain evidence by identifying all Transparent Statements linked to the one(s) they are evaluating.
+In SCITT, Subject is a property of the dedicated, protected header attribute <code>13: CWT_Claims</code> within the Envelope.<a href="#section-3-2.26.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-3-2.27">Transparency Service:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.28">
+          <p id="section-3-2.28.1">an entity that maintains and extends the Append-only Log, and endorses its state.
 A Transparency Service <span class="bcp14">MAY</span> implement a Registration Policy, often referred to by its synonym Notary.
 A Transparency Service can be a complex distributed system, and SCITT requires the Transparency Service to provide many security guarantees about its Append-only Log.
-The identity of a Transparency Service is captured by a public key that must be known by Verifiers in order to validate Receipts.<a href="#section-3-2.26.1" class="pilcrow">¶</a></p>
+The identity of a Transparency Service is captured by a public key that must be known by Verifiers in order to validate Receipts.<a href="#section-3-2.28.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.27">Transparent Statement:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.28">
-          <p id="section-3-2.28.1">a Signed Statement that is augmented with a Receipt created via Registration in a Transparency Service.
-The receipt is stored in the unprotected header of COSE Envelope of the Signed Statement.
-A Transparent Statement remains a valid Signed Statement, and may be registered again in a different Transparency Service.<a href="#section-3-2.28.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-3-2.29">Verifier:</dt>
+<dt id="section-3-2.29">Transparent Statement:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.30">
-          <p id="section-3-2.30.1">organizations, stakeholders, and users involved in validating supply chain artifacts.
-Verifiers consume Transparent Statements, verifying their proofs and inspecting their Statement payload, either before using corresponding Artifacts, or later to audit an Artifact's provenance on the supply chain.<a href="#section-3-2.30.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.30.1">a Signed Statement that is augmented with a Receipt created via Registration in a Transparency Service.
+The receipt is stored in the unprotected header of COSE Envelope of the Signed Statement.
+A Transparent Statement remains a valid Signed Statement, and may be registered again in a different Transparency Service.<a href="#section-3-2.30.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-3-2.31">Verifier:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.32">
+          <p id="section-3-2.32.1">organizations, stakeholders, and users involved in validating supply chain Artifacts.
+Verifiers consume Transparent Statements, verifying their proofs and inspecting the Statement payload, either before using corresponding Artifacts, or later to audit an Artifact's provenance on the supply chain.<a href="#section-3-2.32.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1496,22 +1508,25 @@ Verifiers consume Transparent Statements, verifying their proofs and inspecting 
       <h2 id="name-definition-of-transparency">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-definition-of-transparency" class="section-name selfRef">Definition of Transparency</a>
       </h2>
-<p id="section-4-1">In this document, the definition of transparency is intended to build over abstract notions of Registry and Receipts.
+<p id="section-4-1">In this document, the definition of transparency is intended to build over abstract notions of Append-only Logs and Receipts.
 Existing transparency systems such as Certificate Transparency are instances of this definition.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4-2">A Signed Statement is an identifiable and non-repudiable Statement made by an Issuer.
 The Issuer selects additional metadata and attaches a proof of endorsement (in most cases, a signature) using the identity key of the Issuer that binds the Statement and its metadata.
-Signed Statements can be made transparent by attaching a proof of Registration by a Transparency Service, in the form of a Receipt that countersigns the Signed Statement and witnesses its inclusion in the Registry of a Transparency Service.
+Signed Statements can be made transparent by attaching a proof of Registration by a Transparency Service, in the form of a Receipt that countersigns the Signed Statement and witnesses its inclusion in the Append-only Log of a Transparency Service.
 By extension, the document may say an Artifact (e.g., a firmware binary) is transparent if it comes with one or more Transparent Statements from its author or owner, though the context should make it clear what type of Signed Statements is expected for a given Artifact.<a href="#section-4-2" class="pilcrow">¶</a></p>
-<p id="section-4-3">Transparency does not prevent dishonest or compromised Issuers, but it holds them accountable: any Artifact that may be used to target a particular user that checks for Receipts must have been recorded in the tamper-proof Registry, and will be subject to scrutiny and auditing by other parties.<a href="#section-4-3" class="pilcrow">¶</a></p>
-<p id="section-4-4">Transparency is implemented by a Registry that provides a consistent, append-only, cryptographically verifiable, publicly available record of entries.
-Implementations of Transparency Services may protect their Registry using a combination of trusted hardware, replication and consensus protocols, and cryptographic evidence.
-A Receipt is an offline, universally-verifiable proof that an entry is recorded in the Registry.
+<p id="section-4-3">Transparency does not prevent dishonest or compromised Issuers, but it holds them accountable.
+Any Artifact that may be verified, is subject to scrutiny and auditing by other parties.
+The Transparency Service provides a history of Statements, which may be made by multiple Issuers, enabling Verifiers to make informed decisions.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-4">Transparency is implemented by providing a consistent, append-only, cryptographically verifiable, publicly available record of entries.
+An SCITT instance is referred to as Transparency Service.
+Implementations of Transparency Services may protect their Append-only Log using a combination of trusted hardware, replication and consensus protocols, and cryptographic evidence.
+A Receipt is an offline, universally-verifiable proof that an entry is recorded in the Append-only Log.
 Receipts do not expire, but it is possible to append new entries (more recent Signed Statements) that subsume older entries (less recent Signed Statements).<a href="#section-4-4" class="pilcrow">¶</a></p>
-<p id="section-4-5">Anyone with access to the Registry can independently verify its consistency and review the complete list of Transparent Statements registered by each Issuer.
-However, the Registries of separate Transparency Services are generally disjoint, though it is possible to take a Transparent Statement from one Registry and register it again on another (if its policy allows it), so the authorization of the Issuer and of the Registry by the Verifier of the Receipt are generally independent.<a href="#section-4-5" class="pilcrow">¶</a></p>
+<p id="section-4-5">Anyone with access to the Transparency Service can independently verify its consistency and review the complete list of Transparent Statements registered by each Issuer.
+However, the Registrations of separate Transparency Services are generally disjoint, though it is possible to take a Transparent Statement from one Transparency Service and register it again on another (if its policy allows), so the authorization of the Issuer and of the Transparency Service by the Verifier of the Receipt are generally independent.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <p id="section-4-6">Reputable Issuers are thus incentivized to carefully review their Statements before signing them to produce Signed Statements.
-Similarly, reputable Transparency Services are incentivized to secure their Registry, as any inconsistency can easily be pinpointed by any Auditor with read access to the Registry.
-Some Registry formats may also support consistency auditing (<a href="#sec-consistency" class="auto internal xref">Section 5.2.3.2</a>) through Receipts, that is, given two valid Receipts the Transparency Service may be asked to produce a cryptographic proof that they are consistent.
+Similarly, reputable Transparency Services are incentivized to secure their Append-only Log, as any inconsistency can easily be pinpointed by any Auditor with read access to the Transparency Service.
+Some Append-only Log formats may also support consistency auditing (<a href="#sec-consistency" class="auto internal xref">Section 5.2.3.2</a>) through Receipts, that is, given two valid Receipts the Transparency Service may be asked to produce a cryptographic proof that they are consistent.
 Failure to produce this proof can indicate that the Transparency Services operator misbehaved.<a href="#section-4-6" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1875,7 +1890,7 @@ The <code>iss</code> and <code>sub</code> claims, within the CWT_Claims protecte
           </h4>
 <p id="section-5.1.3-1">SCITT payloads are opaque to Transparency Services, so Registration Policy decisions can only be based on interpretation of information in the Envelope.<a href="#section-5.1.3-1" class="pilcrow">¶</a></p>
 <p id="section-5.1.3-2">The small mandatory set of metadata in the envelope of a Signed Statement is neither intended nor sufficient to express the information required for the processing of Registration Policies in a Transparency Service.<a href="#section-5.1.3-2" class="pilcrow">¶</a></p>
-<p id="section-5.1.3-3">For example, a Registry may only allow a Signed Statement to be registered if it was signed very recently, or may reject a Signed Statement if it arrives out of order in some sequenced protocol.<a href="#section-5.1.3-3" class="pilcrow">¶</a></p>
+<p id="section-5.1.3-3">For example, a Transparency Service may only allow a Signed Statement to be registered if it was signed very recently, or may reject a Signed Statement if it arrives out of order in some sequenced protocol.<a href="#section-5.1.3-3" class="pilcrow">¶</a></p>
 <p id="section-5.1.3-4">Any metadata meant to be interpreted by the Transparency Service during Registration Policy evaluation, <span class="bcp14">SHOULD</span> be added to the <code>reg_info</code> header, unless the data is private (in which case, it <span class="bcp14">MAY</span> be sent to the Transparency Service as an additional input during registration).<a href="#section-5.1.3-4" class="pilcrow">¶</a></p>
 <p id="section-5.1.3-5">While the header <span class="bcp14">MUST</span> be present in all Signed Statements, all attributes are optional and so the map <span class="bcp14">MAY</span> be empty.<a href="#section-5.1.3-5" class="pilcrow">¶</a></p>
 </section>
@@ -1888,14 +1903,16 @@ The <code>iss</code> and <code>sub</code> claims, within the CWT_Claims protecte
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-transparency-service" class="section-name selfRef">Transparency Service</a>
         </h3>
 <p id="section-5.2-1">The role of Transparency Service can be decomposed into several major functions.
-The most important is maintaining a Registry, the verifiable data structure that records Signed Statements, and enforcing a Registration Policy.
-It also maintains a service key, which is used to endorse the state of the Registry in Receipts.
+The most important is maintaining an Append-only Log, the verifiable data structure that records Signed Statements, and enforcing a Registration Policy.
+It also maintains a service key, which is used to endorse the state of the Append-only Log in Receipts.
 All Transparency Services <span class="bcp14">MUST</span> expose standard endpoints for Registration of Signed Statements and Receipt issuance, which is described in <a href="#sec-messages" class="auto internal xref">Section 8.1</a>.
-Each Transparency Service also defines its own Registration Policies, which <span class="bcp14">MUST</span> apply to all entries in the Registry.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2-2">The combination of Registry, identity, Registration Policy evaluation, and Registration endpoint constitute the trusted part of the Transparency Service.
+Each Transparency Service also defines its own Registration Policies, which <span class="bcp14">MUST</span> apply to all entries in the Append-only Log.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-2">The combination of Identity, Registration Policy evaluation, and the Transparency Service endpoint constitute the trusted part of the Transparency Service.
 Each of these components <span class="bcp14">MUST</span> be carefully protected against both external attacks and internal misbehavior by some or all of the operators of the Transparency Service.
-For instance, the code for policy evaluation, Registry extension and endorsement may be protected by running in a TEE; the Registry may be replicated and a consensus algorithm such as Practical Byzantine Fault Tolerance (pBFT <span>[<a href="#PBFT" class="cite xref">PBFT</a>]</span>) may be used to protect against malicious or vulnerable replicas; threshold signatures may be use to protect the service key, etc.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
-<p id="section-5.2-3">Beyond the trusted components, Transparency Services may operate additional endpoints for auditing, for instance to query for the history of Signed Statements registered by a given Issuer via a certain Subject. Implementations of Transparency Services <span class="bcp14">SHOULD</span> avoid using the service identity and extending the Registry in auditing endpoints, except if it is necessary to compute a Registry consistency proofs. Other evidence to support the correctness and completeness of the audit response <span class="bcp14">MUST</span> be computed from the Registry.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+For instance, the code for the Registration Policy evaluation and endorsement may be protected by running in a TEE.
+The Transparency Service may be replicated with a consensus algorithm, such as Practical Byzantine Fault Tolerance (pBFT <span>[<a href="#PBFT" class="cite xref">PBFT</a>]</span>) and may be used to protect against malicious or vulnerable replicas.
+Threshold signatures may be use to protect the service key, etc.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2-3">Beyond the trusted components, Transparency Services may operate additional endpoints for auditing, for instance to query for the history of Signed Statements registered by a given Issuer via a certain Subject. Implementations of Transparency Services <span class="bcp14">SHOULD</span> avoid using the service identity and extending the Transparency Service in auditing endpoints, except if it is necessary to compute an Append-Only Log consistency proofs. Other evidence to support the correctness and completeness of the audit response <span class="bcp14">MUST</span> be computed from the Append-only Log.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
 <div id="sec-service-identity-remote-attestation-and-keying">
 <section id="section-5.2.1">
           <h4 id="name-service-identity-remote-att">
@@ -1904,10 +1921,10 @@ For instance, the code for policy evaluation, Registry extension and endorsement
 <p id="section-5.2.1-1">Every Transparency Service <span class="bcp14">MUST</span> have a public service identity, associated with public/private key pairs for signing on behalf of the service.
 In particular, this identity must be known by Verifiers when validating a Receipt.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-5.2.1-2">This identity <span class="bcp14">MUST</span> be stable for the lifetime of the service, so that all Receipts remain valid and consistent.
-The Transparency Service operator <span class="bcp14">MAY</span> use a distributed identifier as their public service identity if they wish to rotate their keys, if the Registry algorithm they use for their Receipt supports it.
+The Transparency Service operator <span class="bcp14">MAY</span> use a distributed identifier as their public service identity if they wish to rotate their keys, if the Append-only Log algorithm they use for their Receipt supports it.
 Other types of cryptographic identities, such as parameters for non-interactive zero-knowledge proof systems, may also be used in the future.<a href="#section-5.2.1-2" class="pilcrow">¶</a></p>
 <p id="section-5.2.1-3">A Transparency Service <span class="bcp14">MAY</span> provide extra evidence that it is securely implemented and operated, enabling remote authentication of the hardware platforms and/or software TCB that run the Transparency Service.
-If present, this additional evidence <span class="bcp14">MUST</span> be recorded in the Registry and presented on demand to Verifiers and Auditors.
+If present, this additional evidence <span class="bcp14">MUST</span> be recorded in the Append-only Log and presented on demand to Verifiers and Auditors.
 Examples for Statements that can improve trustworthy assessments of Transparency Services are RATS Conceptual Messages, such as Evidence, Endorsements, or corresponding Attestation Results (see <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span>.<a href="#section-5.2.1-3" class="pilcrow">¶</a></p>
 <p id="section-5.2.1-4">For example, consider a Transparency Service implemented using a set of replicas, each running within its own hardware-protected trusted execution environments (TEEs).
 Each replica <span class="bcp14">MAY</span> provide a recent attestation report for its TEE, binding their hardware platform to the software that runs the Transparency Service, the long-term public key of the service, and the key used by the replica for signing Receipts.
@@ -1924,31 +1941,31 @@ As a consequence, some form of authorization is needed prior to registration of 
 More advanced use case will rely on the Transparency Service performing additional domain-specific checks before a Signed Statement is accepted.
 For example, some Transparency Services may validate the content of Signed Statements.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
 <p id="section-5.2.2-2">We use the term "registration policies" to refer to the checks that are performed before a Signed Statement is registered given a set of input values.
-This baseline specification leaves the implementation of the registration policy to the provider of the Transparency Services and its users.<a href="#section-5.2.2-2" class="pilcrow">¶</a></p>
+This baseline specification leaves the implementation of the Registration Policy to the provider of the Transparency Services and its users.<a href="#section-5.2.2-2" class="pilcrow">¶</a></p>
 <p id="section-5.2.2-3">As a minimum we expect that a deployment authenticates the Issuer of the Signed Statement, which requires some form of trust anchor.
 As defined in <span>[<a href="#RFC6024" class="cite xref">RFC6024</a>]</span>, "A trust anchor represents an authoritative entity via a public key and associated data.
 The public key is used to verify digital signatures, and the associated data is used to constrain the types of information for which the trust anchor is authoritative."
 The Trust Anchor may be a certificate, a raw public key or other structure, as appropriate. It can be a non-root certificate when it is a certificate.<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.2.2-4">A provider of a Transparency Service is, however, expected to indicate what registration policy is used in a given deployment and inform its users about changes to the registration policy.<a href="#section-5.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-4">A provider of a Transparency Service is, however, expected to indicate what Registration Policy is used in a given deployment and inform its users about changes to the Registration Policy.<a href="#section-5.2.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sec-registry-security-requirements">
+<div id="sec-append-only-log-security-requirements">
 <section id="section-5.2.3">
-          <h4 id="name-registry-security-requireme">
-<a href="#section-5.2.3" class="section-number selfRef">5.2.3. </a><a href="#name-registry-security-requireme" class="section-name selfRef">Registry Security Requirements</a>
+          <h4 id="name-append-only-log-security-re">
+<a href="#section-5.2.3" class="section-number selfRef">5.2.3. </a><a href="#name-append-only-log-security-re" class="section-name selfRef">Append-only Log Security Requirements</a>
           </h4>
-<p id="section-5.2.3-1">There are many different candidate verifiable data structures that may be used to implement the Registry, such as chronological Merkle Trees, sparse/indexed Merkle Trees, full blockchains, and many other variants.
-The Registry is only required to support concise Receipts (i.e., whose size grows at most logarithmically in the number of entries in the Registry) that can be encoded as a COSE Signed Merkle Tree Proof.<a href="#section-5.2.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.3-1">There are many different candidate verifiable data structures that may be used to implement an Append-only Log, such as chronological Merkle Trees, sparse/indexed Merkle Trees, full blockchains, and many other variants.
+The Transparency Service is only required to support concise Receipts (i.e., whose size grows at most logarithmically in the number of entries in the Append-only Log) that can be encoded as a COSE Signed Merkle Tree Proof.<a href="#section-5.2.3-1" class="pilcrow">¶</a></p>
 <p id="section-5.2.3-2">It is possible to offer multiple signature algorithms for the COSE signature of receipts' Signed Merkle Tree, or to change the signing algorithm at later points.
-However, the Merkle Tree algorithm (including its internal hash function) cannot easily be changed without breaking the consistency of the Registry.
+However, the Merkle Tree algorithm (including its internal hash function) cannot easily be changed without breaking the consistency of the Append-only Log.
 It is possible to maintain separate Registries for each algorithm in parallel but the Transparency Service is then responsible for proving their mutual consistency.<a href="#section-5.2.3-2" class="pilcrow">¶</a></p>
 <div id="sec-finality">
 <section id="section-5.2.3.1">
             <h5 id="name-finality">
 <a href="#section-5.2.3.1" class="section-number selfRef">5.2.3.1. </a><a href="#name-finality" class="section-name selfRef">Finality</a>
             </h5>
-<p id="section-5.2.3.1-1">A Registry is append-only: once a Signed Statement is registered and becomes a Transparent Statement, it cannot be modified, deleted, or moved.
-In particular, once a Receipt is returned for a given Signed Statement, the registered Signed Statement and any preceding entry in the Registry become immutable, and the Receipt provides universally-verifiable evidence of this property.<a href="#section-5.2.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.3.1-1">A Transparency Service is append-only: once a Signed Statement is registered and becomes a Transparent Statement, it cannot be modified, deleted, or moved.
+In particular, once a Receipt is returned for a given Signed Statement, the registered Signed Statement and any preceding entry in the Append-only Log becomes immutable, and the Receipt provides universally-verifiable evidence of this property.<a href="#section-5.2.3.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-consistency">
@@ -1956,8 +1973,9 @@ In particular, once a Receipt is returned for a given Signed Statement, the regi
             <h5 id="name-consistency">
 <a href="#section-5.2.3.2" class="section-number selfRef">5.2.3.2. </a><a href="#name-consistency" class="section-name selfRef">Consistency</a>
             </h5>
-<p id="section-5.2.3.2-1">There is no fork in the Registry: everyone with access to its contents sees the same sequence of entries, and can check its consistency with any Receipts they have collected.
-Transparency Service implementations <span class="bcp14">MAY</span> provide a mechanism to verify that the state of the Registry encoded in an old Receipt is consistent with the current Registry state.<a href="#section-5.2.3.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.3.2-1">There is no fork in the Append-only Log.
+Everyone with access to its contents sees the same sequence of entries, and can check its consistency with any Receipts they have collected.
+Transparency Service implementations <span class="bcp14">MAY</span> provide a mechanism to verify that the state of the Append-only Log, encoded in an old Receipt, is consistent with the current Append-only Log state.<a href="#section-5.2.3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-replayability-and-auditing">
@@ -1965,20 +1983,20 @@ Transparency Service implementations <span class="bcp14">MAY</span> provide a me
             <h5 id="name-replayability-and-auditing">
 <a href="#section-5.2.3.3" class="section-number selfRef">5.2.3.3. </a><a href="#name-replayability-and-auditing" class="section-name selfRef">Replayability and Auditing</a>
             </h5>
-<p id="section-5.2.3.3-1">Everyone with access to the Registry can check the correctness of its contents.
+<p id="section-5.2.3.3-1">Everyone with access to the Transparency Service can check the correctness of its contents.
 In particular,<a href="#section-5.2.3.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.2.3.3-2.1">
-                <p id="section-5.2.3.3-2.1.1">the Transparency Service defines and enforces deterministic Registration Policies that can be re-evaluated based solely on the contents of the Registry at the time of Registration, and must then yield the same result.<a href="#section-5.2.3.3-2.1.1" class="pilcrow">¶</a></p>
+                <p id="section-5.2.3.3-2.1.1">the Transparency Service defines and enforces deterministic Registration Policies that can be re-evaluated based solely on the contents of the Append-only Log at the time of Registration, and must then yield the same result<a href="#section-5.2.3.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-5.2.3.3-2.2">
-                <p id="section-5.2.3.3-2.2.1">the ordering of entries, their cryptographic contents, and the Registry governance may be non-deterministic, but they must be verifiable.<a href="#section-5.2.3.3-2.2.1" class="pilcrow">¶</a></p>
+                <p id="section-5.2.3.3-2.2.1">the ordering of entries, their cryptographic contents, and the Transparency Services' governance may be non-deterministic, but they must be verifiable<a href="#section-5.2.3.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-5.2.3.3-2.3">
-                <p id="section-5.2.3.3-2.3.1">a Transparency Service <span class="bcp14">MAY</span> store evidence about the resolution of DIDs into DID Documents.<a href="#section-5.2.3.3-2.3.1" class="pilcrow">¶</a></p>
+                <p id="section-5.2.3.3-2.3.1">a Transparency Service <span class="bcp14">MAY</span> store evidence about the resolution of DIDs into DID Documents<a href="#section-5.2.3.3-2.3.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-5.2.3.3-2.4">
-                <p id="section-5.2.3.3-2.4.1">a Transparency Service <span class="bcp14">MAY</span> additionally support verifiability of client authentication and access control.<a href="#section-5.2.3.3-2.4.1" class="pilcrow">¶</a></p>
+                <p id="section-5.2.3.3-2.4.1">a Transparency Service <span class="bcp14">MAY</span> additionally support verifiability of client authentication and access control<a href="#section-5.2.3.3-2.4.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </section>
@@ -1988,15 +2006,15 @@ In particular,<a href="#section-5.2.3.3-1" class="pilcrow">¶</a></p>
             <h5 id="name-governance-and-bootstrappin">
 <a href="#section-5.2.3.4" class="section-number selfRef">5.2.3.4. </a><a href="#name-governance-and-bootstrappin" class="section-name selfRef">Governance and Bootstrapping</a>
             </h5>
-<p id="section-5.2.3.4-1">Transparency Services <span class="bcp14">MAY</span> document their governance rules and procedures for operating the Registry and updating its code (e.g., relying on Transparent Statements about code updates, secured on the Registry itself, or on some auxiliary Transparency Service).
+<p id="section-5.2.3.4-1">Transparency Services <span class="bcp14">MAY</span> document their governance rules and procedures for operating the Transparency Service and updating its code (e.g., relying on Transparent Statements about code updates, secured on its own Append-only Log, or on some auxiliary Transparency Service).
 Governance procedures, their auditing, and their transparency are implementation specific.<a href="#section-5.2.3.4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.2.3.4-2.1">
                 <p id="section-5.2.3.4-2.1.1">Governance may be based on a consortium of members that are jointly responsible for the Transparency Services, or automated based on the contents of an auxiliary governance Transparency Service.<a href="#section-5.2.3.4-2.1.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-5.2.3.4-2.2">
-                <p id="section-5.2.3.4-2.2.1">Governance typically involves additional records in the Registry to enable its auditing.
-Hence, the Registry may contain both Transparent Statements and governance entries.<a href="#section-5.2.3.4-2.2.1" class="pilcrow">¶</a></p>
+                <p id="section-5.2.3.4-2.2.1">Governance typically involves additional records in the Append-only Log to enable its auditing.
+The Transparency Service may contain both Transparent Statements and governance entries.<a href="#section-5.2.3.4-2.2.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-5.2.3.4-2.3">
                 <p id="section-5.2.3.4-2.3.1">Issuers, Verifiers, and third-party Auditors may review the Transparency Service governance before trusting the service, or on a regular basis.<a href="#section-5.2.3.4-2.3.1" class="pilcrow">¶</a></p>
@@ -2075,7 +2093,7 @@ Example: <code>did:web:example.com</code><a href="#section-6.1-3.3.2.1.1" class=
           <li class="normal" id="section-6.1-3.4">
             <p id="section-6.1-3.4.1"><strong>Registration Policy</strong> (label: <code>TBD</code>, temporary: <code>393</code>): A map containing key/value pairs set by the Issuer which are sealed on Registration and non-opaque to the Transparency Service.
 The key/value pair semantics are specified by the Issuer or are specific to the <code>CWT_Claims iss</code> and <code>CWT_Claims sub</code> tuple.<br>
-Examples: the sequence number of signed statements on a <code>CWT_Claims Subject</code>, Issuer metadata, or a reference to other transparent statements (e.g., augments, replaces, new-version, CPE-for)<a href="#section-6.1-3.4.1" class="pilcrow">¶</a></p>
+Examples: the sequence number of signed statements on a <code>CWT_Claims Subject</code>, Issuer metadata, or a reference to other Transparent Statements (e.g., augments, replaces, new-version, CPE-for)<a href="#section-6.1-3.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-3.5">
             <p id="section-6.1-3.5.1"><strong>Content type</strong> (label: <code>3</code>): The media type of the payload, as a string.<br>
@@ -2188,9 +2206,8 @@ Signed Statements may be registered by a different party than their Issuer.<a hr
 The Transparency Service <span class="bcp14">MAY</span> verify the Statement payload format, content and other optional properties.<a href="#section-6.3-2.4.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-6.3-2.5">
-            <p id="section-6.3-2.5.1"><strong>Apply Registration Policy:</strong> For named policies, the Transparency Service <span class="bcp14">MUST</span> check that the required Registration Policy attributes are present in the protected headers and apply the check described in Table 1.
-  A Transparency Service <span class="bcp14">MUST</span> reject Signed Statements that contain an attribute used for a named policy that is not enforced by the service.
-  Custom Signed Statements are evaluated given the current Registry state and the entire Envelope, and may use information contained in the attributes of named policies.<a href="#section-6.3-2.5.1" class="pilcrow">¶</a></p>
+            <p id="section-6.3-2.5.1"><strong>Apply Registration Policy:</strong> For named policies, the Transparency Service <span class="bcp14">MUST</span> check that the required Registration Policy attributes are present in the protected headers and apply the check described in Table 1. A Transparency Service <span class="bcp14">MUST</span> reject Signed Statements that contain an attribute used for a named policy that is not enforced by the service.
+  Custom Signed Statements are evaluated given the current Transparency Service state and the entire Envelope, and may use information contained in the attributes of named policies.<a href="#section-6.3-2.5.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-6.3-2.6">
             <p id="section-6.3-2.6.1"><strong>Register the Signed Statement</strong> to the append-only log<a href="#section-6.3-2.6.1" class="pilcrow">¶</a></p>
@@ -2200,8 +2217,9 @@ The Transparency Service <span class="bcp14">MAY</span> verify the Statement pay
   Details about generating Receipts are described in <a href="#Receipt" class="auto internal xref">Section 6.4</a>.<a href="#section-6.3-2.7.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
-<p id="section-6.3-3">The last two steps may be shared between a batch of Signed Statements recorded in the Registry.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
-<p id="section-6.3-4">A Transparency Service <span class="bcp14">MUST</span> ensure that a Signed Statement is registered before releasing its Receipt, so that it can always back up the Receipt by releasing the corresponding entry (the now Transparent Statement) in the Registry. Conversely, the Transparency Service <span class="bcp14">MAY</span> re-issue Receipts for the Registry content, for instance after a transient fault during Signed Statement registration.<a href="#section-6.3-4" class="pilcrow">¶</a></p>
+<p id="section-6.3-3">The last two steps may be shared between a batch of Signed Statements recorded in the Append-only Log.<a href="#section-6.3-3" class="pilcrow">¶</a></p>
+<p id="section-6.3-4">A Transparency Service <span class="bcp14">MUST</span> ensure that a Signed Statement is registered before releasing its Receipt, so that it can always back up the Receipt by releasing the corresponding entry (the now Transparent Statement) in the Append-only Log.
+Conversely, the Transparency Service <span class="bcp14">MAY</span> re-issue Receipts for the Append-only Log content, for instance after a transient fault during Signed Statement registration.<a href="#section-6.3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="Receipt">
@@ -2237,7 +2255,7 @@ The verification is the same for Signed Statement and the signer <span class="bc
 </li>
         </ul>
 <p id="section-6.4-5">The Transparency Service may include the registration time to help verifiers decide about the trustworthiness of the Transparent Statement.
-The registration time is defined as the timestamp at which the Transparency Service has added this Signed Statement to its Registry.<a href="#section-6.4-5" class="pilcrow">¶</a></p>
+The registration time is defined as the timestamp at which the Transparency Service has added this Signed Statement to its Append-only Log.<a href="#section-6.4-5" class="pilcrow">¶</a></p>
 <div class="lang-cddl sourcecode" id="section-6.4-6">
 <pre>
 Receipt = [
@@ -2299,7 +2317,7 @@ Such policies may use as input all information in the Envelope, the Receipt, and
 For example, multiple Transparency Service instances may be governed and operated by different organizations that are either unaware of the other or do not trust one another.<a href="#section-7-2" class="pilcrow">¶</a></p>
 <p id="section-7-3">This may involve registering the same Signed Statements at different Transparency Services, each with their own purpose and Registration Policy.
 This may also involve attaching multiple Receipts to the same Signed Statements, each Receipt endorsing the Issuer signature and a subset of prior Receipts, and each Transparency Service verifying prior Receipts as part of their Registration Policy.<a href="#section-7-3" class="pilcrow">¶</a></p>
-<p id="section-7-4">For example, a supplier's Transparency Service may provide a complete, authoritative Registry for Signed Statements, whereas a Verifiers's Transparency Service may collect different kinds of Signed Statements to ensure complete auditing for a specific use case, and possibly require additional reviews before registering some of these Signed Statements.<a href="#section-7-4" class="pilcrow">¶</a></p>
+<p id="section-7-4">For example, a supplier may provide a complete, authoritative Transparency Service for its Signed Statements, whereas a Verifiers's Transparency Service may collect different kinds of Signed Statements to ensure complete auditing for a specific use case, and possibly require additional reviews before registering some of these Signed Statements.<a href="#section-7-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-transparency-service-api">
@@ -2636,8 +2654,8 @@ In particular, Signed Statements' Envelopes and Statement payload <span class="b
 <p id="section-10-1">On its own, verifying a Transparent Statement does not guarantee that its Envelope or contents are trustworthy.
 Just that they have been signed by the apparent Issuer and counter-signed by the Transparency Service.
 If the Verifier trusts the Issuer, it can infer that an Issuer's Signed Statement was issued with this Envelope and contents, which may be interpreted as the Issuer saying the Artifact is fit for its intended purpose.
-If the Verifier trusts the Transparency Service, it can independently infer that the Signed Statement passed the Transparency Service Registration Policy and that has been persisted in the Registry.
-Unless advertised in the Transparency Service Registration Policy, the Verifier cannot assume that the ordering of Signed Statements in the Registry matches the ordering of their issuance.<a href="#section-10-1" class="pilcrow">¶</a></p>
+If the Verifier trusts the Transparency Service, it can independently infer that the Signed Statement passed the Transparency Service Registration Policy and that has been persisted in the Append-only Log.
+Unless advertised in the Transparency Service Registration Policy, the Verifier cannot assume that the ordering of Signed Statements in the Append-only Log matches the ordering of their issuance.<a href="#section-10-1" class="pilcrow">¶</a></p>
 <p id="section-10-2">Similarly, the fact that an Issuer can be held accountable for its Transparent Statements does not on its own provide any mitigation or remediation mechanism in case one of these Transparent Statements turned out to be misleading or malicious.
 Just that signed evidence will be available to support them.<a href="#section-10-2" class="pilcrow">¶</a></p>
 <p id="section-10-3">Issuers <span class="bcp14">MUST</span> ensure that the Statement payloads in their Signed Statements are correct and unambiguous, for example by avoiding ill-defined or ambiguous formats that may cause Verifiers to interpret the Signed Statement as valid for some other purpose.<a href="#section-10-3" class="pilcrow">¶</a></p>
@@ -2662,8 +2680,8 @@ These guarantees are meant to hold for extensive periods of time, possibly decad
 Hence, a Verifier would usually validate a Transparent Statement originating from a given Issuer, registered at a given Transparency Service (both identified in the Verifier's local authorization policy) and would not depend on any other Issuer or Transparency Services.<a href="#section-10.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-10.1.1-4">Authorized supply chain actors (Issuers) cannot be stopped from producing Signed Statements including false assertions in their Statement payload (either by mistake or by corruption), but these Issuers can made accountable by ensuring their Signed Statements are systematically registered at a trustworthy Transparency Service.<a href="#section-10.1.1-4" class="pilcrow">¶</a></p>
 <p id="section-10.1.1-5">Similarly, providing strong residual guarantees against faulty/corrupt Transparency Services is a SCITT design goal.
-Preventing a Transparency Service from registering Signed Statements that do not meet its stated Registration Policy, or to issue Receipts that are not consistent with their append-only Log is not possible.
-In contrast Transparency Services can be hold accountable and they can be called out by any Auditor that replays their Registry against any contested Receipt.
+Preventing a Transparency Service from registering Signed Statements that do not meet its stated Registration Policy, or to issue Receipts that are not consistent with their Append-only Log is not possible.
+In contrast Transparency Services can be hold accountable and they can be called out by any Auditor that replays their Append-only Log against any contested Receipt.
 Note that the SCITT Architecture does not require trust in a single centralized Transparency Service: different actors may rely on different Transparency Services, each registering a subset of Signed Statements subject to their own policy.<a href="#section-10.1.1-5" class="pilcrow">¶</a></p>
 <p id="section-10.1.1-6">In both cases, the SCITT Architecture provides generic, universally-verifiable cryptographic proof to individually blame Issuers or the Transparency Service.
 On one hand, this enables valid actors to detect and disambiguate malicious actors who issue contradictory Signed Statements to different entities (Verifiers, Auditors, Issuers), otherwise known as 'equivocation'.
@@ -2685,15 +2703,15 @@ In particular, so long as actors maintain proper control of their signing keys a
                 <p id="section-10.1.1.1-3.2.1">register Signed Statements that do not pass its Registration Policy (e.g., Signed Statement with Issuer identities and signatures that do not verify)<a href="#section-10.1.1.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
               <li id="section-10.1.1.1-3.3">
-                <p id="section-10.1.1.1-3.3.1">issue verifiable Receipts for Signed Statements that do not match its Registry<a href="#section-10.1.1.1-3.3.1" class="pilcrow">¶</a></p>
+                <p id="section-10.1.1.1-3.3.1">issue verifiable Receipts for Signed Statements that do not match its Append-only Log<a href="#section-10.1.1.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
               <li id="section-10.1.1.1-3.4">
-                <p id="section-10.1.1.1-3.4.1">refuse access to its Registry (e.g., to Auditors, possibly after storage loss)<a href="#section-10.1.1.1-3.4.1" class="pilcrow">¶</a></p>
+                <p id="section-10.1.1.1-3.4.1">refuse access to its Transparency Service (e.g., to Auditors, possibly after storage loss)<a href="#section-10.1.1.1-3.4.1" class="pilcrow">¶</a></p>
 </li>
             </ol>
-<p id="section-10.1.1.1-4">An Auditor granted (partial) access to a Registry and to a collection of disputed Receipts will be able to replay it, detect any invalid Registration (2) or incorrect Receipt in this collection (3), and blame the Transparency Service for them.
+<p id="section-10.1.1.1-4">An Auditor granted (partial) access to a Transparency Service and to a collection of disputed Receipts will be able to replay it, detect any invalid Registration (2) or incorrect Receipt in this collection (3), and blame the Transparency Service for them.
 This ensures any Verifier that trusts at least one such Auditor that (2, 3) will be blamed to the Transparency Service.<a href="#section-10.1.1.1-4" class="pilcrow">¶</a></p>
-<p id="section-10.1.1.1-5">Due to the operational challenge of maintaining a globally consistent append-only Log, some Transparency Services may provide limited support for historical queries on the Signed Statements they have registered, and accept the risk of being blamed for inconsistent Registration or Issuer equivocation.<a href="#section-10.1.1.1-5" class="pilcrow">¶</a></p>
+<p id="section-10.1.1.1-5">Due to the operational challenge of maintaining a globally consistent Append-only Log, some Transparency Services may provide limited support for historical queries on the Signed Statements they have registered, and accept the risk of being blamed for inconsistent Registration or Issuer equivocation.<a href="#section-10.1.1.1-5" class="pilcrow">¶</a></p>
 <p id="section-10.1.1.1-6">Verifiers and Auditors may also witness (1, 4) but may not be able to collect verifiable evidence for it.<a href="#section-10.1.1.1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2732,10 +2750,10 @@ For example, Issuers must remove Personally Identifiable Information (PII) as cl
 Alternatively, Issuers may include opaque cryptographic statements, such as hashes.<a href="#section-10.1.2.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sec-queries-to-the-registry">
+<div id="sec-queries-to-the-transparency-service">
 <section id="section-10.1.2.2">
-            <h5 id="name-queries-to-the-registry">
-<a href="#section-10.1.2.2" class="section-number selfRef">10.1.2.2. </a><a href="#name-queries-to-the-registry" class="section-name selfRef">Queries to the Registry</a>
+            <h5 id="name-queries-to-the-transparency">
+<a href="#section-10.1.2.2" class="section-number selfRef">10.1.2.2. </a><a href="#name-queries-to-the-transparency" class="section-name selfRef">Queries to the Transparency Service</a>
             </h5>
 <p id="section-10.1.2.2-1">The confidentiality of queries is implementation-specific, and generally not guaranteed.
 For example, while offline Envelope validation of Signed Statements is private, a Transparency Service may monitor which of its Transparent Statements are being verified from lookups to ensure their freshness.<a href="#section-10.1.2.2-1" class="pilcrow">¶</a></p>
