@@ -1331,7 +1331,7 @@ The next guarantee is achieved by implementing the Append-only Log using a verif
 Lastly, the Transparency Service verifies the identity of the Issuer, and conformance to a Registration Policy associated with the instance of the Transparency Service.
 As the Issuer of the Signed Statement and conformance to the Registration Policy are confirmed, an endorsement is made as the Signed Statement is added to the Append-only Log.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">The guarantees and techniques used in this document generalize those of Certificate Transparency <span>[<a href="#RFC9162" class="cite xref">RFC9162</a>]</span>, which can be re-interpreted as an instance of this architecture for the supply chain of X.509 certificates.
-However, the range of use cases and applications in this document are broader, which requires more flexibility in how each Transparency Service is implemented and operates.<a href="#section-1-4" class="pilcrow">¶</a></p>
+However, the range of use cases and applications in this document is broader, which requires more flexibility in how each Transparency Service is implemented and operates.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">Each service <span class="bcp14">MAY</span> enforce its own Registration Policies for authorizing entities to register their Signed Statements to the Append-only Log.
 Some Transparency Services may also enforce authorization policies limiting who can write, read and audit the Append-only Log.
 It is critical to provide interoperability for all Transparency Services instances as the composition of supply chain entities is ever-changing.

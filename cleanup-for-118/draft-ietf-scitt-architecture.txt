@@ -164,8 +164,8 @@ Table of Contents
    of Certificate Transparency [RFC9162], which can be re-interpreted as
    an instance of this architecture for the supply chain of X.509
    certificates.  However, the range of use cases and applications in
-   this document are broader, which requires more flexibility in how
-   each Transparency Service is implemented and operates.
+   this document is broader, which requires more flexibility in how each
+   Transparency Service is implemented and operates.
 
    Each service MAY enforce its own Registration Policies for
    authorizing entities to register their Signed Statements to the
