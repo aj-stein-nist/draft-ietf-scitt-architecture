@@ -35,7 +35,7 @@ Abstract
    can register their Signed Statements on any Transparency Service,
    with the guarantee that all Consumers will be able to verify them.
 
-   Within the SCITT Architecture, a producer is known as an Issuer, and
+   Within the SCITT Architecture, a Producer is known as an Issuer, and
    a Consumer is known as a Verifier.
 
 About This Document
