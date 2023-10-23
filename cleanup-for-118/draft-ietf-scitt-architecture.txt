@@ -240,7 +240,7 @@ Table of Contents
        providing additional Signed Statements, attesting to conformance
        of various compliance requirements.
 
-   The issuer of a Signed Statement must be authenticated and authorized
+   The Issuer of a Signed Statement must be authenticated and authorized
    according to the Registration Policy of the Transparency Service.
    Analogously, Transparent Statement Verifiers rely on verifiable
    trustworthiness assertions associated with Transparent Statements and
@@ -522,7 +522,7 @@ Table of Contents
 
    Issuers MAY choose the DID method they prefer, but with no guarantee
    that all Transparency Services will register their Signed Statements,
-   as each Transparency Service may implement different registration
+   as each Transparency Service may implement different Registration
    Policies.  To facilitate interoperability, all Transparency Service
    implementations MUST support the did:web method [DID-WEB].  For
    example, if the Issuer publishes its manifest at
@@ -531,7 +531,7 @@ Table of Contents
 
    Issuers SHOULD use consistent decentralized identifiers for all their
    Statements about Artifacts, to simplify authorization by Verifiers
-   and auditing.  If an issuer uses multiple DIDs (for instance, their
+   and auditing.  If an Issuer uses multiple DIDs (for instance, their
    clients support different resolution methods), they MUST ensure that
    statements signed under each DID are consistent.
 
@@ -583,7 +583,7 @@ Table of Contents
    scope for this document.
 
    The iss or kid, might not be DID URLs, however the following
-   interfaces MUST be satisfied in order to ensure issuer identity
+   interfaces MUST be satisfied in order to ensure Issuer identity
    documents, and associated keys are discoverable in a consistent
    manner.
 
@@ -633,7 +633,7 @@ Table of Contents
    iss MUST be a URL, and it MUST have keys discoverable in the
    following way:
 
-   iss can be used to build a .well-known URL to discovery the issuer's
+   iss can be used to build a .well-known URL to discovery the Issuer's
    configuration.
 
    For example, iss contoso.example will have the following open id
@@ -727,9 +727,9 @@ Table of Contents
 
 5.1.3.  Registration Policy Metadata
 
-   SCITT payloads are opaque to Transparency Services, so Registration
-   Policy decisions can only be based on interpretation of information
-   in the Envelope.
+   SCITT payloads are opaque to Transparency Services.  For
+   interoperability, Registration Policy decisions should be based on
+   interpretation of information in the non-opaque Envelope.
 
    The small mandatory set of metadata in the envelope of a Signed
    Statement is neither intended nor sufficient to express the
@@ -743,12 +743,12 @@ Table of Contents
 
    Any metadata meant to be interpreted by the Transparency Service
    during Registration Policy evaluation, SHOULD be added to the
-   reg_info header, unless the data is private (in which case, it MAY be
+   reg_info header, unless the data is private, in which case it MAY be
    sent to the Transparency Service as an additional input during
-   registration).
+   registration.
 
-   While the header MUST be present in all Signed Statements, all
-   attributes are optional, and the map MAY be empty.
+   While the Reg_Info header MUST be present in all Signed Statements,
+   all attributes are optional, and the map MAY be empty.
 
 5.2.  Transparency Service
 
@@ -809,7 +809,7 @@ Table of Contents
    Auditors.  Examples for Statements that can improve trustworthy
    assessments of Transparency Services are RATS Conceptual Messages,
    such as Evidence, Endorsements, or corresponding Attestation Results
-   (see [RFC9334].
+   (see [RFC9334]).
 
    For example, consider a Transparency Service implemented using a set
    of replicas, each running within its own hardware-protected trusted
@@ -823,22 +823,21 @@ Table of Contents
 
 5.2.2.  Registration Policies
 
-   A Transparency Service that accepts to register any valid Signed
-   Statement offered by anonymous Issuers would only provide limited
-   value, or no value, to verifiers.  As a consequence, some form of
-   authorization is needed prior to registration of Signed Statements to
-   ensure completeness of audit.  More advanced use case will rely on
-   the Transparency Service performing additional domain-specific checks
-   before a Signed Statement is accepted.  For example, some
-   Transparency Services may validate the content of Signed Statements.
+   Authorization is needed prior to registration of Signed Statements to
+   ensure completeness of an audit.  A Transparency Service that
+   registers valid Signed Statement offered by anonymous Issuers would
+   provide limited to no value to Verifiers.  More advanced use case
+   will rely on the Transparency Service performing additional domain-
+   specific checks before a Signed Statement is accepted.  For example,
+   some Transparency Services may validate the non-opaque content
+   (payload) of Signed Statements.
 
-   We use the term "registration policies" to refer to the checks that
-   are performed before a Signed Statement is registered given a set of
-   input values.  This baseline specification leaves the implementation
-   of the Registration Policy to the provider of the Transparency
-   Services and its users.
+   Registration Policies refers to the checks that are performed before
+   a Signed Statement is registered given a set of input values.  This
+   specification leaves the implementation of the Registration Policy to
+   the provider of the Transparency Services and its users.
 
-   As a minimum we expect that a deployment authenticates the Issuer of
+   As a minimum, a Transparency Service MUST authenticate the Issuer of
    the Signed Statement, which requires some form of trust anchor.  As
    defined in [RFC6024], "A trust anchor represents an authoritative
    entity via a public key and associated data.  The public key is used
@@ -873,13 +872,13 @@ Table of Contents
 
 5.2.3.1.  Finality
 
-   A Transparency Service is append-only: once a Signed Statement is
+   A Transparency Service is append-only.  Once a Signed Statement is
    registered and becomes a Transparent Statement, it cannot be
-   modified, deleted, or moved.  In particular, once a Receipt is
-   returned for a given Signed Statement, the registered Signed
-   Statement and any preceding entry in the Append-only Log becomes
-   immutable, and the Receipt provides universally-verifiable evidence
-   of this property.
+   modified, deleted, or reordered within the Append-only Log. In
+   particular, once a Receipt is returned for a given Signed Statement,
+   the registered Signed Statement and any preceding entry in the
+   Append-only Log becomes immutable, and the Receipt provides
+   universally-verifiable evidence of this property.
 
 5.2.3.2.  Consistency
 
@@ -893,7 +892,7 @@ Table of Contents
 5.2.3.3.  Replayability and Auditing
 
    Everyone with access to the Transparency Service can check the
-   correctness of its contents.  In particular,
+   correctness of its contents.  In particular:
 
    *  the Transparency Service defines and enforces deterministic
       Registration Policies that can be re-evaluated based solely on the
@@ -914,10 +913,13 @@ Table of Contents
 
    Transparency Services MAY document their governance rules and
    procedures for operating the Transparency Service and updating its
-   code (e.g., relying on Transparent Statements about code updates,
+   code.
+   Example: relying on Transparent Statements about code updates,
    secured on its own Append-only Log, or on some auxiliary Transparency
-   Service).  Governance procedures, their auditing, and their
-   transparency are implementation specific.
+   Service.
+
+   Governance procedures, their auditing, and their transparency are
+   implementation specific.
 
    *  Governance may be based on a consortium of members that are
       jointly responsible for the Transparency Services, or automated
@@ -939,7 +941,7 @@ Table of Contents
    1.  the CWT_Claims Issuer (or its resolved key manifest)
 
    2.  the collection of Transparent Statements to which this Statement
-       about the Artifact belongs (i.e., the CWT_Claims Subject)
+       about the Artifact belongs (CWT_Claims Subject)
 
    3.  the list of service identities of trusted Transparency Services
 
@@ -956,12 +958,12 @@ Table of Contents
    completeness of evidence, and the promise of non-equivocation.
 
    Some Verifiers may choose to subset the collection of Statements,
-   filtering on the payload type, the CWT_Claims Issuer or other non-
-   opaque properties.
+   filtering on the payload type (Protected Header 3), the CWT
+   (Protected Header 13) Issuer claim, or other non-opaque properties.
 
    Some Verifiers may systematically resolve Issuer DIDs to fetch the
    latest corresponding DID documents.  This behavior strictly enforces
-   the revocation of compromised keys: once the Issuer has updated its
+   the revocation of compromised keys.  Once the Issuer has updated its
    Statement to remove a key identifier, all Signed Statements include
    the corresponding kid will be rejected.  However, others may delegate
    DID resolution to a trusted third party and/or cache its results.
@@ -994,7 +996,7 @@ Table of Contents
 
    *  *Key ID* (label: 4): Key ID, as a bytestring
 
-   *  *CWT_Claims* (label: 13 pending [CWT_CLAIM_COSE]): A CWT_Claim
+   *  *CWT_Claims* (label: 13 pending [CWT_CLAIM_COSE]): A CWT
       representing the Issuer (iss) making the statement, and the
       Subject (sub) to correlate a collection of statements about an
       Artifact.  Additional [CWT_CLAIMS] MAY be used, while iss and sub
@@ -1006,6 +1008,8 @@ Table of Contents
 
       -  *sub* (CWT_Claim Key 2): The Subject to which the Statement
          refers, chosen by the Issuer
+         Example: github.com/opensbom-generator/spdx-sbom-
+         generator/releases/tag/v0.0.13
 
    *  *Registration Policy* (label: TBD, temporary: 393): A map
       containing key/value pairs set by the Issuer which are sealed on
@@ -1066,8 +1070,8 @@ Table of Contents
    There are many types of Statements (such as SBOMs, malware scans,
    audit reports, policy definitions) that Issuers may want to turn into
    Signed Statements.  An Issuer must first decide on a suitable format
-   to serialize the Statement payload.  For a software supply chain,
-   payloads describing the software artifacts may include:
+   (3: payload type) to serialize the Statement payload.  For a software
+   supply chain, payloads describing the software artifacts may include:
 
    *  CBOR-SPDX
 
@@ -1161,8 +1165,8 @@ Table of Contents
    ([I-D.draft-steele-cose-merkle-tree-proofs]) with an additional
    wrapper structure that adds the following information:
 
-   *  *version*: Receipt version number; MUST be set to 0 for the
-      current implementation of this document
+   *  *version*: Receipt version number MUST be set to 0 for the current
+      implementation of this document
 
    *  *ts_identifier*: The DID of the Transparency Service that issued
       the Receipt.  Verifiers MAY use this DID as a key discovery
@@ -1177,12 +1181,12 @@ Table of Contents
    *  The SCITT version header MUST be included and its value match the
       version field of the Receipt structure
 
-   *  The DID of issuer header (in Signed Statements) MUST be included
+   *  The DID of Issuer header (in Signed Statements) MUST be included
       and its value match the ts_identifier field of the Receipt
       structure
 
    *  Transparency Service MAY include the Registration policy info
-      header to indicate to verifiers what policies have been applied at
+      header to indicate to Verifiers what policies have been applied at
       the registration of this Statement
 
    *  Since [I-D.draft-steele-cose-merkle-tree-proofs] uses optional
@@ -1191,7 +1195,7 @@ Table of Contents
       Registration Policy) MUST be marked critical
 
    The Transparency Service may include the registration time to help
-   verifiers decide about the trustworthiness of the Transparent
+   Verifiers decide about the trustworthiness of the Transparent
    Statement.  The registration time is defined as the timestamp at
    which the Transparency Service has added this Signed Statement to its
    Append-only Log.
@@ -1226,7 +1230,7 @@ Table of Contents
 
 6.5.  Validation of Transparent Statements
 
-   The high-level validation algorithm is described in Section 5.3; the
+   The high-level validation algorithm is described in Section 5.3.  The
    algorithm-specific details of checking Receipts are covered in
    [I-D.draft-steele-cose-merkle-tree-proofs].
 
@@ -1240,7 +1244,7 @@ Table of Contents
    not known in advance and can be an output of validation.  Verifiers
    MAY be configured to re-verify the Issuer's signature locally, but
    this requires a fresh resolution of the Issuer's DID, which MAY fail
-   if the DID Document is not available or if the statement's signing
+   if the DID document is not available or if the Statement's signing
    key has been revoked.  Otherwise, the Verifier trusts the validation
    done by the Transparency Service during Registration.
 
@@ -1281,6 +1285,11 @@ Table of Contents
    to ensure complete auditing for a specific use case, and possibly
    require additional reviews before registering some of these Signed
    Statements.
+
+   An independent entities (security companies) may Issue statements of
+   quality about different artifacts on their own Transparency Service.
+   Verifiers choose which independent entities they trust, just as
+   entities choose different security companies today.
 
 8.  Transparency Service API
 
@@ -1490,7 +1499,7 @@ Table of Contents
 
    Unless advertised by a Transparency Service, every Issuer must treat
    Signed Statements it registered (rendering them as Transparent
-   Statements) as public.  In particular, Signed Statements' Envelopes
+   Statements) as public.  In particular, a Signed Statement Envelope
    and Statement payload MUST NOT carry any private information in
    plaintext.
 
@@ -1515,6 +1524,10 @@ Table of Contents
    remediation mechanism in case one of these Transparent Statements
    turned out to be misleading or malicious.  Just that signed evidence
    will be available to support them.
+
+   An Issuer that knows of a changed state of quality for an Artifact,
+   SHOULD Register a new Signed Statement, using the same 13 CWT iss and
+   sub claims.
 
    Issuers MUST ensure that the Statement payloads in their Signed
    Statements are correct and unambiguous, for example by avoiding ill-
@@ -1549,11 +1562,11 @@ Table of Contents
 
    SCITT entities explicitly trust one another on the basis of their
    long-term identity, which maps to shorter-lived cryptographic
-   credentials.  Hence, a Verifier would usually validate a Transparent
-   Statement originating from a given Issuer, registered at a given
-   Transparency Service (both identified in the Verifier's local
-   authorization policy) and would not depend on any other Issuer or
-   Transparency Services.
+   credentials.  A Verifier SHOULD validate a Transparent Statement
+   originating from a given Issuer, registered at a given Transparency
+   Service (both identified in the Verifier's local authorization
+   policy) and would not depend on any other Issuer or Transparency
+   Services.
 
    Authorized supply chain actors (Issuers) cannot be stopped from
    producing Signed Statements including false assertions in their
@@ -1566,11 +1579,11 @@ Table of Contents
    Transparency Service from registering Signed Statements that do not
    meet its stated Registration Policy, or to issue Receipts that are
    not consistent with their Append-only Log is not possible.  In
-   contrast Transparency Services can be hold accountable and they can
+   contrast Transparency Services can be held accountable and they can
    be called out by any Auditor that replays their Append-only Log
    against any contested Receipt.  Note that the SCITT Architecture does
-   not require trust in a single centralized Transparency Service:
-   different actors may rely on different Transparency Services, each
+   not require trust in a single centralized Transparency Service.
+   Different actors may rely on different Transparency Services, each
    registering a subset of Signed Statements subject to their own
    policy.
 
@@ -1596,7 +1609,7 @@ Table of Contents
    Statement passed its Registration Policy and was recorded
    appropriately.
 
-   Conversely, a corrupt Transparency Service may
+   Conversely, a corrupt Transparency Service may:
 
    1.  refuse or delay the Registration of Signed Statements
 
@@ -1644,8 +1657,8 @@ Table of Contents
 
    According to Zero Trust Principles any location in a network is never
    trusted.  All contents exchanged between actors is protected using
-   secure authenticated channels (e.g., TLS) but, as usual, this may not
-   exclude network traffic analysis.
+   secure authenticated channels (e.g., TLS) but may not exclude network
+   traffic analysis.
 
 10.1.2.1.  Signed Statements and Their Registration
 
@@ -1661,11 +1674,11 @@ Table of Contents
    contents of other Signed Statements registered on the Transparency
    Service.
 
-   Nonetheless, Issuers must carefully review the inclusion of private/
-   confidential materials in their Statements.  For example, Issuers
-   must remove Personally Identifiable Information (PII) as clear text
-   in the statement.  Alternatively, Issuers may include opaque
-   cryptographic statements, such as hashes.
+   Issuers must carefully review the inclusion of private/confidential
+   materials in their Statements.  For example, Issuers must remove
+   Personally Identifiable Information (PII) as clear text in the
+   statement.  Alternatively, Issuers may include opaque cryptographic
+   statements, such as hashes.
 
 10.1.2.2.  Queries to the Transparency Service
 
@@ -1685,7 +1698,7 @@ Table of Contents
    log such that any valid path authenticates a Signed Statement in this
    log.)
 
-   The SCITT Architecture supports cryptographic agility: the actors
+   The SCITT Architecture supports cryptographic agility.  The actors
    depend only on the subset of signing and Receipt schemes they trust.
    This enables the gradual transition to stronger algorithms, including
    e.g. post-quantum signature algorithms.
@@ -1693,18 +1706,18 @@ Table of Contents
 10.1.4.  Transparency Service Clients
 
    Trust in clients that submit Signed Statements for Registration is
-   implementation-specific.  Hence, an attacker may attempt to register
-   any Signed Statement it has obtained, at any Transparency Service
-   that accepts them, possibly multiple times and out of order.  This
-   may be mitigated by a Transparency Service that enforces restrictive
-   access control and Registration Policies.
+   implementation-specific.  An attacker may attempt to register any
+   Signed Statement it has obtained, at any Transparency Service that
+   accepts them, possibly multiple times and out of order.  This may be
+   mitigated by a Transparency Service that enforces restrictive access
+   control and Registration Policies.
 
 10.1.5.  Identity
 
    The identity resolution mechanism is trusted to associate long-term
    identifiers with their public signature-verification keys.
-   (Transparency Services and other parties may record identity-
-   resolution evidence to facilitate its auditing.)
+   Transparency Services and other parties may record identity-
+   resolution evidence to facilitate its auditing.
 
    If one of the credentials of an Issuer gets compromised, the SCITT
    Architecture still guarantees the authenticity of all Signed
@@ -1712,7 +1725,8 @@ Table of Contents
    Transparency Service before the compromise.  It is up to the Issuer
    to notify Transparency Services of credential revocation to stop
    Verifiers from accepting Signed Statements signed with compromised
-   credentials.
+   credentials.  Issuers SHOULD register new Signed Statements
+   indicating the revocation, using the same 13 CWT iss and sub claims.
 
    The confidentiality of any identity lookup during Signed Statement
    Registration or Transparent Statement Verification is out of scope.
