@@ -1042,7 +1042,7 @@ Table of Contents
 
    *  [CycloneDX]
 
-   *  in-toto [Intoto]
+   *  [in-toto]
 
    *  [SLSA]
 
@@ -1793,7 +1793,7 @@ Table of Contents
               IANA, "Uniform Resource Name (URN) Namespace for IETF
               Use", <http://www.iana.org/assignments/params>.
 
-   [Intoto]   "in-toto", n.d., <https://in-toto.io/>.
+   [in-toto]  "in-toto", n.d., <https://in-toto.io/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
