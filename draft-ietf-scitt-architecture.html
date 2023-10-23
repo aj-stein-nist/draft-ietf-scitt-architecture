@@ -2355,7 +2355,7 @@ Verifiers choose which independent entities they trust, just as entities choose 
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-messages" class="section-name selfRef">Messages</a>
         </h3>
 <p id="section-8.1-1">All messages are sent as HTTP GET or POST requests.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<p id="section-8.1-2">If the Transparency Service cannot process a client's request, it <span class="bcp14">MUST</span> return an HTTP 4xx or 5xx status code, and the body <span class="bcp14">MAY</span> contain a JSON problem details object (<span>[<a href="#RFC7807" class="cite xref">RFC7807</a>]</span>) with the following fields:<a href="#section-8.1-2" class="pilcrow">¶</a></p>
+<p id="section-8.1-2">If the Transparency Service cannot process a client's request, it <span class="bcp14">MUST</span> return an HTTP 4xx or 5xx status code, and the body <span class="bcp14">MAY</span> contain a JSON problem details object (<span>[<a href="#RFC9457" class="cite xref">RFC9457</a>]</span>) with the following fields:<a href="#section-8.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-8.1-3.1">
             <p id="section-8.1-3.1.1"><strong>type</strong>: A URI reference identifying the problem.
@@ -2383,7 +2383,7 @@ The one exception is the "malformed" error type, which indicates that the Transp
 </li>
         </ul>
 <p id="section-8.1-9">Clients <span class="bcp14">MUST</span> treat 500 and 503 HTTP status code responses as transient failures and <span class="bcp14">MAY</span> retry the same request without modification at a later date.
-Note that in the case of a 503 response, the Transparency Service <span class="bcp14">MAY</span> include a <code>Retry-After</code> header field per <span>[<a href="#RFC7231" class="cite xref">RFC7231</a>]</span> in order to request a minimum time for the client to wait before retrying the request.
+Note that in the case of a 503 response, the Transparency Service <span class="bcp14">MAY</span> include a <code>Retry-After</code> header field per <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span> in order to request a minimum time for the client to wait before retrying the request.
 In the absence of this header field, this document does not specify a minimum.<a href="#section-8.1-9" class="pilcrow">¶</a></p>
 <div id="sec-register-signed-statement">
 <section id="section-8.1.1">
@@ -2869,25 +2869,9 @@ Registry <span>[<a href="#IANA.params" class="cite xref">IANA.params</a>]</span>
         <dd>
 <span class="refTitle">"COSWID Specification"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9393.pdf">https://www.rfc-editor.org/rfc/rfc9393.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="CWT_CLAIMS">[CWT_CLAIMS]</dt>
-        <dd>
-<span class="refTitle">"CBOR Web Token (CWT) Claims"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.iana.org/assignments/cwt/cwt.xhtml">https://www.iana.org/assignments/cwt/cwt.xhtml</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="CWT_CLAIM_COSE">[CWT_CLAIM_COSE]</dt>
         <dd>
 <span class="refTitle">"CBOR Web Token (CWT) Claims in COSE Headers"</span>, <span>n.d.</span>, <span>&lt;<a href="https://datatracker.ietf.org/doc/draft-ietf-cose-cwt-claims-in-headers/">https://datatracker.ietf.org/doc/draft-ietf-cose-cwt-claims-in-headers/</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="CycloneDX">[CycloneDX]</dt>
-        <dd>
-<span class="refTitle">"CycloneDX"</span>, <span>n.d.</span>, <span>&lt;<a href="https://cyclonedx.org/specification/overview/">https://cyclonedx.org/specification/overview/</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="DID-CORE">[DID-CORE]</dt>
-        <dd>
-<span class="refAuthor">W3C</span>, <span class="refTitle">"Decentralized Identifiers (DIDs) v1.0"</span>, <time datetime="2022-07-22" class="refDate">22 July 2022</time>, <span>&lt;<a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="DID-WEB">[DID-WEB]</dt>
-        <dd>
-<span class="refTitle">"did:web Decentralized Identifiers Method Spec"</span>, <span>n.d.</span>, <span>&lt;<a href="https://w3c-ccg.github.io/did-method-web/">https://w3c-ccg.github.io/did-method-web/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IANA.cose">[IANA.cose]</dt>
         <dd>
@@ -2897,10 +2881,6 @@ Registry <span>[<a href="#IANA.params" class="cite xref">IANA.params</a>]</span>
         <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"Uniform Resource Name (URN) Namespace for IETF Use"</span>, <span>&lt;<a href="http://www.iana.org/assignments/params">http://www.iana.org/assignments/params</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="in-toto">[in-toto]</dt>
-        <dd>
-<span class="refTitle">"in-toto"</span>, <span>n.d.</span>, <span>&lt;<a href="https://in-toto.io/">https://in-toto.io/</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
@@ -2909,21 +2889,9 @@ Registry <span>[<a href="#IANA.params" class="cite xref">IANA.params</a>]</span>
         <dd>
 <span class="refAuthor">Mealling, M.</span>, <span class="refAuthor">Masinter, L.</span>, <span class="refAuthor">Hardie, T.</span>, and <span class="refAuthor">G. Klyne</span>, <span class="refTitle">"An IETF URN Sub-namespace for Registered Protocol Parameters"</span>, <span class="seriesInfo">BCP 73</span>, <span class="seriesInfo">RFC 3553</span>, <span class="seriesInfo">DOI 10.17487/RFC3553</span>, <time datetime="2003-06" class="refDate">June 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3553">https://www.rfc-editor.org/rfc/rfc3553</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC6024">[RFC6024]</dt>
-        <dd>
-<span class="refAuthor">Reddy, R.</span> and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"Trust Anchor Management Requirements"</span>, <span class="seriesInfo">RFC 6024</span>, <span class="seriesInfo">DOI 10.17487/RFC6024</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6024">https://www.rfc-editor.org/rfc/rfc6024</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC6838">[RFC6838]</dt>
         <dd>
 <span class="refAuthor">Freed, N.</span>, <span class="refAuthor">Klensin, J.</span>, and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"Media Type Specifications and Registration Procedures"</span>, <span class="seriesInfo">BCP 13</span>, <span class="seriesInfo">RFC 6838</span>, <span class="seriesInfo">DOI 10.17487/RFC6838</span>, <time datetime="2013-01" class="refDate">January 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6838">https://www.rfc-editor.org/rfc/rfc6838</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC7231">[RFC7231]</dt>
-        <dd>
-<span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7231">https://www.rfc-editor.org/rfc/rfc7231</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC7807">[RFC7807]</dt>
-        <dd>
-<span class="refAuthor">Nottingham, M.</span> and <span class="refAuthor">E. Wilde</span>, <span class="refTitle">"Problem Details for HTTP APIs"</span>, <span class="seriesInfo">RFC 7807</span>, <span class="seriesInfo">DOI 10.17487/RFC7807</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7807">https://www.rfc-editor.org/rfc/rfc7807</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
@@ -2941,13 +2909,74 @@ Registry <span>[<a href="#IANA.params" class="cite xref">IANA.params</a>]</span>
         <dd>
 <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE): Structures and Process"</span>, <span class="seriesInfo">STD 96</span>, <span class="seriesInfo">RFC 9052</span>, <span class="seriesInfo">DOI 10.17487/RFC9052</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9052">https://www.rfc-editor.org/rfc/rfc9052</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC9162">[RFC9162]</dt>
+<dt id="RFC9110">[RFC9110]</dt>
         <dd>
-<span class="refAuthor">Laurie, B.</span>, <span class="refAuthor">Messeri, E.</span>, and <span class="refAuthor">R. Stradling</span>, <span class="refTitle">"Certificate Transparency Version 2.0"</span>, <span class="seriesInfo">RFC 9162</span>, <span class="seriesInfo">DOI 10.17487/RFC9162</span>, <time datetime="2021-12" class="refDate">December 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9162">https://www.rfc-editor.org/rfc/rfc9162</a>&gt;</span>. </dd>
+<span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="seriesInfo">STD 97</span>, <span class="seriesInfo">RFC 9110</span>, <span class="seriesInfo">DOI 10.17487/RFC9110</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9110">https://www.rfc-editor.org/rfc/rfc9110</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9360">[RFC9360]</dt>
         <dd>
 <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE): Header Parameters for Carrying and Referencing X.509 Certificates"</span>, <span class="seriesInfo">RFC 9360</span>, <span class="seriesInfo">DOI 10.17487/RFC9360</span>, <time datetime="2023-02" class="refDate">February 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9360">https://www.rfc-editor.org/rfc/rfc9360</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9457">[RFC9457]</dt>
+      <dd>
+<span class="refAuthor">Nottingham, M.</span>, <span class="refAuthor">Wilde, E.</span>, and <span class="refAuthor">S. Dalal</span>, <span class="refTitle">"Problem Details for HTTP APIs"</span>, <span class="seriesInfo">RFC 9457</span>, <span class="seriesInfo">DOI 10.17487/RFC9457</span>, <time datetime="2023-07" class="refDate">July 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9457">https://www.rfc-editor.org/rfc/rfc9457</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="sec-informative-references">
+<section id="section-12.2">
+        <h3 id="name-informative-references">
+<a href="#section-12.2" class="section-number selfRef">12.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="CWT_CLAIMS">[CWT_CLAIMS]</dt>
+        <dd>
+<span class="refTitle">"CBOR Web Token (CWT) Claims"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.iana.org/assignments/cwt/cwt.xhtml">https://www.iana.org/assignments/cwt/cwt.xhtml</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="CycloneDX">[CycloneDX]</dt>
+        <dd>
+<span class="refTitle">"CycloneDX"</span>, <span>n.d.</span>, <span>&lt;<a href="https://cyclonedx.org/specification/overview/">https://cyclonedx.org/specification/overview/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="DID-CORE">[DID-CORE]</dt>
+        <dd>
+<span class="refAuthor">W3C</span>, <span class="refTitle">"Decentralized Identifiers (DIDs) v1.0"</span>, <time datetime="2022-07-22" class="refDate">22 July 2022</time>, <span>&lt;<a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="DID-WEB">[DID-WEB]</dt>
+        <dd>
+<span class="refTitle">"did:web Decentralized Identifiers Method Spec"</span>, <span>n.d.</span>, <span>&lt;<a href="https://w3c-ccg.github.io/did-method-web/">https://w3c-ccg.github.io/did-method-web/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.draft-steele-cose-merkle-tree-proofs">[I-D.draft-steele-cose-merkle-tree-proofs]</dt>
+        <dd>
+<span class="refAuthor">Steele, O.</span>, <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Delignat-Lavaud, A.</span>, and <span class="refAuthor">C. Fournet</span>, <span class="refTitle">"Concise Encoding of Signed Merkle Tree Proofs"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-steele-cose-merkle-tree-proofs-01</span>, <time datetime="2023-07-10" class="refDate">10 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-steele-cose-merkle-tree-proofs-01">https://datatracker.ietf.org/doc/html/draft-steele-cose-merkle-tree-proofs-01</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-scitt-software-use-cases">[I-D.ietf-scitt-software-use-cases]</dt>
+        <dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Deshpande, Y.</span>, <span class="refAuthor">Brooks, D.</span>, <span class="refAuthor">Martin, B.</span>, and <span class="refAuthor">B. Knight</span>, <span class="refTitle">"Detailed Software Supply Chain Uses Cases for SCITT"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-scitt-software-use-cases-02</span>, <time datetime="2023-10-16" class="refDate">16 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-scitt-software-use-cases-02">https://datatracker.ietf.org/doc/html/draft-ietf-scitt-software-use-cases-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="in-toto">[in-toto]</dt>
+        <dd>
+<span class="refTitle">"in-toto"</span>, <span>n.d.</span>, <span>&lt;<a href="https://in-toto.io/">https://in-toto.io/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MERKLE">[MERKLE]</dt>
+        <dd>
+<span class="refAuthor">Merkle, R.</span>, <span class="refTitle">"A Digital Signature Based on a Conventional Encryption Function"</span>, <span class="refContent">Springer Berlin Heidelberg</span>, <span class="seriesInfo">Advances in Cryptology — CRYPTO ’87 pp. 369-378</span>, <span class="seriesInfo">DOI 10.1007/3-540-48184-2_32</span>, <span class="seriesInfo">ISBN ["9783540187967", "9783540481843"]</span>, <time datetime="1988" class="refDate">1988</time>, <span>&lt;<a href="https://doi.org/10.1007/3-540-48184-2_32">https://doi.org/10.1007/3-540-48184-2_32</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="PBFT">[PBFT]</dt>
+        <dd>
+<span class="refAuthor">Castro, M.</span> and <span class="refAuthor">B. Liskov</span>, <span class="refTitle">"Practical byzantine fault tolerance and proactive recovery"</span>, <span class="refContent">Association for Computing Machinery (ACM)</span>, <span class="seriesInfo">ACM Transactions on Computer Systems vol. 20, no. 4, pp. 398-461</span>, <span class="seriesInfo">DOI 10.1145/571637.571640</span>, <time datetime="2002-11" class="refDate">November 2002</time>, <span>&lt;<a href="https://doi.org/10.1145/571637.571640">https://doi.org/10.1145/571637.571640</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6024">[RFC6024]</dt>
+        <dd>
+<span class="refAuthor">Reddy, R.</span> and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"Trust Anchor Management Requirements"</span>, <span class="seriesInfo">RFC 6024</span>, <span class="seriesInfo">DOI 10.17487/RFC6024</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6024">https://www.rfc-editor.org/rfc/rfc6024</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9162">[RFC9162]</dt>
+        <dd>
+<span class="refAuthor">Laurie, B.</span>, <span class="refAuthor">Messeri, E.</span>, and <span class="refAuthor">R. Stradling</span>, <span class="refTitle">"Certificate Transparency Version 2.0"</span>, <span class="seriesInfo">RFC 9162</span>, <span class="seriesInfo">DOI 10.17487/RFC9162</span>, <time datetime="2021-12" class="refDate">December 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9162">https://www.rfc-editor.org/rfc/rfc9162</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9334">[RFC9334]</dt>
+        <dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Thaler, D.</span>, <span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Smith, N.</span>, and <span class="refAuthor">W. Pan</span>, <span class="refTitle">"Remote ATtestation procedureS (RATS) Architecture"</span>, <span class="seriesInfo">RFC 9334</span>, <span class="seriesInfo">DOI 10.17487/RFC9334</span>, <time datetime="2023-01" class="refDate">January 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9334">https://www.rfc-editor.org/rfc/rfc9334</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SLSA">[SLSA]</dt>
         <dd>
@@ -2964,35 +2993,6 @@ Registry <span>[<a href="#IANA.params" class="cite xref">IANA.params</a>]</span>
 <dt id="SWID">[SWID]</dt>
       <dd>
 <span class="refTitle">"SWID Specification"</span>, <span>n.d.</span>, <span>&lt;<a href="https://csrc.nist.gov/Projects/Software-Identification-SWID/guidelines">https://csrc.nist.gov/Projects/Software-Identification-SWID/guidelines</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-</dl>
-</section>
-</div>
-<div id="sec-informative-references">
-<section id="section-12.2">
-        <h3 id="name-informative-references">
-<a href="#section-12.2" class="section-number selfRef">12.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
-        </h3>
-<dl class="references">
-<dt id="I-D.draft-steele-cose-merkle-tree-proofs">[I-D.draft-steele-cose-merkle-tree-proofs]</dt>
-        <dd>
-<span class="refAuthor">Steele, O.</span>, <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Delignat-Lavaud, A.</span>, and <span class="refAuthor">C. Fournet</span>, <span class="refTitle">"Concise Encoding of Signed Merkle Tree Proofs"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-steele-cose-merkle-tree-proofs-01</span>, <time datetime="2023-07-10" class="refDate">10 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-steele-cose-merkle-tree-proofs-01">https://datatracker.ietf.org/doc/html/draft-steele-cose-merkle-tree-proofs-01</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.ietf-scitt-software-use-cases">[I-D.ietf-scitt-software-use-cases]</dt>
-        <dd>
-<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Deshpande, Y.</span>, <span class="refAuthor">Brooks, D.</span>, <span class="refAuthor">Martin, B.</span>, and <span class="refAuthor">B. Knight</span>, <span class="refTitle">"Detailed Software Supply Chain Uses Cases for SCITT"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-scitt-software-use-cases-02</span>, <time datetime="2023-10-16" class="refDate">16 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-scitt-software-use-cases-02">https://datatracker.ietf.org/doc/html/draft-ietf-scitt-software-use-cases-02</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="MERKLE">[MERKLE]</dt>
-        <dd>
-<span class="refAuthor">Merkle, R.</span>, <span class="refTitle">"A Digital Signature Based on a Conventional Encryption Function"</span>, <span class="refContent">Springer Berlin Heidelberg</span>, <span class="seriesInfo">Advances in Cryptology — CRYPTO ’87 pp. 369-378</span>, <span class="seriesInfo">DOI 10.1007/3-540-48184-2_32</span>, <span class="seriesInfo">ISBN ["9783540187967", "9783540481843"]</span>, <time datetime="1988" class="refDate">1988</time>, <span>&lt;<a href="https://doi.org/10.1007/3-540-48184-2_32">https://doi.org/10.1007/3-540-48184-2_32</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="PBFT">[PBFT]</dt>
-        <dd>
-<span class="refAuthor">Castro, M.</span> and <span class="refAuthor">B. Liskov</span>, <span class="refTitle">"Practical byzantine fault tolerance and proactive recovery"</span>, <span class="refContent">Association for Computing Machinery (ACM)</span>, <span class="seriesInfo">ACM Transactions on Computer Systems vol. 20, no. 4, pp. 398-461</span>, <span class="seriesInfo">DOI 10.1145/571637.571640</span>, <time datetime="2002-11" class="refDate">November 2002</time>, <span>&lt;<a href="https://doi.org/10.1145/571637.571640">https://doi.org/10.1145/571637.571640</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC9334">[RFC9334]</dt>
-      <dd>
-<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Thaler, D.</span>, <span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Smith, N.</span>, and <span class="refAuthor">W. Pan</span>, <span class="refTitle">"Remote ATtestation procedureS (RATS) Architecture"</span>, <span class="seriesInfo">RFC 9334</span>, <span class="seriesInfo">DOI 10.17487/RFC9334</span>, <time datetime="2023-01" class="refDate">January 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9334">https://www.rfc-editor.org/rfc/rfc9334</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
