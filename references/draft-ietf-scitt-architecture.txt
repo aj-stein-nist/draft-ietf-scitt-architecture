@@ -1853,8 +1853,8 @@ Table of Contents
               <https://spdx.dev/use/specifications/>.
 
    [SWID]     "SWID Specification", n.d.,
-              <https://csrc.nist.gov/projects/software-identification-
-              swid/>.
+              <https://csrc.nist.gov/Projects/Software-Identification-
+              SWID/guidelines>.
 
 12.2.  Informative References
 
