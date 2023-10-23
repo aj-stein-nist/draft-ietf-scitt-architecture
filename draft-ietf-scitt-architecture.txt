@@ -1073,19 +1073,19 @@ Table of Contents
    (3: payload type) to serialize the Statement payload.  For a software
    supply chain, payloads describing the software artifacts may include:
 
-   *  CBOR-SPDX
+   *  [COSWID]
 
-   *  CoSWID
+   *  [CycloneDX]
 
-   *  CycloneDX
+   *  [in-toto]
 
-   *  in-toto
+   *  [SPDX-CBOR]
 
-   *  JSON-SPDX
+   *  [SPDX-JSON]
 
-   *  SLSA
+   *  [SLSA]
 
-   *  SWID
+   *  [SWID]
 
    Once the Statement is serialized with the correct media-type/content-
    format, an Issuer should fill in the attributes for the Registration
@@ -1754,6 +1754,9 @@ Table of Contents
 
 12.1.  Normative References
 
+   [COSWID]   "COSWID Specification", n.d.,
+              <https://www.rfc-editor.org/rfc/rfc9393.pdf>.
+
    [CWT_CLAIMS]
               "CBOR Web Token (CWT) Claims", n.d.,
               <https://www.iana.org/assignments/cwt/cwt.xhtml>.
@@ -1762,6 +1765,10 @@ Table of Contents
               "CBOR Web Token (CWT) Claims in COSE Headers", n.d.,
               <https://datatracker.ietf.org/doc/draft-ietf-cose-cwt-
               claims-in-headers/>.
+
+   [CycloneDX]
+              "CycloneDX", n.d.,
+              <https://cyclonedx.org/specification/overview/>.
 
    [DID-CORE] W3C, "Decentralized Identifiers (DIDs) v1.0", 22 July
               2022, <https://www.w3.org/TR/did-core/>.
@@ -1776,6 +1783,8 @@ Table of Contents
    [IANA.params]
               IANA, "Uniform Resource Name (URN) Namespace for IETF
               Use", <http://www.iana.org/assignments/params>.
+
+   [in-toto]  "in-toto", n.d., <https://in-toto.io/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1833,6 +1842,20 @@ Table of Contents
               Header Parameters for Carrying and Referencing X.509
               Certificates", RFC 9360, DOI 10.17487/RFC9360, February
               2023, <https://www.rfc-editor.org/rfc/rfc9360>.
+
+   [SLSA]     "SLSA", n.d., <https://slsa.dev/>.
+
+   [SPDX-CBOR]
+              "SPDX Specification", n.d.,
+              <https://spdx.dev/use/specifications/>.
+
+   [SPDX-JSON]
+              "SPDX Specification", n.d.,
+              <https://spdx.dev/use/specifications/>.
+
+   [SWID]     "SWID Specification", n.d.,
+              <https://csrc.nist.gov/Projects/Software-Identification-
+              SWID/guidelines>.
 
 12.2.  Informative References
 

@@ -2168,25 +2168,25 @@ An Issuer must first decide on a suitable format (<code>3</code>: payload type) 
 For a software supply chain, payloads describing the software artifacts may include:<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.2-2.1">
-            <p id="section-6.2-2.1.1">CBOR-SPDX<a href="#section-6.2-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-2.1.1"><span>[<a href="#COSWID" class="cite xref">COSWID</a>]</span><a href="#section-6.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-2.2">
-            <p id="section-6.2-2.2.1">CoSWID<a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-2.2.1"><span>[<a href="#CycloneDX" class="cite xref">CycloneDX</a>]</span><a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-2.3">
-            <p id="section-6.2-2.3.1">CycloneDX<a href="#section-6.2-2.3.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-2.3.1"><span>[<a href="#in-toto" class="cite xref">in-toto</a>]</span><a href="#section-6.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-2.4">
-            <p id="section-6.2-2.4.1">in-toto<a href="#section-6.2-2.4.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-2.4.1"><span>[<a href="#SPDX-CBOR" class="cite xref">SPDX-CBOR</a>]</span><a href="#section-6.2-2.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-2.5">
-            <p id="section-6.2-2.5.1">JSON-SPDX<a href="#section-6.2-2.5.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-2.5.1"><span>[<a href="#SPDX-JSON" class="cite xref">SPDX-JSON</a>]</span><a href="#section-6.2-2.5.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-2.6">
-            <p id="section-6.2-2.6.1">SLSA<a href="#section-6.2-2.6.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-2.6.1"><span>[<a href="#SLSA" class="cite xref">SLSA</a>]</span><a href="#section-6.2-2.6.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.2-2.7">
-            <p id="section-6.2-2.7.1">SWID<a href="#section-6.2-2.7.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-2.7.1"><span>[<a href="#SWID" class="cite xref">SWID</a>]</span><a href="#section-6.2-2.7.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-6.2-3">Once the Statement is serialized with the correct media-type/content-format, an Issuer should fill in the attributes for the Registration Policy information header.
@@ -2862,6 +2862,10 @@ Registry <span>[<a href="#IANA.params" class="cite xref">IANA.params</a>]</span>
 <a href="#section-12.1" class="section-number selfRef">12.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="COSWID">[COSWID]</dt>
+        <dd>
+<span class="refTitle">"COSWID Specification"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9393.pdf">https://www.rfc-editor.org/rfc/rfc9393.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="CWT_CLAIMS">[CWT_CLAIMS]</dt>
         <dd>
 <span class="refTitle">"CBOR Web Token (CWT) Claims"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.iana.org/assignments/cwt/cwt.xhtml">https://www.iana.org/assignments/cwt/cwt.xhtml</a>&gt;</span>. </dd>
@@ -2869,6 +2873,10 @@ Registry <span>[<a href="#IANA.params" class="cite xref">IANA.params</a>]</span>
 <dt id="CWT_CLAIM_COSE">[CWT_CLAIM_COSE]</dt>
         <dd>
 <span class="refTitle">"CBOR Web Token (CWT) Claims in COSE Headers"</span>, <span>n.d.</span>, <span>&lt;<a href="https://datatracker.ietf.org/doc/draft-ietf-cose-cwt-claims-in-headers/">https://datatracker.ietf.org/doc/draft-ietf-cose-cwt-claims-in-headers/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="CycloneDX">[CycloneDX]</dt>
+        <dd>
+<span class="refTitle">"CycloneDX"</span>, <span>n.d.</span>, <span>&lt;<a href="https://cyclonedx.org/specification/overview/">https://cyclonedx.org/specification/overview/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="DID-CORE">[DID-CORE]</dt>
         <dd>
@@ -2885,6 +2893,10 @@ Registry <span>[<a href="#IANA.params" class="cite xref">IANA.params</a>]</span>
 <dt id="IANA.params">[IANA.params]</dt>
         <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"Uniform Resource Name (URN) Namespace for IETF Use"</span>, <span>&lt;<a href="http://www.iana.org/assignments/params">http://www.iana.org/assignments/params</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="in-toto">[in-toto]</dt>
+        <dd>
+<span class="refTitle">"in-toto"</span>, <span>n.d.</span>, <span>&lt;<a href="https://in-toto.io/">https://in-toto.io/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -2931,8 +2943,24 @@ Registry <span>[<a href="#IANA.params" class="cite xref">IANA.params</a>]</span>
 <span class="refAuthor">Laurie, B.</span>, <span class="refAuthor">Messeri, E.</span>, and <span class="refAuthor">R. Stradling</span>, <span class="refTitle">"Certificate Transparency Version 2.0"</span>, <span class="seriesInfo">RFC 9162</span>, <span class="seriesInfo">DOI 10.17487/RFC9162</span>, <time datetime="2021-12" class="refDate">December 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9162">https://www.rfc-editor.org/rfc/rfc9162</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9360">[RFC9360]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE): Header Parameters for Carrying and Referencing X.509 Certificates"</span>, <span class="seriesInfo">RFC 9360</span>, <span class="seriesInfo">DOI 10.17487/RFC9360</span>, <time datetime="2023-02" class="refDate">February 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9360">https://www.rfc-editor.org/rfc/rfc9360</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="SLSA">[SLSA]</dt>
+        <dd>
+<span class="refTitle">"SLSA"</span>, <span>n.d.</span>, <span>&lt;<a href="https://slsa.dev/">https://slsa.dev/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="SPDX-CBOR">[SPDX-CBOR]</dt>
+        <dd>
+<span class="refTitle">"SPDX Specification"</span>, <span>n.d.</span>, <span>&lt;<a href="https://spdx.dev/use/specifications/">https://spdx.dev/use/specifications/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="SPDX-JSON">[SPDX-JSON]</dt>
+        <dd>
+<span class="refTitle">"SPDX Specification"</span>, <span>n.d.</span>, <span>&lt;<a href="https://spdx.dev/use/specifications/">https://spdx.dev/use/specifications/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="SWID">[SWID]</dt>
+      <dd>
+<span class="refTitle">"SWID Specification"</span>, <span>n.d.</span>, <span>&lt;<a href="https://csrc.nist.gov/Projects/Software-Identification-SWID/guidelines">https://csrc.nist.gov/Projects/Software-Identification-SWID/guidelines</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
