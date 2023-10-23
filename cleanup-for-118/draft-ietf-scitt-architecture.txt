@@ -230,7 +230,7 @@ Table of Contents
    Transparency Service specified in this architecture caters to two
    types of audiences:
 
-   1.  *Issuers*: organizations, stakeholders, and users involved in
+   1.  *Issuers*: organizations, consumers, and users involved in
        creating or attesting to supply chain artifacts, releasing
        authentic Statements to a definable set of peers
 
@@ -257,10 +257,10 @@ Table of Contents
    The interoperability guaranteed by the Transparency Services is
    enabled via core components (architectural constituents).  Many of
    the data elements processed by the core components are based on the
-   Concise Signing and Encryption (COSE) standard specified in
-   [RFC9052], which is used to produce Signed Statements about Artifacts
-   and to build and maintain a Merkle tree that functions as an Append-
-   only Log for corresponding Signed Statements.
+   CBOR Signing and Encryption (COSE) standard specified in [RFC9052],
+   which is used to produce Signed Statements about Artifacts and to
+   build and maintain a Merkle tree that functions as an Append-only Log
+   for corresponding Signed Statements.
 
 1.1.  Requirements Notation
 

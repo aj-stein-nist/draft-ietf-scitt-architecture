@@ -1357,7 +1357,7 @@ Unlike CT, where independent Auditors are responsible for enforcing the consiste
 As a result, the Transparency Service specified in this architecture caters to two types of audiences:<a href="#section-1-10" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-1-11">
 <li id="section-1-11.1">
-          <p id="section-1-11.1.1"><strong>Issuers</strong>: organizations, stakeholders, and users involved in creating or attesting to supply chain artifacts, releasing authentic Statements to a definable set of peers<a href="#section-1-11.1.1" class="pilcrow">¶</a></p>
+          <p id="section-1-11.1.1"><strong>Issuers</strong>: organizations, consumers, and users involved in creating or attesting to supply chain artifacts, releasing authentic Statements to a definable set of peers<a href="#section-1-11.1.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-1-11.2">
           <p id="section-1-11.2.1"><strong>Verifiers</strong>: organizations, stakeholders, and users involved in validating supply chain artifacts, but can only do so if the Statements are known to be authentic.
@@ -1369,7 +1369,7 @@ Analogously, Transparent Statement Verifiers rely on verifiable trustworthiness 
 If trust can be put into the operations that record Signed Statements in a secure, Append-only Log via online operations, the same trust can be put into the resulting Transparent Statement, issued by the Transparency Services and that can be validated in offline operations.<a href="#section-1-12" class="pilcrow">¶</a></p>
 <p id="section-1-13">The Transparency Services specified in this architecture are language independent and can be implemented alongside or within existing services.<a href="#section-1-13" class="pilcrow">¶</a></p>
 <p id="section-1-14">The interoperability guaranteed by the Transparency Services is enabled via core components (architectural constituents).
-Many of the data elements processed by the core components are based on the Concise Signing and Encryption (COSE) standard specified in <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>, which is used to produce Signed Statements about Artifacts and to build and maintain a Merkle tree that functions as an Append-only Log for corresponding Signed Statements.<a href="#section-1-14" class="pilcrow">¶</a></p>
+Many of the data elements processed by the core components are based on the CBOR Signing and Encryption (COSE) standard specified in <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>, which is used to produce Signed Statements about Artifacts and to build and maintain a Merkle tree that functions as an Append-only Log for corresponding Signed Statements.<a href="#section-1-14" class="pilcrow">¶</a></p>
 <div id="sec-requirements-notation">
 <section id="section-1.1">
         <h3 id="name-requirements-notation">
