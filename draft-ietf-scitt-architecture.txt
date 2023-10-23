@@ -127,6 +127,7 @@ Table of Contents
    12. References
      12.1.  Normative References
      12.2.  Informative References
+   Contributors
    Authors' Addresses
 
 1.  Introduction
@@ -1893,6 +1894,17 @@ Table of Contents
               W. Pan, "Remote ATtestation procedureS (RATS)
               Architecture", RFC 9334, DOI 10.17487/RFC9334, January
               2023, <https://www.rfc-editor.org/rfc/rfc9334>.
+
+Contributors
+
+   Orie Steele
+   Transmute
+   United States
+   Email: orie@transmute.industries
+
+
+   Orie contributed to improving the generalization of COSE building
+   blocks and document consistency.
 
 Authors' Addresses
 
