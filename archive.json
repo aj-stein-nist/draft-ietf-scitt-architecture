@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-22T00:36:37.042335+00:00",
+  "timestamp": "2023-10-24T00:33:51.397010+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -85,16 +85,24 @@
       "id": "I_kwDOIvmHss5ev0gQ",
       "title": "Add CODEOWNERS file for visibility of maintainership",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/4",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-02-17T16:09:43Z",
-      "updatedAt": "2023-09-05T23:41:07Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2023-10-23T23:25:50Z",
+      "closedAt": "2023-10-23T23:25:50Z",
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Clsoing as IETF drafts use the authors to track",
+          "createdAt": "2023-10-23T23:25:50Z",
+          "updatedAt": "2023-10-23T23:25:50Z"
+        }
+      ]
     },
     {
       "number": 5,
@@ -217,7 +225,7 @@
       "id": "I_kwDOIvmHss5e_b-V",
       "title": "Converge Claim and Statement",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/8",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -226,8 +234,8 @@
       ],
       "body": "Copying over: https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/issues/34\r\n\r\nAt IETF-115, discussions involved:\r\n\r\n- Leverage existing IETF and/or W3C definitions and terms, or at least not conflict and cause confusion with existing terms.\r\n- Minimize the concept count\r\n\r\n### Existing Standards Terminology\r\n\r\n- [IETF: Remote Attestation Procedures Architecture (RATS)](https://www.ietf.org/archive/id/draft-ietf-rats-architecture-22.html#name-artifacts)\r\n- [IETF: SCITT Architecture](https://ietf-scitt.github.io/draft-birkholz-scitt-architecture/draft-birkholz-scitt-architecture.html#name-terminology)\r\n- [IETF: RFC7519](https://www.ietf.org/archive/id/draft-ietf-rats-architecture-22.html#RFC7519)\r\n\r\n### Proposal\r\n\r\nClaim conflicts with RATS and W3C\r\n\r\nComparison of terms across orgs as the object changes state:\r\n![](https://hackmd.io/_uploads/SklGkMSBs.png)\r\n\r\nInstead of transitioning from `statement` to `claim` to `transparent claim`, what if we used `statement` as the base concept:\r\n- Statement --> Signed Statment --> Transparent Statement",
       "createdAt": "2023-02-21T15:34:14Z",
-      "updatedAt": "2023-09-05T23:41:18Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:26:14Z",
+      "closedAt": "2023-10-23T23:26:14Z",
       "comments": [
         {
           "author": "rjb4standards",
@@ -319,6 +327,13 @@
           "body": "@SteveLasker asked me to post this issue here rather than in the separate issue #20 that I had created (which has now been closed)\r\n\r\n----------------------------\r\nIn describing to lay audiences, I have found it easier to use the term 'registered statement' rather than 'transparent statement'. It reduces the number of concepts needed for understanding. Here is the workflow description I have been using:\r\n\r\nUser creates a statement\r\nUser signs a statement\r\nUser registers a statement on a transparency registry. Prior to registration, the statement is evaluated against registration policy.\r\nUser receives a receipt of registration\r\nUser shares a registered statement with interested parties\r\nAuditors and others query the transparency registry to get a history of registered statements\r\n\r\nSee related comment on Issue https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16\r\nSee related comment on Issue https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/20",
           "createdAt": "2023-03-13T22:59:19Z",
           "updatedAt": "2023-03-13T22:59:19Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Completed",
+          "createdAt": "2023-10-23T23:26:14Z",
+          "updatedAt": "2023-10-23T23:26:14Z"
         }
       ]
     },
@@ -454,7 +469,7 @@
       "id": "I_kwDOIvmHss5e_hiw",
       "title": "Considering the impact of claim semantics on policy layer",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/12",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -463,8 +478,8 @@
       ],
       "body": "Copied over from: https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/issues/26\r\n\r\nWhen specific and detailed claims are provided an advanced policy might be applied.\r\n\r\nIf only shallow / simple claims are provided, there is not much of an opportunity to apply advanced policies.",
       "createdAt": "2023-02-21T15:48:42Z",
-      "updatedAt": "2023-09-05T23:41:59Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:26:45Z",
+      "closedAt": "2023-10-23T23:26:45Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -479,6 +494,13 @@
           "body": "Deferring to 118",
           "createdAt": "2023-09-05T23:41:55Z",
           "updatedAt": "2023-09-05T23:41:55Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale",
+          "createdAt": "2023-10-23T23:26:45Z",
+          "updatedAt": "2023-10-23T23:26:45Z"
         }
       ]
     },
@@ -496,7 +518,7 @@
       "labels": [],
       "body": "Copied over from: https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/issues/27\r\n\r\n##  Compound User Story / Sequence Diagram\r\n\r\nAs a consumer, I want to understand if I should trust an artifact\r\nAs a producer, I want to be assured that the integrity of my artifacts has been reviewed by a trusted 3rd party.\r\n\r\n```mermaid\r\nsequenceDiagram\r\n    participant Issuer\r\n    participant Notary\r\n    Note left of Issuer: I take responsibility for the artifacts I produce\r\n    Issuer ->> Notary: These are the policies I am committed to meeting\r\n    Issuer ->> Notary: I stand by my claims about my artifact\r\n    loop Claims Check\r\n        Notary ->> Notary: Review relevant claims and policies\r\n    end\r\n    Notary ->> Issuer: Here is my endorsement and receipt\r\n    Consumer->>Notary: Is this artifact safe to use?\r\n    loop Endorsement Check\r\n        Notary->>Notary: Review relevant claims and endorsements\r\n    end\r\n     Notary ->> Consumer: You can trust this artifact, the endorsement is still valid\r\n     Note right of Consumer: I have confidence in the artifacts I consume\r\n```\r\n",
       "createdAt": "2023-02-21T15:53:11Z",
-      "updatedAt": "2023-09-05T23:43:08Z",
+      "updatedAt": "2023-10-23T23:27:21Z",
       "closedAt": null,
       "comments": [
         {
@@ -540,6 +562,13 @@
           "body": "It is possible to generate svg from mermaid, the problem is that svg does work for ASCII version of RFC, so ASCII art is preferred.",
           "createdAt": "2023-03-11T01:26:32Z",
           "updatedAt": "2023-03-11T01:26:32Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Still interesting, bumped to 119",
+          "createdAt": "2023-10-23T23:27:21Z",
+          "updatedAt": "2023-10-23T23:27:21Z"
         }
       ]
     },
@@ -548,7 +577,7 @@
       "id": "I_kwDOIvmHss5e_kHn",
       "title": "Registry Access Scenarios (RBAC)",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/14",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -557,8 +586,8 @@
       ],
       "body": "Copied over from: https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/issues/25\r\n\r\n### Case 0 \r\n\r\n- Public Read\r\n- Private Write\r\n\r\n### Case 1\r\n\r\n- Private Read\r\n- Private Write\r\n\r\n\r\nWhen holding an endorsement, one might be be able to verify directly in a public read, or rely on an auditor in the case of a private read scenario.\r\n",
       "createdAt": "2023-02-21T15:55:50Z",
-      "updatedAt": "2023-09-05T23:59:29Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:27:55Z",
+      "closedAt": "2023-10-23T23:27:54Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -566,6 +595,13 @@
           "body": "RBAC definition is a great topic, but deferring from 116 at this point for focus.",
           "createdAt": "2023-03-10T01:33:16Z",
           "updatedAt": "2023-03-10T01:33:16Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "RBAC has been discussed is implementation specific. \r\nClosing\r\n",
+          "createdAt": "2023-10-23T23:27:54Z",
+          "updatedAt": "2023-10-23T23:27:54Z"
         }
       ]
     },
@@ -614,15 +650,15 @@
       "id": "I_kwDOIvmHss5fEmZl",
       "title": "Define error codes",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/17",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "letmaik",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "From https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/3#discussion_r1114223387.\r\n\r\nMore error codes should be defined.",
       "createdAt": "2023-02-22T12:43:22Z",
-      "updatedAt": "2023-03-10T01:32:31Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:28:44Z",
+      "closedAt": "2023-10-23T23:28:44Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -630,6 +666,13 @@
           "body": "@letmaik, with the focus to pull the API into another draft, should we close this, or transfer? ",
           "createdAt": "2023-03-10T01:32:20Z",
           "updatedAt": "2023-03-10T01:32:20Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as this is likely part of [SCRAPI](https://github.com/ietf-scitt/draft-birkholz-scitt-scrapi/)",
+          "createdAt": "2023-10-23T23:28:44Z",
+          "updatedAt": "2023-10-23T23:28:44Z"
         }
       ]
     },
@@ -645,7 +688,7 @@
       "labels": [],
       "body": "Copied over from: https://github.com/ietf-scitt/draft-birkholz-scitt-architecture/issues/35\r\n\r\nAt IETF 115 there were discussions on having some kind of standard way to deal with statements by reference. Here are also the two relevant slides from https://datatracker.ietf.org/doc/slides-115-scitt-combined-scitt-presentations/:\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
       "createdAt": "2023-02-27T15:59:38Z",
-      "updatedAt": "2023-09-05T23:43:36Z",
+      "updatedAt": "2023-10-23T23:29:31Z",
       "closedAt": null,
       "comments": [
         {
@@ -654,6 +697,13 @@
           "body": "Reluctantly moving beyond 116. We do have some new work for clarifying statement types, but it won't be ready for 116 proper. \r\n\r\nIf someone has bandwidth to focus upon for the 116 hackathon, please grab this. In lieu of that, I'm differing for now. ",
           "createdAt": "2023-03-10T01:31:38Z",
           "updatedAt": "2023-03-10T01:31:38Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Statement by reference is still assumed through discussions, but not yet captured in the specs. Moving to 119",
+          "createdAt": "2023-10-23T23:29:31Z",
+          "updatedAt": "2023-10-23T23:29:31Z"
         }
       ]
     },
@@ -671,7 +721,7 @@
       ],
       "body": "Discussion on the functionality of the registration policy, as defined in the architecture.",
       "createdAt": "2023-02-28T14:55:21Z",
-      "updatedAt": "2023-09-05T23:44:07Z",
+      "updatedAt": "2023-10-23T23:29:59Z",
       "closedAt": null,
       "comments": [
         {
@@ -680,6 +730,13 @@
           "body": "\"Registration Policy\" describes the constraints imposed on who can submit signed statements and what metadata is required. The metadata AKA \"Artifact Properties\" is used for accessing the signed statements regarding data artifacts. There are two levels of properties: a) a base level which provides the licensee/owner, semantic label of the item, version, and category. The date submitted is calculated by the log manager. Category is used to determine the extended properties set. For example, for software use case, the base level would have Licensee:\"Company ABC\", ProductName:\"Widget package XYZ\", Version: \"2.1.3\", PropertiesCategory:\"sw\". In the extended set, we have properties such as a enumeration of possible artifact types, such SBOM, OCI container, binary, etc. \r\n\r\nThen, the registration policy includes 2 aspects. a) which property fields are completed so the item can be later accessed and b) whether the submitter is authorized to submit the item based on evaluating the signature on the submitted item.\r\n\r\nThe minimum metadata for each artifact must be specified in the base architecture, even if in some registration policies, no metadata is required. The extended metadata must be defined for the sw use case.\r\n\r\nThe signed statements that exist in the append only log must include both the base properties and optional (use-case specific) properties, these should be protected by any signatures, and they should not be encrypted nor considered part of the artifact.\r\n",
           "createdAt": "2023-06-25T16:09:39Z",
           "updatedAt": "2023-06-25T16:23:59Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Active for 118 on-site discussion, and inclusion for 119",
+          "createdAt": "2023-10-23T23:29:59Z",
+          "updatedAt": "2023-10-23T23:29:59Z"
         }
       ]
     },
@@ -751,7 +808,7 @@
       ],
       "body": "> Unlike CT, where independent auditors are responsible for enforcing the consistency of multiple independent instances of the same global Registry, each Transparency Service is required to guarantee the consistency of its own Registry (for instance, through the use of a consensus algorithm between replicas of the Registry), but assume no consistency between different Transparency Services\r\n\r\nThe sentence _Unlike CT,..._ takes away an important aspect of any transparency service, and negates the overall notion that we are trying to generalize CT.\r\n\r\nInstead, we should note that any given TS will be well served by having replicas and auditors which confirm that relying parties can choose any replica they want.",
       "createdAt": "2023-03-06T18:04:01Z",
-      "updatedAt": "2023-09-06T00:00:00Z",
+      "updatedAt": "2023-10-24T00:05:02Z",
       "closedAt": null,
       "comments": [
         {
@@ -760,6 +817,13 @@
           "body": "Deferring multiple instance discussions to post 116.",
           "createdAt": "2023-03-10T01:27:27Z",
           "updatedAt": "2023-03-10T01:27:27Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Linking to #79 ",
+          "createdAt": "2023-10-23T23:31:32Z",
+          "updatedAt": "2023-10-23T23:31:32Z"
         }
       ]
     },
@@ -808,7 +872,7 @@
       "id": "I_kwDOIvmHss5gLx5_",
       "title": "Clarification: Notarization is not the process of creating a signed statement",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/23",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -819,8 +883,8 @@
       ],
       "body": "              I don't love this language.\r\n\r\nI think notarizing applies to making a \"Signed Statement\" a \"Transparent Statement\"... but this sentence seems to imply notarization is part of the process of creating a \"Signed Statement\", which seems wrong.\r\n\r\n_Originally posted by @OR13 in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1126710441_\r\n            ",
       "createdAt": "2023-03-07T15:34:29Z",
-      "updatedAt": "2023-09-05T23:45:33Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:34:30Z",
+      "closedAt": "2023-10-23T23:34:30Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -842,6 +906,13 @@
           "body": "^ yes, that is it.\r\n\r\nI prefer something closer to:\r\n\r\n> The issuer of a signed statement should been authenticated, and trusted to make the statements according to a registration policy for the transparency service. The issuer of a receipt for a transparent signed statement  (i.e., a believable notarization function), when trusted as a notary facilitates offline verification ... etc...\r\n\r\n\r\n",
           "createdAt": "2023-03-10T16:59:29Z",
           "updatedAt": "2023-03-10T16:59:29Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale. If the [current draft](https://datatracker.ietf.org/doc/draft-ietf-scitt-architecture/) doesn't reflect the needs, please open a new issue, and/or PR",
+          "createdAt": "2023-10-23T23:34:30Z",
+          "updatedAt": "2023-10-23T23:34:30Z"
         }
       ]
     },
@@ -850,7 +921,7 @@
       "id": "I_kwDOIvmHss5gLzx-",
       "title": "Clarification: add notarization",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/24",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -861,8 +932,8 @@
       ],
       "body": "              I think the concept of \"notarization\" needs to go here... or it needs to not be used anywhere.\r\n\r\n_Originally posted by @OR13 in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1126712923_\r\n            ",
       "createdAt": "2023-03-07T15:39:14Z",
-      "updatedAt": "2023-09-05T23:46:04Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:35:57Z",
+      "closedAt": "2023-10-23T23:35:56Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -891,6 +962,13 @@
           "body": "I'm a fan of the recommendation to use the term registered statement rather than transparent statement. If we adopt that, it would seem clearer to use the term registrar rather than overloading the term notary in a way that seems novel to me. Are there examples in other areas where different notaries follow different registration policies?",
           "createdAt": "2023-03-10T13:56:56Z",
           "updatedAt": "2023-03-10T13:56:56Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale, and the current draft has been updated quite a bit.\r\nPlease re-open if new text is needed.",
+          "createdAt": "2023-10-23T23:35:57Z",
+          "updatedAt": "2023-10-23T23:35:57Z"
         }
       ]
     },
@@ -959,15 +1037,15 @@
       "id": "I_kwDOIvmHss5gMC9H",
       "title": "Clarification: cannot delete or alter earlier Signed Statements",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/27",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "              > cannot delete or alter earlier Signed Statements about certain Artifacts\r\n\r\ndrop \"about certain Artifacts\". It makes it seem like they could delete or alter Signed Statements about certain *other* Artifacts. But they can't delete or alter any earlier Signed Statements about anything.\r\n\r\n_Originally posted by @nealmcb in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1125888615_\r\n            ",
       "createdAt": "2023-03-07T16:14:28Z",
-      "updatedAt": "2023-09-05T23:47:33Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:39:08Z",
+      "closedAt": "2023-10-23T23:39:08Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -975,6 +1053,13 @@
           "body": "Good clarification, but deferring to 117",
           "createdAt": "2023-03-10T01:08:13Z",
           "updatedAt": "2023-03-10T01:08:13Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as updates have been completed: [Line 173](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/main/draft-ietf-scitt-architecture.md?plain=1#L173)\r\n> Multiple Issuers may Register additional Signed Statements about the same Artifact, but they cannot delete or alter Signed Statements previously added to the Append-only Log.\r\n",
+          "createdAt": "2023-10-23T23:39:08Z",
+          "updatedAt": "2023-10-23T23:39:08Z"
         }
       ]
     },
@@ -983,7 +1068,7 @@
       "id": "I_kwDOIvmHss5gMEQ7",
       "title": "Clarification: CT and TS generalization, replicas and auditors",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/28",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -993,8 +1078,8 @@
       ],
       "body": "              The sentence *Unlike CT,...* takes away an important aspect of any transparency service, and negates the overall notion that we are trying to generalize CT.\r\n\r\nInstead, we should note that any given TS will be well served by having replicas and auditors which confirm that relying parties can choose any replica they want.\r\n\r\n_Originally posted by @nealmcb in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1125894980_\r\n            ",
       "createdAt": "2023-03-07T16:17:57Z",
-      "updatedAt": "2023-09-06T00:13:40Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-24T00:03:33Z",
+      "closedAt": "2023-10-24T00:03:32Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1002,6 +1087,13 @@
           "body": "Deferring replicas and reliability to post 116",
           "createdAt": "2023-03-10T01:06:01Z",
           "updatedAt": "2023-03-10T01:06:01Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale",
+          "createdAt": "2023-10-24T00:03:32Z",
+          "updatedAt": "2023-10-24T00:03:32Z"
         }
       ]
     },
@@ -1091,15 +1183,15 @@
       "id": "I_kwDOIvmHss5gMgg1",
       "title": "Clarification: Requirements for SCITT implementations to build a suitable Transparency Service",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/32",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "              Of course a compromised TS could do all sorts of malicious things. If the previous line / paragraph stated the 4 (or more?) bullet points below in terms of how a TS is supposed to behave. It might be easier to understand what requirements implementers must address in order to build a suitable TS?\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123612216_\r\n            ",
       "createdAt": "2023-03-07T17:23:15Z",
-      "updatedAt": "2023-09-05T23:50:32Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:37:20Z",
+      "closedAt": "2023-10-23T23:37:20Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1107,6 +1199,13 @@
           "body": "This is similar to #37 where we may want to clarify what's in the spec, vs. a decision for an implementation.\r\nAssigning to post 116\r\n",
           "createdAt": "2023-03-10T00:59:59Z",
           "updatedAt": "2023-03-10T00:59:59Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Updates have been merged. Please re-open with new updates if needed.",
+          "createdAt": "2023-10-23T23:37:20Z",
+          "updatedAt": "2023-10-23T23:37:20Z"
         }
       ]
     },
@@ -1115,7 +1214,7 @@
       "id": "I_kwDOIvmHss5gMiIO",
       "title": "Clarification: References to multiple Transparency Servies",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/33",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -1124,8 +1223,8 @@
       ],
       "body": "              Does this work if the TS cluster is behind a load balancer?\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123564059_\r\n            ",
       "createdAt": "2023-03-07T17:27:16Z",
-      "updatedAt": "2023-09-06T00:00:50Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-24T00:04:04Z",
+      "closedAt": "2023-10-24T00:04:04Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1133,6 +1232,13 @@
           "body": "Linking to #42, but also a good topic for client verification (verifiers).\r\nDeferring to 117 to provide time for discussion.",
           "createdAt": "2023-03-09T23:32:33Z",
           "updatedAt": "2023-03-09T23:32:33Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale, with references to Federation added. ",
+          "createdAt": "2023-10-24T00:04:04Z",
+          "updatedAt": "2023-10-24T00:04:04Z"
         }
       ]
     },
@@ -1141,15 +1247,15 @@
       "id": "I_kwDOIvmHss5gMjDr",
       "title": "Clarification: Reference to \"Local\"",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/34",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "              please break up long sentences into shorter lines.\r\n\r\nThe term 'local' is subjective and contextual. If used, it needs to be defined.\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123565919_\r\n            ",
       "createdAt": "2023-03-07T17:29:25Z",
-      "updatedAt": "2023-09-05T23:52:01Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-24T00:03:15Z",
+      "closedAt": "2023-10-24T00:03:15Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1165,15 +1271,15 @@
       "id": "I_kwDOIvmHss5gMkV0",
       "title": "Clarification: How does a Transparency Service ensure determinism?",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/35",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "              how does the TS ensure determinism?\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123538125_\r\n            ",
       "createdAt": "2023-03-07T17:32:38Z",
-      "updatedAt": "2023-10-18T03:21:59Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-24T00:02:38Z",
+      "closedAt": "2023-10-24T00:02:37Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1188,6 +1294,13 @@
           "body": "Potentially related, hashing claims for use as entry IDs: https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/79#issuecomment-1767445443",
           "createdAt": "2023-10-18T03:21:33Z",
           "updatedAt": "2023-10-18T03:21:59Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale, with the link to #79 as a possible updated tracking item.\r\nPlease re-open if needed, with additional context. ",
+          "createdAt": "2023-10-24T00:02:37Z",
+          "updatedAt": "2023-10-24T00:02:37Z"
         }
       ]
     },
@@ -1196,15 +1309,15 @@
       "id": "I_kwDOIvmHss5gMlbf",
       "title": "Clarification: Describe the properties of a DID resolution",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/36",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "              It might be better to describe the properties of manifests that are desired instead of or in addition to simply requiring 'manifests' - which is ambiguous.\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123542029_\r\n            ",
       "createdAt": "2023-03-07T17:35:25Z",
-      "updatedAt": "2023-09-05T23:52:30Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:44:22Z",
+      "closedAt": "2023-10-23T23:44:22Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1212,6 +1325,13 @@
           "body": "Deferring to 117, as we dig into more details of the registration policy.",
           "createdAt": "2023-03-09T23:27:33Z",
           "updatedAt": "2023-03-09T23:27:33Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale, with updates to CTW Claims (#108) added ",
+          "createdAt": "2023-10-23T23:44:22Z",
+          "updatedAt": "2023-10-23T23:44:22Z"
         }
       ]
     },
@@ -1220,7 +1340,7 @@
       "id": "I_kwDOIvmHss5gMm2j",
       "title": "Clarification: SHOULD | MUST document governance procedure details.",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/37",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -1229,8 +1349,8 @@
       ],
       "body": "Clarify what level of detail MUST or SHOULD be captured by a SCITT instance? \r\n\r\n              Why is this a SHOULD and not MUST? Otherwise it is an untrustworthy TS.\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123544646_\r\n            ",
       "createdAt": "2023-03-07T17:39:12Z",
-      "updatedAt": "2023-09-05T23:59:49Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:36:44Z",
+      "closedAt": "2023-10-23T23:36:44Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1238,6 +1358,13 @@
           "body": "Deferring what would be in the spec as MUST, vs. what SHOULD. \r\nIt seems there's some clarity around what the spec requires, vs. a good, better, best implementation would do. It's possible some SCITT Transparency Services may have lighter weight infrastructure, but there should be some core capabilities that make a SCITT Transparency Service reliable.",
           "createdAt": "2023-03-09T23:26:26Z",
           "updatedAt": "2023-03-09T23:26:26Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "A number of changes have been applied. Please open new issues/prs with specific references if further is needed. ",
+          "createdAt": "2023-10-23T23:36:44Z",
+          "updatedAt": "2023-10-23T23:36:44Z"
         }
       ]
     },
@@ -1246,15 +1373,15 @@
       "id": "I_kwDOIvmHss5gMoy0",
       "title": "Clarification: Ordering of entities, determinism, verifiable",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/38",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "              This requires more explanation. Sounds dubious.\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123539145_\r\n            ",
       "createdAt": "2023-03-07T17:44:29Z",
-      "updatedAt": "2023-09-05T23:53:02Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-24T00:01:26Z",
+      "closedAt": "2023-10-24T00:01:25Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1262,6 +1389,13 @@
           "body": "Deferring to 117 to provide time for clarification",
           "createdAt": "2023-03-09T23:24:07Z",
           "updatedAt": "2023-03-09T23:24:07Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Believe this was resolved in #107, here: https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/107/files#diff-585fb424519b79cf000445f3425fa56d328cbaca5d2a622740ddc4e5ca91dbe1R497\r\n",
+          "createdAt": "2023-10-24T00:01:25Z",
+          "updatedAt": "2023-10-24T00:01:25Z"
         }
       ]
     },
@@ -1270,7 +1404,7 @@
       "id": "I_kwDOIvmHss5gMqhT",
       "title": "Clarification: Define consumer",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/39",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -1279,8 +1413,8 @@
       ],
       "body": "From a terminology perspective, \"consumer\" can mean:\r\n- End users that \"consume\" software, akin to a consumer of purchased good and services\r\n- Anyone interacting with a SCITT Transparency Service - akin to publishers and consumers of a SCITT Transparency service\r\n\r\nSuggestion for tracking: add \"Consumer\" to the [Terminology](https://ietf-wg-scitt.github.io/draft-ietf-scitt-architecture/draft-ietf-scitt-architecture.html#name-terminology) section\r\n\r\n              'consumer' might not be the best term. Does it mean ingress or someone engaging in commerce?\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123549835_\r\n            ",
       "createdAt": "2023-03-07T17:49:05Z",
-      "updatedAt": "2023-09-05T23:53:40Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:58:01Z",
+      "closedAt": "2023-10-23T23:58:00Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1302,6 +1436,13 @@
           "body": "There are references in the doc, as is. Deferring to 117, to create stability for 116.",
           "createdAt": "2023-03-13T16:56:18Z",
           "updatedAt": "2023-03-13T16:56:18Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Completed\r\n",
+          "createdAt": "2023-10-23T23:58:00Z",
+          "updatedAt": "2023-10-23T23:58:00Z"
         }
       ]
     },
@@ -1335,7 +1476,7 @@
       ],
       "body": "              The different available options should be described.\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123568871_\r\n            ",
       "createdAt": "2023-03-07T18:12:59Z",
-      "updatedAt": "2023-09-05T23:54:39Z",
+      "updatedAt": "2023-10-23T23:57:34Z",
       "closedAt": null,
       "comments": [
         {
@@ -1352,7 +1493,7 @@
       "id": "I_kwDOIvmHss5gM1QP",
       "title": "Clarification: Multiple SCITT Instances and trust between them",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/42",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -1361,8 +1502,8 @@
       ],
       "body": "There will be multiple instances of SCITT Transparency services, run by different organizations. Multiples will likely exist for private software, where internal information is maintained for compliance and auditing, while public instances will provide the public info. \r\nThe suggestion here is to remove the reference to multiple SCITT Transparency Services trusting each other, as it's accepted that different instances will have different registration policies and neither have to trust the other, rather the consumer has to decide what's applicable to them.\r\n\r\n              If they have different governance, organization trust, and otherwise don't trust each other what is the basis for allowing them to interoperate? This seems very dubious and possibly should be called out as conditions for NOT interoperating.\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123571906_\r\n            ",
       "createdAt": "2023-03-07T18:20:25Z",
-      "updatedAt": "2023-09-05T23:55:47Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:59:04Z",
+      "closedAt": "2023-10-23T23:59:03Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1370,6 +1511,13 @@
           "body": "Deferring to 117",
           "createdAt": "2023-03-09T23:16:53Z",
           "updatedAt": "2023-03-09T23:16:53Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "A [Federation](https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-04.html#name-federation) section was added. ",
+          "createdAt": "2023-10-23T23:59:03Z",
+          "updatedAt": "2023-10-23T23:59:03Z"
         }
       ]
     },
@@ -1388,7 +1536,7 @@
       ],
       "body": "              Maybe it would be better if the information owner is expected to apply privacy protections before contributing a Statement?\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123624264_\r\n            ",
       "createdAt": "2023-03-09T20:59:51Z",
-      "updatedAt": "2023-09-05T23:59:14Z",
+      "updatedAt": "2023-10-23T23:45:25Z",
       "closedAt": null,
       "comments": [
         {
@@ -1404,6 +1552,13 @@
           "body": "Deferring to 117, giving time for registration policy details. \r\n#54 is triaged to 116, while #49 is set to 117",
           "createdAt": "2023-03-09T23:16:37Z",
           "updatedAt": "2023-03-09T23:16:37Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Moving 119, as we'll hopefully be discussing Registration Policies at 118, and incorporating in 119",
+          "createdAt": "2023-10-23T23:45:20Z",
+          "updatedAt": "2023-10-23T23:45:20Z"
         }
       ]
     },
@@ -1459,11 +1614,12 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
+        "receipts",
         "RBAC-ABAC"
       ],
       "body": "The architecture doc refers to \"access\" in multiple places, and while I personally don't believe the spec should define the details of Role Based Access Control (RBAC), the topic comes up enough that we should likely define a section for RBAC, that leaves the details to the implementation. \r\n\r\nThis is to track an update that:\r\n\r\n- [ ] Captures a section for Role Based Access Control (RBAC), that defines the need, where feeds and possibly some contentTypes may be restricted to permissions assigned to a group\r\n- [ ] Leaves the details to an implementation\r\n- [ ] Defines the behavior if a consumer presents a receipt from the ledger, but the user doesn't have read-level access to the entry. SHOULD/MUST the Transparency Service acknowledges the receipt? Is that disclosure? ",
       "createdAt": "2023-03-09T21:37:12Z",
-      "updatedAt": "2023-09-05T23:57:01Z",
+      "updatedAt": "2023-10-23T23:46:37Z",
       "closedAt": null,
       "comments": [
         {
@@ -1472,6 +1628,13 @@
           "body": "Deferring to 117",
           "createdAt": "2023-03-09T23:14:30Z",
           "updatedAt": "2023-03-09T23:14:30Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Keeping as it revolves around Receipt validation, which should be clarified in the spec.",
+          "createdAt": "2023-10-23T23:46:34Z",
+          "updatedAt": "2023-10-23T23:46:34Z"
         }
       ]
     },
@@ -1480,7 +1643,7 @@
       "id": "I_kwDOIvmHss5gcl57",
       "title": "Clarification: The registration policy should do revocation checking of identities.",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/55",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -1489,8 +1652,8 @@
       ],
       "body": "              It might scale better if the TSs request revocation status updates such as OCSP [RFC2560].\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123634020_\r\n            ",
       "createdAt": "2023-03-09T22:58:37Z",
-      "updatedAt": "2023-09-05T23:57:21Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:57:14Z",
+      "closedAt": "2023-10-23T23:57:14Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1498,6 +1661,13 @@
           "body": "I don't think we'll have time to land this for 116. Assigning to 117, giving time for discussion and clarity as we dig into the details of the registration policies.",
           "createdAt": "2023-03-09T23:14:07Z",
           "updatedAt": "2023-03-09T23:14:07Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale and belief the current doc addresses the original issue.\r\nPlease open new issues/prs with specific pointers if needed",
+          "createdAt": "2023-10-23T23:57:14Z",
+          "updatedAt": "2023-10-23T23:57:14Z"
         }
       ]
     },
@@ -1579,7 +1749,7 @@
       "id": "I_kwDOIvmHss5gdLEq",
       "title": "Clarification: Honest reference",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/58",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -1588,8 +1758,8 @@
       ],
       "body": "              use of 'honest' seems out of place. Is this describing TS operational integrity requirements such as ACID?\r\n\r\n_Originally posted by @nedmsmith in https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/16#discussion_r1123609959_\r\n            ",
       "createdAt": "2023-03-10T02:27:03Z",
-      "updatedAt": "2023-09-05T23:58:14Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:56:34Z",
+      "closedAt": "2023-10-23T23:56:34Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1604,6 +1774,13 @@
           "body": "Ping to @nedmsmith for a suggestion",
           "createdAt": "2023-09-05T23:58:11Z",
           "updatedAt": "2023-09-05T23:58:11Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale, and belief the latest doc covers the original concern.\r\nPlease open new issues/prs with specific pointers if needed",
+          "createdAt": "2023-10-23T23:56:34Z",
+          "updatedAt": "2023-10-23T23:56:34Z"
         }
       ]
     },
@@ -1619,7 +1796,7 @@
       "labels": [],
       "body": "`application/problem+json` vs `application/json`\r\n\r\nhttps://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/60#discussion_r1148486103\r\n\r\nWhy?\r\n\r\nAre there any references for this design choice I can review?",
       "createdAt": "2023-03-26T22:20:37Z",
-      "updatedAt": "2023-09-14T20:59:06Z",
+      "updatedAt": "2023-10-23T23:50:06Z",
       "closedAt": null,
       "comments": [
         {
@@ -1628,6 +1805,13 @@
           "body": "Running into this issue in https://github.com/scitt-community/scitt-api-emulator/pull/27 as well.  Would be great to return an object in addition to or instead of a string. Or allow for other properties which would be fully content-typeable to a custom response object within the error response on claim insert failure.\r\n\r\nLack of this prevents an automated conversation to resolve issues with claim insertion. Human readable strings are great, but ideally a human doesn't even get involved and machines can auto remediate issues due to detailed failure reasoning. This way the a human readable string might only be needed after a failed machine driven insert conversation (more than one call response).\r\n\r\nFor example  if the identity is an OIDC token with an invalid subject, the policy error could say what the subject and or other fields should contain or be set to.\r\n\r\n- References\r\n  - https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#example-requiring-a-reusable-workflow\r\n  - https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/using-openid-connect-with-reusable-workflows\r\n  - https://github.com/sigstore/fulcio/issues/305) mentions wanting `job_workflow_ref,repository_id,repository_owner_id` to effectively pin auth to a known workflow. Ideally this expands to attestable stacks, where stack is logged in SCITT, i.e. secure boot (example: [ChromeOS: Attesting Device Mode](https://www.chromium.org/developers/design-documents/tpm-usage/#attesting-device-mode)) and TEEs. A policy engine could require that a notary signed from an attested setup.\r\n    - `gh oidc-sub set --repo org/repo --subs \"job_workflow_ref,repository_id,repository_owner_id\"`\r\n  - `job_workflow_sha` may also be helpful for pinning to a release",
           "createdAt": "2023-04-27T21:17:15Z",
           "updatedAt": "2023-09-14T20:59:06Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Should this move to [SCRAPI](https://github.com/ietf-scitt/draft-birkholz-scitt-scrapi/)",
+          "createdAt": "2023-10-23T23:49:42Z",
+          "updatedAt": "2023-10-23T23:49:42Z"
         }
       ]
     },
@@ -1705,11 +1889,12 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "terminology"
+        "terminology",
+        "receipts"
       ],
       "body": "Purpose of this issue is to disambiguate.\r\n\r\n### Policy\r\n\r\nA file that decides on registration,  (OPA /  REGO / JSON SCHEMA / CDDL, etc...)\r\n\r\n### Content ID for Policy\r\n\r\nA content identifier, such as `urn:sha256:digest(file)`, where file is a Policy.\r\n\r\n### Proposed Policy\r\n\r\nThis is a signed statement, where the statement is a Policy or a Content ID for a Policy\r\n\r\n(Registration policies apply to this object, sorta meta / recursive).\r\n\r\n### Transparent Policy\r\n\r\nA Proposed Policy with a receipt.\r\n\r\nThis is the same as a Transparent Statement for a content type that is a Policy or a Policy Content ID.\r\n\r\nWe think there is utility in defining a URN scheme for this, something like:\r\n\r\nurn + location of transparency service + identifiers for statement or identifiers for policy.\r\n\r\nFor example:\r\n\r\n- `did:web:transparency.example/policy/hash` -> resolves to a policy file\r\n- `did:web:transparency.example/statement-hashes/hash` -> resolves to a signed statement\r\n- `did:web:transparency.example/transparent-statement/hash` -> resolves to a transparent statement\r\n\r\n^ or some combined identifier built form combinations of these.\r\n\r\nIf you don't want DIDs, you can replace `did:web` with `urn:scitt`.",
       "createdAt": "2023-04-25T14:52:31Z",
-      "updatedAt": "2023-09-06T00:11:44Z",
+      "updatedAt": "2023-10-23T23:48:01Z",
       "closedAt": null,
       "comments": [
         {
@@ -1726,7 +1911,7 @@
       "id": "I_kwDOIvmHss5k4dAF",
       "title": "Do we need dedicated section on SCITT requirements for append-only log?",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/67",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "henkbirkholz",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -1737,8 +1922,8 @@
       ],
       "body": "Maybe the term \"append-only log\" is self-descriptive and technology-agnostic enough by itself or maybe a set of examples is helpful.",
       "createdAt": "2023-05-02T14:20:29Z",
-      "updatedAt": "2023-09-06T00:10:46Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:55:14Z",
+      "closedAt": "2023-10-23T23:55:14Z",
       "comments": [
         {
           "author": "fournet",
@@ -1753,6 +1938,13 @@
           "body": "I believe there is some functionality that is required that is not encompassed by the notion of an append only log:\r\n1. Ability to somehow tag and group items, perhaps to simulate the ability to add to an existing set of entries. For example, incremental cryptographic data as a larger data set is being built, or another example is test data that is applied later.\r\n\r\n2. Ability to submit just cryptographic data to the log, while storing the data elsewhere.\r\n\r\nThat said, it may also go too far. The idea of an append-only log is perhaps only one possible implementation that can securely store the statements and provide receipts.",
           "createdAt": "2023-05-22T15:00:58Z",
           "updatedAt": "2023-05-22T15:10:04Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale, and belief we've captured this. \r\nPlease open new Issues/PRs with new new specific needs",
+          "createdAt": "2023-10-23T23:55:14Z",
+          "updatedAt": "2023-10-23T23:55:14Z"
         }
       ]
     },
@@ -1773,7 +1965,7 @@
       ],
       "body": "This issue summarizes discussions so far on references between transparent statements---see also slide 22 at the last IETF SCITT session. I am using \"reference\" below but identifier or URL may be better.  \r\n  \r\n**Motivation:** We need a standard way to refer to previously-registered statements. In particular, references to transparent statements may be included in new statements (in headers or payloads or receipts) to point, for example, to a policy statement, to some keying information, to a prior statement it replaces on a given stream, or to statements for artifacts it depends on in the supply chain. \r\n- Using a reference instead of a full transparent statement (or a full receipt) is more efficient (compact, enabling sharing/caching of common statements) and more transparent (everyone benefits from reviews/audits of common statements).\r\n- A reference to a transparent statement is more informative than a reference to its signed statement or its payload.\r\n- References enable federation and advanced registration policies. \r\n \r\n**Goals:**\r\n1. Given a transparent statement, we can compute its reference.\r\n2. Given a reference, we can discover its TS and transparent statement.\r\n3. A reference commits to a unique transparent statement.\r\n \r\n**Syntax:** references include both a locator and a commitment. Concretely, we may use DID URLs of the form \r\n \r\n`did:web:ts.software.org/42&digest=4ce2320130450...` \r\n \r\nwhere `42` is the serial registration index in the log of this TS and `digest` is the SHA256 hash of the transparent statement. \r\n\r\nWe may provide a more compact format by making the DID optional for local references within a TS, and making the digest optional when the transparent statement is attached.  \r\n\r\nWe may even just use the raw digest `4ce2320130450` as an opaque identifier (since the hash already authenticates the locator) and separately deal with locators.  \r\n \r\n**Discoverability** The TS, or an auxiliary database of transparent claims, may support transparent-statement lookups given their reference. This auxiliary lookup service is not a requirement (random access is hard to guarantee) and it need not be trusted (since clients can easily verify the receipt of the resulting transparent statement against their reference). Alternatively, a transparent statement may be distributed together with supporting transparent statements it refers to. This facilitates offline verification and auditing but is more verbose. Or it may include auxiliary headers to help retrieve the supporting statements from any other location.   \r\n\r\n**Open issues:**\r\n- A TS may produce multiple receipts for the same registered statement, hence multiple commitments with different digests. We could simply ignore the problem, and assume the \u201cprimary\u201d receipt is the first one produced by the TS. We could also provide flexibility, using something of the form \r\n  \r\n  `did:web:ts.software.org/42&registered=SHA256(signed statement)&digest=SHA256(receipt)`\r\n- Do we need different formats for different implementations? For example, we may use `digest-sha256=...` for agility; we also argued about a TS federating multiple logs, in which case we may need more than a serial registration index.\r\n \r\n",
       "createdAt": "2023-05-20T16:41:19Z",
-      "updatedAt": "2023-09-06T00:09:53Z",
+      "updatedAt": "2023-10-23T23:50:54Z",
       "closedAt": null,
       "comments": [
         {
@@ -1811,7 +2003,7 @@
       "id": "I_kwDOIvmHss5oJGeE",
       "title": "Add package.json for aasvg",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/70",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinthomson",
       "authorAssociation": "NONE",
       "assignees": [
@@ -1820,8 +2012,8 @@
       "labels": [],
       "body": "Consider adding `package.json` for this repository so that people are able to use this without having `aasvg` locally installed.\r\n\r\nSee https://github.com/martinthomson/i-d-template/blob/main/doc/TOOLS.md#installing-dependencies-for-ci",
       "createdAt": "2023-06-08T07:03:31Z",
-      "updatedAt": "2023-09-06T00:09:24Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:54:28Z",
+      "closedAt": "2023-10-23T23:54:27Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -1829,6 +2021,13 @@
           "body": "@henkbirkholz, this seems like a good suggestion. Any additional context as you're our \"build master\" with viz across multiple IETF drafts.",
           "createdAt": "2023-09-06T00:09:16Z",
           "updatedAt": "2023-09-06T00:09:16Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "closing as stale.",
+          "createdAt": "2023-10-23T23:54:27Z",
+          "updatedAt": "2023-10-23T23:54:27Z"
         }
       ]
     },
@@ -1846,7 +2045,7 @@
       ],
       "body": "This issue tracks initial work to be completed regarding profiling of COSE to support federation for SCITT.\r\n\r\n\r\nSome initial topics that still need to be addressed:\r\n\r\n- How do transparency services discovery each other?\r\n- How do they know if their policies are compatible?\r\n- How do they know if they support the same issuers? \r\n- How do they know if they support the same artifact types?\r\n- How is issuer privacy impacted by federation? ",
       "createdAt": "2023-07-08T12:39:47Z",
-      "updatedAt": "2023-10-18T03:31:25Z",
+      "updatedAt": "2023-10-23T23:55:45Z",
       "closedAt": null,
       "comments": [
         {
@@ -1858,7 +2057,7 @@
         },
         {
           "author": "aj-stein-nist",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "In your original comment, you mentioned a default hash algorithm and implementation.\r\n\r\n>The side effect is one can no longer register the same claim twice under a different entry ID.\r\n\r\nDoes this goes for entries under different hash algorithms and implementations, are those count as \"the same\" one entry ID?",
           "createdAt": "2023-10-18T01:47:01Z",
           "updatedAt": "2023-10-18T01:47:01Z"
@@ -1910,7 +2109,7 @@
       "id": "I_kwDOIvmHss5rHgV7",
       "title": "Add references to SBOM technologies",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/83",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "hannestschofenig",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -1919,8 +2118,8 @@
       "labels": [],
       "body": "The architecture draft lists a number of different SBOM technologies. References need to be added and acronymous expanded.\r\nYogesh volunteered to deal with this issue.",
       "createdAt": "2023-07-10T16:34:26Z",
-      "updatedAt": "2023-09-06T00:05:15Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T20:15:31Z",
+      "closedAt": "2023-10-23T20:15:30Z",
       "comments": [
         {
           "author": "yogeshbdeshpande",
@@ -1928,6 +2127,20 @@
           "body": "@hannestschofenig I will work on this on return from my holidays...",
           "createdAt": "2023-08-18T15:04:45Z",
           "updatedAt": "2023-08-18T15:04:45Z"
+        },
+        {
+          "author": "hannestschofenig",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "ping",
+          "createdAt": "2023-10-23T15:20:44Z",
+          "updatedAt": "2023-10-23T15:20:44Z"
+        },
+        {
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "body": "ack: shall we attempt this today?",
+          "createdAt": "2023-10-23T15:22:49Z",
+          "updatedAt": "2023-10-23T15:22:49Z"
         }
       ]
     },
@@ -1995,7 +2208,7 @@
       "id": "I_kwDOIvmHss5rhJwe",
       "title": "REST API Thoughts",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/86",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -2004,8 +2217,8 @@
       ],
       "body": "## Key From Message\r\n\r\nPOST key.trans.scitt/resolve/verification-key\r\n{ ... prefer detached siganture }\r\n---content-type application/jwt            --> application/jwk+json\r\n---content-type application/cwt            --> application/cose-key\r\n---content-type application/pgp-signature  --> application/pgp-keys\r\n---content-type application/vc+ld+json     --> application/did+ld+json\r\n---content-type application/vc+json        --> application/did+json\r\n---content-type application/vc+sd-jwt      --> application/did+json\r\n---content-type application/vc+sd-jwt      --> application/jwk+json\r\n\r\n... cache public key locally indexed by meta data (iss, kid) ...\r\n\r\n... verify offline from cache\r\n\r\n## Feed ( Assertion Keys ) From Verified Messages\r\n\r\nGET key.trans.scitt/ {iss}   /verification-keys \r\n  -> feed of all public keys witnessed verifying signed statements for \"iss\" or \"kid\" ...\r\n\r\nDo we want these? https://www.w3.org/TR/did-core/#verification-relationships\r\n\r\n## Feed ( Artifact Statements ) From Verified Messages\r\n\r\nGET key.trans.scitt/ {iss}   /gtin/01/9506000134352\r\n  -> feed of all related signed statements from \"iss\" or \"kid\" ...\r\n\r\nGeneric feed URL structure:\r\n\r\n{iss} / {topic}\r\n      ? {filters} \r\n      # {client-hint}\r\n\r\ndid:example:123/gtin/01/9506000134352?origin-country=US#product-name\r\n\r\nGeneric values for iss:\r\n\r\nDomain: example.com\r\nDID: did:example:123\r\n... ?",
       "createdAt": "2023-07-13T22:34:20Z",
-      "updatedAt": "2023-09-06T00:04:55Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-24T00:04:38Z",
+      "closedAt": "2023-10-24T00:04:38Z",
       "comments": [
         {
           "author": "OR13",
@@ -2013,6 +2226,20 @@
           "body": "Related to `vc` or `vc+ld+jwt`... https://openid.net/specs/openid-connect-userinfo-vc-1_0.html#name-userinfo-vc-verification",
           "createdAt": "2023-07-14T14:29:31Z",
           "updatedAt": "2023-07-14T14:29:31Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Should this move to [SCRAPI](https://github.com/ietf-scitt/draft-birkholz-scitt-scrapi/)",
+          "createdAt": "2023-10-23T23:51:23Z",
+          "updatedAt": "2023-10-24T00:04:23Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing. Please reactivate, or open in SCRAPI",
+          "createdAt": "2023-10-24T00:04:38Z",
+          "updatedAt": "2023-10-24T00:04:38Z"
         }
       ]
     },
@@ -2028,7 +2255,7 @@
       "labels": [],
       "body": "@Sakurann mentioned we should reference more, and repeat or \"redefine\" less.... I agree.\r\n\r\nWe can possibly refer to this: \r\n\r\n- https://openid.net/specs/openid-connect-userinfo-vc-1_0.html#name-userinfo-vc-verification",
       "createdAt": "2023-07-14T14:32:30Z",
-      "updatedAt": "2023-09-12T16:23:21Z",
+      "updatedAt": "2023-10-23T23:51:51Z",
       "closedAt": null,
       "comments": [
         {
@@ -2045,7 +2272,7 @@
       "id": "I_kwDOIvmHss5uQH-2",
       "title": "Harmonize Terms \"Auditor\", \"Consumer\" and \"Verifier\"",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/89",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "hannestschofenig",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -2056,8 +2283,8 @@
       ],
       "body": "I think it would be better to use one common term for these roles since they are currently not well defined. For the specification work it does not matter whether an auditor, consumer or a verifier checks the append-only log.\r\n\r\nUsing only one term simplifies the document.",
       "createdAt": "2023-08-14T12:53:17Z",
-      "updatedAt": "2023-09-06T00:03:58Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:03:49Z",
+      "closedAt": "2023-10-23T23:03:48Z",
       "comments": [
         {
           "author": "nealmcb",
@@ -2065,6 +2292,13 @@
           "body": "We build on [RFC 9162 - Certificate Transparency Version 2.0](https://datatracker.ietf.org/doc/html/rfc9162) (CT) in various ways. CT defines the roles of \"monitor\" and \"auditor\":\r\n\r\n*   Monitors watch logs to check for correct behavior, for certificates of interest, or for both. For example, a monitor may be configured to report on all certificates that apply to a specific domain name when fetching new entries for consistency validation.\r\n\r\n* Auditing ensures that the current published state of a log is reachable from previously published states that are known to be good and that the promises made by the log, in the form of SCTs, have been kept. Audits are performed by monitors or TLS clients.\r\n\r\nI'm not up-to-date, but it would seem useful to define how the ecosystem can gain confidence that SCITT transparency logs are following the append-only rules, perhaps via similar roles as used in CT. Such client use cases may well have some different requirements for various aspects of the architecture or APIs, than what I'll call \"relying parties\" who are concerned with verifying a specific claim.",
           "createdAt": "2023-08-21T15:42:09Z",
           "updatedAt": "2023-08-21T15:42:09Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing, as the current 04 draft moved to Auditor and Verifier. \r\nThere's additional debate, but this appears to be complete as those terms were adopted (per the title)",
+          "createdAt": "2023-10-23T23:03:48Z",
+          "updatedAt": "2023-10-23T23:03:48Z"
         }
       ]
     },
@@ -2073,7 +2307,7 @@
       "id": "I_kwDOIvmHss5uQIpv",
       "title": "Harmonize terms \"issuer\" and \"client\"",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/90",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "hannestschofenig",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -2082,9 +2316,17 @@
       ],
       "body": "The terminology section introduces the term \"issuer\" and it is a core role throughout the document. However, late in the spec the term \"client\" is then also introduced and it is not clear what the relationship between the issuer and the client is.\r\n\r\nI would recommend to only use issuer through the whole document.",
       "createdAt": "2023-08-14T12:54:59Z",
-      "updatedAt": "2023-09-06T00:03:34Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2023-10-23T23:52:32Z",
+      "closedAt": "2023-10-23T23:52:31Z",
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Resolved with #118",
+          "createdAt": "2023-10-23T23:52:31Z",
+          "updatedAt": "2023-10-23T23:52:31Z"
+        }
+      ]
     },
     {
       "number": 91,
@@ -2119,7 +2361,7 @@
       "id": "I_kwDOIvmHss5uQNz8",
       "title": "Formatting of Section 5.1.1.1.1. Comment on OIDC",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/92",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "hannestschofenig",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -2128,16 +2370,24 @@
       "labels": [],
       "body": "The formatting of that section is a nightmare. It makes me wonder whether it makes more sense to just illustrate an incomplete example. For example:\r\n\r\n```\r\n{\r\n   \"keys\":[\r\n      {\r\n         \"alg\":\"RS256\",\r\n         \"kty\":\"RSA\",\r\n         \"use\":\"sig\",\r\n         \"n\":\"wW9...4zw\",\r\n         \"e\":\"AQAB\",\r\n         \"kid\":\"NTBG..U5OA\",\r\n         \"x5t\":\"NTBG..U5OA\",\r\n         \"x5c\":[\r\n            \"MII...g3R+\"\r\n         ]\r\n      },\r\n      {\r\n         \"alg\":\"RS256\",\r\n         \"kty\":\"RSA\",\r\n         \"use\":\"sig\",\r\n         \"n\":\"ylg...DWw\",\r\n         \"e\":\"AQAB\",\r\n         \"kid\":\"aMI...9ln\",\r\n         \"x5t\":\"-xcT...Tbs\",\r\n         \"x5c\":[\r\n            \"MII...FZdA==\"\r\n         ]\r\n      }\r\n   ]\r\n}\r\n```",
       "createdAt": "2023-08-14T13:07:41Z",
-      "updatedAt": "2023-09-06T00:02:46Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2023-10-23T23:53:43Z",
+      "closedAt": "2023-10-23T23:53:42Z",
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Resolved as fixed.",
+          "createdAt": "2023-10-23T23:53:42Z",
+          "updatedAt": "2023-10-23T23:53:42Z"
+        }
+      ]
     },
     {
       "number": 93,
       "id": "I_kwDOIvmHss5uQPMe",
       "title": "Terminology: signed statement vs. envelope",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/93",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "hannestschofenig",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -2146,8 +2396,8 @@
       ],
       "body": "Section 6.1 describes the CDDL of the signed statement and calls it envelope. Why don't you call it signed statement?",
       "createdAt": "2023-08-14T13:11:14Z",
-      "updatedAt": "2023-09-06T00:02:20Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:52:08Z",
+      "closedAt": "2023-10-23T23:52:08Z",
       "comments": [
         {
           "author": "hannestschofenig",
@@ -2194,7 +2444,7 @@
       "id": "I_kwDOIvmHss5xb9FT",
       "title": "Using only qualified \"Issuers\" for clarity",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/97",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "henkbirkholz",
       "authorAssociation": "MEMBER",
       "assignees": [],
@@ -2203,8 +2453,8 @@
       ],
       "body": "We should consider to use \"Statement Issuer\" and \"Receipt Issuer\" consistently instead of allowing for using stand-alone \"issuer\" - for better clarity.\r\nBase on Orie's comment: https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/95/files#r1308908322",
       "createdAt": "2023-09-19T14:43:02Z",
-      "updatedAt": "2023-09-19T18:09:39Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-23T23:40:46Z",
+      "closedAt": "2023-10-23T23:40:45Z",
       "comments": [
         {
           "author": "OR13",
@@ -2226,6 +2476,13 @@
           "body": "1. Why is it important to align to \"iss\"? \r\n2. For now we use \"Transparency Service\" instead of \"Receipt Issuer\". Are you suggesting we merge the two? Otherwise where do we need to explicitly write \"Receipt Issuer\" in SCITT? Also, should \"Statement Issuer\" not be \"Signed Statement Issuer\" if it is fully qualified? In general the statement (e.g. the SBOM) is produced  by some of the party before being endorsed by the Issuer. \r\n3. Ok\r\n4. Does it apply both to statement signatures and receipts? ",
           "createdAt": "2023-09-19T17:54:35Z",
           "updatedAt": "2023-09-19T18:09:39Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale. Please reopen if need for the current draft",
+          "createdAt": "2023-10-23T23:40:45Z",
+          "updatedAt": "2023-10-23T23:40:45Z"
         }
       ]
     },
@@ -2234,7 +2491,7 @@
       "id": "I_kwDOIvmHss5xb9H1",
       "title": "Better address implementation requirements of DID methods",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/98",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "ad-l",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -2243,16 +2500,24 @@
       "labels": [],
       "body": "Current text is ambiguous about what TS must support vs what implementations of SCITT must implement. ",
       "createdAt": "2023-09-19T14:43:08Z",
-      "updatedAt": "2023-09-19T14:58:25Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2023-10-23T23:41:24Z",
+      "closedAt": "2023-10-23T23:41:24Z",
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as stale, with updates for SHOULD, MUST applied",
+          "createdAt": "2023-10-23T23:41:24Z",
+          "updatedAt": "2023-10-23T23:41:24Z"
+        }
+      ]
     },
     {
       "number": 99,
       "id": "I_kwDOIvmHss5xb-m2",
       "title": "Adjust language in PR",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/99",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -2263,8 +2528,8 @@
       ],
       "body": "I don't love the language we added in:\r\n\r\n> If an issuer uses multiple DIDs (for instance, because their clients support different resolution methods), they MUST ensure that statements signed under each DID are consistent.\r\n\r\nhttps://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/95#discussion_r1308967013\r\n\r\nI said:\r\n\r\n> The verifier is interested in the authenticity of the issuer of the transparent statement and signed statement... The verifier trusts the TS to vet the issuer of the signed statement... the verifier benefits from the transparency service, if they can't trust the TS, there is no reason to do SCITT.\r\n\r\n",
       "createdAt": "2023-09-19T14:46:20Z",
-      "updatedAt": "2023-09-19T14:59:14Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-24T00:01:19Z",
+      "closedAt": "2023-10-24T00:01:19Z",
       "comments": [
         {
           "author": "OR13",
@@ -2272,6 +2537,34 @@
           "body": "I suggest we remove the MUST here, and just say that verifiers are required to trust all issuer keys associated with issuer identifiers, in order to perform their role.",
           "createdAt": "2023-09-19T14:59:13Z",
           "updatedAt": "2023-09-19T14:59:13Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@OR13, I just saw this. Can you this to a PR, and maybe update the Title of this issue?",
+          "createdAt": "2023-10-23T23:01:04Z",
+          "updatedAt": "2023-10-23T23:01:04Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think the whole section on DIDs needs to be reworked.\n\nAlso the VCWG is currently trying to generalize the concept of DIDs to controller documents... And I'm starting to feel that perhaps it's better to remove references to them entirely.",
+          "createdAt": "2023-10-23T23:05:34Z",
+          "updatedAt": "2023-10-23T23:05:34Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing, with the request to open a specific issue to DIDs, or build on #117 or #36 ",
+          "createdAt": "2023-10-23T23:43:32Z",
+          "updatedAt": "2023-10-23T23:43:32Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Accidental re-open for the wrong issue",
+          "createdAt": "2023-10-24T00:01:19Z",
+          "updatedAt": "2023-10-24T00:01:19Z"
         }
       ]
     },
@@ -2289,7 +2582,7 @@
       "labels": [],
       "body": "All our text references should look like:\r\n\r\n![Screen Shot 2023-09-19 at 9 51 01 AM](https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/assets/8295856/fc7507bc-dd37-4e8c-b68e-a5d5c65270ba)\r\n",
       "createdAt": "2023-09-19T14:51:19Z",
-      "updatedAt": "2023-09-19T14:56:53Z",
+      "updatedAt": "2023-10-23T23:47:25Z",
       "closedAt": null,
       "comments": [
         {
@@ -2298,6 +2591,13 @@
           "body": "Will align the text, before we cut the draft for 118",
           "createdAt": "2023-09-19T14:56:49Z",
           "updatedAt": "2023-09-19T14:56:49Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Missed this one, although we did get some updates. in for 118",
+          "createdAt": "2023-10-23T23:47:21Z",
+          "updatedAt": "2023-10-23T23:47:21Z"
         }
       ]
     },
@@ -2313,9 +2613,17 @@
       "labels": [],
       "body": "In section 5.2.3.3 `client` appears out of the blue. It is not clear what a `client` is. ",
       "createdAt": "2023-09-20T07:46:53Z",
-      "updatedAt": "2023-09-20T07:46:53Z",
+      "updatedAt": "2023-10-23T22:59:49Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi, @nikosft \r\nI'm looking for the reference to 5.2.3.3 in https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.html and other versions. \r\nI don't see where that section exists.\r\nAre you referring to a reference where a client is calls the Transparency Service APIs?\r\nOr, as there a mention of \"client, synonymous with consumer, verifier, etc?\r\n",
+          "createdAt": "2023-10-23T22:59:49Z",
+          "updatedAt": "2023-10-23T22:59:49Z"
+        }
+      ]
     },
     {
       "number": 103,
@@ -2329,7 +2637,7 @@
       "labels": [],
       "body": "```\r\nReg_Info = {\r\n  ? \"register_by\": uint .within (~time),\r\n  ? \"sequence_no\": uint,\r\n  ? \"issuance_ts\": uint .within (~time),\r\n  ? \"no_replay\": null,\r\n  * tstr => any\r\n}\r\n```\r\n\r\nhttps://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/blob/0383ec2b5a23f11d1a42800aebbe38368e12376d/draft-ietf-scitt-architecture.md?plain=1#L670\r\n\r\nIMO these are parameters on the issuer's view of the feed identifier.\r\n\r\nsequence number is meaningless unless you know what topic you are trying to order.",
       "createdAt": "2023-09-26T15:00:22Z",
-      "updatedAt": "2023-10-20T19:34:57Z",
+      "updatedAt": "2023-10-23T23:40:06Z",
       "closedAt": null,
       "comments": [
         {
@@ -2451,7 +2759,23 @@
       "labels": [],
       "body": "PR #108 converged issuer and feed into the CTW_Claims iss and sub. \r\nThe doc needs a scrub to remap these properties\r\n",
       "createdAt": "2023-10-20T20:30:57Z",
-      "updatedAt": "2023-10-20T20:30:57Z",
+      "updatedAt": "2023-10-23T23:39:56Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 120,
+      "id": "I_kwDOIvmHss50rAoh",
+      "title": "Consider replacing \"Verifier\" with \"Relying Party\"",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/120",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As discussed on today's call.\r\n\r\nFolks expressed concern that \"Verifier\" was not friendly enough to \"Consumers or Relying Parties\", that are supposed to process receipts.",
+      "createdAt": "2023-10-23T15:22:39Z",
+      "updatedAt": "2023-10-23T15:23:54Z",
       "closedAt": null,
       "comments": []
     }
@@ -2855,7 +3179,7 @@
       ],
       "body": "Fixes #15\r\n\r\n(to some extend), please see #15 and check the issues highlighted there as part of reviewing this PR.",
       "createdAt": "2023-02-21T23:04:47Z",
-      "updatedAt": "2023-03-10T02:28:33Z",
+      "updatedAt": "2023-10-23T23:24:02Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "2056dc9704ef7cad925f51c3c82719a71effd962",
@@ -5204,7 +5528,7 @@
       "labels": [],
       "body": "A scan of the document to align terminology consistency.\r\n\r\nThe changes account for:\r\n- Registry and Transparency Service being used interchangeably.\r\n- Log and Ledger being used interchangeably.\r\n\r\nFor the purpose of this PR:\r\n\r\n- **append-only Log** has been replaced with **append-only Ledger**. **Reasonsing:** As we're focusing on a Transparency Service verifying the identity of the issuer, this aligns with the Notary concept. A Notary writes entries to a Ledger. This also leaves the term Log available for diagnostics logs used to troubleshoot a Transparency Service.\r\n- **Transparency Service**: An entity operating an instance of this specification. Personally, I struggle as \"Transparent\" suggests everything is visible and public. We later discuss Opaque statements being placed in the Transparency Service. My personal suggestion is to call it a \"SCITT Registry\" and we leave the terms Transparent and Opaque to the types of payloads placed in the Statement.\r\n\r\nI've only completed to line 141, with an edit to terminology.  I'll try pickup later today.\r\nI've created this PR under a `consistency-fixes` branch here, so others can also make proposed changes.\r\n",
       "createdAt": "2023-03-12T17:16:50Z",
-      "updatedAt": "2023-06-13T14:07:54Z",
+      "updatedAt": "2023-10-23T23:24:05Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "e835300b89a744b909f81eb46035bf119ff4fb15",
@@ -5555,7 +5879,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2023-03-17T16:31:29Z",
-      "updatedAt": "2023-03-24T19:40:09Z",
+      "updatedAt": "2023-10-23T23:24:01Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "cab90cc1fb43a34c7b42bfa78b1ec79401a44125",
@@ -6922,7 +7246,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2023-07-05T12:01:33Z",
-      "updatedAt": "2023-07-07T15:55:20Z",
+      "updatedAt": "2023-10-23T23:24:06Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "dab07df2ca7205f79a3ef4354b50cbae4a89c6e1",
@@ -6990,7 +7314,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2023-07-05T12:04:47Z",
-      "updatedAt": "2023-07-07T15:57:15Z",
+      "updatedAt": "2023-10-23T23:24:08Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "dab07df2ca7205f79a3ef4354b50cbae4a89c6e1",
@@ -8861,7 +9185,7 @@
       "labels": [],
       "body": "Reverts ietf-wg-scitt/draft-ietf-scitt-architecture#80",
       "createdAt": "2023-07-10T14:04:01Z",
-      "updatedAt": "2023-07-10T14:52:13Z",
+      "updatedAt": "2023-10-23T23:24:17Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "8a7ffa3ca9a54ef77f6728c07a0f9c4800da5fb1",
@@ -8903,7 +9227,7 @@
       "labels": [],
       "body": "Fairly big conflict rebase of the reverted #80, but hopefully all good and simple.",
       "createdAt": "2023-07-10T17:14:30Z",
-      "updatedAt": "2023-07-10T17:56:44Z",
+      "updatedAt": "2023-10-23T23:24:15Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "8dd97759d1338abd48065cff000ef91e2a790297",
@@ -10613,7 +10937,7 @@
       "labels": [],
       "body": "This is an attempt to break the deadlock on Feeds vs searchability etc.\r\n\r\nWithout making any normative changes (I hope!) I seek to clarify a handful of issues:\r\n\r\n- Why do we need Feed at all? Because it is the very simple but essential way of ensuring the desired goal of non-equivocation. It makes it practical to discover or eliminate equivocation through a very simple but powerful way of linking related Transparent Statements together, and providing a very simple way of enable pre-commitment for statements of fact and accountability. In less fancy but as useful ways it also ensures that the relying party or someone with a copy of one Transparent Statement in their hands can ensure completeness of the set they're evaluating, and confirm that they are up-to-date with supply chain information that can move very fast.\r\n\r\n- Does Feed need a structure? No, assuming the above is the purpose of grouping statements together then it doesn't mater what it's called as long as it's the same for all items in the group. This again cements the need for it to be in the Envelope though, since otherwise coordinating all the points in various systems that would need to know what value to put in there would be impractical. By having it in the Envelope anyone with a single Transparent statement from the Feed would know what to use for either making new statements or looking in the TS for related statements.\r\n\r\n- Can Feed just be a part of reg_info? No, because reg_info is defined for a very different purpose. Registration Policies are also very complicated and need work, but I don't think they need work to close this particular issue.\r\n\r\nWhile there are still clarity issues in the spec which I would love for us to address soon, I think this minimal change makes it possible to move on and removes the pollution from the discussion about types of identity, self-describing serialised data structures, and the like. Crucially, in keeping with the findings from -117, I believe it shows that it is possible to carry the 'findability' information that was required by the applications building on top of SCOITT building blocks without going outside our charter and defining things at the semantic or application layer. ",
       "createdAt": "2023-10-06T17:28:23Z",
-      "updatedAt": "2023-10-20T19:24:48Z",
+      "updatedAt": "2023-10-23T23:23:31Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "40dc274de6b72b476be88938bc5a008d6afb4d1c",
@@ -10684,7 +11008,7 @@
             "abbreviatedOid": "1b88058"
           },
           "author": "aj-stein-nist",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "I skimmed this and these edits were very good, and clarified for me in an educational way. I don't want to quibble on word choice, but want to better understand what promise means specifically in the context of feeds and non-equivocation.",
           "createdAt": "2023-10-06T17:59:05Z",
@@ -10990,7 +11314,7 @@
             "abbreviatedOid": "1b88058"
           },
           "author": "aj-stein-nist",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-10-20T18:34:01Z",
@@ -11050,7 +11374,7 @@
             "abbreviatedOid": "7e11273"
           },
           "author": "aj-stein-nist",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-10-20T18:40:08Z",
@@ -11070,7 +11394,7 @@
             "abbreviatedOid": "7e11273"
           },
           "author": "aj-stein-nist",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-10-20T18:47:32Z",
@@ -11567,7 +11891,7 @@
       "labels": [],
       "body": "Fixes #112 ",
       "createdAt": "2023-10-17T11:46:31Z",
-      "updatedAt": "2023-10-18T15:20:04Z",
+      "updatedAt": "2023-10-23T23:23:37Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "512b43a01341759fdc1a0d25b63e06d2add1e1b9",
@@ -11710,7 +12034,7 @@
             "abbreviatedOid": "ec0464e"
           },
           "author": "aj-stein-nist",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-10-18T01:57:52Z",
@@ -12117,24 +12441,26 @@
       "id": "PR_kwDOIvmHss5dZ77C",
       "title": "Adding Orie as a Contributor",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/115",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "henkbirkholz",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-10-20T17:06:20Z",
-      "updatedAt": "2023-10-20T19:25:36Z",
+      "updatedAt": "2023-10-23T23:23:26Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "0f5dc15c8c0f2d0372ab73e5f8d3f9b677b59210",
       "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "headRefName": "dragging-orie-into-this",
       "headRefOid": "5906d79945eb5b974133740b127f2a930ef0eb38",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2023-10-23T21:26:51Z",
+      "mergedAt": "2023-10-23T21:26:51Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "628504c60f9502468da32a50421a6c28626c76d9"
+      },
       "comments": [],
       "reviews": [
         {
@@ -12190,24 +12516,26 @@
       "id": "PR_kwDOIvmHss5dbVz2",
       "title": "Cleanup for 118",
       "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/118",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "General edits, cleanup of terminology, consistency, clarity, and chopping extra words, sentences and paragraphs to make it more consumable. \r\n\r\n**Guided by the \"Less is more\"** theory\r\n\r\nIf you feel something should be un-deleted, please quantify why it's so important and/or unique. \r\n",
       "createdAt": "2023-10-20T23:35:56Z",
-      "updatedAt": "2023-10-21T16:57:02Z",
+      "updatedAt": "2023-10-23T23:23:18Z",
       "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "baseRefName": "main",
       "baseRefOid": "e9bd8209be9085a6dcb5a935e5cba5a676c75835",
       "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
       "headRefName": "cleanup-for-118",
-      "headRefOid": "b996065e8408305d07d447a11605fabe7acaa5ce",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "1d8251f9b8581a179eaa34a4d2ead384ad3c168d",
+      "closedAt": "2023-10-23T19:53:03Z",
+      "mergedAt": "2023-10-23T19:53:03Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "a1f98906191bb7bd15293957c01707c82fba6426"
+      },
       "comments": [
         {
           "author": "SteveLasker",
@@ -12222,6 +12550,27 @@
           "body": "Delta from 117: https://author-tools.ietf.org/api/iddiff?url_1=https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.txt&url_2=https://ietf-wg-scitt.github.io/draft-ietf-scitt-architecture/cleanup-for-118/draft-ietf-scitt-architecture.txt",
           "createdAt": "2023-10-21T16:57:02Z",
           "updatedAt": "2023-10-21T16:57:02Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The HTML view of the \"Editors copy\" for this PR: https://ietf-wg-scitt.github.io/draft-ietf-scitt-architecture/cleanup-for-118/draft-ietf-scitt-architecture.html",
+          "createdAt": "2023-10-23T15:41:23Z",
+          "updatedAt": "2023-10-23T15:41:23Z"
+        },
+        {
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@SteveLasker These are very involved set of changes, which will need time to review properly. My personal take but we should not  rush to make it to IETF 118, until all other authors approve of the change!",
+          "createdAt": "2023-10-23T17:47:39Z",
+          "updatedAt": "2023-10-23T17:47:39Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> @SteveLasker These are very involved set of changes, which will need time to review properly. My personal take but we should not rush to make it to IETF 118, until all other authors approve of the change!\r\n\r\n@yogeshbdeshpande  I appreciate the feedback. We have been asking for feedback for several days and we're now at the deadline. Without merging this content, we're asking the rest of IETF community to not benefit from the cleaned up consistency across the document.  As editor, the consistency of the doc as a stable reference point provides more clarity for the consumer. As it's still a draft, we will continue to take feedback, but we really need to publish the best version we have. The version prior to this change has duplicate, inconsistent references.",
+          "createdAt": "2023-10-23T19:51:58Z",
+          "updatedAt": "2023-10-23T19:51:58Z"
         }
       ],
       "reviews": [
@@ -12257,8 +12606,314 @@
           "createdAt": "2023-10-21T04:02:08Z",
           "updatedAt": "2023-10-21T04:02:08Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5k5xem",
+          "commit": {
+            "abbreviatedOid": "c55fe1a"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I filed https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/120 based on discussion on the call... I suggest additional issue markers be filed, and this PR be merged.",
+          "createdAt": "2023-10-23T15:23:11Z",
+          "updatedAt": "2023-10-23T15:23:11Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5k6AN3",
+          "commit": {
+            "abbreviatedOid": "c55fe1a"
+          },
+          "author": "aj-stein-nist",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "Minor grammar and capitalization issues, but otherwise looks good. I will continue reading and point out anything more serious by 4:59 PT, oh well, I have not been so useful. Thus far, improvements look good to me, but more to follow.",
+          "createdAt": "2023-10-23T15:51:28Z",
+          "updatedAt": "2023-10-23T16:10:33Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "Minor, non-blocking: producer is not capitalized like producer, is this a problem re capitalization discussion during today's interim meeting?\r\n\r\n```suggestion\r\nWithin the SCITT Architecture, a Producer is known as an Issuer, and a Consumer is known as a Verifier.\r\n```\r\n\r\nOr perhaps it is the opposite, with both lower-case producer and consumer, but this seems unlikely given the document.",
+              "createdAt": "2023-10-23T15:51:28Z",
+              "updatedAt": "2023-10-23T16:10:33Z"
+            },
+            {
+              "originalPosition": 55,
+              "body": "Minor, non-blocking: the range is ...\r\n\r\n```suggestion\r\nHowever, the range of use cases and applications in this document is broader, which requires more flexibility in how each Transparency Service is implemented and operates.\r\n```",
+              "createdAt": "2023-10-23T15:57:26Z",
+              "updatedAt": "2023-10-23T16:10:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5k62u8",
+          "commit": {
+            "abbreviatedOid": "db310e7"
+          },
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-23T17:44:06Z",
+          "updatedAt": "2023-10-23T17:44:07Z",
+          "comments": [
+            {
+              "originalPosition": 100,
+              "body": "```suggestion\r\n1. **Issuers**: organizations, stakeholders, and users involved in creating or attesting to supply chain artifacts, releasing authentic Statements to a definable set of peers\r\n```",
+              "createdAt": "2023-10-23T17:44:06Z",
+              "updatedAt": "2023-10-23T17:44:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5k63Fl",
+          "commit": {
+            "abbreviatedOid": "db310e7"
+          },
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-23T17:44:42Z",
+          "updatedAt": "2023-10-23T17:44:42Z",
+          "comments": [
+            {
+              "originalPosition": 100,
+              "body": "I would retain stakeholders as consumers sounds contradictory to Issuers",
+              "createdAt": "2023-10-23T17:44:42Z",
+              "updatedAt": "2023-10-23T17:44:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5k73-y",
+          "commit": {
+            "abbreviatedOid": "db310e7"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-23T19:52:40Z",
+          "updatedAt": "2023-10-23T19:52:40Z",
+          "comments": [
+            {
+              "originalPosition": 100,
+              "body": "I just realized we added consumers to issuers, as opposed to Verifiers. I've fixed in this PR",
+              "createdAt": "2023-10-23T19:52:40Z",
+              "updatedAt": "2023-10-23T19:52:40Z"
+            }
+          ]
         }
       ]
+    },
+    {
+      "number": 119,
+      "id": "PR_kwDOIvmHss5di0p3",
+      "title": "Adding \"Consumers\"",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/119",
+      "state": "MERGED",
+      "author": "hannestschofenig",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-23T15:18:08Z",
+      "updatedAt": "2023-10-23T23:23:47Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "cleanup-for-118",
+      "baseRefOid": "c55fe1a7245febab3064f3e8c8c8290070786e8d",
+      "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "headRefName": "hannestschofenig-patch-1",
+      "headRefOid": "45056e6b40879e1dd94ee7941b2ddc1c159f7267",
+      "closedAt": "2023-10-23T17:11:22Z",
+      "mergedAt": "2023-10-23T17:11:22Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "a3eaa85731579fdad97c46f7d2502cc463ab658c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5k6mDw",
+          "commit": {
+            "abbreviatedOid": "45056e6"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM,\r\nThanks, @hannestschofenig. the stakeholders to consumers looks like a great change. I don't know if we'd keep both, or replace. I'll merge this to keep moving forward.\r\nAlso, thanks for the catch on CBOR ",
+          "createdAt": "2023-10-23T17:11:11Z",
+          "updatedAt": "2023-10-23T17:11:11Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 121,
+      "id": "PR_kwDOIvmHss5djKgF",
+      "title": "Add references to the format list",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/121",
+      "state": "MERGED",
+      "author": "yogeshbdeshpande",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-23T16:11:24Z",
+      "updatedAt": "2023-10-23T20:15:35Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "a1f98906191bb7bd15293957c01707c82fba6426",
+      "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "headRefName": "references",
+      "headRefOid": "45391321f34c4e2f644a375ec5be2468c4337d6b",
+      "closedAt": "2023-10-23T20:15:28Z",
+      "mergedAt": "2023-10-23T20:15:28Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "ff7fffea52e9986666eca62af2a3eef61ba8254e"
+      },
+      "comments": [
+        {
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@SteveLasker Please take it before making a draft cutoff for IETF today, if there is enough concensus among co-authors!",
+          "createdAt": "2023-10-23T16:15:11Z",
+          "updatedAt": "2023-10-23T16:15:11Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "To minimize the merge conflicts, I'll merge after PR #118, before the IETF deadline today",
+          "createdAt": "2023-10-23T17:09:17Z",
+          "updatedAt": "2023-10-23T17:09:52Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@yogeshbdeshpande, if you wanted to re-target the PR to the  https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/tree/cleanup-for-118 branch, I can merge right away",
+          "createdAt": "2023-10-23T17:12:22Z",
+          "updatedAt": "2023-10-23T17:12:22Z"
+        },
+        {
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@SteveLasker : lets merge for 118.",
+          "createdAt": "2023-10-23T17:13:55Z",
+          "updatedAt": "2023-10-23T17:15:43Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@yogeshbdeshpande, yes, that's the plan. Your PR will conflict with PR #118 as I re-ordered the list alphabetically. \r\nI was suggesting could re-target the PR against the https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/tree/cleanup-for-118 branch, I could just merge without conflicts.\r\nI could also just copy/paste your edits, but that wouldn't show your contribution in git history.",
+          "createdAt": "2023-10-23T17:28:47Z",
+          "updatedAt": "2023-10-23T17:28:47Z"
+        },
+        {
+          "author": "yogeshbdeshpande",
+          "authorAssociation": "COLLABORATOR",
+          "body": "ok, please merge your PR and then I will Rebase my (this) PR",
+          "createdAt": "2023-10-23T17:38:31Z",
+          "updatedAt": "2023-10-23T17:38:31Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5k6NYV",
+          "commit": {
+            "abbreviatedOid": "0a6c155"
+          },
+          "author": "aj-stein-nist",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "Minor nits around spacing and a URL update (pretending I understand my employer).",
+          "createdAt": "2023-10-23T16:17:38Z",
+          "updatedAt": "2023-10-23T16:22:39Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "I will venture a guess that you can be more specific if you point to either.\r\n\r\nThe NIST specifications:\r\n\r\n```suggestion\r\n    target: https://csrc.nist.gov/Projects/Software-Identification-SWID/guidelines\r\n```\r\n\r\nOr the referenced ISO specifications, which is what NIST recommends you do on the changed link above.\r\n\r\n> The SWID Tag format, defined by the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC) standard ISO/IEC 19770-2, is a structured metadata format for describing a software product. NIST recommends use of the latest version of this standard, [ISO/IEC 19770-2:2015](https://webstore.ansi.org/RecordDetail.aspx?sku=ISO%2fIEC+19770-2%3a2015).\r\n\r\n```suggestion\r\n    target: https://www.iso.org/standard/65666.html\r\n```",
+              "createdAt": "2023-10-23T16:17:39Z",
+              "updatedAt": "2023-10-23T16:22:39Z"
+            },
+            {
+              "originalPosition": 5,
+              "body": "Is there a reason for the double space?\r\n\r\n```suggestion\r\n    title: did:web Decentralized Identifiers Method Spec\r\n```",
+              "createdAt": "2023-10-23T16:22:09Z",
+              "updatedAt": "2023-10-23T16:22:39Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5k6lHM",
+          "commit": {
+            "abbreviatedOid": "c154c5b"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2023-10-23T17:08:49Z",
+          "updatedAt": "2023-10-23T17:08:49Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5k6zpl",
+          "commit": {
+            "abbreviatedOid": "c154c5b"
+          },
+          "author": "aj-stein-nist",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-23T17:38:27Z",
+          "updatedAt": "2023-10-23T17:38:27Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5k7Kz_",
+          "commit": {
+            "abbreviatedOid": "c154c5b"
+          },
+          "author": "hannestschofenig",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Thanks for adding the references.\r\n\r\nI am not sure whether you can indeed add them in this style but you can try. I would just use this style:\r\n\r\nSLSA {{SLSA}}",
+          "createdAt": "2023-10-23T18:26:34Z",
+          "updatedAt": "2023-10-23T18:26:34Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 122,
+      "id": "PR_kwDOIvmHss5dlUe-",
+      "title": "Update references for datatracker submission",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/122",
+      "state": "MERGED",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-23T22:52:24Z",
+      "updatedAt": "2023-10-23T23:23:01Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "628504c60f9502468da32a50421a6c28626c76d9",
+      "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "headRefName": "submission-update",
+      "headRefOid": "c31249dc691e39f3a3ae6b12da1dbba925208ff1",
+      "closedAt": "2023-10-23T22:53:12Z",
+      "mergedAt": "2023-10-23T22:53:12Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "d0fb2231337ef6b4c499b98e585e86a5adf7013b"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
