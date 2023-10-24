@@ -1222,6 +1222,11 @@ Issuers can register their Signed Statements on any Transparency Service, with t
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-receipts-transparent-statem" class="internal xref">Receipts &amp; Transparent Statements</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4.2.1">
+                    <p id="section-toc.1-1.6.2.4.2.1.1"><a href="#section-6.4.1" class="auto internal xref">6.4.1</a>.  <a href="#name-example" class="internal xref">Example</a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
                 <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-validation-of-transparent-s" class="internal xref">Validation of Transparent Statements</a></p>
@@ -2270,11 +2275,11 @@ Receipts protected headers have additional mandatory fields:<a href="#section-6.
 Inclusion_Proofs = [ + bstr ]
 
 Verifiable_Data_Proof = {
-  &amp;(inclusion-proof: 1) =&gt; Inclusion_Proofs
+  &amp;(inclusion-proof: -1) =&gt; Inclusion_Proofs
 }
 
 Receipt_Unprotected_Header = {
-  &amp;(proofs: -22222) =&gt; Verifiable_Data_Proof
+  &amp;(proofs: -222) =&gt; Verifiable_Data_Proof
 }
 
 Receipt_CWT_Claims = {
@@ -2289,7 +2294,7 @@ RegistrationInfo = {
 }
 
 Receipt_Protected_Header = {
-    -11111 =&gt; int             ; Type of Verifiable Data Structure,
+    -111 =&gt; int               ; Type of Verifiable Data Structure,
                               ; for example "RFC9162_SHA256", or "CCF"
 
     2 =&gt; [+ label]            ; Critical headers
@@ -2332,7 +2337,7 @@ Signed_Statement_Headers = {
 }
 
 Receipt_Unprotected_Header = {
-  &amp;(receipts: -55555) =&gt; [+ Receipt]
+  &amp;(receipts: -333) =&gt; [+ Receipt]
 }
 
 Signed_Statement_Headers = (
@@ -2349,6 +2354,143 @@ Transparent_Signed_Statement_as_COSE_Sign1 = [
 Transparent_Signed_Statement = #6.18(Transparent_Signed_Statement_as_COSE_Sign1)
 
 </pre><a href="#section-6.4-7" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4-8">Here is an example transparent statement:<a href="#section-6.4-8" class="pilcrow">¶</a></p>
+<div id="sec-example">
+<section id="section-6.4.1">
+          <h4 id="name-example">
+<a href="#section-6.4.1" class="section-number selfRef">6.4.1. </a><a href="#name-example" class="section-name selfRef">Example</a>
+          </h4>
+<div id="sec-signed-statement">
+<section id="section-6.4.1.1">
+            <h5 id="name-signed-statement">
+<a href="#section-6.4.1.1" class="section-number selfRef">6.4.1.1. </a><a href="#name-signed-statement" class="section-name selfRef">Signed Statement</a>
+            </h5>
+<div class="lang-cbor-diag sourcecode" id="section-6.4.1.1-1">
+<pre>
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4012603...6d706c65',       / Protected                     /
+      {                             / Unprotected                   /
+        -333: [                     / Receipts (1)                  /
+          h'd284586c...4191f9d2'    / Receipt 1                     /
+        ]
+      },
+      h'',                          / Detached payload              /
+      h'79ada558...3a28bae4'        / Signature                     /
+    ]
+)
+</pre><a href="#section-6.4.1.1-1" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.1.1-2">Notice the payload is detached,
+this is to support very large supply chain artifacts, and to
+ensure that Transparent Statements can integrate with
+existing file systems.<a href="#section-6.4.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.4.1.1-3">Notice the unprotected header can contain multiple receipts.<a href="#section-6.4.1.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-signed-statement-protected-header">
+<section id="section-6.4.1.2">
+            <h5 id="name-signed-statement-protected-">
+<a href="#section-6.4.1.2" class="section-number selfRef">6.4.1.2. </a><a href="#name-signed-statement-protected-" class="section-name selfRef">Signed Statement Protected Header</a>
+            </h5>
+<div class="lang-cbor-diag sourcecode" id="section-6.4.1.2-1">
+<pre>
+{                                   / Protected                     /
+  1: -7,                            / Algorithm                     /
+  3: application/example+json,      / Content type                  /
+  4: h'50685f55...50523255',        / Key identifier                /
+  13: {                             / CWT Claims                    /
+    1: software.vendor.example,     / Issuer                        /
+    2: vendor.product.example,      / Subject                       /
+  }
+}
+</pre><a href="#section-6.4.1.2-1" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.1.2-2">Notice the content type, transparency services might support only
+certain content types from certain issuers, per their registration
+policies.<a href="#section-6.4.1.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.4.1.2-3">Notice the CWT Claims, transparency services might support only
+statements about certain artifacts from certain issuers,
+per their registration policies.<a href="#section-6.4.1.2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-receipt">
+<section id="section-6.4.1.3">
+            <h5 id="name-receipt">
+<a href="#section-6.4.1.3" class="section-number selfRef">6.4.1.3. </a><a href="#name-receipt" class="section-name selfRef">Receipt</a>
+            </h5>
+<div class="lang-cbor-diag sourcecode" id="section-6.4.1.3-1">
+<pre>
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4012604...6d706c65',       / Protected                     /
+      {                             / Unprotected                   /
+        -222: {                     / Proofs                        /
+          -1: [                     / Inclusion proofs (1)          /
+            h'83080783...32568964', / Inclusion proof 1             /
+          ]
+        },
+      },
+      h'',                          / Detached payload              /
+      h'10f6b12a...4191f9d2'        / Signature                     /
+    ]
+)
+</pre><a href="#section-6.4.1.3-1" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.1.3-2">Notice the unprotected header contains verifiable data structure
+proofs, see the protected header for details regarding the specific
+verifiable data structure used.<a href="#section-6.4.1.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-receipt-protected-header">
+<section id="section-6.4.1.4">
+            <h5 id="name-receipt-protected-header">
+<a href="#section-6.4.1.4" class="section-number selfRef">6.4.1.4. </a><a href="#name-receipt-protected-header" class="section-name selfRef">Receipt Protected Header</a>
+            </h5>
+<div class="lang-cbor-diag sourcecode" id="section-6.4.1.4-1">
+<pre>
+{                                   / Protected                     /
+  1: -7,                            / Algorithm                     /
+  4: h'50685f55...50523255',        / Key identifier                /
+  -111: 1,                          / Verifiable Data Structure     /
+  13: {                             / CWT Claims                    /
+    1: transparency.vendor.example, / Issuer                        /
+    2: vendor.product.example,      / Subject                       /
+  }
+}
+</pre><a href="#section-6.4.1.4-1" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.1.4-2">Notice the verifiable data structure used is RFC9162_SHA256 in this case.
+We know from the COSE Verifiable Data Structure Registry that
+RFC9162_SHA256 is value 1, and that it supports -1 (inclusion proofs) and
+-2 (consistency proofs).<a href="#section-6.4.1.4-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-inclusion-proof">
+<section id="section-6.4.1.5">
+            <h5 id="name-inclusion-proof">
+<a href="#section-6.4.1.5" class="section-number selfRef">6.4.1.5. </a><a href="#name-inclusion-proof" class="section-name selfRef">Inclusion Proof</a>
+            </h5>
+<div class="lang-cbor-diag sourcecode" id="section-6.4.1.5-1">
+<pre>
+[                                   / Inclusion proof 1             /
+  8,                                / Tree size                     /
+  7,                                / Leaf index                    /
+  [                                 / Inclusion hashes (3)          /
+     h'c561d333...f9850597'         / Intermediate hash 1           /
+     h'75f177fd...2e73a8ab'         / Intermediate hash 2           /
+     h'0bdaaed3...32568964'         / Intermediate hash 3           /
+  ]
+]
+</pre><a href="#section-6.4.1.5-1" class="pilcrow">¶</a>
+</div>
+<p id="section-6.4.1.5-2">This is a decoded inclusion proof for RFC9162_SHA256, other
+verifiable data structures might encode inclusion proofs
+differently.<a href="#section-6.4.1.5-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
 </div>
 </section>
 </div>
