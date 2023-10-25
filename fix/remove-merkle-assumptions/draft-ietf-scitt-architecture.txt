@@ -5,13 +5,13 @@
 SCITT                                                        H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Standards Track                      A. Delignat-Lavaud
-Expires: 26 April 2024                                        C. Fournet
+Expires: 27 April 2024                                        C. Fournet
                                                       Microsoft Research
                                                             Y. Deshpande
                                                                      ARM
                                                                S. Lasker
                                                                    RKVST
-                                                         24 October 2023
+                                                         25 October 2023
 
 
  An Architecture for Trustworthy and Transparent Digital Supply Chains
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 April 2024.
+   This Internet-Draft will expire on 27 April 2024.
 
 Copyright Notice
 
@@ -1244,7 +1244,7 @@ Table of Contents
 
    Signed_Statement_CWT_Claims = {
      1 => tstr; iss, the issuer
-     1 => tstr; sub, the subject
+     2 => tstr; sub, the subject
      * tstr => any
    }
 
