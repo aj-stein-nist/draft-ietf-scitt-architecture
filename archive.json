@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-24T00:33:51.397010+00:00",
+  "timestamp": "2023-10-26T00:33:02.886753+00:00",
   "repo": "ietf-wg-scitt/draft-ietf-scitt-architecture",
   "labels": [
     {
@@ -2610,10 +2610,12 @@
       "author": "nikosft",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "terminology"
+      ],
       "body": "In section 5.2.3.3 `client` appears out of the blue. It is not clear what a `client` is. ",
       "createdAt": "2023-09-20T07:46:53Z",
-      "updatedAt": "2023-10-23T22:59:49Z",
+      "updatedAt": "2023-10-24T13:48:24Z",
       "closedAt": null,
       "comments": [
         {
@@ -2622,6 +2624,20 @@
           "body": "Hi, @nikosft \r\nI'm looking for the reference to 5.2.3.3 in https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-02.html and other versions. \r\nI don't see where that section exists.\r\nAre you referring to a reference where a client is calls the Transparency Service APIs?\r\nOr, as there a mention of \"client, synonymous with consumer, verifier, etc?\r\n",
           "createdAt": "2023-10-23T22:59:49Z",
           "updatedAt": "2023-10-23T22:59:49Z"
+        },
+        {
+          "author": "nikosft",
+          "authorAssociation": "NONE",
+          "body": "E.g., \r\n\r\n> a Transparency Service MAY additionally support verifiability of client authentication and access control\r\n\r\nIs the client the issuer itself? A piece of software that the issuer uses (e.g., a la OAuth2 client)? Does it refer to any role (issuer, verifier, auditor)? IMHO the text should be more specific, e.g., Certificate Transparency RFC explicitly mentions `TLS client`\r\n",
+          "createdAt": "2023-10-24T07:38:59Z",
+          "updatedAt": "2023-10-24T07:38:59Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks, @nikosft \r\nThe above text is from Draft 04: [5.2.3.3. ](https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-04.html#section-5.2.3.3)[Replayability and Auditing](https://www.ietf.org/archive/id/draft-ietf-scitt-architecture-04.html#name-replayability-and-auditing)\r\n\r\nI've labeled it for terminology clarification. ",
+          "createdAt": "2023-10-24T13:48:16Z",
+          "updatedAt": "2023-10-24T13:48:16Z"
         }
       ]
     },
@@ -2776,6 +2792,46 @@
       "body": "As discussed on today's call.\r\n\r\nFolks expressed concern that \"Verifier\" was not friendly enough to \"Consumers or Relying Parties\", that are supposed to process receipts.",
       "createdAt": "2023-10-23T15:22:39Z",
       "updatedAt": "2023-10-23T15:23:54Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 124,
+      "id": "I_kwDOIvmHss507r-i",
+      "title": "Transparent Statement Recursion",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/124",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "```\r\nstatement -> receipt\r\nstatement + receipt => transparent statement^1\r\ntransparent statement -> receipt\r\ntransparent statement + receipt => transparent statement^2\r\n...\r\n```\r\n\r\nThere are cases where you want to drop all unprotected data from the signed statement before the registration policy will be applied, and cases where you really want to preserve those unprotected data elements so that the registration policy can be applied.\r\n\r\nWe need to describe transparent statement inception in detail and comment on its correct usage (and its nonsensical usage).\r\n",
+      "createdAt": "2023-10-25T16:26:36Z",
+      "updatedAt": "2023-10-25T16:33:01Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "we use code like this, to pull the receipts from the transparent statement, and then we assume that the entry will always have an empty map as its unprotected header... thats not a great assumption, based on the current draft text.\r\n\r\n```ts\r\nexport const getEntryReceipts = ({ transparentStatement }: RequestEntryReceipts) => {\r\n  const decoded = cbor.decode(transparentStatement)\r\n  let unprotectedHeader = decoded.value[1]\r\n  if (!(unprotectedHeader instanceof Map)) {\r\n    unprotectedHeader = new Map()\r\n  }\r\n  const receipts = unprotectedHeader.get(tags.scitt_receipt) || []\r\n  decoded.value[1] = new Map()\r\n  const entry = cbor.encode(decoded)\r\n  return { entry, receipts }\r\n}\r\n```",
+          "createdAt": "2023-10-25T16:33:00Z",
+          "updatedAt": "2023-10-25T16:33:00Z"
+        }
+      ]
+    },
+    {
+      "number": 125,
+      "id": "I_kwDOIvmHss508dzY",
+      "title": "x5c or x5u or both?",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/issues/125",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "For signed statements and receipts.",
+      "createdAt": "2023-10-25T18:37:30Z",
+      "updatedAt": "2023-10-25T18:37:30Z",
       "closedAt": null,
       "comments": []
     }
@@ -12914,6 +12970,316 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 123,
+      "id": "PR_kwDOIvmHss5dptHs",
+      "title": "Address Receipts",
+      "url": "https://github.com/ietf-wg-scitt/draft-ietf-scitt-architecture/pull/123",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR makes it clearer that merkle trees are not required, and what the structure of a receipt is.",
+      "createdAt": "2023-10-24T14:55:48Z",
+      "updatedAt": "2023-10-26T00:03:24Z",
+      "baseRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "d0fb2231337ef6b4c499b98e585e86a5adf7013b",
+      "headRepository": "ietf-wg-scitt/draft-ietf-scitt-architecture",
+      "headRefName": "fix/remove-merkle-assumptions",
+      "headRefOid": "56048937a56ee7c6f7f83d9b75ec6b15310b1f07",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "robinbryce",
+          "authorAssociation": "NONE",
+          "body": "Just to be clear, we very much appreciate the work on the cose merkle proof format and intend to use that by default where we can.",
+          "createdAt": "2023-10-24T16:33:43Z",
+          "updatedAt": "2023-10-24T16:33:43Z"
+        },
+        {
+          "author": "robinbryce",
+          "authorAssociation": "NONE",
+          "body": "And also of course, LGTM",
+          "createdAt": "2023-10-24T16:35:06Z",
+          "updatedAt": "2023-10-24T16:35:06Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "If you approved this PR, you should probably review and approve https://github.com/cose-wg/draft-ietf-cose-merkle-tree-proofs/pull/8 ",
+          "createdAt": "2023-10-24T21:04:18Z",
+          "updatedAt": "2023-10-24T21:04:18Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIvmHss5lDTZN",
+          "commit": {
+            "abbreviatedOid": "913c7e1"
+          },
+          "author": "dmitrizagidulin",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": ":+1: ",
+          "createdAt": "2023-10-24T16:25:58Z",
+          "updatedAt": "2023-10-24T16:25:58Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIvmHss5lFQIC",
+          "commit": {
+            "abbreviatedOid": "5311caa"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-24T21:03:07Z",
+          "updatedAt": "2023-10-24T21:03:07Z",
+          "comments": [
+            {
+              "originalPosition": 225,
+              "body": "if we dare, we can make this an actual well known software supply chain media type",
+              "createdAt": "2023-10-24T21:03:07Z",
+              "updatedAt": "2023-10-24T21:03:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5lOc2-",
+          "commit": {
+            "abbreviatedOid": "5311caa"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "CHANGES_REQUESTED",
+          "body": "I might have some mistakes, as I was lazily using the github review/suggestion feature.",
+          "createdAt": "2023-10-25T21:32:20Z",
+          "updatedAt": "2023-10-25T21:47:33Z",
+          "comments": [
+            {
+              "originalPosition": 160,
+              "body": "```suggestion\r\n  2 => tstr; sub, the subject\r\n```\r\nSo close :-)",
+              "createdAt": "2023-10-25T21:32:20Z",
+              "updatedAt": "2023-10-25T21:47:33Z"
+            },
+            {
+              "originalPosition": 169,
+              "body": "So this is a transitional version, where we have to decide what the difference between 13 and 393 is?",
+              "createdAt": "2023-10-25T21:33:33Z",
+              "updatedAt": "2023-10-25T21:47:33Z"
+            },
+            {
+              "originalPosition": 168,
+              "body": "Not sure how happy everybody going for \"simplicity\" will be with optional attributes in the protected header.",
+              "createdAt": "2023-10-25T21:35:11Z",
+              "updatedAt": "2023-10-25T21:47:33Z"
+            },
+            {
+              "originalPosition": 178,
+              "body": "a header map",
+              "createdAt": "2023-10-25T21:36:36Z",
+              "updatedAt": "2023-10-25T21:47:33Z"
+            },
+            {
+              "originalPosition": 164,
+              "body": "type name conflict with line 910. This one should probably be:\r\n\r\n```suggestion\r\nSigned_Statement_Protected_Header = {\r\n```",
+              "createdAt": "2023-10-25T21:38:30Z",
+              "updatedAt": "2023-10-25T21:47:33Z"
+            },
+            {
+              "originalPosition": 177,
+              "body": "a CBOR data item including the protected header map. Probably should be:\r\n\r\n```suggestion\r\n    protected : bstr .cbor Signed_Statement_Protected_Header / bstr .size 0 \r\n```",
+              "createdAt": "2023-10-25T21:41:19Z",
+              "updatedAt": "2023-10-25T21:47:33Z"
+            },
+            {
+              "originalPosition": 102,
+              "body": "```suggestion\r\n\r\nlabel = int / tstr\r\nvalue = any\r\n\r\nInclusion_Proofs = [ + bstr ]\r\n```",
+              "createdAt": "2023-10-25T21:45:51Z",
+              "updatedAt": "2023-10-25T21:47:33Z"
+            },
+            {
+              "originalPosition": 120,
+              "body": "```suggestion\r\n  * label => value\r\n```",
+              "createdAt": "2023-10-25T21:46:09Z",
+              "updatedAt": "2023-10-25T21:47:33Z"
+            },
+            {
+              "originalPosition": 161,
+              "body": "```suggestion\r\n  * label => value\r\n```",
+              "createdAt": "2023-10-25T21:46:31Z",
+              "updatedAt": "2023-10-25T21:47:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5lOh1Q",
+          "commit": {
+            "abbreviatedOid": "51ca52f"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-25T21:51:19Z",
+          "updatedAt": "2023-10-25T21:51:20Z",
+          "comments": [
+            {
+              "originalPosition": 169,
+              "body": "Yep, not trying to fix everything at once.",
+              "createdAt": "2023-10-25T21:51:20Z",
+              "updatedAt": "2023-10-25T21:51:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5lOiJs",
+          "commit": {
+            "abbreviatedOid": "51ca52f"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-25T21:52:34Z",
+          "updatedAt": "2023-10-25T21:52:35Z",
+          "comments": [
+            {
+              "originalPosition": 168,
+              "body": "I am fine banning x509 from headers... But it was my understanding that it was required to be supported, and it clearly can't be made mandatory.",
+              "createdAt": "2023-10-25T21:52:34Z",
+              "updatedAt": "2023-10-25T21:52:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5lOiSv",
+          "commit": {
+            "abbreviatedOid": "51ca52f"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-25T21:53:07Z",
+          "updatedAt": "2023-10-25T21:53:08Z",
+          "comments": [
+            {
+              "originalPosition": 178,
+              "body": "Wut",
+              "createdAt": "2023-10-25T21:53:07Z",
+              "updatedAt": "2023-10-25T21:53:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5lOib8",
+          "commit": {
+            "abbreviatedOid": "9c370bf"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-25T21:53:42Z",
+          "updatedAt": "2023-10-25T21:53:42Z",
+          "comments": [
+            {
+              "originalPosition": 177,
+              "body": "Thank you!",
+              "createdAt": "2023-10-25T21:53:42Z",
+              "updatedAt": "2023-10-25T21:53:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5lOjcy",
+          "commit": {
+            "abbreviatedOid": "5311caa"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-25T21:57:52Z",
+          "updatedAt": "2023-10-25T21:57:52Z",
+          "comments": [
+            {
+              "originalPosition": 178,
+              "body": "see unlabeled CDDL fragment at the end of this Section:\r\n\r\nhttps://www.rfc-editor.org/rfc/rfc9052.html#name-header-parameters",
+              "createdAt": "2023-10-25T21:57:52Z",
+              "updatedAt": "2023-10-25T21:57:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5lOkhj",
+          "commit": {
+            "abbreviatedOid": "5604893"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-25T22:02:13Z",
+          "updatedAt": "2023-10-25T22:02:13Z",
+          "comments": [
+            {
+              "originalPosition": 178,
+              "body": "Did I forget to include: `Signed_Statement_Unprotected_Header = { * label => value }` ?\r\nThat is what I meant. It can end up as: `unprotected: {}`",
+              "createdAt": "2023-10-25T22:02:13Z",
+              "updatedAt": "2023-10-25T22:02:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5lPKrK",
+          "commit": {
+            "abbreviatedOid": "5604893"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-26T00:01:51Z",
+          "updatedAt": "2023-10-26T00:01:51Z",
+          "comments": [
+            {
+              "originalPosition": 176,
+              "body": "Receipt_Unprotected_Header has a redundant definition. Probably needs even more qualification in the type name? Where does -222 go and where does -333 go?",
+              "createdAt": "2023-10-26T00:01:51Z",
+              "updatedAt": "2023-10-26T00:01:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIvmHss5lPLSZ",
+          "commit": {
+            "abbreviatedOid": "5604893"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-10-26T00:03:23Z",
+          "updatedAt": "2023-10-26T00:03:24Z",
+          "comments": [
+            {
+              "originalPosition": 147,
+              "body": "```suggestion\r\n    protected : bstr .cbor Receipt_Protected_Header,\r\n```",
+              "createdAt": "2023-10-26T00:03:23Z",
+              "updatedAt": "2023-10-26T00:03:24Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
